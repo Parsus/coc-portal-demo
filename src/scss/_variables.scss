@@ -1,0 +1,57 @@
+//
+// City of Chandler Custom Variables
+//
+
+$coc-blue:             #003c5c;
+$coc-red:              #710036;
+$coc-light-blue:       #1a8ac0;
+$coc-green:            #11a26f;
+$coc-orange:           #f6a623;
+$coc-light-grey:       #f0f0f0;
+$coc-grey:             #828282;
+$coc-dark-grey:        #2d2f21;
+
+$coc-gradient-green:   linear-gradient(-221deg, #02a8a8, #018888);
+$coc-gradient-grey:    linear-gradient(#ffffff, #f0f0f0);
+$coc-gradient-redblue: linear-gradient(-90deg, #710036 24%, #1591b5);
+
+//
+// Bootstrap Variable Overrides
+//
+
+// Options
+
+$enable-shadows: true;
+
+// Colors
+
+$theme-colors: (
+  "primary":    $coc-blue,
+  "secondary":  $coc-red
+);
+
+// Spacing
+
+$spacer: 1rem;
+
+// Fonts
+
+$font-family-sans-serif: "Open Sans", Helvetica, Arial, sans-serif;
+
+$font-size-base:         1.8rem;
+
+$h1-font-size:           5rem;
+$h2-font-size:           4rem;
+$h3-font-size:           3rem;
+$h4-font-size:           2.6rem;
+$h5-font-size:           2rem;
+$h6-font-size:           1.6rem;
+
+$headings-margin-bottom: $spacer;
+$headings-font-weight:   600;
+$headings-line-height:   1.2;
+$headings-color:         $coc-blue;
+
+// Components
+
+$border-radius:          .125rem;
