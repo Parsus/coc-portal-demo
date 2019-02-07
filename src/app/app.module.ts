@@ -16,9 +16,12 @@ import {
   TooltipModule
 } from 'ngx-bootstrap';
 
+import { NavbarComponent } from './navbar/navbar.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

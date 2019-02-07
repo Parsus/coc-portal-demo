@@ -1,0 +1,122 @@
+.coc-navbar-header {
+  display: block;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.7);
+  border-bottom: 2px solid #efefef;
+  padding: 0;
+
+  .navbar {
+    width: 100%;
+    max-width: $coc-navbar-max-width;
+    margin: 0 auto;
+    padding: 0 ($grid-gutter-width * .5);
+  }
+
+  .coc-navbar-utility {
+    position: relative;
+    background: linear-gradient(to right,#710036 0,#1691b5 100%);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(45, 47, 49, 0.84);
+    }
+
+    .navbar-nav {
+      position: relative;
+      flex-direction: row;
+      margin-left: auto;
+
+      .nav-link {
+        display: block;
+        padding: 10px;
+        font-size: 1.3rem;
+        font-weight: 700;
+        line-height: initial;
+        color: #ccc;
+        text-transform: uppercase;
+
+        @include media-breakpoint-up(sm) {
+          padding: 15px;
+        }
+      }
+
+      .nav-item {
+        &.dropdown {}
+      }
+
+      .dropdown-menu {}
+
+      .dropdown-item {}
+    }
+  }
+
+  .coc-navbar-main {
+
+    .navbar-brand {
+
+      .navbar-brand-logo {
+        position: absolute;
+        top: -11px;
+        max-width: 230px;
+        width: 100%;
+        height: auto;
+        z-index: 10;
+
+        @include media-breakpoint-up(md) {
+          top: -25px;
+          max-width: 375px;
+        }
+      }
+    }
+
+    .navbar-toggler {
+      padding: 11px 10px;
+      border-width: 0;
+      color: $coc-blue;
+      font-size: 2rem;
+      line-height: inherit;
+      text-transform: uppercase;
+
+      @include media-breakpoint-up(md) {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-size: 2.2rem;
+      }
+
+      .navbar-toggler-icon {
+        width: auto;
+        height: auto;
+        vertical-align: inherit;
+        font-size: inherit;
+      }
+    }
+
+    .navbar-collapse {}
+
+    .navbar-nav {
+      margin-left: auto;
+
+      .nav-link {
+        display: block;
+        padding: 20px 10px;
+        color: $coc-blue;
+        font-size: 2.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .nav-item {
+        &.dropdown {}
+      }
+
+      .dropdown-menu {}
+
+      .dropdown-item {}
+    }
+  }
+}

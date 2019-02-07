@@ -1,4 +1,23 @@
 
+// Bootstrap breakpoints
+// xs: 0
+// sm: 576px
+// md: 768px
+// lg: 992px
+// xl: 1200px
+
 html {
   font-size: 62.5%;
+}
+
+body {
+  padding-top: 89px;
+
+  @include media-breakpoint-up(sm) {
+    margin-top: 99px;
+  }
+
+  @include media-breakpoint-up(md) {
+    margin-top: 119px;
+  }
 }
