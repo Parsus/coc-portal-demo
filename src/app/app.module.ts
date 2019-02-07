@@ -17,11 +17,13 @@ import {
 } from 'ngx-bootstrap';
 
 import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
