@@ -16,6 +16,7 @@ $coc-gradient-grey:    linear-gradient(#ffffff, #f0f0f0);
 $coc-gradient-redblue: linear-gradient(-90deg, #710036 24%, #1591b5);
 
 $coc-navbar-max-width: 1200px;
+$coc-footer-max-width: 1200px;
 
 //
 // Bootstrap Variable Overrides
@@ -35,13 +36,14 @@ $theme-colors: (
 // Spacing
 
 $spacer: 1rem;
+$spacers: (
+  6: ($spacer * 6)
+);
 
 // Fonts
 
 $font-family-sans-serif: "Open Sans", Helvetica, Arial, sans-serif;
-
 $font-size-base:         1.8rem;
-
 $line-height-base:       1.333;
 
 $h1-font-size:           5rem;

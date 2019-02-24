@@ -1,0 +1,110 @@
+
+.coc-footer {
+  color: $white;
+  background-color: $coc-blue;
+  border-top: 8px solid $coc-green;
+  text-align: center;
+
+  @include media-breakpoint-up(md) {
+    text-align: left;
+  }
+
+  .coc-footer-container {
+    width: 100%;
+    max-width: $coc-footer-max-width;
+    margin: 0 auto;
+    padding: 35px ($grid-gutter-width * .5);
+  }
+
+  a {
+    color: $white;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  .coc-footer-logo {
+    display: block;
+    width: 109px;
+    margin: 0 auto;
+
+    @include media-breakpoint-up(md) {
+      width: 146px;
+    }
+  }
+
+  .coc-scroll-top {
+    position: absolute;
+    top: -210px;
+    right: ($grid-gutter-width * .5);
+    display: inline-block;
+
+    @include media-breakpoint-up(md) {
+      position: relative;
+      top: auto;
+      right: auto;
+      margin-left: 3.5rem;
+    }
+  }
+
+  .coc-footer-menu {
+    margin-top: 3rem;
+    font-size: 2rem;
+
+    @include media-breakpoint-up(md) {
+      margin-top: 4rem;
+      margin-bottom: 3rem;
+    }
+
+    .list-inline {
+      display: inline-block;
+      margin: 3rem 0 2rem 0;
+      font-size: 1.6rem;
+    }
+
+    .list-inline-item:not(:first-child) {
+      margin-left: 4.5rem;
+
+      @include media-breakpoint-up(md) {
+        margin-left: 3.5rem;
+      }
+    }
+  }
+
+  .coc-footer-copyright {
+    color: #bfced6;
+    font-size: 1.4rem;
+
+    a {
+      color: #bfced6;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+
+    .list-inline {
+      margin-bottom: 0;
+    }
+
+    .list-inline-item:not(:first-child) {
+      margin-left: 1.5rem;
+
+      &::before {
+        content: "|";
+        margin-right: 1.5rem;
+      }
+      
+      @include media-breakpoint-only(md) {
+        margin-left: 1rem;
+
+        &::before {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+}
