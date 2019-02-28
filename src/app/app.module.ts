@@ -18,12 +18,14 @@ import {
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { UiKitComponent } from './ui-kit/ui-kit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    UiKitComponent
   ],
   imports: [
     BrowserModule,
