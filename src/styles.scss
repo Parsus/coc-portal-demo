@@ -2,6 +2,10 @@
 @import "scss/variables";
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "scss/global";
+@import "scss/grid";
 @import "scss/type";
+@import "scss/buttons";
+@import "scss/custom-forms";
+@import "scss/jumbotron";
 @import "app/navbar/navbar.component";
 @import "app/footer/footer.component";

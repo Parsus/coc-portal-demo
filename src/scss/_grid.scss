@@ -1,0 +1,6 @@
+.small-container {
+  width: 100%;
+  max-width: $coc-small-container-max-width;
+  margin: 0 auto;
+  padding: 0 ($grid-gutter-width * .5);
+}

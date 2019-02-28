@@ -1,0 +1,7 @@
+.btn-next {
+  @include button-variant($coc-green, $coc-green);
+}
+
+.btn-previous {
+  @include button-variant($coc-grey, $coc-grey);
+}
