@@ -7,6 +7,7 @@ import { HaveLicenseComponent } from './have-license/have-license.component';
 import { NeedLicenseComponent } from './need-license/need-license.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { BusinessInfoComponent } from './business-info/business-info.component';
+import { BusinessAdditionalInfoComponent } from './business-additional-info/business-additional-info.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { BusinessInfoComponent } from './business-info/business-info.component';
     HaveLicenseComponent,
     NeedLicenseComponent,
     ProgressBarComponent,
-    BusinessInfoComponent
+    BusinessInfoComponent,
+    BusinessAdditionalInfoComponent
   ],
   imports: [
     CommonModule,
