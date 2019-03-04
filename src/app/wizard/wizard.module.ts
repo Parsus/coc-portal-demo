@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { WizardRoutingModule } from './wizard-routing.module';
 import { WizardComponent } from './wizard.component';
-import { AlreadyHaveLicenseComponent } from './already-have-license/already-have-license.component';
+import { HaveLicenseComponent } from './have-license/have-license.component';
+import { NeedLicenseComponent } from './need-license/need-license.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 @NgModule({
-  declarations: [WizardComponent, AlreadyHaveLicenseComponent],
+  declarations: [WizardComponent, HaveLicenseComponent, NeedLicenseComponent, ProgressBarComponent],
   imports: [
     CommonModule,
     WizardRoutingModule

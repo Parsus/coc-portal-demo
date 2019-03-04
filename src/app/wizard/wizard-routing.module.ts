@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AlreadyHaveLicenseComponent } from './already-have-license/already-have-license.component';
+import { HaveLicenseComponent } from './have-license/have-license.component';
+import { NeedLicenseComponent } from './need-license/need-license.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AlreadyHaveLicenseComponent
+    component: HaveLicenseComponent
+  },
+  {
+    path: 'do-you-need-a-business-license',
+    component: NeedLicenseComponent
   }
 ];
 

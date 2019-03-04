@@ -46,7 +46,16 @@ $theme-colors: (
 
 $spacer: 1rem;
 $spacers: (
-  6: ($spacer * 6)
+  0: 0,
+  1: $spacer,
+  2: ($spacer * 2),
+  3: ($spacer * 3),
+  4: ($spacer * 4),
+  5: ($spacer * 5),
+  6: ($spacer * 6),
+  7: ($spacer * 7),
+  8: ($spacer * 8),
+  9: ($spacer * 9)
 );
 
 // Body
@@ -71,7 +80,8 @@ $headings-font-weight:   600;
 $headings-line-height:   1.2;
 $headings-color:         $coc-blue;
 
-$display3-size:          4.8rem;
+$display2-size:          4.8rem;
+$display3-size:          3rem;
 
 // Grid containers
 
@@ -89,7 +99,7 @@ $border-radius:          .25rem;
 // Buttons
 
 $btn-padding-y:          1.8rem;
-$btn-padding-x:          2rem;
+$btn-padding-x:          2.5rem;
 
 // Forms
 
