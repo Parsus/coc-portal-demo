@@ -113,6 +113,10 @@ $custom-control-indicator-bg:    #e7e7e7;
 $custom-checkbox-indicator-indeterminate-bg:   $custom-control-indicator-bg;
 $custom-checkbox-indicator-icon-indeterminate: none;
 
+$custom-switch-width:                          $custom-control-indicator-size * 2;
+$custom-switch-indicator-border-radius:        $border-radius;
+$custom-switch-indicator-size:                 $custom-control-indicator-size;
+
 // Jumbotron
 
 $jumbotron-padding:      3.5rem;
