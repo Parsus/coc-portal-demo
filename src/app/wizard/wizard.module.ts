@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
+import { SharedModule } from '../shared/shared.module';
 import { WizardRoutingModule } from './wizard-routing.module';
 import { WizardComponent } from './wizard.component';
 import { HaveLicenseComponent } from './have-license/have-license.component';
@@ -19,7 +19,7 @@ import { BusinessAdditionalInfoComponent } from './business-additional-info/busi
     BusinessAdditionalInfoComponent
   ],
   imports: [
-    CommonModule,
+    SharedModule,
     WizardRoutingModule
   ],
   entryComponents: [WizardComponent]
