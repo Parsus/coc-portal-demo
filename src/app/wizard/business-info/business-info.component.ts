@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-business-info',
+  selector: 'wizard-business-info',
   templateUrl: './business-info.component.html'
 })
 export class BusinessInfoComponent implements OnInit {

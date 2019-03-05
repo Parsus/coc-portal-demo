@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-temp',
+  selector: 'coc-temp',
   template: `
     <div class="container py-6">
       <h1>
