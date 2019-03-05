@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
@@ -8,13 +8,13 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
   declarations: [],
   imports: [
     CommonModule,
-    FormsModule,
+    ReactiveFormsModule,
     CollapseModule.forRoot(),
     TooltipModule.forRoot()
   ],
   exports: [
     CommonModule,
-    FormsModule,
+    ReactiveFormsModule,
     CollapseModule,
     TooltipModule
   ]

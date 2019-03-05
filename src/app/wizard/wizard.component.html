@@ -1,3 +1,216 @@
-<p>
-  Wizard entry component
-</p>
+<wizard-stepper linear>
+  <cdk-step [stepControl]="step1FormGroup">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="jumbotron-container">
+        <h1 class="display-2 text-uppercase">Business Registration & Renewal</h1>
+        <hr class="my-2">
+        <p><strong>Welcome to the Chandler business registration and renewal portal.</strong> This portal will allow you to register or renew your business license with the City of Chandler. This easy-to-use portal will ask you a series of questions to walk you through.</p>
+        <p class="coc-font-size-22"><em>Simply answer the first question below to get started.</em></p>
+      </div>
+    </div>
+      
+    <div class="container">
+      <div class="row">
+        <div class="col-12 mt-1">
+          <a class="coc-link-small coc-link-arrow-left" href="https://www.chandleraz.gov/business/tax-and-license">Return to Tax & License</a>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 mt-4 mb-6">
+          <h2 class="h3 font-weight-normal">Do you already have a business license<sup class="" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."><i class="far fa-question-circle"></i></sup> with the city of Chandler?</h2>
+          <p class="coc-font-size-14 mb-2">Select "yes" or "no" then click continue.</p>
+          <form [formGroup]="step1FormGroup">
+            <div class="custom-control custom-checkbox mb-2">
+              <input
+                type="radio"
+                value="Yes"
+                id="hasLicense"
+                class="custom-control-input"
+                formControlName="alreadyHaveLicense">
+              <label class="custom-control-label" for="hasLicense">Yes, I already have a business license with the City of Chandler</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input
+                type="radio"
+                value="No"
+                id="doesNotHaveLicense"
+                class="custom-control-input"
+                formControlName="alreadyHaveLicense">
+              <label class="custom-control-label" for="doesNotHaveLicense">No, I do not have a business license with the City of Chandler</label>
+            </div>
+          </form>
+          <div class="mt-3">
+            <button
+              type="button"
+              class="btn btn-previous"
+              cdkStepperPrevious>
+              Back
+            </button>
+            <button
+              type="button"
+              class="btn btn-next ml-3"
+              cdkStepperNext>
+              Continue
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </cdk-step>
+
+  <cdk-step [stepControl]="step2FormGroup">
+    <div class="jumbotron jumbotron-fluid pt-2 pb-3">
+      <div class="jumbotron-container">
+        <h1 class="display-3 text-uppercase text-center">Business Registration & Renewal</h1>
+        <wizard-progress-bar [progress]="10"></wizard-progress-bar>
+      </div>
+    </div>
+      
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 mt-4 mb-6">
+          <h2 class="h3 font-weight-normal">Do you need a business license?</h2>
+          <p class="coc-font-size-14 mb-2">Select "yes" or "no" then click continue.</p>
+          <form [formGroup]="step2FormGroup">
+            <div class="custom-control custom-checkbox mb-2">
+              <input
+                type="radio"
+                value="Yes"
+                id="needLicense"
+                class="custom-control-input"
+                formControlName="needBusinessLicense">
+              <label class="custom-control-label" for="needLicense">Yes, I would like to register for a business license</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input
+                type="radio"
+                value="No"
+                id="doNotNeedLicense"
+                class="custom-control-input"
+                formControlName="needBusinessLicense">
+              <label class="custom-control-label" for="doNotNeedLicense">No, I do not need a license</label>
+            </div>
+          </form>
+          <div class="mt-3">
+            <button
+              type="button"
+              class="btn btn-previous"
+              cdkStepperPrevious>
+              Back
+            </button>
+            <button
+              type="button"
+              class="btn btn-next ml-3"
+              cdkStepperNext>
+              Continue
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </cdk-step>
+
+  <cdk-step [stepControl]="step3FormGroup">
+    <div class="jumbotron jumbotron-fluid pt-2 pb-3">
+      <div class="jumbotron-container">
+        <h1 class="display-3 text-uppercase text-center">Business Registration & Renewal</h1>
+        <wizard-progress-bar [progress]="80"></wizard-progress-bar>
+      </div>
+    </div>
+      
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 mt-4 mb-6">
+          <h2 class="h3 font-weight-normal">Answer "Yes" or "No" to the following questions:</h2>
+          <p class="coc-font-size-14 mb-2">Toggle right to answer "yes". Answer all questions then click continue.</p>
+          <form [formGroup]="step3FormGroup">
+            <div class="custom-control custom-switch coc-custom-control-right mb-1">
+              <input type="checkbox" class="custom-control-input" id="liquor">
+              <label class="custom-control-label" for="liquor">Will you sell liquor?</label>
+            </div>
+            <div class="custom-control custom-switch coc-custom-control-right mb-1">
+              <input type="checkbox" class="custom-control-input" id="secondHandGoods">
+              <label class="custom-control-label" for="secondHandGoods">Will your business buy/sell used or second hand goods?</label>
+            </div>
+            <div class="custom-control custom-switch coc-custom-control-right mb-1">
+              <input type="checkbox" class="custom-control-input" id="doorToDoor">
+              <label class="custom-control-label" for="doorToDoor">Will you conduct door to door sales?</label>
+            </div>
+            <div class="custom-control custom-switch coc-custom-control-right mb-1">
+              <input type="checkbox" class="custom-control-input" id="massageServices">
+              <label class="custom-control-label" for="massageServices">Will you offer massage services?</label>
+            </div>
+            <div class="custom-control custom-switch coc-custom-control-right">
+              <input type="checkbox" class="custom-control-input" id="nonProfitSolicitor">
+              <label class="custom-control-label" for="nonProfitSolicitor">Are you a non-profit solicitor?</label>
+            </div>
+          </form>
+          <div class="mt-3">
+            <button
+              type="button"
+              class="btn btn-previous"
+              cdkStepperPrevious>
+              Back
+            </button>
+            <button
+              type="button"
+              class="btn btn-next ml-3"
+              cdkStepperNext>
+              Continue
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </cdk-step>
+
+  <cdk-step [stepControl]="step4FormGroup">
+    <div class="jumbotron jumbotron-fluid pt-2 pb-3">
+      <div class="jumbotron-container">
+        <h1 class="display-3 text-uppercase text-center">Business Registration & Renewal</h1>
+        <wizard-progress-bar [progress]="90"></wizard-progress-bar>
+      </div>
+    </div>
+        
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 mt-4 mb-6">
+          <h2 class="h3 font-weight-normal">Is your business engaged in any of the following:</h2>
+          <p class="coc-font-size-14 mb-2">Click all that apply to your business then click continue.</p>
+          <form [formGroup]="step4FormGroup">
+            <div class="custom-control custom-checkbox mb-2">
+              <input type="checkbox" class="custom-control-input" id="bingo">
+              <label class="custom-control-label" for="bingo">Bingo</label>
+            </div>
+            <div class="custom-control custom-checkbox mb-2">
+              <input type="checkbox" class="custom-control-input" id="offTrackBetting">
+              <label class="custom-control-label" for="offTrackBetting">Off track betting</label>
+            </div>
+            <div class="custom-control custom-checkbox mb-2">
+              <input type="checkbox" class="custom-control-input" id="sob">
+              <label class="custom-control-label" for="sob">SOB</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="escort">
+              <label class="custom-control-label" for="escort">Escort</label>
+            </div>
+          </form>
+          <div class="mt-3">
+            <button
+              type="button"
+              class="btn btn-previous"
+              cdkStepperPrevious>
+              Back
+            </button>
+            <button
+              type="button"
+              class="btn btn-next ml-3"
+              cdkStepperNext>
+              Continue
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </cdk-step>
+</wizard-stepper>

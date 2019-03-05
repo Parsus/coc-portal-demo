@@ -1,25 +1,21 @@
 import { NgModule } from '@angular/core';
+import { CdkStepperModule } from '@angular/cdk/stepper';
 
 import { SharedModule } from '../shared/shared.module';
 import { WizardRoutingModule } from './wizard-routing.module';
 import { WizardComponent } from './wizard.component';
-import { HaveLicenseComponent } from './have-license/have-license.component';
-import { NeedLicenseComponent } from './need-license/need-license.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
-import { BusinessInfoComponent } from './business-info/business-info.component';
-import { BusinessAdditionalInfoComponent } from './business-additional-info/business-additional-info.component';
+import { StepperComponent } from './stepper/stepper.component';
 
 @NgModule({
   declarations: [
     WizardComponent,
-    HaveLicenseComponent,
-    NeedLicenseComponent,
     ProgressBarComponent,
-    BusinessInfoComponent,
-    BusinessAdditionalInfoComponent
+    StepperComponent
   ],
   imports: [
     SharedModule,
+    CdkStepperModule,
     WizardRoutingModule
   ],
   entryComponents: [WizardComponent]
