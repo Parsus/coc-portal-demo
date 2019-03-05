@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './business-info.component.html'
 })
 export class BusinessInfoComponent implements OnInit {
+  progress = 80;
 
   constructor() { }
 

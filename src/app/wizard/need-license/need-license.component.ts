@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './need-license.component.html'
 })
 export class NeedLicenseComponent implements OnInit {
+  progress = 10;
 
   constructor() { }
 
