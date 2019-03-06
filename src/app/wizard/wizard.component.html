@@ -125,23 +125,43 @@
           <p class="coc-font-size-14 mb-2">Toggle right to answer "yes". Answer all questions then click continue.</p>
           <form [formGroup]="step3FormGroup">
             <div class="custom-control custom-switch coc-custom-control-right mb-1">
-              <input type="checkbox" class="custom-control-input" id="liquor">
+              <input
+                type="checkbox"
+                id="liquor"
+                class="custom-control-input"
+                formControlName="liquor">
               <label class="custom-control-label" for="liquor">Will you sell liquor?</label>
             </div>
             <div class="custom-control custom-switch coc-custom-control-right mb-1">
-              <input type="checkbox" class="custom-control-input" id="secondHandGoods">
+              <input
+                type="checkbox"
+                id="secondHandGoods"
+                class="custom-control-input"
+                formControlName="secondHandGoods">
               <label class="custom-control-label" for="secondHandGoods">Will your business buy/sell used or second hand goods?</label>
             </div>
             <div class="custom-control custom-switch coc-custom-control-right mb-1">
-              <input type="checkbox" class="custom-control-input" id="doorToDoor">
+              <input
+                type="checkbox"
+                id="doorToDoor"
+                class="custom-control-input"
+                formControlName="doorToDoor">
               <label class="custom-control-label" for="doorToDoor">Will you conduct door to door sales?</label>
             </div>
             <div class="custom-control custom-switch coc-custom-control-right mb-1">
-              <input type="checkbox" class="custom-control-input" id="massageServices">
+              <input
+                type="checkbox"
+                id="massageServices"
+                class="custom-control-input"
+                formControlName="massageServices">
               <label class="custom-control-label" for="massageServices">Will you offer massage services?</label>
             </div>
             <div class="custom-control custom-switch coc-custom-control-right">
-              <input type="checkbox" class="custom-control-input" id="nonProfitSolicitor">
+              <input
+                type="checkbox"
+                id="nonProfitSolicitor"
+                class="custom-control-input"
+                formControlName="nonProfitSolicitor">
               <label class="custom-control-label" for="nonProfitSolicitor">Are you a non-profit solicitor?</label>
             </div>
           </form>
@@ -178,20 +198,36 @@
           <h2 class="h3 font-weight-normal">Is your business engaged in any of the following:</h2>
           <p class="coc-font-size-14 mb-2">Click all that apply to your business then click continue.</p>
           <form [formGroup]="step4FormGroup">
-            <div class="custom-control custom-checkbox mb-2">
-              <input type="checkbox" class="custom-control-input" id="bingo">
+            <div class="custom-control custom-switch coc-custom-control-right mb-1">
+              <input
+                type="checkbox"
+                id="bingo"
+                class="custom-control-input"
+                formControlName="bingo">
               <label class="custom-control-label" for="bingo">Bingo</label>
             </div>
-            <div class="custom-control custom-checkbox mb-2">
-              <input type="checkbox" class="custom-control-input" id="offTrackBetting">
+            <div class="custom-control custom-switch coc-custom-control-right mb-1">
+              <input
+                type="checkbox"
+                id="offTrackBetting"
+                class="custom-control-input"
+                formControlName="offTrackBetting">
               <label class="custom-control-label" for="offTrackBetting">Off track betting</label>
             </div>
-            <div class="custom-control custom-checkbox mb-2">
-              <input type="checkbox" class="custom-control-input" id="sob">
+            <div class="custom-control custom-switch coc-custom-control-right mb-1">
+              <input
+                type="checkbox"
+                id="sob"
+                class="custom-control-input"
+                formControlName="sob">
               <label class="custom-control-label" for="sob">SOB</label>
             </div>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="escort">
+            <div class="custom-control custom-switch coc-custom-control-right mb-1">
+              <input
+                type="checkbox"
+                id="escort"
+                class="custom-control-input"
+                formControlName="escort">
               <label class="custom-control-label" for="escort">Escort</label>
             </div>
           </form>

@@ -23,9 +23,18 @@ export class WizardComponent implements OnInit {
     });
 
     this.step3FormGroup = this.fb.group({
+      liquor: [],
+      secondHandGoods: [],
+      doorToDoor: [],
+      massageServices: [],
+      nonProfitSolicitor: []
     });
 
     this.step4FormGroup = this.fb.group({
+      bingo: [],
+      offTrackBetting: [],
+      sob: [],
+      escort: []
     });
   }
 
