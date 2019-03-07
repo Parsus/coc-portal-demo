@@ -64,8 +64,50 @@
                 value="Yes"
                 id="needLicense"
                 class="custom-control-input"
-                formControlName="needBusinessLicense">
+                formControlName="needBusinessLicense"
+                (change)="openCloseAddressPanel($event)">
               <label class="custom-control-label" for="needLicense">Yes, I would like to register for a business license</label>
+            </div>
+            <div [@slideOpenClosed]="animationState" class="overflow-hidden">
+              <div class="bg-light ml-4 p-4">
+                <h3 class="h3">What is your busines address?</h3>
+                <p class="">Complete the form and then click continue. <span>* Required fields</span></p>
+                <input
+                  type="text"
+                  placeholder="Enter your business address"
+                  id="addressLine1"
+                  class="form-control"
+                  formControlName="addressLine1">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    placeholder="Suite #"
+                    id="addressLine2"
+                    class="form-control"
+                    formControlName="addressLine2">
+                </div>
+                <div class="form-row">
+                  <div class="col">
+                    <input
+                      type="text"
+                      placeholder="City"
+                      id="addressCity"
+                      class="form-control"
+                      formControlName="addressCity">
+                  </div>
+                  <div class="col">
+                    Arizona
+                  </div>
+                  <div class="col">
+                    <input
+                      type="text"
+                      placeholder="Zip:"
+                      id="addressZip"
+                      class="form-control"
+                      formControlName="addressZip">
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="custom-control custom-checkbox">
               <input
@@ -73,7 +115,8 @@
                 value="No"
                 id="doNotNeedLicense"
                 class="custom-control-input"
-                formControlName="needBusinessLicense">
+                formControlName="needBusinessLicense"
+                (change)="openCloseAddressPanel($event)">
               <label class="custom-control-label" for="doNotNeedLicense">No, I do not need a license</label>
             </div>
           </form>
