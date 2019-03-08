@@ -346,7 +346,7 @@ var TempComponent = /** @class */ (function () {
     TempComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'coc-temp',
-            template: "\n    <div class=\"container py-6\">\n      <h1>\n        City of Chandler Business Registration & License Portal\n      </h1>\n      <h2>Modules</h2>\n      <ul>\n        <li>\n          <a routerLink=\"wizard\">Wizard</a>\n        </li>\n      </ul>\n      <h2>Libraries used on front-end:</h2>\n      <ul>\n        <li>\n          <a target=\"_blank\" rel=\"noopener\" href=\"https://angular.io/cli\">Angular CLI</a>\n        </li>\n        <li>\n          <a target=\"_blank\" rel=\"noopener\"\n            href=\"https://getbootstrap.com/docs/4.2/getting-started/introduction/\">Bootstrap</a>\n        </li>\n        <li>\n          <a target=\"_blank\" rel=\"noopener\" href=\"https://valor-software.com/ngx-bootstrap/#/documentation\">NGX\n            Bootstrap</a>\n        </li>\n      </ul>\n    </div>\n  "
+            template: "\n    <div class=\"container mt-6 mb-9\">\n      <h1>\n        City of Chandler Business Registration & License Portal\n      </h1>\n      <h2>Modules</h2>\n      <ul>\n        <li>\n          <a routerLink=\"wizard\">Wizard</a>\n        </li>\n      </ul>\n    </div>\n  "
         })
     ], TempComponent);
     return TempComponent;
