@@ -42,7 +42,7 @@
         <input type="hidden" name="allow_ach_payment" value="true" />
         <input type="hidden" name="credit_card_service_fee" value="1.00" />
         <input type="hidden" name="ach_service_fee" value="0.40" />
-        <input type="hidden" name="return_url" value="https://localhost:3000/invoice-cloud-poc/make-a-payment.html" />
+        <input type="hidden" name="return_url" value="https://localhost:3000/invoice-cloud-poc/payment_complete.html" />
         <input type="hidden" name="postback_url" value="https://webhook.site/a1d98312-ea7b-439f-b523-c2ea7cabfe66" />
         <input type="hidden" name="biller_reference" value="billerreferencetest" />
         <input type="hidden" name="btnl" value="Post Data" />
@@ -51,6 +51,7 @@
         <!-- <a id="postback_link" href="">view postbin</a> -->
     </form>
     <script type="text/javascript">
+    
         function getBaseUrl() {
             var parts = window.location.href.split('/')
             return parts.splice(0, parts.length - 1).join('/') + '/'
@@ -62,7 +63,7 @@
             var rand = Math.floor(Math.random() * 1000)
             document.getElementById('invoice_number').value = ('cP-' + (seed + rand))
 
-            document.querySelector('input[name=return_url]').value = getBaseUrl() + 'make-a-payment.html'
+            document.querySelector('input[name=return_url]').value = getBaseUrl() + 'payment_complete.html'
             /* document.getElementById('postback_link').href = document.querySelector('input[name=postback_url]').value */
         }
 
