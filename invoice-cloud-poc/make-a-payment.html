@@ -1,59 +1,77 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://uww.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http: //waw.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Sample CloudPayments</title>
-    </head>
-    <body>
-        <form method="GET" id="invForm" action="https://www.invoicecloud.com/portal/cloudpayment.aspx">
-            <input type="hidden" name="biller_guid" value="810c080a-6648-44fa-ac8f-19d728b10de9" />
-            <input type="hidden" id="invoice_number" name="invoice_number" value="cP-1" />
-            <input type="hidden" name="balance_due" value="1.00" />
-            <input type="hidden" name="invoice_type_id" value="94" />
-            <input type="hidden" name="invoice_date" value="03/08/2019" />
-            <input type="hidden" name="invoice_due_date" value="" />
-            <input type="hidden" name="create_customer_record" value="false" />
-            <input type="hidden" name="customer_account_number" value="CPAcct-1" />
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Sample CloudPayments</title>
+</head>
+
+<body>
+    <form method="GET" id="invForm" action="https://www.invoicecloud.com/portal/cloudpayment.aspx">
+
+        <div>
+            <div><label for="customer_name">Customer Name</label></div>
             <input type="input" name="customer_name" placeholde="Your Name" value="John Doe" />
-            <input type="hidden" name="customer_address" value="1234 AnyStreet" />
-            <input type="hidden" name="customer_city" value="AnyTown" />
-            <input type="hidden" name="customer_state" value="TX" />
-            <input type="hidden" name="customer_zip" value="78520" />
-            <input type="hidden" name="customer_email_address" value="none@none.com" />
-            <input type="hidden" name="allow_partial_payment" value="false" />
-            <input type="hidden" name="minimum_payment_amount" value="0.60" />
-            <input type="hidden" name="allow_cc_payment" value="true" />
-            <input type="hidden" name="allow_ach_payment" value="true" />
-            <input type="hidden" name="credit_card_service_fee" value="1.00" />
-            <input type="hidden" name="ach_service_fee" value="0.40" />
-            <input type="hidden" name="return_url" value="https://localhost:3000/invoice-cloud-poc/make-a-payment.html" />
-            <input type="hidden" name="postback_url" value="https://webhook.site/a1d98312-ea7b-439f-b523-c2ea7cabfe66" />
-            <input type="hidden" name="biller_reference" value="billerreferencetest" />
-            <input type="hidden" name="btnl" value="Post Data" />
-            <input type="submit" value="Pay Now"/>
-            <!-- <a id="postback_link" href="">view postbin</a> -->
-        </form>
-        <script type="text/javascript">
-         function getBaseUrl() {
-             var parts = window.location.href.split('/')
-             return parts.splice(0, parts.length -1).join('/') + '/'
-         }
+        </div>
+        <br />
+        <div>
+            <div for="invoice_number">Invoice Number <small>(Must be unique)</small></div>
+            <input type="input" id="invoice_number" name="invoice_number" value="" />
+        </div>
+        <br/>
+        <div>
+            <div for="invoice_number">Balance Due</div>
+            <input type="number" name="balance_due" value="1.00" />
+        </div>
+        <input type="hidden" name="biller_guid" value="810c080a-6648-44fa-ac8f-19d728b10de9" />
 
-         function activate() {
-             var seed = new Date().getMilliseconds()
-             var f = document.getElementById('invForm')
-             var rand = Math.floor(Math.random() * 1000)
-             document.getElementById('invoice_number').value = ('cP-' + (seed + rand))
+        <input type="hidden" name="invoice_type_id" value="94" />
+        <input type="hidden" name="invoice_date" value="03/08/2019" />
+        <input type="hidden" name="invoice_due_date" value="" />
+        <input type="hidden" name="create_customer_record" value="false" />
+        <input type="hidden" name="customer_account_number" value="CPAcct-1" />
 
-             document.querySelector('input[name=return_url]').value = getBaseUrl() + 'make-a-payment.html'
-             /* document.getElementById('postback_link').href = document.querySelector('input[name=postback_url]').value */
-         }
+        <input type="hidden" name="customer_address" value="1234 AnyStreet" />
+        <input type="hidden" name="customer_city" value="AnyTown" />
+        <input type="hidden" name="customer_state" value="TX" />
+        <input type="hidden" name="customer_zip" value="78520" />
+        <input type="hidden" name="customer_email_address" value="none@none.com" />
+        <input type="hidden" name="allow_partial_payment" value="false" />
+        <input type="hidden" name="minimum_payment_amount" value="0.60" />
+        <input type="hidden" name="allow_cc_payment" value="true" />
+        <input type="hidden" name="allow_ach_payment" value="true" />
+        <input type="hidden" name="credit_card_service_fee" value="1.00" />
+        <input type="hidden" name="ach_service_fee" value="0.40" />
+        <input type="hidden" name="return_url" value="https://localhost:3000/invoice-cloud-poc/make-a-payment.html" />
+        <input type="hidden" name="postback_url" value="https://webhook.site/a1d98312-ea7b-439f-b523-c2ea7cabfe66" />
+        <input type="hidden" name="biller_reference" value="billerreferencetest" />
+        <input type="hidden" name="btnl" value="Post Data" />
+        <br />
+        <input type="submit" value="Pay Now" />
+        <!-- <a id="postback_link" href="">view postbin</a> -->
+    </form>
+    <script type="text/javascript">
+        function getBaseUrl() {
+            var parts = window.location.href.split('/')
+            return parts.splice(0, parts.length - 1).join('/') + '/'
+        }
 
-         if (document.readyState !== 'loading') {
-             activate();
-         } else {
-             document.addEventListener('DOMContentLoaded', activate);
-         }
-        </script>
-    </body>
+        function activate() {
+            var seed = new Date().getMilliseconds()
+            var f = document.getElementById('invForm')
+            var rand = Math.floor(Math.random() * 1000)
+            document.getElementById('invoice_number').value = ('cP-' + (seed + rand))
+
+            document.querySelector('input[name=return_url]').value = getBaseUrl() + 'make-a-payment.html'
+            /* document.getElementById('postback_link').href = document.querySelector('input[name=postback_url]').value */
+        }
+
+        if (document.readyState !== 'loading') {
+            activate();
+        } else {
+            document.addEventListener('DOMContentLoaded', activate);
+        }
+    </script>
+</body>
+
 </html>
