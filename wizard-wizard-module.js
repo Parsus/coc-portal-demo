@@ -5321,7 +5321,7 @@ var CdkStepperModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"modal-header\">\n  <h5 class=\"modal-title\">Address Verification</h5>\n</div>\n<div class=\"modal-body\">\n  <p>These addresses are the closest match to the one you entered. Please select the correct address from this list.</p>\n  <div class=\"list-group\" *ngIf=\"results.length\">\n    <button\n      type=\"button\"\n      class=\"list-group-item list-group-item-action\"\n      *ngFor=\"let result of results\"\n      (click)=\"handleAddressSelection(result)\">\n      <div>\n        <span>{{result.address1}}</span>\n        <span *ngIf=\"result.address2.length\"> {{result.address2}}</span>\n      </div>\n      <div>\n        <span>{{result.city}}</span>\n        <span> {{result.state}}</span>\n        <span> {{result.zip}}</span>\n      </div>\n    </button>\n    <button\n      type=\"button\"\n      class=\"list-group-item list-group-item-action\"\n      (click)=\"bsModalRef.hide()\">\n      I would like to re-enter my address\n    </button>\n  </div>\n</div>"
+module.exports = "<div class=\"modal-body\">\n  <h4>This is not a recognized Chandler address</h4>\n  <p class=\"mt-3\">Below are the closest matches to the address you have entered. Please select the correct address from this list.</p>\n  <div class=\"list-group mt-3\" *ngIf=\"results.length\">\n    <button\n      type=\"button\"\n      class=\"list-group-item list-group-item-action\"\n      *ngFor=\"let result of results\"\n      (click)=\"handleAddressSelection(result)\">\n      <div>\n        <span>{{result.address1}}</span>\n        <span *ngIf=\"result.address2.length\"> {{result.address2}}</span>\n      </div>\n      <div>\n        <span>{{result.city}}</span>\n        <span> {{result.state}}</span>\n        <span> {{result.zip}}</span>\n      </div>\n    </button>\n  </div>\n  <button\n    type=\"button\"\n    class=\"btn btn-secondary mt-3\"\n    (click)=\"bsModalRef.hide()\">\n    I would like to re-enter my address\n  </button>\n</div>"
 
 /***/ }),
 
@@ -5377,7 +5377,7 @@ var AddressVerificationComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container mt-6 mb-9\">\n  <h1>\n    Thank you for visiting!\n  </h1>\n  <a href=\"https://www.chandleraz.gov/business/tax-and-license\">Return to Tax & License</a>\n</div>\n"
+module.exports = "<div class=\"container mt-6 mb-9\">\n  <h1>\n    Thank you for visiting!\n  </h1>\n  <p class=\"mt-3\">You do not need a business registration</p>\n  <a class=\"coc-link-arrow-left mt-2\" href=\"https://www.chandleraz.gov/business/tax-and-license\">Return to Tax & License</a>\n</div>\n"
 
 /***/ }),
 
@@ -5559,34 +5559,6 @@ var WizardRoutingModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/wizard/wizard.animations.ts":
-/*!*********************************************!*\
-  !*** ./src/app/wizard/wizard.animations.ts ***!
-  \*********************************************/
-/*! exports provided: slideOpenClosedAnimation */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slideOpenClosedAnimation", function() { return slideOpenClosedAnimation; });
-/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
-
-var slideOpenClosedAnimation = [
-    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["trigger"])('slideOpenClosed', [
-        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["state"])('open', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
-            height: '*'
-        })),
-        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["state"])('closed', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])({
-            height: '0',
-        })),
-        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])('open => closed', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('250ms ease-in-out')),
-        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])('closed => open', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])('250ms ease-in-out'))
-    ])
-];
-
-
-/***/ }),
-
 /***/ "./src/app/wizard/wizard.component.html":
 /*!**********************************************!*\
   !*** ./src/app/wizard/wizard.component.html ***!
@@ -5594,7 +5566,7 @@ var slideOpenClosedAnimation = [
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<wizard-stepper\n  (selectionChange)=\"scrollToTop($event)\"\n  [selectedIndex]=\"stepperIndex\">\n  <cdk-step [stepControl]=\"step1FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid\">\n      <div class=\"jumbotron-container\">\n        <h1>Business Registration & Renewal</h1>\n        <hr class=\"my-2\">\n        <p><strong>Welcome to the Chandler business registration and renewal portal.</strong> This portal will allow you to register or renew your business license with the City of Chandler. This easy-to-use portal will ask you a series of questions to walk you through.</p>\n        <p class=\"coc-font-size-22\"><em>Simply answer the first question below to get started.</em></p>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-12 mt-1\">\n          <a class=\"coc-link-small coc-link-arrow-left\" href=\"https://www.chandleraz.gov/business/tax-and-license\">Return to Tax & License</a>\n        </div>\n      </div>\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\">Do you already have a business license<sup class=\"coc-font-size-18\" tooltip=\"Vivamus sagittis lacus vel augue laoreet rutrum faucibus.\"><i class=\"far fa-question-circle\"></i></sup> with the city of Chandler?</h2>\n          <p class=\"coc-font-size-14 mb-3\">Select \"yes\" or \"no\" then click continue.</p>\n          <form [formGroup]=\"step1FormGroup\">\n            <div class=\"custom-control custom-checkbox\">\n              <input\n                type=\"radio\"\n                value=\"Yes\"\n                id=\"hasLicense\"\n                class=\"custom-control-input\"\n                formControlName=\"alreadyHaveLicense\">\n              <label class=\"custom-control-label\" for=\"hasLicense\">Yes, I already have a business license with the City of Chandler</label>\n            </div>\n            <div class=\"custom-control custom-checkbox mt-2\">\n              <input\n                type=\"radio\"\n                value=\"No\"\n                id=\"doesNotHaveLicense\"\n                class=\"custom-control-input\"\n                formControlName=\"alreadyHaveLicense\">\n              <label class=\"custom-control-label\" for=\"doesNotHaveLicense\">No, I do not have a business license with the City of Chandler</label>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" cdkStepperNext>\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step [stepControl]=\"step2FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\">Do you need a business license?</h2>\n          <p class=\"coc-font-size-14 mb-3\">Select \"yes\" or \"no\" then click continue.</p>\n          <form [formGroup]=\"step2FormGroup\">\n            <div class=\"custom-control custom-checkbox\">\n              <input\n                type=\"radio\"\n                value=\"Yes\"\n                id=\"needLicense\"\n                class=\"custom-control-input\"\n                formControlName=\"needBusinessLicense\"\n                (change)=\"openCloseAddressPanel($event)\">\n              <label class=\"custom-control-label\" for=\"needLicense\">Yes, I would like to register for a business license</label>\n            </div>\n            <div [@slideOpenClosed]=\"animationState\" class=\"overflow-hidden\">\n              <div class=\"bg-light rounded ml-md-6 mt-1 p-3\">\n                <h3 class=\"h3 font-weight-normal\">What is your busines address?</h3>\n                <p class=\"coc-font-size-14\">Complete the form and then click continue. <em class=\"text-danger\">* Required fields</em></p>\n                <div class=\"form-group coc-required\">\n                  <input\n                    type=\"text\"\n                    placeholder=\"Enter your business address\"\n                    id=\"addressLine1\"\n                    class=\"form-control\"\n                    formControlName=\"addressLine1\">\n                </div>\n                <div class=\"form-group\">\n                  <input\n                    type=\"text\"\n                    placeholder=\"Suite #\"\n                    id=\"addressLine2\"\n                    class=\"form-control\"\n                    formControlName=\"addressLine2\">\n                </div>\n                <div class=\"form-row\">\n                  <div class=\"col-12 col-md-6\">\n                    <div class=\"form-group coc-required\">\n                      <input\n                        type=\"text\"\n                        placeholder=\"City\"\n                        id=\"addressCity\"\n                        class=\"form-control\"\n                        formControlName=\"addressCity\">\n                    </div>\n                  </div>\n                  <div class=\"col-6 col-md-3\">\n                    <div class=\"form-group\">\n                      <input\n                        type=\"text\"\n                        readonly\n                        id=\"addressState\"\n                        class=\"form-control\"\n                        formControlName=\"addressState\">\n                    </div>\n                  </div>\n                  <div class=\"col-6 col-md-3\">\n                    <div class=\"form-group coc-required\">\n                      <input\n                        type=\"text\"\n                        placeholder=\"Zip\"\n                        id=\"addressZip\"\n                        class=\"form-control\"\n                        formControlName=\"addressZip\">\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>\n            <div class=\"custom-control custom-checkbox mt-2\">\n              <input\n                type=\"radio\"\n                value=\"No\"\n                id=\"doNotNeedLicense\"\n                class=\"custom-control-input\"\n                formControlName=\"needBusinessLicense\"\n                (change)=\"openCloseAddressPanel($event)\">\n              <label class=\"custom-control-label\" for=\"doNotNeedLicense\">No, I do not need a license</label>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" (click)=\"handleStep2ContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n  \n  <cdk-step [stepControl]=\"step2BFormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\">The address you entered is not located in Chandler</h2>\n          <p class=\"coc-font-size-14 mb-3\">Select any options that apply and click continue</p>\n          <form [formGroup]=\"step2BFormGroup\">\n            <div class=\"custom-control custom-switch coc-custom-control-right\">\n              <input\n                type=\"checkbox\"\n                id=\"solicitor\"\n                class=\"custom-control-input\"\n                formControlName=\"solicitor\">\n              <label class=\"custom-control-label\" for=\"solicitor\">Are you a non-profit solicitor?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"specialEvent\"\n                class=\"custom-control-input\"\n                formControlName=\"specialEvent\">\n              <label class=\"custom-control-label\" for=\"specialEvent\">Are you operating a special event serving liquor?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"peddler\"\n                class=\"custom-control-input\"\n                formControlName=\"peddler\">\n              <label class=\"custom-control-label\" for=\"peddler\">Are you a peddler?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"registrationPrivileges\"\n                class=\"custom-control-input\"\n                formControlName=\"registrationPrivileges\">\n              <label class=\"custom-control-label\" for=\"registrationPrivileges\">Do you still want a license to take advantage of registration privileges?</label>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" (click)=\"handleStep2BContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step [stepControl]=\"step3FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"80\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\">Answer \"Yes\" or \"No\" to the following questions:</h2>\n          <p class=\"coc-font-size-14 mb-3\">Toggle right to answer \"yes\". Answer all questions then click continue.</p>\n          <form [formGroup]=\"step3FormGroup\">\n            <div class=\"custom-control custom-switch coc-custom-control-right\">\n              <input\n                type=\"checkbox\"\n                id=\"liquor\"\n                class=\"custom-control-input\"\n                formControlName=\"liquor\">\n              <label class=\"custom-control-label\" for=\"liquor\">Will you sell liquor?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"secondHandGoods\"\n                class=\"custom-control-input\"\n                formControlName=\"secondHandGoods\">\n              <label class=\"custom-control-label\" for=\"secondHandGoods\">Will your business buy/sell used or second hand goods?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"doorToDoor\"\n                class=\"custom-control-input\"\n                formControlName=\"doorToDoor\">\n              <label class=\"custom-control-label\" for=\"doorToDoor\">Will you conduct door to door sales?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"massageServices\"\n                class=\"custom-control-input\"\n                formControlName=\"massageServices\">\n              <label class=\"custom-control-label\" for=\"massageServices\">Will you offer massage services?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"nonProfitSolicitor\"\n                class=\"custom-control-input\"\n                formControlName=\"nonProfitSolicitor\">\n              <label class=\"custom-control-label\" for=\"nonProfitSolicitor\">Are you a non-profit solicitor?</label>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" cdkStepperNext>\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step [stepControl]=\"step4FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"90\"></wizard-progress-bar>\n      </div>\n    </div>\n        \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\">Is your business engaged in any of the following:</h2>\n          <p class=\"coc-font-size-14 mb-3\">Click all that apply to your business then click continue.</p>\n          <form [formGroup]=\"step4FormGroup\">\n            <div class=\"custom-control custom-switch coc-custom-control-right\">\n              <input\n                type=\"checkbox\"\n                id=\"bingo\"\n                class=\"custom-control-input\"\n                formControlName=\"bingo\">\n              <label class=\"custom-control-label\" for=\"bingo\">Bingo</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"offTrackBetting\"\n                class=\"custom-control-input\"\n                formControlName=\"offTrackBetting\">\n              <label class=\"custom-control-label\" for=\"offTrackBetting\">Off track betting</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"sob\"\n                class=\"custom-control-input\"\n                formControlName=\"sob\">\n              <label class=\"custom-control-label\" for=\"sob\">SOB</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"escort\"\n                class=\"custom-control-input\"\n                formControlName=\"escort\">\n              <label class=\"custom-control-label\" for=\"escort\">Escort</label>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" cdkStepperNext>\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n</wizard-stepper>"
+module.exports = "<wizard-stepper\n  (selectionChange)=\"handleStepChange($event)\"\n  [selectedIndex]=\"stepperIndex\">\n  <cdk-step [stepControl]=\"step1FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid\">\n      <div class=\"jumbotron-container\">\n        <h1>Business Registration & Renewal</h1>\n        <hr class=\"my-2\">\n        <p><strong>Welcome to the Chandler business registration and renewal portal.</strong> This portal will allow you to register or renew your business registration with the City of Chandler. This easy-to-use portal will ask you a series of questions to walk you through.</p>\n        <p class=\"coc-font-size-22\"><em>Simply answer the first question below to get started.</em></p>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-12 mt-1\">\n          <a class=\"coc-link-small coc-link-arrow-left\" href=\"https://www.chandleraz.gov/business/tax-and-license\">Return to Tax & License</a>\n        </div>\n      </div>\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\">Do you already have a business registration<sup class=\"coc-font-size-18\" tooltip=\"Vivamus sagittis lacus vel augue laoreet rutrum faucibus.\"><i class=\"far fa-question-circle\"></i></sup> with the city of Chandler?</h2>\n          <p class=\"coc-font-size-14\">Select \"yes\" or \"no\" then click continue.</p>\n          <form [formGroup]=\"step1FormGroup\" class=\"mt-3\">\n            <div class=\"custom-control custom-checkbox\">\n              <input\n                type=\"radio\"\n                value=\"Yes\"\n                id=\"isRegistered\"\n                class=\"custom-control-input\"\n                formControlName=\"alreadyRegistered\">\n              <label class=\"custom-control-label\" for=\"isRegistered\">Yes, I already have business registration with the City of Chandler</label>\n            </div>\n            <div class=\"custom-control custom-checkbox mt-2\">\n              <input\n                type=\"radio\"\n                value=\"No\"\n                id=\"isNotRegistered\"\n                class=\"custom-control-input\"\n                formControlName=\"alreadyRegistered\">\n              <label class=\"custom-control-label\" for=\"isNotRegistered\">No, I do not have a business registration with the City of Chandler</label>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-next\" cdkStepperNext>\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step [stepControl]=\"step2FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\">What is your busines address?</h3>\n          <p class=\"coc-font-size-14\">Complete the form and then click continue. <em class=\"text-danger\">* Required fields</em></p>\n          <form [formGroup]=\"step2FormGroup\" class=\"w-lg-75 mt-3\">\n            <div class=\"form-group coc-required\">\n              <input\n                type=\"text\"\n                placeholder=\"Enter your business address\"\n                id=\"addressLine1\"\n                class=\"form-control mt-1\"\n                formControlName=\"addressLine1\">\n            </div>\n            <div class=\"form-group\">\n              <input\n                type=\"text\"\n                placeholder=\"Suite #\"\n                id=\"addressLine2\"\n                class=\"form-control\"\n                formControlName=\"addressLine2\">\n            </div>\n            <div class=\"form-row\">\n              <div class=\"col-12 col-md-6\">\n                <div class=\"form-group coc-required\">\n                  <input\n                    type=\"text\"\n                    placeholder=\"City\"\n                    id=\"addressCity\"\n                    class=\"form-control\"\n                    formControlName=\"addressCity\">\n                </div>\n              </div>\n              <div class=\"col-6 col-md-3\">\n                <div class=\"form-group\">\n                  <input\n                    type=\"text\"\n                    placeholder=\"State\"\n                    id=\"addressState\"\n                    class=\"form-control\"\n                    formControlName=\"addressState\">\n                </div>\n              </div>\n              <div class=\"col-6 col-md-3\">\n                <div class=\"form-group coc-required\">\n                  <input\n                    type=\"text\"\n                    placeholder=\"Zip\"\n                    id=\"addressZip\"\n                    class=\"form-control\"\n                    formControlName=\"addressZip\">\n                </div>\n              </div>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" (click)=\"handleStep2ContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n  \n  <cdk-step [stepControl]=\"step2BFormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\">It looks like your address is not within the City limits and you may not need a business registration.</h2>\n          <p>Are any of the following  true in regard to your business?</p>\n          <form [formGroup]=\"step2BFormGroup\" class=\"mt-3\">\n            <div class=\"custom-control custom-switch coc-custom-control-right\">\n              <input\n                type=\"checkbox\"\n                id=\"solicitor\"\n                class=\"custom-control-input\"\n                formControlName=\"solicitor\">\n              <label class=\"custom-control-label\" for=\"solicitor\">Are you a non-profit solicitor?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"specialEvent\"\n                class=\"custom-control-input\"\n                formControlName=\"specialEvent\">\n              <label class=\"custom-control-label\" for=\"specialEvent\">Are you operating a special event serving liquor?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"peddler\"\n                class=\"custom-control-input\"\n                formControlName=\"peddler\">\n              <label class=\"custom-control-label\" for=\"peddler\">Are you a peddler?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"registrationPrivileges\"\n                class=\"custom-control-input\"\n                formControlName=\"registrationPrivileges\">\n              <label class=\"custom-control-label\" for=\"registrationPrivileges\">Do you still want a license to take advantage of registration privileges?</label>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" (click)=\"handleStep2BContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step [stepControl]=\"step3FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"80\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\">Answer \"Yes\" or \"No\" to the following questions:</h2>\n          <p class=\"coc-font-size-14 mb-3\">Toggle right to answer \"yes\". Answer all questions then click continue.</p>\n          <form [formGroup]=\"step3FormGroup\">\n            <div class=\"custom-control custom-switch coc-custom-control-right\">\n              <input\n                type=\"checkbox\"\n                id=\"liquor\"\n                class=\"custom-control-input\"\n                formControlName=\"liquor\">\n              <label class=\"custom-control-label\" for=\"liquor\">Will you sell liquor?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"secondHandGoods\"\n                class=\"custom-control-input\"\n                formControlName=\"secondHandGoods\">\n              <label class=\"custom-control-label\" for=\"secondHandGoods\">Will your business buy/sell used or second hand goods?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"doorToDoor\"\n                class=\"custom-control-input\"\n                formControlName=\"doorToDoor\">\n              <label class=\"custom-control-label\" for=\"doorToDoor\">Will you conduct door to door sales?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"massageServices\"\n                class=\"custom-control-input\"\n                formControlName=\"massageServices\">\n              <label class=\"custom-control-label\" for=\"massageServices\">Will you offer massage services?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"nonProfitSolicitor\"\n                class=\"custom-control-input\"\n                formControlName=\"nonProfitSolicitor\">\n              <label class=\"custom-control-label\" for=\"nonProfitSolicitor\">Are you a non-profit solicitor?</label>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" (click)=\"handleStep3BackClick()\">\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" cdkStepperNext>\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step [stepControl]=\"step4FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"90\"></wizard-progress-bar>\n      </div>\n    </div>\n        \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\">Is your business engaged in any of the following:</h2>\n          <p class=\"coc-font-size-14 mb-3\">Click all that apply to your business then click continue.</p>\n          <form [formGroup]=\"step4FormGroup\">\n            <div class=\"custom-control custom-switch coc-custom-control-right\">\n              <input\n                type=\"checkbox\"\n                id=\"bingo\"\n                class=\"custom-control-input\"\n                formControlName=\"bingo\">\n              <label class=\"custom-control-label\" for=\"bingo\">Bingo</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"offTrackBetting\"\n                class=\"custom-control-input\"\n                formControlName=\"offTrackBetting\">\n              <label class=\"custom-control-label\" for=\"offTrackBetting\">Off track betting</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"sob\"\n                class=\"custom-control-input\"\n                formControlName=\"sob\">\n              <label class=\"custom-control-label\" for=\"sob\">SOB</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"escort\"\n                class=\"custom-control-input\"\n                formControlName=\"escort\">\n              <label class=\"custom-control-label\" for=\"escort\">Escort</label>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" cdkStepperNext>\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n</wizard-stepper>"
 
 /***/ }),
 
@@ -5613,8 +5585,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-bootstrap/modal */ "./node_modules/ngx-bootstrap/modal/fesm5/ngx-bootstrap-modal.js");
-/* harmony import */ var _wizard_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./wizard.animations */ "./src/app/wizard/wizard.animations.ts");
-/* harmony import */ var _address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./address-verification/address-verification.component */ "./src/app/wizard/address-verification/address-verification.component.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./address-verification/address-verification.component */ "./src/app/wizard/address-verification/address-verification.component.ts");
+
 
 
 
@@ -5627,80 +5601,75 @@ var WizardComponent = /** @class */ (function () {
         this.router = router;
         this.fb = fb;
         this.modalService = modalService;
-        this.animationState = 'closed';
+        this.ngUnsubscribe = new rxjs__WEBPACK_IMPORTED_MODULE_6__["Subject"]();
         this.stepperIndex = 0;
-        this.chandlerZipcodes = ['85224', '85225', '85226', '85244', '85246', '85248', '85249', '85286'];
+        this.isInChandler = false;
+        this.step2BContinue = false;
     }
     WizardComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.step1FormGroup = this.fb.group({
-            alreadyHaveLicense: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]
+            alreadyRegistered: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]
         });
         this.step2FormGroup = this.fb.group({
-            needBusinessLicense: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
             addressLine1: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            addressLine2: [],
+            addressLine2: [null],
             addressCity: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            addressState: ['Arizona'],
+            addressState: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
             addressZip: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]
         });
+        // Simulating some validation to trigger address verification modal
+        this.step2FormGroup.get('addressCity').valueChanges
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.ngUnsubscribe))
+            .subscribe(function (value) {
+            _this.isInChandler = value.toLowerCase() === 'chandler';
+        });
         this.step2BFormGroup = this.fb.group({
-            solicitor: [],
-            specialEvent: [],
-            peddler: [],
-            registrationPrivileges: []
+            solicitor: [false],
+            specialEvent: [false],
+            peddler: [false],
+            registrationPrivileges: [false]
+        });
+        // Determine whether user should continue after step 2B
+        this.step2BFormGroup.valueChanges
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.ngUnsubscribe))
+            .subscribe(function (value) {
+            _this.step2BContinue = (value.solicitor === true ||
+                value.solicitor === true ||
+                value.specialEvent === true ||
+                value.registrationPrivileges === true);
         });
         this.step3FormGroup = this.fb.group({
-            liquor: [],
-            secondHandGoods: [],
-            doorToDoor: [],
-            massageServices: [],
-            nonProfitSolicitor: []
+            liquor: [false],
+            secondHandGoods: [false],
+            doorToDoor: [false],
+            massageServices: [false],
+            nonProfitSolicitor: [false]
         });
         this.step4FormGroup = this.fb.group({
-            bingo: [],
-            offTrackBetting: [],
-            sob: [],
-            escort: []
+            bingo: [false],
+            offTrackBetting: [false],
+            sob: [false],
+            escort: [false]
         });
     };
+    WizardComponent.prototype.ngOnDestroy = function () {
+        // Subscription clean up
+        // See https://stackoverflow.com/a/41177163
+        this.ngUnsubscribe.next();
+        this.ngUnsubscribe.complete();
+    };
     WizardComponent.prototype.handleStep2ContinueClick = function () {
-        var _this = this;
-        var zipInputValue = this.step2FormGroup.value.addressZip;
-        var needLicense = this.step2FormGroup.value.needBusinessLicense === 'Yes';
-        var isInChandler = this.chandlerZipcodes.includes(zipInputValue);
-        if (needLicense && isInChandler) {
+        if (this.isInChandler) {
             this.openAddressVerificationModal();
         }
-        else if (needLicense) {
-            setTimeout(function () {
-                _this.stepperIndex = 2;
-            }, 50);
-        }
         else {
-            this.router.navigate(['/wizard/goodbye']);
-        }
-    };
-    WizardComponent.prototype.handleStep2BContinueClick = function () {
-        var _this = this;
-        var continueToStep3 = (this.step2BFormGroup.value.peddler !== null &&
-            this.step2BFormGroup.value.peddler !== false &&
-            this.step2BFormGroup.value.solicitor !== null &&
-            this.step2BFormGroup.value.solicitor !== false &&
-            this.step2BFormGroup.value.specialEvent !== null &&
-            this.step2BFormGroup.value.specialEvent !== false &&
-            this.step2BFormGroup.value.registrationPrivileges !== null &&
-            this.step2BFormGroup.value.registrationPrivileges !== false);
-        if (continueToStep3) {
-            setTimeout(function () {
-                _this.stepperIndex = 4;
-            }, 500);
-        }
-        else {
-            this.router.navigate(['/wizard/goodbye']);
+            this.stepperIndex = 2;
         }
     };
     WizardComponent.prototype.openAddressVerificationModal = function () {
         var _this = this;
+        // TODO: Replace temporary data with data from geocoder API
         var initialState = {
             'results': [
                 { 'address1': '123 W Park Lane', 'address2': '', 'city': 'Chandler', 'state': 'Arizona', 'zip': '85286' },
@@ -5709,29 +5678,47 @@ var WizardComponent = /** @class */ (function () {
                 { 'address1': '123 Really Long Address Street', 'address2': 'Suite 700', 'city': 'Chandler', 'state': 'Arizona', 'zip': '85248' }
             ]
         };
-        this.bsModalRef = this.modalService.show(_address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_6__["AddressVerificationComponent"], {
+        this.bsModalRef = this.modalService.show(_address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_7__["AddressVerificationComponent"], {
             initialState: initialState,
             class: 'modal-dialog-centered modal-lg',
             backdrop: 'static',
             keyboard: false
         });
         this.bsModalRef.content.selectedAddress.subscribe(function (address) {
+            // Update form values from suggested address in modal
             _this.step2FormGroup.patchValue({
                 addressLine1: address.address1,
                 addressLine2: address.address2,
                 addressCity: address.city,
+                addressState: address.state,
                 addressZip: address.zip
             });
+            // Delay step change so modal closes first
             setTimeout(function () {
                 _this.stepperIndex = 3;
             }, 500);
         });
     };
-    WizardComponent.prototype.openCloseAddressPanel = function (event) {
-        var radio = event.target;
-        this.animationState = radio.value === 'Yes' ? 'open' : 'closed';
+    WizardComponent.prototype.handleStep2BContinueClick = function () {
+        if (this.step2BContinue) {
+            this.stepperIndex = 3;
+        }
+        else {
+            this.router.navigate(['/wizard/goodbye']);
+        }
     };
-    WizardComponent.prototype.scrollToTop = function (event) {
+    WizardComponent.prototype.handleStep3BackClick = function () {
+        if (this.isInChandler) {
+            this.stepperIndex = 1;
+        }
+        else {
+            this.stepperIndex = 2;
+        }
+    };
+    WizardComponent.prototype.handleStepChange = function (event) {
+        // Synchronize local step index with stepper component index
+        this.stepperIndex = event.selectedIndex;
+        // TODO: replace this scroll method with a global service
         var element = document.querySelector('body');
         setTimeout(function () {
             element.scrollIntoView({
@@ -5744,8 +5731,7 @@ var WizardComponent = /** @class */ (function () {
     WizardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'coc-wizard',
-            template: __webpack_require__(/*! ./wizard.component.html */ "./src/app/wizard/wizard.component.html"),
-            animations: [_wizard_animations__WEBPACK_IMPORTED_MODULE_5__["slideOpenClosedAnimation"]]
+            template: __webpack_require__(/*! ./wizard.component.html */ "./src/app/wizard/wizard.component.html")
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"],
