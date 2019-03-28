@@ -5462,6 +5462,347 @@ var ProgressBarComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/wizard/question/index.ts":
+/*!******************************************!*\
+  !*** ./src/app/wizard/question/index.ts ***!
+  \******************************************/
+/*! exports provided: Question, TextboxQuestion, TextareaQuestion, CheckboxQuestion, RadioQuestion, DropdownQuestion */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _question__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./question */ "./src/app/wizard/question/question.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Question", function() { return _question__WEBPACK_IMPORTED_MODULE_0__["Question"]; });
+
+/* harmony import */ var _question_textbox__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./question-textbox */ "./src/app/wizard/question/question-textbox.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TextboxQuestion", function() { return _question_textbox__WEBPACK_IMPORTED_MODULE_1__["TextboxQuestion"]; });
+
+/* harmony import */ var _question_textarea__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./question-textarea */ "./src/app/wizard/question/question-textarea.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TextareaQuestion", function() { return _question_textarea__WEBPACK_IMPORTED_MODULE_2__["TextareaQuestion"]; });
+
+/* harmony import */ var _question_checkbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./question-checkbox */ "./src/app/wizard/question/question-checkbox.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CheckboxQuestion", function() { return _question_checkbox__WEBPACK_IMPORTED_MODULE_3__["CheckboxQuestion"]; });
+
+/* harmony import */ var _question_radio__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./question-radio */ "./src/app/wizard/question/question-radio.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RadioQuestion", function() { return _question_radio__WEBPACK_IMPORTED_MODULE_4__["RadioQuestion"]; });
+
+/* harmony import */ var _question_dropdown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./question-dropdown */ "./src/app/wizard/question/question-dropdown.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DropdownQuestion", function() { return _question_dropdown__WEBPACK_IMPORTED_MODULE_5__["DropdownQuestion"]; });
+
+
+
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/app/wizard/question/question-checkbox.ts":
+/*!******************************************************!*\
+  !*** ./src/app/wizard/question/question-checkbox.ts ***!
+  \******************************************************/
+/*! exports provided: CheckboxQuestion */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckboxQuestion", function() { return CheckboxQuestion; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _question__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./question */ "./src/app/wizard/question/question.ts");
+
+
+var CheckboxQuestion = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](CheckboxQuestion, _super);
+    function CheckboxQuestion(options) {
+        if (options === void 0) { options = {}; }
+        var _this = _super.call(this, options) || this;
+        _this.controlType = 'checkbox';
+        _this.customStyle = options['customStyle'] === 'switch' ?
+            'custom-switch coc-custom-control-right mt-1' :
+            'custom-checkbox mt-2';
+        return _this;
+    }
+    return CheckboxQuestion;
+}(_question__WEBPACK_IMPORTED_MODULE_1__["Question"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/wizard/question/question-dropdown.ts":
+/*!******************************************************!*\
+  !*** ./src/app/wizard/question/question-dropdown.ts ***!
+  \******************************************************/
+/*! exports provided: DropdownQuestion */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DropdownQuestion", function() { return DropdownQuestion; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _question__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./question */ "./src/app/wizard/question/question.ts");
+
+
+var DropdownQuestion = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](DropdownQuestion, _super);
+    function DropdownQuestion(options) {
+        if (options === void 0) { options = {}; }
+        var _this = _super.call(this, options) || this;
+        _this.controlType = 'dropdown';
+        _this.options = [];
+        _this.options = options['options'] || [];
+        return _this;
+    }
+    return DropdownQuestion;
+}(_question__WEBPACK_IMPORTED_MODULE_1__["Question"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/wizard/question/question-radio.ts":
+/*!***************************************************!*\
+  !*** ./src/app/wizard/question/question-radio.ts ***!
+  \***************************************************/
+/*! exports provided: RadioQuestion */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RadioQuestion", function() { return RadioQuestion; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _question__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./question */ "./src/app/wizard/question/question.ts");
+
+
+var RadioQuestion = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](RadioQuestion, _super);
+    function RadioQuestion(options) {
+        if (options === void 0) { options = {}; }
+        var _this = _super.call(this, options) || this;
+        _this.controlType = 'radio';
+        _this.options = [];
+        _this.customStyle = options['customStyle'] === 'checkbox' ?
+            'custom-checkbox mt-2' :
+            'custom-radio mt-1';
+        _this.options = options['options'] || [];
+        return _this;
+    }
+    return RadioQuestion;
+}(_question__WEBPACK_IMPORTED_MODULE_1__["Question"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/wizard/question/question-textarea.ts":
+/*!******************************************************!*\
+  !*** ./src/app/wizard/question/question-textarea.ts ***!
+  \******************************************************/
+/*! exports provided: TextareaQuestion */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TextareaQuestion", function() { return TextareaQuestion; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _question__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./question */ "./src/app/wizard/question/question.ts");
+
+
+var TextareaQuestion = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](TextareaQuestion, _super);
+    function TextareaQuestion(options) {
+        if (options === void 0) { options = {}; }
+        var _this = _super.call(this, options) || this;
+        _this.controlType = 'textarea';
+        _this.rows = options['rows'] || 2;
+        _this.placeholder = options['placeholder'] || '';
+        return _this;
+    }
+    return TextareaQuestion;
+}(_question__WEBPACK_IMPORTED_MODULE_1__["Question"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/wizard/question/question-textbox.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/wizard/question/question-textbox.ts ***!
+  \*****************************************************/
+/*! exports provided: TextboxQuestion */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TextboxQuestion", function() { return TextboxQuestion; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _question__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./question */ "./src/app/wizard/question/question.ts");
+
+
+var TextboxQuestion = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](TextboxQuestion, _super);
+    function TextboxQuestion(options) {
+        if (options === void 0) { options = {}; }
+        var _this = _super.call(this, options) || this;
+        _this.controlType = 'textbox';
+        _this.type = options['type'] || '';
+        _this.placeholder = options['placeholder'] || '';
+        return _this;
+    }
+    return TextboxQuestion;
+}(_question__WEBPACK_IMPORTED_MODULE_1__["Question"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/wizard/question/question.component.html":
+/*!*********************************************************!*\
+  !*** ./src/app/wizard/question/question.component.html ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n<div [formGroup]=\"form\" [ngSwitch]=\"question.controlType\">\n  <div\n    *ngSwitchCase=\"'textbox'\"\n    class=\"form-group\"\n    [class.coc-required]=\"question.validation.required\">\n    <label\n      *ngIf=\"question.label !== ''\"\n      [attr.for]=\"question.label\">\n      {{question.label}}\n    </label>\n    <input\n      [type]=\"question.type\"\n      [id]=\"question.id\"\n      [formControlName]=\"question.id\"\n      [placeholder]=\"question.placeholder\"\n      class=\"form-control mt-1\">\n  </div>\n\n  <div\n    *ngSwitchCase=\"'textarea'\"\n    class=\"form-group\"\n    [class.coc-required]=\"question.validation.required\">\n    <label\n      *ngIf=\"question.label !== ''\"\n      [attr.for]=\"question.label\">\n      {{question.label}}\n    </label>\n    <textarea\n      [id]=\"question.id\"\n      [formControlName]=\"question.id\"\n      [placeholder]=\"question.placeholder\"\n      [rows]=\"question.rows\"\n      class=\"form-control mt-1\">\n    </textarea>\n  </div>\n\n  <div\n    *ngSwitchCase=\"'checkbox'\"\n    class=\"custom-control\"\n    [ngClass]=\"question.customStyle\"\n    [class.coc-required]=\"question.validation.required\">\n    <input\n      type=\"checkbox\"\n      [id]=\"question.id\"\n      [formControlName]=\"question.id\"\n      class=\"custom-control-input mt-1\">\n    <label\n      class=\"custom-control-label\"\n      [attr.for]=\"question.id\">\n      {{question.label}}\n    </label>\n  </div>\n\n  <div *ngSwitchCase=\"'radio'\" class=\"coc-custom-radio-group\">\n    <label *ngIf=\"question.label !== ''\">{{question.label}}</label>\n    <div\n      *ngFor=\"let option of question.options\"\n      class=\"custom-control\"\n      [ngClass]=\"question.customStyle\"\n      [class.coc-required]=\"question.validation.required\">\n      <input\n        type=\"radio\"\n        [id]=\"option.id\"\n        [value]=\"option.value\"\n        [formControlName]=\"question.id\"\n        class=\"custom-control-input mt-1\">\n      <label\n        class=\"custom-control-label\"\n        [attr.for]=\"option.id\">\n        {{option.label}}\n      </label>\n    </div>\n  </div>\n\n  <div\n    *ngSwitchCase=\"'dropdown'\"\n    class=\"form-group\"\n    [class.coc-required]=\"question.validation.required\">\n    <label\n      *ngIf=\"question.label !== ''\"\n      [attr.for]=\"question.label\">\n      {{question.label}}\n    </label>\n    <select\n      class=\"custom-select\"\n      [id]=\"question.id\"\n      [formControlName]=\"question.id\"\n      [attr.multiple]=\"question.multiple\">\n      <option\n        *ngFor=\"let option of question.options\"\n        [value]=\"option.value\">\n        {{option.displayValue}}\n      </option>\n    </select>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/wizard/question/question.component.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/wizard/question/question.component.ts ***!
+  \*******************************************************/
+/*! exports provided: QuestionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QuestionComponent", function() { return QuestionComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _question__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./question */ "./src/app/wizard/question/question.ts");
+
+
+
+
+var QuestionComponent = /** @class */ (function () {
+    function QuestionComponent() {
+    }
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _question__WEBPACK_IMPORTED_MODULE_3__["Question"])
+    ], QuestionComponent.prototype, "question", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"])
+    ], QuestionComponent.prototype, "form", void 0);
+    QuestionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'wizard-question',
+            template: __webpack_require__(/*! ./question.component.html */ "./src/app/wizard/question/question.component.html")
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], QuestionComponent);
+    return QuestionComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/wizard/question/question.ts":
+/*!*********************************************!*\
+  !*** ./src/app/wizard/question/question.ts ***!
+  \*********************************************/
+/*! exports provided: Question */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Question", function() { return Question; });
+var Question = /** @class */ (function () {
+    function Question(options) {
+        if (options === void 0) { options = {}; }
+        this.value = options.value;
+        this.id = options.id || '';
+        this.label = options.label || '';
+        this.order = options.order === undefined ? 1 : options.order;
+        this.controlType = options.controlType || '';
+        this.validation = options.validation || {};
+    }
+    return Question;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/wizard/step/step.component.html":
+/*!*************************************************!*\
+  !*** ./src/app/wizard/step/step.component.html ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n<div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n  <div class=\"jumbotron-container\">\n    <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n    <wizard-progress-bar [progress]=\"80\"></wizard-progress-bar>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col-12 col-sm-10 mt-4\">\n      <h2 class=\"h3 font-weight-normal\">{{heading}}</h2>\n      <p class=\"coc-font-size-14\">{{subheading}}</p>\n      <form [formGroup]=\"form\" class=\"w-lg-75 mt-3\">\n        <div *ngFor=\"let question of questions\">\n          <wizard-question [question]=\"question\" [form]=\"form\"></wizard-question>\n        </div>\n      </form>\n    </div>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n      <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n        Back\n      </button>\n      <button type=\"button\" class=\"btn btn-next ml-3\" cdkStepperNext>\n        Continue\n      </button>\n    </div>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/wizard/step/step.component.ts":
+/*!***********************************************!*\
+  !*** ./src/app/wizard/step/step.component.ts ***!
+  \***********************************************/
+/*! exports provided: StepComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StepComponent", function() { return StepComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _question__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../question */ "./src/app/wizard/question/index.ts");
+
+
+
+
+var StepComponent = /** @class */ (function () {
+    function StepComponent() {
+    }
+    StepComponent.prototype.ngOnInit = function () {
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], StepComponent.prototype, "heading", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], StepComponent.prototype, "subheading", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"])
+    ], StepComponent.prototype, "form", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _question__WEBPACK_IMPORTED_MODULE_3__["Question"])
+    ], StepComponent.prototype, "questions", void 0);
+    StepComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'wizard-step',
+            template: __webpack_require__(/*! ./step.component.html */ "./src/app/wizard/step/step.component.html")
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], StepComponent);
+    return StepComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/wizard/stepper/stepper.component.html":
 /*!*******************************************************!*\
   !*** ./src/app/wizard/stepper/stepper.component.html ***!
@@ -5509,6 +5850,140 @@ var StepperComponent = /** @class */ (function (_super) {
     return StepperComponent;
 }(_angular_cdk_stepper__WEBPACK_IMPORTED_MODULE_2__["CdkStepper"]));
 
+
+
+/***/ }),
+
+/***/ "./src/app/wizard/wizard-config.service.ts":
+/*!*************************************************!*\
+  !*** ./src/app/wizard/wizard-config.service.ts ***!
+  \*************************************************/
+/*! exports provided: WizardConfigService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WizardConfigService", function() { return WizardConfigService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
+
+
+
+
+var WizardConfigService = /** @class */ (function () {
+    function WizardConfigService(http) {
+        this.http = http;
+        this.configUrl = '/assets/wizard-config.mock-data.json';
+    }
+    WizardConfigService.prototype.get = function () {
+        return this.http.get(this.configUrl)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError('get')));
+    };
+    WizardConfigService.prototype.handleError = function (operation, result) {
+        if (operation === void 0) { operation = 'operation'; }
+        return function (error) {
+            // Log error to console
+            console.error(error);
+            // Let the app keep running by returning an empty result.
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(result);
+        };
+    };
+    WizardConfigService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], WizardConfigService);
+    return WizardConfigService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/wizard/wizard-helpers.ts":
+/*!******************************************!*\
+  !*** ./src/app/wizard/wizard-helpers.ts ***!
+  \******************************************/
+/*! exports provided: toFormQuestion, toFormGroup */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toFormQuestion", function() { return toFormQuestion; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toFormGroup", function() { return toFormGroup; });
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _question__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./question */ "./src/app/wizard/question/index.ts");
+
+
+function toFormQuestion(questions) {
+    var group = [];
+    questions.forEach(function (question) {
+        switch (question.controlType) {
+            case 'textbox':
+                group.push(new _question__WEBPACK_IMPORTED_MODULE_1__["TextboxQuestion"]({
+                    id: question.id,
+                    label: question.label,
+                    placeholder: question.placeholder,
+                    order: question.order,
+                    type: question.type,
+                    validation: question.validation
+                }));
+                break;
+            case 'textarea':
+                group.push(new _question__WEBPACK_IMPORTED_MODULE_1__["TextareaQuestion"]({
+                    id: question.id,
+                    label: question.label,
+                    placeholder: question.placeholder,
+                    order: question.order,
+                    rows: question.rows,
+                    validation: question.validation
+                }));
+                break;
+            case 'checkbox':
+                group.push(new _question__WEBPACK_IMPORTED_MODULE_1__["CheckboxQuestion"]({
+                    id: question.id,
+                    label: question.label,
+                    placeholder: question.placeholder,
+                    order: question.order,
+                    customStyle: question.customStyle,
+                    validation: question.validation
+                }));
+                break;
+            case 'radio':
+                group.push(new _question__WEBPACK_IMPORTED_MODULE_1__["RadioQuestion"]({
+                    id: question.id,
+                    label: question.label,
+                    order: question.order,
+                    customStyle: question.customStyle,
+                    options: question.options,
+                    validation: question.validation
+                }));
+                break;
+            case 'dropdown':
+                group.push(new _question__WEBPACK_IMPORTED_MODULE_1__["DropdownQuestion"]({
+                    id: question.id,
+                    label: question.label,
+                    order: question.order,
+                    options: question.options,
+                    validation: question.validation
+                }));
+                break;
+        }
+    });
+    return group.sort(function (a, b) { return a.order - b.order; });
+}
+function toFormGroup(questions) {
+    var group = {};
+    questions.forEach(function (question) {
+        group[question.id] = new _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormControl"](question.value || '');
+    });
+    return new _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormGroup"](group);
+}
 
 
 /***/ }),
@@ -5566,7 +6041,7 @@ var WizardRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<wizard-stepper\n  (selectionChange)=\"handleStepChange($event)\"\n  [selectedIndex]=\"stepperIndex\">\n  <cdk-step [stepControl]=\"step1FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid\">\n      <div class=\"jumbotron-container\">\n        <h1>Business Registration & Renewal</h1>\n        <hr class=\"my-2\">\n        <p><strong>Welcome to the Chandler business registration and renewal portal.</strong> This portal will allow you to register or renew your business registration with the City of Chandler. This easy-to-use portal will ask you a series of questions to walk you through.</p>\n        <p class=\"coc-font-size-22\"><em>Simply answer the first question below to get started.</em></p>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-12 mt-1\">\n          <a class=\"coc-link-small coc-link-arrow-left\" href=\"https://www.chandleraz.gov/business/tax-and-license\">Return to Tax & License</a>\n        </div>\n      </div>\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\">Do you already have a business registration<sup class=\"coc-font-size-18\" tooltip=\"Vivamus sagittis lacus vel augue laoreet rutrum faucibus.\"><i class=\"far fa-question-circle\"></i></sup> with the city of Chandler?</h2>\n          <p class=\"coc-font-size-14\">Select \"yes\" or \"no\" then click continue.</p>\n          <form [formGroup]=\"step1FormGroup\" class=\"mt-3\">\n            <div class=\"custom-control custom-checkbox\">\n              <input\n                type=\"radio\"\n                value=\"Yes\"\n                id=\"isRegistered\"\n                class=\"custom-control-input\"\n                formControlName=\"alreadyRegistered\">\n              <label class=\"custom-control-label\" for=\"isRegistered\">Yes, I already have business registration with the City of Chandler</label>\n            </div>\n            <div class=\"custom-control custom-checkbox mt-2\">\n              <input\n                type=\"radio\"\n                value=\"No\"\n                id=\"isNotRegistered\"\n                class=\"custom-control-input\"\n                formControlName=\"alreadyRegistered\">\n              <label class=\"custom-control-label\" for=\"isNotRegistered\">No, I do not have a business registration with the City of Chandler</label>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-next\" cdkStepperNext>\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step [stepControl]=\"step2FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\">What is your busines address?</h3>\n          <p class=\"coc-font-size-14\">Complete the form and then click continue. <em class=\"text-danger\">* Required fields</em></p>\n          <form [formGroup]=\"step2FormGroup\" class=\"w-lg-75 mt-3\">\n            <div class=\"form-group coc-required\">\n              <input\n                type=\"text\"\n                placeholder=\"Enter your business address\"\n                id=\"addressLine1\"\n                class=\"form-control mt-1\"\n                formControlName=\"addressLine1\">\n            </div>\n            <div class=\"form-group\">\n              <input\n                type=\"text\"\n                placeholder=\"Suite #\"\n                id=\"addressLine2\"\n                class=\"form-control\"\n                formControlName=\"addressLine2\">\n            </div>\n            <div class=\"form-row\">\n              <div class=\"col-12 col-md-6\">\n                <div class=\"form-group coc-required\">\n                  <input\n                    type=\"text\"\n                    placeholder=\"City\"\n                    id=\"addressCity\"\n                    class=\"form-control\"\n                    formControlName=\"addressCity\">\n                </div>\n              </div>\n              <div class=\"col-6 col-md-3\">\n                <div class=\"form-group\">\n                  <input\n                    type=\"text\"\n                    placeholder=\"State\"\n                    id=\"addressState\"\n                    class=\"form-control\"\n                    formControlName=\"addressState\">\n                </div>\n              </div>\n              <div class=\"col-6 col-md-3\">\n                <div class=\"form-group coc-required\">\n                  <input\n                    type=\"text\"\n                    placeholder=\"Zip\"\n                    id=\"addressZip\"\n                    class=\"form-control\"\n                    formControlName=\"addressZip\">\n                </div>\n              </div>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" (click)=\"handleStep2ContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n  \n  <cdk-step [stepControl]=\"step2BFormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\">It looks like your address is not within the City limits and you may not need a business registration.</h2>\n          <p>Are any of the following  true in regard to your business?</p>\n          <form [formGroup]=\"step2BFormGroup\" class=\"mt-3\">\n            <div class=\"custom-control custom-switch coc-custom-control-right\">\n              <input\n                type=\"checkbox\"\n                id=\"solicitor\"\n                class=\"custom-control-input\"\n                formControlName=\"solicitor\">\n              <label class=\"custom-control-label\" for=\"solicitor\">Are you a non-profit solicitor?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"specialEvent\"\n                class=\"custom-control-input\"\n                formControlName=\"specialEvent\">\n              <label class=\"custom-control-label\" for=\"specialEvent\">Are you operating a special event serving liquor?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"peddler\"\n                class=\"custom-control-input\"\n                formControlName=\"peddler\">\n              <label class=\"custom-control-label\" for=\"peddler\">Are you a peddler?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"registrationPrivileges\"\n                class=\"custom-control-input\"\n                formControlName=\"registrationPrivileges\">\n              <label class=\"custom-control-label\" for=\"registrationPrivileges\">Do you still want a license to take advantage of registration privileges?</label>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" (click)=\"handleStep2BContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step [stepControl]=\"step3FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"80\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\">Answer \"Yes\" or \"No\" to the following questions:</h2>\n          <p class=\"coc-font-size-14 mb-3\">Toggle right to answer \"yes\". Answer all questions then click continue.</p>\n          <form [formGroup]=\"step3FormGroup\">\n            <div class=\"custom-control custom-switch coc-custom-control-right\">\n              <input\n                type=\"checkbox\"\n                id=\"liquor\"\n                class=\"custom-control-input\"\n                formControlName=\"liquor\">\n              <label class=\"custom-control-label\" for=\"liquor\">Will you sell liquor?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"secondHandGoods\"\n                class=\"custom-control-input\"\n                formControlName=\"secondHandGoods\">\n              <label class=\"custom-control-label\" for=\"secondHandGoods\">Will your business buy/sell used or second hand goods?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"doorToDoor\"\n                class=\"custom-control-input\"\n                formControlName=\"doorToDoor\">\n              <label class=\"custom-control-label\" for=\"doorToDoor\">Will you conduct door to door sales?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"massageServices\"\n                class=\"custom-control-input\"\n                formControlName=\"massageServices\">\n              <label class=\"custom-control-label\" for=\"massageServices\">Will you offer massage services?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"nonProfitSolicitor\"\n                class=\"custom-control-input\"\n                formControlName=\"nonProfitSolicitor\">\n              <label class=\"custom-control-label\" for=\"nonProfitSolicitor\">Are you a non-profit solicitor?</label>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" (click)=\"handleStep3BackClick()\">\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" cdkStepperNext>\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step [stepControl]=\"step4FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"90\"></wizard-progress-bar>\n      </div>\n    </div>\n        \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\">Is your business engaged in any of the following:</h2>\n          <p class=\"coc-font-size-14 mb-3\">Click all that apply to your business then click continue.</p>\n          <form [formGroup]=\"step4FormGroup\">\n            <div class=\"custom-control custom-switch coc-custom-control-right\">\n              <input\n                type=\"checkbox\"\n                id=\"bingo\"\n                class=\"custom-control-input\"\n                formControlName=\"bingo\">\n              <label class=\"custom-control-label\" for=\"bingo\">Bingo</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"offTrackBetting\"\n                class=\"custom-control-input\"\n                formControlName=\"offTrackBetting\">\n              <label class=\"custom-control-label\" for=\"offTrackBetting\">Off track betting</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"sob\"\n                class=\"custom-control-input\"\n                formControlName=\"sob\">\n              <label class=\"custom-control-label\" for=\"sob\">SOB</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"escort\"\n                class=\"custom-control-input\"\n                formControlName=\"escort\">\n              <label class=\"custom-control-label\" for=\"escort\">Escort</label>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" cdkStepperNext>\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n</wizard-stepper>"
+module.exports = "<wizard-stepper\n  [selectedIndex]=\"stepperIndex\"\n  (selectionChange)=\"handleStepChange($event)\">\n  <cdk-step [stepControl]=\"step1FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid\">\n      <div class=\"jumbotron-container\">\n        <h1>Business Registration & Renewal</h1>\n        <hr class=\"my-2\">\n        <p><strong>Welcome to the Chandler business registration and renewal portal.</strong> This portal will allow you to register or renew your business registration with the City of Chandler. This easy-to-use portal will ask you a series of questions to walk you through.</p>\n        <p class=\"coc-font-size-22\"><em>Simply answer the first question below to get started.</em></p>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-12 mt-1\">\n          <a class=\"coc-link-small coc-link-arrow-left\" href=\"https://www.chandleraz.gov/business/tax-and-license\">Return to Tax & License</a>\n        </div>\n      </div>\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\">Do you already have a business registration<sup class=\"coc-font-size-18\" tooltip=\"Vivamus sagittis lacus vel augue laoreet rutrum faucibus.\"><i class=\"far fa-question-circle\"></i></sup> with the city of Chandler?</h2>\n          <p class=\"coc-font-size-14\">Select \"yes\" or \"no\" then click continue.</p>\n          <form [formGroup]=\"step1FormGroup\" class=\"mt-3\">\n            <div class=\"custom-control custom-checkbox\">\n              <input\n                type=\"radio\"\n                value=\"Yes\"\n                id=\"isRegistered\"\n                class=\"custom-control-input\"\n                formControlName=\"alreadyRegistered\">\n              <label class=\"custom-control-label\" for=\"isRegistered\">Yes, I already have business registration with the City of Chandler</label>\n            </div>\n            <div class=\"custom-control custom-checkbox mt-2\">\n              <input\n                type=\"radio\"\n                value=\"No\"\n                id=\"isNotRegistered\"\n                class=\"custom-control-input\"\n                formControlName=\"alreadyRegistered\">\n              <label class=\"custom-control-label\" for=\"isNotRegistered\">No, I do not have a business registration with the City of Chandler</label>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-next\" cdkStepperNext>\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step [stepControl]=\"step2FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\">What is your busines address?</h3>\n          <p class=\"coc-font-size-14\">Complete the form and then click continue. <em class=\"text-danger\">* Required fields</em></p>\n          <form [formGroup]=\"step2FormGroup\" class=\"w-lg-75 mt-3\">\n            <div class=\"form-group coc-required\">\n              <input\n                type=\"text\"\n                placeholder=\"Enter your business address\"\n                id=\"addressLine1\"\n                class=\"form-control mt-1\"\n                formControlName=\"addressLine1\">\n            </div>\n            <div class=\"form-group\">\n              <input\n                type=\"text\"\n                placeholder=\"Suite #\"\n                id=\"addressLine2\"\n                class=\"form-control\"\n                formControlName=\"addressLine2\">\n            </div>\n            <div class=\"form-row\">\n              <div class=\"col-12 col-md-6\">\n                <div class=\"form-group coc-required\">\n                  <input\n                    type=\"text\"\n                    placeholder=\"City\"\n                    id=\"addressCity\"\n                    class=\"form-control\"\n                    formControlName=\"addressCity\">\n                </div>\n              </div>\n              <div class=\"col-6 col-md-3\">\n                <div class=\"form-group\">\n                  <input\n                    type=\"text\"\n                    placeholder=\"State\"\n                    id=\"addressState\"\n                    class=\"form-control\"\n                    formControlName=\"addressState\">\n                </div>\n              </div>\n              <div class=\"col-6 col-md-3\">\n                <div class=\"form-group coc-required\">\n                  <input\n                    type=\"text\"\n                    placeholder=\"Zip\"\n                    id=\"addressZip\"\n                    class=\"form-control\"\n                    formControlName=\"addressZip\">\n                </div>\n              </div>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" (click)=\"handleStep2ContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n  \n  <cdk-step [stepControl]=\"step2BFormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\">It looks like your address is not within the City limits and you may not need a business registration.</h2>\n          <p>Are any of the following  true in regard to your business?</p>\n          <form [formGroup]=\"step2BFormGroup\" class=\"mt-3\">\n            <div class=\"custom-control custom-switch coc-custom-control-right\">\n              <input\n                type=\"checkbox\"\n                id=\"solicitor\"\n                class=\"custom-control-input\"\n                formControlName=\"solicitor\">\n              <label class=\"custom-control-label\" for=\"solicitor\">Are you a non-profit solicitor?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"specialEvent\"\n                class=\"custom-control-input\"\n                formControlName=\"specialEvent\">\n              <label class=\"custom-control-label\" for=\"specialEvent\">Are you operating a special event serving liquor?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"peddler\"\n                class=\"custom-control-input\"\n                formControlName=\"peddler\">\n              <label class=\"custom-control-label\" for=\"peddler\">Are you a peddler?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"registrationPrivileges\"\n                class=\"custom-control-input\"\n                formControlName=\"registrationPrivileges\">\n              <label class=\"custom-control-label\" for=\"registrationPrivileges\">Do you still want a license to take advantage of registration privileges?</label>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" (click)=\"handleStep2BContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <div *ngFor=\"let group of primaryQuestionGroups\">\n    <cdk-step [stepControl]=\"group.formGroup\">\n      <wizard-step\n        [heading]=\"group.heading\"\n        [subheading]=\"group.subheading\"\n        [form]=\"group.formGroup\"\n        [questions]=\"group.formQuestions\">\n      </wizard-step>\n    </cdk-step>\n  </div>\n\n  <div *ngFor=\"let group of secondaryQuestionGroups\">\n    <cdk-step [stepControl]=\"group.formGroup\">\n      <wizard-step\n        [heading]=\"group.heading\"\n        [subheading]=\"group.subheading\"\n        [form]=\"group.formGroup\"\n        [questions]=\"group.formQuestions\">\n      </wizard-step>\n    </cdk-step>\n  </div>\n</wizard-stepper>"
 
 /***/ }),
 
@@ -5587,7 +6062,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-bootstrap/modal */ "./node_modules/ngx-bootstrap/modal/fesm5/ngx-bootstrap-modal.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./address-verification/address-verification.component */ "./src/app/wizard/address-verification/address-verification.component.ts");
+/* harmony import */ var _wizard_config_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./wizard-config.service */ "./src/app/wizard/wizard-config.service.ts");
+/* harmony import */ var _address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./address-verification/address-verification.component */ "./src/app/wizard/address-verification/address-verification.component.ts");
+/* harmony import */ var _wizard_helpers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./wizard-helpers */ "./src/app/wizard/wizard-helpers.ts");
+
+
 
 
 
@@ -5597,10 +6076,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var WizardComponent = /** @class */ (function () {
-    function WizardComponent(router, fb, modalService) {
+    function WizardComponent(router, fb, modalService, wizardConfigService) {
         this.router = router;
         this.fb = fb;
         this.modalService = modalService;
+        this.wizardConfigService = wizardConfigService;
         this.ngUnsubscribe = new rxjs__WEBPACK_IMPORTED_MODULE_6__["Subject"]();
         this.stepperIndex = 0;
         this.isInChandler = false;
@@ -5608,6 +6088,34 @@ var WizardComponent = /** @class */ (function () {
     }
     WizardComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.wizardConfigService.get()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.ngUnsubscribe))
+            .subscribe(function (config) {
+            _this.wizardConfig = config;
+        }, function (error) {
+            console.error(error);
+        }, function () {
+            _this.allQuestionGroups = _this.wizardConfig.questionGroups;
+            // Convert array of questions in json config to Angular form groups
+            _this.allQuestionGroups.forEach(function (group) {
+                var convertedQuestions = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormQuestion"])(group.questions);
+                group['formQuestions'] = convertedQuestions;
+                var convertedFormGroup = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormGroup"])(convertedQuestions);
+                group['formGroup'] = convertedFormGroup;
+            });
+            // Create new array for primary questions from config
+            _this.primaryQuestionGroups = _this.allQuestionGroups.filter(function (group) {
+                return group.type === 'primaryGroup';
+            });
+            _this.primaryQuestionGroups.sort(function (a, b) { return a.order - b.order; });
+            // Create new array for secondary questions from config
+            _this.secondaryQuestionGroups = _this.allQuestionGroups.filter(function (group) {
+                return group.type === 'secondaryGroup';
+            });
+            _this.secondaryQuestionGroups.sort(function (a, b) { return a.order - b.order; });
+            // TODO: remove log
+            console.log(_this.primaryQuestionGroups, _this.secondaryQuestionGroups);
+        });
         this.step1FormGroup = this.fb.group({
             alreadyRegistered: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]
         });
@@ -5630,7 +6138,7 @@ var WizardComponent = /** @class */ (function () {
             peddler: [false],
             registrationPrivileges: [false]
         });
-        // Determine whether user should continue after step 2B
+        // Temporary validation to determine whether user should continue after step 2B
         this.step2BFormGroup.valueChanges
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.ngUnsubscribe))
             .subscribe(function (value) {
@@ -5638,19 +6146,6 @@ var WizardComponent = /** @class */ (function () {
                 value.solicitor === true ||
                 value.specialEvent === true ||
                 value.registrationPrivileges === true);
-        });
-        this.step3FormGroup = this.fb.group({
-            liquor: [false],
-            secondHandGoods: [false],
-            doorToDoor: [false],
-            massageServices: [false],
-            nonProfitSolicitor: [false]
-        });
-        this.step4FormGroup = this.fb.group({
-            bingo: [false],
-            offTrackBetting: [false],
-            sob: [false],
-            escort: [false]
         });
     };
     WizardComponent.prototype.ngOnDestroy = function () {
@@ -5678,13 +6173,15 @@ var WizardComponent = /** @class */ (function () {
                 { 'address1': '123 Really Long Address Street', 'address2': 'Suite 700', 'city': 'Chandler', 'state': 'Arizona', 'zip': '85248' }
             ]
         };
-        this.bsModalRef = this.modalService.show(_address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_7__["AddressVerificationComponent"], {
+        this.bsModalRef = this.modalService.show(_address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_8__["AddressVerificationComponent"], {
             initialState: initialState,
             class: 'modal-dialog-centered modal-lg',
             backdrop: 'static',
             keyboard: false
         });
-        this.bsModalRef.content.selectedAddress.subscribe(function (address) {
+        this.bsModalRef.content.selectedAddress
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.ngUnsubscribe))
+            .subscribe(function (address) {
             // Update form values from suggested address in modal
             _this.step2FormGroup.patchValue({
                 addressLine1: address.address1,
@@ -5707,14 +6204,6 @@ var WizardComponent = /** @class */ (function () {
             this.router.navigate(['/wizard/goodbye']);
         }
     };
-    WizardComponent.prototype.handleStep3BackClick = function () {
-        if (this.isInChandler) {
-            this.stepperIndex = 1;
-        }
-        else {
-            this.stepperIndex = 2;
-        }
-    };
     WizardComponent.prototype.handleStepChange = function (event) {
         // Synchronize local step index with stepper component index
         this.stepperIndex = event.selectedIndex;
@@ -5735,7 +6224,8 @@ var WizardComponent = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"],
-            ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_4__["BsModalService"]])
+            ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_4__["BsModalService"],
+            _wizard_config_service__WEBPACK_IMPORTED_MODULE_7__["WizardConfigService"]])
     ], WizardComponent);
     return WizardComponent;
 }());
@@ -5764,6 +6254,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _stepper_stepper_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./stepper/stepper.component */ "./src/app/wizard/stepper/stepper.component.ts");
 /* harmony import */ var _address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./address-verification/address-verification.component */ "./src/app/wizard/address-verification/address-verification.component.ts");
 /* harmony import */ var _goodbye_goodbye_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./goodbye/goodbye.component */ "./src/app/wizard/goodbye/goodbye.component.ts");
+/* harmony import */ var _question_question_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./question/question.component */ "./src/app/wizard/question/question.component.ts");
+/* harmony import */ var _step_step_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./step/step.component */ "./src/app/wizard/step/step.component.ts");
+
+
 
 
 
@@ -5784,14 +6278,19 @@ var WizardModule = /** @class */ (function () {
                 _progress_bar_progress_bar_component__WEBPACK_IMPORTED_MODULE_6__["ProgressBarComponent"],
                 _stepper_stepper_component__WEBPACK_IMPORTED_MODULE_7__["StepperComponent"],
                 _address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_8__["AddressVerificationComponent"],
-                _goodbye_goodbye_component__WEBPACK_IMPORTED_MODULE_9__["GoodbyeComponent"]
+                _goodbye_goodbye_component__WEBPACK_IMPORTED_MODULE_9__["GoodbyeComponent"],
+                _question_question_component__WEBPACK_IMPORTED_MODULE_10__["QuestionComponent"],
+                _step_step_component__WEBPACK_IMPORTED_MODULE_11__["StepComponent"]
             ],
             imports: [
                 _shared_shared_module__WEBPACK_IMPORTED_MODULE_3__["SharedModule"],
                 _angular_cdk_stepper__WEBPACK_IMPORTED_MODULE_2__["CdkStepperModule"],
                 _wizard_routing_module__WEBPACK_IMPORTED_MODULE_4__["WizardRoutingModule"]
             ],
-            entryComponents: [_wizard_component__WEBPACK_IMPORTED_MODULE_5__["WizardComponent"], _address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_8__["AddressVerificationComponent"]]
+            entryComponents: [
+                _wizard_component__WEBPACK_IMPORTED_MODULE_5__["WizardComponent"],
+                _address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_8__["AddressVerificationComponent"]
+            ]
         })
     ], WizardModule);
     return WizardModule;

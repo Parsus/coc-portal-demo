@@ -1,0 +1,659 @@
+{
+  "questionGroups": [
+    {
+      "id": "SPECIALTY_A",
+      "type": "primaryGroup",
+      "heading": "Answer \"Yes\" or \"No\" to the following questions:",
+      "subheading": "Toggle right to answer \"yes\". Answer all questions then click continue.",
+      "order": 1,
+      "questions": [
+        {
+          "id": "LL_Liquor",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Will you sell liquor?",
+          "customStyle": "switch",
+          "order": 1,
+          "validation": {
+            "required": true
+          },
+          "dependencies": [
+            "APPLICANT_BASIC_A",
+            "APPLICANT_BASIC_B",
+            "ENTITY_INFO_A",
+            "ENTITY_INFO_B",
+            "ENTITY_INFO_C",
+            "ENTITY_INFO_D",
+            "ENTITY_INFO_E",
+            "OWNER_INFO_A",
+            "OWNER_INFO_B"
+          ]
+        },
+        {
+          "id": "SEC_Secondhand",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Will your business buy/sell used or second hand goods?",
+          "customStyle": "switch",
+          "order": 2,
+          "validation": {
+            "required": true
+          },
+          "dependencies": [{}]
+        },
+        {
+          "id": "PED_Peddler",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Will you conduct door to door sales?",
+          "customStyle": "switch",
+          "order": 3,
+          "validation": {
+            "required": true
+          },
+          "dependencies": [{}]
+        },
+        {
+          "id": "MAE_Massage",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Will you offer massage services?",
+          "customStyle": "switch",
+          "order": 4,
+          "validation": {
+            "required": true
+          },
+          "dependencies": [{}]
+        },
+        {
+          "id": "SOL_Solicitor",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Are you a non-profit solicitor?",
+          "customStyle": "switch",
+          "order": 5,
+          "validation": {
+            "required": true
+          },
+          "dependencies": [{}]
+        }
+      ]
+    },
+    {
+      "id": "SPECIALTY_B",
+      "type": "primaryGroup",
+      "heading": "Is your business engaged in any of the following:",
+      "subheading": "Click all that apply to your business then click continue.",
+      "order": 2,
+      "questions": [
+        {
+          "id": "Bingo",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Bingo",
+          "customStyle": "switch",
+          "order": 1,
+          "validation": {
+            "required": true
+          },
+          "dependencies": [{}]
+        },
+        {
+          "id": "OTW_Wagering",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Off track betting",
+          "customStyle": "switch",
+          "order": 2,
+          "validation": {
+            "required": true
+          },
+          "dependencies": [{}]
+        },
+        {
+          "id": "SOB",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "SOB",
+          "customStyle": "switch",
+          "order": 3,
+          "validation": {
+            "required": true
+          },
+          "dependencies": [{}]
+        },
+        {
+          "id": "Escort",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Escort",
+          "customStyle": "switch",
+          "order": 4,
+          "validation": {
+            "required": true
+          },
+          "dependencies": [{}]
+        }
+      ]
+    },
+    {
+      "id": "APPLICANT_BASIC_A",
+      "type": "secondaryGroup",
+      "heading": "Applicant Basic Information",
+      "subheading": "Please fill out all required information and click continue",
+      "order": 1,
+      "questions": [
+        {
+          "id": "FIRST_NAME",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "First Name",
+          "order": 1,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "LAST_NAME",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Last Name",
+          "order": 2,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "PHONE",
+          "controlType": "textbox",
+          "type": "tel",
+          "placeholder": "Phone",
+          "order": 3,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "APPLICANT_EMAIL",
+          "controlType": "textbox",
+          "type": "email",
+          "placeholder": "Applicant Email",
+          "order": 4,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "APPLICANT_BASIC_B",
+      "type": "secondaryGroup",
+      "heading": "Applicant Basic Information",
+      "subheading": "Please fill out all required information and click continue",
+      "order": 2,
+      "questions": [
+        {
+          "id": "ADDR",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Mailing Address 1",
+          "order": 1,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "ADDR2",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Mailing Address 2",
+          "order": 2,
+          "validation": {}
+        },
+        {
+          "id": "CITY",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "City",
+          "order": 3,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "STATE",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Mailing State",
+          "order": 4,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "ZIP",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Mailing Zip",
+          "order": 5,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "APPLICANT_IND",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Applicant Ind",
+          "order": 6,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "ENTITY_INFO_A",
+      "type": "secondaryGroup",
+      "heading": "Entity Information part 1",
+      "subheading": "Please fill out all required information and click continue",
+      "order": 3,
+      "questions": [
+        {
+          "id": "ENTITY_NAME",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Entity Name",
+          "order": 1,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "ENTITY_ADDR1",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Entity Address 1",
+          "order": 2,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "ENTITY_ADDR2",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Entity Address 2",
+          "order": 3,
+          "validation": {}
+        },
+        {
+          "id": "ENTITY_CITY",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Entity City",
+          "order": 4,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "ENTITY_STATE",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Entity State",
+          "order": 5,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "ENTITY_ZIP",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Entity Zip",
+          "order": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "ENTITY_PHONE",
+          "controlType": "textbox",
+          "type": "tel",
+          "placeholder": "Entity Phone",
+          "order": 7,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "ENTITY_INFO_B",
+      "type": "secondaryGroup",
+      "heading": "Entity Information part 2",
+      "subheading": "Please fill out all required information and click continue",
+      "order": 4,
+      "questions": [
+        {
+          "id": "SAME_AS_ENTITY_ADDRESS",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Click here if mailing address is the same as entity address",
+          "order": 1,
+          "validation": {}
+        },
+        {
+          "id": "MAILING_ADDR1",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Mailing Address 1",
+          "order": 2,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "MAILING_ADDR2",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Mailing Address 2",
+          "order": 3,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "MAILING_CITY",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Mailing City",
+          "order": 4,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "MAILING_STATE",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Mailing State",
+          "order": 5,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "MAILING_ZIP",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Mailing Zip",
+          "order": 6,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "ENTITY_INFO_C",
+      "type": "secondaryGroup",
+      "heading": "Entity Information part 3",
+      "subheading": "Please fill out all required information and click continue",
+      "order": 5,
+      "questions": [
+        {
+          "id": "STATE_LICENSE_ID",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "State License ID",
+          "order": 1,
+          "validation": {}
+        },
+        {
+          "id": "FEDERAL_ID",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Federal ID",
+          "order": 2,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "OWNERSHIP_TYPE",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Ownership Type",
+          "order": 3,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "ENTITY_INFO_D",
+      "type": "secondaryGroup",
+      "heading": "Entity Information part 4",
+      "subheading": "Please fill out all required information and click continue",
+      "order": 6,
+      "questions": [
+        {
+          "id": "STATUTORY_AGENT_NAME",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Statutory Agent Name",
+          "order": 1,
+          "validation": {}
+        },
+        {
+          "id": "STATUTORY_AGENT_ADDR1",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Statutory Agent Address 1",
+          "order": 2,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "STATUTORY_AGENT_ADDR2",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Statutory Agent Address 1",
+          "order": 3,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "STATUTORY_AGENT_CITY",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Statutory Agent City",
+          "order": 4,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "STATUTORY_AGENT_STATE",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Statutory Agent State",
+          "order": 5,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "STATUTORY_AGENT_ZIP",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Statutory Agent Zip",
+          "order": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "STATUTORY_AGENT_PHONE",
+          "controlType": "textbox",
+          "type": "tel",
+          "placeholder": "Statutory Agent Phone",
+          "order": 7,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "ENTITY_INFO_E",
+      "type": "secondaryGroup",
+      "heading": "Entity Information part 5",
+      "subheading": "Please fill out all required information and click continue",
+      "order": 7,
+      "questions": [
+        {
+          "id": "SAME_AS_STATUTORY_AGENT",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Click here if Best Contact is the same as Statutory Agent",
+          "order": 1,
+          "validation": {}
+        },
+        {
+          "id": "BEST_CONTACT",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Best Contact",
+          "order": 2,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "BEST_CONTACT_EMAIL",
+          "controlType": "textbox",
+          "type": "email",
+          "placeholder": "Best Contact Email",
+          "order": 3,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "BEST_CONTACT_PHONE",
+          "controlType": "textbox",
+          "type": "tel",
+          "placeholder": "Best Contact Phone",
+          "order": 4,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "OWNER_INFO_A",
+      "type": "secondaryGroup",
+      "heading": "Owner Information part 1",
+      "subheading": "Please fill out all required information and click continue",
+      "order": 8,
+      "questions": [
+        {
+          "id": "OWNER_FIRST_NAME",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "First Name",
+          "order": 1,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "OWNER_LAST_NAME",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Last Name",
+          "order": 2,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "OWNER_PHONE",
+          "controlType": "textbox",
+          "type": "tel",
+          "placeholder": "Phone",
+          "order": 3,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "OWNER_INFO_B",
+      "type": "secondaryGroup",
+      "heading": "Owner Information part 2",
+      "subheading": "Please fill out all required information and click continue",
+      "order": 9,
+      "questions": [
+        {
+          "id": "OWNER_ADDR1",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Address 1",
+          "order": 1,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "OWNER_ADDR2",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Address 2",
+          "order": 2,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "OWNER_CITY",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "City",
+          "order": 3,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "OWNER_STATE",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "State",
+          "order": 4,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "OWNER_ZIP",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Zip",
+          "order": 5,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    }
+  ]
+}

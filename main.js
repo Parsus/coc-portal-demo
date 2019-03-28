@@ -8,6 +8,10 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./dashboard/dashboard.module": [
+		"./src/app/dashboard/dashboard.module.ts",
+		"dashboard-dashboard-module"
+	],
 	"./wizard/wizard.module": [
 		"./src/app/wizard/wizard.module.ts",
 		"wizard-wizard-module"
@@ -35,6 +39,420 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
+/***/ "./src/app/api-client/config.factory.ts":
+/*!**********************************************!*\
+  !*** ./src/app/api-client/config.factory.ts ***!
+  \**********************************************/
+/*! exports provided: apiConfigFactory */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "apiConfigFactory", function() { return apiConfigFactory; });
+/* harmony import */ var _swagger_generated__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./swagger-generated */ "./src/app/api-client/swagger-generated/index.ts");
+
+// API configuration factory
+// see https://github.com/swagger-api/swagger-codegen/tree/master/samples/client/petstore/typescript-angular-v6/npm#general-usage
+function apiConfigFactory() {
+    var params = {
+        // set configuration parameters here.
+        apiKeys: {}
+    };
+    return new _swagger_generated__WEBPACK_IMPORTED_MODULE_0__["Configuration"](params);
+}
+
+
+/***/ }),
+
+/***/ "./src/app/api-client/index.ts":
+/*!*************************************!*\
+  !*** ./src/app/api-client/index.ts ***!
+  \*************************************/
+/*! exports provided: apiConfigFactory, APIS, BASE_PATH, COLLECTION_FORMATS, Configuration, ApiModule, DefaultService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _swagger_generated__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./swagger-generated */ "./src/app/api-client/swagger-generated/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "APIS", function() { return _swagger_generated__WEBPACK_IMPORTED_MODULE_0__["APIS"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BASE_PATH", function() { return _swagger_generated__WEBPACK_IMPORTED_MODULE_0__["BASE_PATH"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "COLLECTION_FORMATS", function() { return _swagger_generated__WEBPACK_IMPORTED_MODULE_0__["COLLECTION_FORMATS"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Configuration", function() { return _swagger_generated__WEBPACK_IMPORTED_MODULE_0__["Configuration"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ApiModule", function() { return _swagger_generated__WEBPACK_IMPORTED_MODULE_0__["ApiModule"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DefaultService", function() { return _swagger_generated__WEBPACK_IMPORTED_MODULE_0__["DefaultService"]; });
+
+/* harmony import */ var _config_factory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config.factory */ "./src/app/api-client/config.factory.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "apiConfigFactory", function() { return _config_factory__WEBPACK_IMPORTED_MODULE_1__["apiConfigFactory"]; });
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/app/api-client/swagger-generated/api.module.ts":
+/*!************************************************************!*\
+  !*** ./src/app/api-client/swagger-generated/api.module.ts ***!
+  \************************************************************/
+/*! exports provided: ApiModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApiModule", function() { return ApiModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _configuration__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./configuration */ "./src/app/api-client/swagger-generated/configuration.ts");
+/* harmony import */ var _api_default_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./api/default.service */ "./src/app/api-client/swagger-generated/api/default.service.ts");
+
+
+
+
+
+
+var ApiModule = /** @class */ (function () {
+    function ApiModule(parentModule) {
+        if (parentModule) {
+            throw new Error('ApiModule is already loaded. Import your base AppModule only.');
+        }
+    }
+    ApiModule_1 = ApiModule;
+    ApiModule.forRoot = function (configurationFactory) {
+        return {
+            ngModule: ApiModule_1,
+            providers: [{ provide: _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"], useFactory: configurationFactory }]
+        };
+    };
+    var ApiModule_1;
+    ApiModule = ApiModule_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"]],
+            declarations: [],
+            exports: [],
+            providers: [
+                _api_default_service__WEBPACK_IMPORTED_MODULE_5__["DefaultService"]
+            ]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"])()), tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["SkipSelf"])()),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [ApiModule])
+    ], ApiModule);
+    return ApiModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/api-client/swagger-generated/api/api.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/api-client/swagger-generated/api/api.ts ***!
+  \*********************************************************/
+/*! exports provided: APIS, DefaultService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "APIS", function() { return APIS; });
+/* harmony import */ var _default_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./default.service */ "./src/app/api-client/swagger-generated/api/default.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DefaultService", function() { return _default_service__WEBPACK_IMPORTED_MODULE_0__["DefaultService"]; });
+
+
+
+var APIS = [_default_service__WEBPACK_IMPORTED_MODULE_0__["DefaultService"]];
+
+
+/***/ }),
+
+/***/ "./src/app/api-client/swagger-generated/api/default.service.ts":
+/*!*********************************************************************!*\
+  !*** ./src/app/api-client/swagger-generated/api/default.service.ts ***!
+  \*********************************************************************/
+/*! exports provided: DefaultService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DefaultService", function() { return DefaultService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _variables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../variables */ "./src/app/api-client/swagger-generated/variables.ts");
+/* harmony import */ var _configuration__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../configuration */ "./src/app/api-client/swagger-generated/configuration.ts");
+/**
+ * City of Chandler License Portal API
+ * City of Chandler License Portal API documentation
+ *
+ * OpenAPI spec version: 1.0
+ *
+ *
+ * NOTE: This class is auto generated by the swagger code generator program.
+ * https://github.com/swagger-api/swagger-codegen.git
+ * Do not edit the class manually.
+ */
+/* tslint:disable:no-unused-variable member-ordering */
+
+
+
+
+
+var DefaultService = /** @class */ (function () {
+    function DefaultService(httpClient, basePath, configuration) {
+        this.httpClient = httpClient;
+        this.basePath = 'http://localhost';
+        this.defaultHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
+        this.configuration = new _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]();
+        if (basePath) {
+            this.basePath = basePath;
+        }
+        if (configuration) {
+            this.configuration = configuration;
+            this.basePath = basePath || configuration.basePath || this.basePath;
+        }
+    }
+    /**
+     * @param consumes string[] mime-types
+     * @return true: consumes contains 'multipart/form-data', false: otherwise
+     */
+    DefaultService.prototype.canConsumeForm = function (consumes) {
+        var form = 'multipart/form-data';
+        for (var _i = 0, consumes_1 = consumes; _i < consumes_1.length; _i++) {
+            var consume = consumes_1[_i];
+            if (form === consume) {
+                return true;
+            }
+        }
+        return false;
+    };
+    DefaultService.prototype.entitiesGet = function (observe, reportProgress) {
+        if (observe === void 0) { observe = 'body'; }
+        if (reportProgress === void 0) { reportProgress = false; }
+        var headers = this.defaultHeaders;
+        // authentication (bearer) required
+        if (this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+        // to determine the Accept header
+        var httpHeaderAccepts = [
+            'application/json'
+        ];
+        var httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
+        }
+        // to determine the Content-Type header
+        var consumes = [
+            'application/json'
+        ];
+        return this.httpClient.get(this.basePath + "/entities", {
+            withCredentials: this.configuration.withCredentials,
+            headers: headers,
+            observe: observe,
+            reportProgress: reportProgress
+        });
+    };
+    DefaultService.prototype.locationsGet = function (observe, reportProgress) {
+        if (observe === void 0) { observe = 'body'; }
+        if (reportProgress === void 0) { reportProgress = false; }
+        var headers = this.defaultHeaders;
+        // authentication (bearer) required
+        if (this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+        // to determine the Accept header
+        var httpHeaderAccepts = [
+            'application/json'
+        ];
+        var httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
+        }
+        // to determine the Content-Type header
+        var consumes = [
+            'application/json'
+        ];
+        return this.httpClient.get(this.basePath + "/locations", {
+            withCredentials: this.configuration.withCredentials,
+            headers: headers,
+            observe: observe,
+            reportProgress: reportProgress
+        });
+    };
+    DefaultService.prototype.rootGet = function (observe, reportProgress) {
+        if (observe === void 0) { observe = 'body'; }
+        if (reportProgress === void 0) { reportProgress = false; }
+        var headers = this.defaultHeaders;
+        // to determine the Accept header
+        var httpHeaderAccepts = [
+            'application/json'
+        ];
+        var httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
+        }
+        // to determine the Content-Type header
+        var consumes = [
+            'application/json'
+        ];
+        return this.httpClient.get(this.basePath + "/", {
+            withCredentials: this.configuration.withCredentials,
+            headers: headers,
+            observe: observe,
+            reportProgress: reportProgress
+        });
+    };
+    DefaultService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"])()), tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_variables__WEBPACK_IMPORTED_MODULE_3__["BASE_PATH"])), tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](2, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"])()),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], String, _configuration__WEBPACK_IMPORTED_MODULE_4__["Configuration"]])
+    ], DefaultService);
+    return DefaultService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/api-client/swagger-generated/configuration.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/api-client/swagger-generated/configuration.ts ***!
+  \***************************************************************/
+/*! exports provided: Configuration */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Configuration", function() { return Configuration; });
+var Configuration = /** @class */ (function () {
+    function Configuration(configurationParameters) {
+        if (configurationParameters === void 0) { configurationParameters = {}; }
+        this.apiKeys = configurationParameters.apiKeys;
+        this.username = configurationParameters.username;
+        this.password = configurationParameters.password;
+        this.accessToken = configurationParameters.accessToken;
+        this.basePath = configurationParameters.basePath;
+        this.withCredentials = configurationParameters.withCredentials;
+    }
+    /**
+     * Select the correct content-type to use for a request.
+     * Uses {@link Configuration#isJsonMime} to determine the correct content-type.
+     * If no content type is found return the first found type if the contentTypes is not empty
+     * @param {string[]} contentTypes - the array of content types that are available for selection
+     * @returns {string} the selected content-type or <code>undefined</code> if no selection could be made.
+     */
+    Configuration.prototype.selectHeaderContentType = function (contentTypes) {
+        var _this = this;
+        if (contentTypes.length == 0) {
+            return undefined;
+        }
+        var type = contentTypes.find(function (x) { return _this.isJsonMime(x); });
+        if (type === undefined) {
+            return contentTypes[0];
+        }
+        return type;
+    };
+    /**
+     * Select the correct accept content-type to use for a request.
+     * Uses {@link Configuration#isJsonMime} to determine the correct accept content-type.
+     * If no content type is found return the first found type if the contentTypes is not empty
+     * @param {string[]} accepts - the array of content types that are available for selection.
+     * @returns {string} the selected content-type or <code>undefined</code> if no selection could be made.
+     */
+    Configuration.prototype.selectHeaderAccept = function (accepts) {
+        var _this = this;
+        if (accepts.length == 0) {
+            return undefined;
+        }
+        var type = accepts.find(function (x) { return _this.isJsonMime(x); });
+        if (type === undefined) {
+            return accepts[0];
+        }
+        return type;
+    };
+    /**
+     * Check if the given MIME is a JSON MIME.
+     * JSON MIME examples:
+     *   application/json
+     *   application/json; charset=UTF8
+     *   APPLICATION/JSON
+     *   application/vnd.company+json
+     * @param {string} mime - MIME (Multipurpose Internet Mail Extensions)
+     * @return {boolean} True if the given MIME is JSON, false otherwise.
+     */
+    Configuration.prototype.isJsonMime = function (mime) {
+        var jsonMime = new RegExp('^(application\/json|[^;/ \t]+\/[^;/ \t]+[+]json)[ \t]*(;.*)?$', 'i');
+        return mime != null && (jsonMime.test(mime) || mime.toLowerCase() === 'application/json-patch+json');
+    };
+    return Configuration;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/api-client/swagger-generated/index.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/api-client/swagger-generated/index.ts ***!
+  \*******************************************************/
+/*! exports provided: APIS, BASE_PATH, COLLECTION_FORMATS, Configuration, ApiModule, DefaultService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _api_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api/api */ "./src/app/api-client/swagger-generated/api/api.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "APIS", function() { return _api_api__WEBPACK_IMPORTED_MODULE_0__["APIS"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DefaultService", function() { return _api_api__WEBPACK_IMPORTED_MODULE_0__["DefaultService"]; });
+
+/* harmony import */ var _variables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./variables */ "./src/app/api-client/swagger-generated/variables.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BASE_PATH", function() { return _variables__WEBPACK_IMPORTED_MODULE_1__["BASE_PATH"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "COLLECTION_FORMATS", function() { return _variables__WEBPACK_IMPORTED_MODULE_1__["COLLECTION_FORMATS"]; });
+
+/* harmony import */ var _configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./configuration */ "./src/app/api-client/swagger-generated/configuration.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Configuration", function() { return _configuration__WEBPACK_IMPORTED_MODULE_2__["Configuration"]; });
+
+/* harmony import */ var _api_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./api.module */ "./src/app/api-client/swagger-generated/api.module.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ApiModule", function() { return _api_module__WEBPACK_IMPORTED_MODULE_3__["ApiModule"]; });
+
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/app/api-client/swagger-generated/variables.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/api-client/swagger-generated/variables.ts ***!
+  \***********************************************************/
+/*! exports provided: BASE_PATH, COLLECTION_FORMATS */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BASE_PATH", function() { return BASE_PATH; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "COLLECTION_FORMATS", function() { return COLLECTION_FORMATS; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+var BASE_PATH = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('basePath');
+var COLLECTION_FORMATS = {
+    'csv': ',',
+    'tsv': '   ',
+    'ssv': ' ',
+    'pipes': '|'
+};
+
+
+/***/ }),
+
 /***/ "./src/app/app-routing.module.ts":
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
@@ -49,10 +467,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _temp_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./temp.component */ "./src/app/temp.component.ts");
-/* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
-/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth */ "./src/app/auth/index.ts");
-
-
 
 
 
@@ -68,10 +482,7 @@ var routes = [
     },
     {
         path: 'dashboard',
-        component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__["DashboardComponent"],
-        canActivate: [
-            _auth__WEBPACK_IMPORTED_MODULE_5__["IsAuthenticatedGuard"]
-        ],
+        loadChildren: './dashboard/dashboard.module#DashboardModule'
     },
     {
         path: '',
@@ -126,8 +537,10 @@ var AppComponent = /** @class */ (function () {
     function AppComponent(authService) {
         this.authService = authService;
         this.title = 'Business Registration & Specialty Licenses';
-        this.authService.configure();
     }
+    AppComponent.prototype.ngOnInit = function () {
+        this.authService.configure();
+    };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'coc-root',
@@ -158,15 +571,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var angular_oauth2_oidc_codeflow__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! angular-oauth2-oidc-codeflow */ "./node_modules/angular-oauth2-oidc-codeflow/esm5/angular-oauth2-oidc-codeflow.js");
-/* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./shared/shared.module */ "./src/app/shared/shared.module.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _temp_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./temp.component */ "./src/app/temp.component.ts");
-/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
-/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
-/* harmony import */ var _ui_kit_ui_kit_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./ui-kit/ui-kit.component */ "./src/app/ui-kit/ui-kit.component.ts");
-/* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
-/* harmony import */ var _http_interceptors__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./http-interceptors */ "./src/app/http-interceptors/index.ts");
+/* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/esm5/ngx-bootstrap.js");
+/* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shared/shared.module */ "./src/app/shared/shared.module.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _temp_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./temp.component */ "./src/app/temp.component.ts");
+/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
+/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
+/* harmony import */ var _ui_kit_ui_kit_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./ui-kit/ui-kit.component */ "./src/app/ui-kit/ui-kit.component.ts");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _http_interceptors__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./http-interceptors */ "./src/app/http-interceptors/index.ts");
+/* harmony import */ var _api_client__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./api-client */ "./src/app/api-client/index.ts");
+
+
 
 
 
@@ -188,26 +605,28 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
-                _temp_component__WEBPACK_IMPORTED_MODULE_9__["TempComponent"],
-                _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_10__["NavbarComponent"],
-                _footer_footer_component__WEBPACK_IMPORTED_MODULE_11__["FooterComponent"],
-                _ui_kit_ui_kit_component__WEBPACK_IMPORTED_MODULE_12__["UiKitComponent"],
-                _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_13__["DashboardComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"],
+                _temp_component__WEBPACK_IMPORTED_MODULE_10__["TempComponent"],
+                _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_11__["NavbarComponent"],
+                _footer_footer_component__WEBPACK_IMPORTED_MODULE_12__["FooterComponent"],
+                _ui_kit_ui_kit_component__WEBPACK_IMPORTED_MODULE_13__["UiKitComponent"]
             ],
             imports: [
+                _api_client__WEBPACK_IMPORTED_MODULE_16__["ApiModule"].forRoot(_api_client__WEBPACK_IMPORTED_MODULE_16__["apiConfigFactory"]),
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"],
-                _shared_shared_module__WEBPACK_IMPORTED_MODULE_6__["SharedModule"],
-                angular_oauth2_oidc_codeflow__WEBPACK_IMPORTED_MODULE_5__["OAuthModule"].forRoot()
+                _shared_shared_module__WEBPACK_IMPORTED_MODULE_7__["SharedModule"],
+                angular_oauth2_oidc_codeflow__WEBPACK_IMPORTED_MODULE_5__["OAuthModule"].forRoot(),
+                ngx_bootstrap__WEBPACK_IMPORTED_MODULE_6__["AccordionModule"].forRoot()
             ],
             providers: [
-                _http_interceptors__WEBPACK_IMPORTED_MODULE_14__["httpInterceptorProviders"]
+                _http_interceptors__WEBPACK_IMPORTED_MODULE_15__["httpInterceptorProviders"],
+                { provide: _api_client__WEBPACK_IMPORTED_MODULE_16__["BASE_PATH"], useValue: _environments_environment__WEBPACK_IMPORTED_MODULE_14__["environment"].API_BASE_PATH }
             ],
             bootstrap: [
-                _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]
             ]
         })
     ], AppModule);
@@ -308,6 +727,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var angular_oauth2_oidc_codeflow__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! angular-oauth2-oidc-codeflow */ "./node_modules/angular-oauth2-oidc-codeflow/esm5/angular-oauth2-oidc-codeflow.js");
 /* harmony import */ var _auth_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth.config */ "./src/app/auth/auth.config.ts");
+/* harmony import */ var _api_client__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../api-client */ "./src/app/api-client/index.ts");
+
 
 
 
@@ -315,17 +736,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AuthService = /** @class */ (function () {
-    function AuthService(oauthService, oauthStorage, route, router) {
+    function AuthService(oauthService, oauthStorage, route, router, apiConfiguration) {
         this.oauthService = oauthService;
         this.oauthStorage = oauthStorage;
         this.route = route;
         this.router = router;
+        this.apiConfiguration = apiConfiguration;
     }
     AuthService.prototype.configure = function () {
         var _this = this;
+        // If there is a configure in process just return that
+        if (this._configurePromise) {
+            return this._configurePromise;
+        }
         this.oauthService.configure(_auth_config__WEBPACK_IMPORTED_MODULE_4__["authConfig"]);
         this.oauthService.tokenValidationHandler = new angular_oauth2_oidc_codeflow__WEBPACK_IMPORTED_MODULE_3__["JwksValidationHandler"]();
-        this.oauthService.loadDiscoveryDocument()
+        return this._configurePromise = this.oauthService.loadDiscoveryDocument()
             .then(function () {
             // 20190312RBP - Added state checking because angular-oauth2-oidc-codeflow does not seem to do it
             // see https://tools.ietf.org/html/rfc6749#section-10.12
@@ -340,6 +766,8 @@ var AuthService = /** @class */ (function () {
             .then(function () {
             console.log('Logged in');
             var returnUrl = _this.oauthStorage.getItem('__cocReturnUrl');
+            // Set authorization for API client
+            _this.setApiAuthorization(_this.oauthService.getAccessToken());
             if (returnUrl) {
                 // login successful so redirect to return url
                 _this.oauthStorage.removeItem('__cocReturnUrl');
@@ -351,9 +779,20 @@ var AuthService = /** @class */ (function () {
         });
     };
     AuthService.prototype.isSignedIn = function () {
-        return this.oauthService.hasValidAccessToken();
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.ensureConfigured()];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/, this.oauthService.hasValidAccessToken()];
+                }
+            });
+        });
     };
     AuthService.prototype.logout = function () {
+        // Remove authorization from API client
+        this.setApiAuthorization(null);
         this.oauthService.logOut();
     };
     AuthService.prototype.signIn = function (returnUrl) {
@@ -361,6 +800,25 @@ var AuthService = /** @class */ (function () {
         // from auth code grant
         this.oauthStorage.setItem('__cocReturnUrl', returnUrl);
         this.oauthService.initAuthorizationCodeFlow();
+    };
+    AuthService.prototype.ensureConfigured = function () {
+        if (!this._configurePromise) {
+            return this.configure();
+        }
+        return this._configurePromise;
+    };
+    AuthService.prototype.setApiAuthorization = function (token) {
+        // Set authorization for API client
+        // see https://github.com/swagger-api/swagger-codegen/issues/3221#issuecomment-314757762
+        if (!this.apiConfiguration.apiKeys) {
+            this.apiConfiguration.apiKeys = {};
+        }
+        if (token === null) {
+            delete this.apiConfiguration.apiKeys['Authorization'];
+        }
+        else {
+            this.apiConfiguration.apiKeys['Authorization'] = "Bearer " + token;
+        }
     };
     AuthService.prototype.validateState = function (state) {
         var savedState = this.oauthStorage.getItem('nonce');
@@ -378,7 +836,8 @@ var AuthService = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [angular_oauth2_oidc_codeflow__WEBPACK_IMPORTED_MODULE_3__["OAuthService"],
             angular_oauth2_oidc_codeflow__WEBPACK_IMPORTED_MODULE_3__["OAuthStorage"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _api_client__WEBPACK_IMPORTED_MODULE_5__["Configuration"]])
     ], AuthService);
     return AuthService;
 }());
@@ -436,10 +895,15 @@ var IsAuthenticatedGuard = /** @class */ (function () {
         this.authService = authService;
     }
     IsAuthenticatedGuard.prototype.canActivate = function (next, state) {
-        if (!this.authService.isSignedIn()) {
-            this.authService.signIn(state.url);
-        }
-        return true;
+        var _this = this;
+        return this.authService.isSignedIn()
+            .then(function (signedIn) {
+            if (!signedIn) {
+                _this.authService.signIn(state.url);
+                return false;
+            }
+            return true;
+        });
     };
     IsAuthenticatedGuard = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -448,68 +912,6 @@ var IsAuthenticatedGuard = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
     ], IsAuthenticatedGuard);
     return IsAuthenticatedGuard;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/dashboard/dashboard.component.html":
-/*!****************************************************!*\
-  !*** ./src/app/dashboard/dashboard.component.html ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container mt-6 mb-9\">\n  <div class=\"text-right\">\n    <a href=\"#\" (click)=\"logout()\">Logout</a>\n  </div>\n  <h1>Dashboard</h1>\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/dashboard/dashboard.component.scss":
-/*!****************************************************!*\
-  !*** ./src/app/dashboard/dashboard.component.scss ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Rhc2hib2FyZC9kYXNoYm9hcmQuY29tcG9uZW50LnNjc3MifQ== */"
-
-/***/ }),
-
-/***/ "./src/app/dashboard/dashboard.component.ts":
-/*!**************************************************!*\
-  !*** ./src/app/dashboard/dashboard.component.ts ***!
-  \**************************************************/
-/*! exports provided: DashboardComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardComponent", function() { return DashboardComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../auth */ "./src/app/auth/index.ts");
-
-
-
-var DashboardComponent = /** @class */ (function () {
-    function DashboardComponent(authService) {
-        this.authService = authService;
-    }
-    DashboardComponent.prototype.ngOnInit = function () {
-    };
-    DashboardComponent.prototype.logout = function (event) {
-        this.authService.logout();
-    };
-    DashboardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'coc-dashboard',
-            template: __webpack_require__(/*! ./dashboard.component.html */ "./src/app/dashboard/dashboard.component.html"),
-            styles: [__webpack_require__(/*! ./dashboard.component.scss */ "./src/app/dashboard/dashboard.component.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_auth__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
-    ], DashboardComponent);
-    return DashboardComponent;
 }());
 
 
@@ -768,6 +1170,7 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 var environment = {
+    API_BASE_PATH: 'http://localhost:3003/api/v1',
     production: false
 };
 /*
