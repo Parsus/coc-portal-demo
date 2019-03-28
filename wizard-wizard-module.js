@@ -5877,7 +5877,7 @@ __webpack_require__.r(__webpack_exports__);
 var WizardConfigService = /** @class */ (function () {
     function WizardConfigService(http) {
         this.http = http;
-        this.configUrl = '/assets/wizard-config.mock-data.json';
+        this.configUrl = './assets/wizard-config.mock-data.json';
     }
     WizardConfigService.prototype.get = function () {
         return this.http.get(this.configUrl)
