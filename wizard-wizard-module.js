@@ -5314,6 +5314,1014 @@ var CdkStepperModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./node_modules/ngx-webstorage-service/fesm5/ngx-webstorage-service.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/ngx-webstorage-service/fesm5/ngx-webstorage-service.js ***!
+  \*****************************************************************************/
+/*! exports provided: BaseStorageService, InMemoryStorageService, ProxyStorageService, sessionStorageFactory, localStorageFactory, SESSION_STORAGE, LOCAL_STORAGE, StorageServiceModule, JsonStorageTranscoder, StringStorageTranscoder, BooleanStorageTranscoder, NumberStorageTranscoder, StorageTranscoders, isStorageAvailable, WebStorageService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BaseStorageService", function() { return BaseStorageService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InMemoryStorageService", function() { return InMemoryStorageService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProxyStorageService", function() { return ProxyStorageService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sessionStorageFactory", function() { return sessionStorageFactory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "localStorageFactory", function() { return localStorageFactory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SESSION_STORAGE", function() { return SESSION_STORAGE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOCAL_STORAGE", function() { return LOCAL_STORAGE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageServiceModule", function() { return StorageServiceModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JsonStorageTranscoder", function() { return JsonStorageTranscoder; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StringStorageTranscoder", function() { return StringStorageTranscoder; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BooleanStorageTranscoder", function() { return BooleanStorageTranscoder; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NumberStorageTranscoder", function() { return NumberStorageTranscoder; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageTranscoders", function() { return StorageTranscoders; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isStorageAvailable", function() { return isStorageAvailable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WebStorageService", function() { return WebStorageService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * A storage service implementation that is used as a proxy for another storage service. This is used to create storage services with a
+ * different default transcoder.
+ * @template T
+ */
+var  /**
+ * A storage service implementation that is used as a proxy for another storage service. This is used to create storage services with a
+ * different default transcoder.
+ * @template T
+ */
+ProxyStorageService = /** @class */ (function () {
+    /**
+     * Creates a new `ProxyStorageService` instance that uses the specified transcoder by default for read and write operations. Actual
+     * read and writes are delegated to given storage service.
+     *
+     * @param defaultTranscoder Transcoder which is to be used by default for storage read and write operations.
+     * @param subject           Storage service which should handle to actual storage of data.
+     */
+    function ProxyStorageService(defaultTranscoder, subject) {
+        this.defaultTranscoder = defaultTranscoder;
+        this.subject = subject;
+    }
+    /**
+     * Checks whether an entry with the specified key exists in the storage.
+     *
+     * @param   key Identifier of the entry for which its presence in the storage is to be checked.
+     * @returns     `true` if an entry with the specified key exists in the storage, `false` if not.
+     */
+    /**
+     * Checks whether an entry with the specified key exists in the storage.
+     *
+     * @param {?} key Identifier of the entry for which its presence in the storage is to be checked.
+     * @return {?} `true` if an entry with the specified key exists in the storage, `false` if not.
+     */
+    ProxyStorageService.prototype.has = /**
+     * Checks whether an entry with the specified key exists in the storage.
+     *
+     * @param {?} key Identifier of the entry for which its presence in the storage is to be checked.
+     * @return {?} `true` if an entry with the specified key exists in the storage, `false` if not.
+     */
+    function (key) {
+        return this.subject.has(key);
+    };
+    /*
+     * Retrieves the value stored for the entry that is associated with the specified key. The given decoder is used to convert the stored
+     * value to the desired type. If no entry for the specified key exists or if the decoder is unable to decode the stored value, then
+     * `undefined` will be returned.
+     *
+     * @param   key     Identifier of the entry whose value is to be retrieved.
+     * @param   decoder Decoder to use for converting the stored value to the desired return type.
+     * @returns         Value of the entry that is identified by the specified key. In case the entry does not exist or if it cannot be
+     *                  loaded (due to a decoding issue), then `undefined` will be returned by this function.
+     */
+    /*
+         * Retrieves the value stored for the entry that is associated with the specified key. The given decoder is used to convert the stored
+         * value to the desired type. If no entry for the specified key exists or if the decoder is unable to decode the stored value, then
+         * `undefined` will be returned.
+         *
+         * @param   key     Identifier of the entry whose value is to be retrieved.
+         * @param   decoder Decoder to use for converting the stored value to the desired return type.
+         * @returns         Value of the entry that is identified by the specified key. In case the entry does not exist or if it cannot be
+         *                  loaded (due to a decoding issue), then `undefined` will be returned by this function.
+         */
+    /**
+     * @param {?} key
+     * @param {?=} decoder
+     * @return {?}
+     */
+    ProxyStorageService.prototype.get = /*
+         * Retrieves the value stored for the entry that is associated with the specified key. The given decoder is used to convert the stored
+         * value to the desired type. If no entry for the specified key exists or if the decoder is unable to decode the stored value, then
+         * `undefined` will be returned.
+         *
+         * @param   key     Identifier of the entry whose value is to be retrieved.
+         * @param   decoder Decoder to use for converting the stored value to the desired return type.
+         * @returns         Value of the entry that is identified by the specified key. In case the entry does not exist or if it cannot be
+         *                  loaded (due to a decoding issue), then `undefined` will be returned by this function.
+         */
+    /**
+     * @param {?} key
+     * @param {?=} decoder
+     * @return {?}
+     */
+    function (key, decoder) {
+        return this.subject.get(key, decoder || this.defaultTranscoder);
+    };
+    /**
+     * Creates or updates the entry identified by the specified key with the given value. The specified encoder is used to convert the given
+     * value into a format that can be stored by the storage service's underlying storage.
+     *
+     * Storing a value into the storage service will ensure that an equivalent of the value can be read back, i.e. the data and structure of
+     * the value will be the same. It, however, does not necessarily return the same reference.
+     *
+     * @param key     Identifier of the entry which is to be created or updated.
+     * @param value   Value which is to be stored.
+     * @param encoder Encoder used to convert the given value into a format that can be used for storage.
+     */
+    /**
+     * Creates or updates the entry identified by the specified key with the given value. The specified encoder is used to convert the given
+     * value into a format that can be stored by the storage service's underlying storage.
+     *
+     * Storing a value into the storage service will ensure that an equivalent of the value can be read back, i.e. the data and structure of
+     * the value will be the same. It, however, does not necessarily return the same reference.
+     *
+     * @param {?} key     Identifier of the entry which is to be created or updated.
+     * @param {?} value   Value which is to be stored.
+     * @param {?=} encoder Encoder used to convert the given value into a format that can be used for storage.
+     * @return {?}
+     */
+    ProxyStorageService.prototype.set = /**
+     * Creates or updates the entry identified by the specified key with the given value. The specified encoder is used to convert the given
+     * value into a format that can be stored by the storage service's underlying storage.
+     *
+     * Storing a value into the storage service will ensure that an equivalent of the value can be read back, i.e. the data and structure of
+     * the value will be the same. It, however, does not necessarily return the same reference.
+     *
+     * @param {?} key     Identifier of the entry which is to be created or updated.
+     * @param {?} value   Value which is to be stored.
+     * @param {?=} encoder Encoder used to convert the given value into a format that can be used for storage.
+     * @return {?}
+     */
+    function (key, value, encoder) {
+        this.subject.set(key, value, encoder || this.defaultTranscoder);
+    };
+    /**
+     * Removes the entry that is identified by the specified key. Attempting to remove an entry for an unknown key will have no effect.
+     * Attempting to retrieve an entry via the `get` method after it has been removed will result in `undefined`.
+     *
+     * @param key Identifier of the entry which is to be removed.
+     */
+    /**
+     * Removes the entry that is identified by the specified key. Attempting to remove an entry for an unknown key will have no effect.
+     * Attempting to retrieve an entry via the `get` method after it has been removed will result in `undefined`.
+     *
+     * @param {?} key Identifier of the entry which is to be removed.
+     * @return {?}
+     */
+    ProxyStorageService.prototype.remove = /**
+     * Removes the entry that is identified by the specified key. Attempting to remove an entry for an unknown key will have no effect.
+     * Attempting to retrieve an entry via the `get` method after it has been removed will result in `undefined`.
+     *
+     * @param {?} key Identifier of the entry which is to be removed.
+     * @return {?}
+     */
+    function (key) {
+        this.subject.remove(key);
+    };
+    /**
+     * Clears the storage by removing all entries. Subsequent `get(x)` calls for a key *x* will return `undefined`, until a new value is set
+     * for key *x*.
+     */
+    /**
+     * Clears the storage by removing all entries. Subsequent `get(x)` calls for a key *x* will return `undefined`, until a new value is set
+     * for key *x*.
+     * @return {?}
+     */
+    ProxyStorageService.prototype.clear = /**
+     * Clears the storage by removing all entries. Subsequent `get(x)` calls for a key *x* will return `undefined`, until a new value is set
+     * for key *x*.
+     * @return {?}
+     */
+    function () {
+        this.subject.clear();
+    };
+    /**
+     * Creates a new storage service that uses the specified transcoder by default for read and write operations. The new storage service
+     * uses the storage service on which this function is invoked as underlying storage. Both storage services will thus be able to access
+     * the same data.
+     *
+     * The default transcoder will not be changed for the storage service on which this function is invoked.
+     *
+     * @param   transcoder Transcoder that should be used by default for read and write operations by the new storage service.
+     * @returns            A new storage service that uses the specified transcoder by default.
+     */
+    /**
+     * Creates a new storage service that uses the specified transcoder by default for read and write operations. The new storage service
+     * uses the storage service on which this function is invoked as underlying storage. Both storage services will thus be able to access
+     * the same data.
+     *
+     * The default transcoder will not be changed for the storage service on which this function is invoked.
+     *
+     * @template X
+     * @param {?} transcoder Transcoder that should be used by default for read and write operations by the new storage service.
+     * @return {?} A new storage service that uses the specified transcoder by default.
+     */
+    ProxyStorageService.prototype.withDefaultTranscoder = /**
+     * Creates a new storage service that uses the specified transcoder by default for read and write operations. The new storage service
+     * uses the storage service on which this function is invoked as underlying storage. Both storage services will thus be able to access
+     * the same data.
+     *
+     * The default transcoder will not be changed for the storage service on which this function is invoked.
+     *
+     * @template X
+     * @param {?} transcoder Transcoder that should be used by default for read and write operations by the new storage service.
+     * @return {?} A new storage service that uses the specified transcoder by default.
+     */
+    function (transcoder) {
+        return new ProxyStorageService(transcoder, this.subject);
+    };
+    return ProxyStorageService;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Base implementation for storage services.
+ * @abstract
+ * @template T
+ */
+var  /**
+ * Base implementation for storage services.
+ * @abstract
+ * @template T
+ */
+BaseStorageService = /** @class */ (function () {
+    /**
+     * Creates a new `BaseStorageService` that uses the specified transcoder by default for read and write operations.
+     *
+     * @param defaultTranscoder Transcoder which is to be used by default for storage read and write operations.
+     */
+    function BaseStorageService(defaultTranscoder) {
+        this.defaultTranscoder = defaultTranscoder;
+    }
+    /**
+     * Retrieves the value stored for the entry that is associated with the specified key. The given decoder is used to convert the stored
+     * value to the desired type. If no entry for the specified key exists or if the decoder is unable to decode the stored value, then
+     * `undefined` will be returned.
+     *
+     * @param   key     Identifier of the entry whose value is to be retrieved.
+     * @param   decoder Decoder to use for converting the stored value to the desired return type.
+     * @returns         Value of the entry that is identified by the specified key. In case the entry does not exist or if it cannot be
+     *                  loaded (due to a decoding issue), then `undefined` will be returned by this function.
+     */
+    /**
+     * Retrieves the value stored for the entry that is associated with the specified key. The given decoder is used to convert the stored
+     * value to the desired type. If no entry for the specified key exists or if the decoder is unable to decode the stored value, then
+     * `undefined` will be returned.
+     *
+     * @param {?} key     Identifier of the entry whose value is to be retrieved.
+     * @param {?=} decoder Decoder to use for converting the stored value to the desired return type.
+     * @return {?} Value of the entry that is identified by the specified key. In case the entry does not exist or if it cannot be
+     *                  loaded (due to a decoding issue), then `undefined` will be returned by this function.
+     */
+    BaseStorageService.prototype.get = /**
+     * Retrieves the value stored for the entry that is associated with the specified key. The given decoder is used to convert the stored
+     * value to the desired type. If no entry for the specified key exists or if the decoder is unable to decode the stored value, then
+     * `undefined` will be returned.
+     *
+     * @param {?} key     Identifier of the entry whose value is to be retrieved.
+     * @param {?=} decoder Decoder to use for converting the stored value to the desired return type.
+     * @return {?} Value of the entry that is identified by the specified key. In case the entry does not exist or if it cannot be
+     *                  loaded (due to a decoding issue), then `undefined` will be returned by this function.
+     */
+    function (key, decoder) {
+        /** @type {?} */
+        var value = this.getItem(key);
+        return value !== undefined ? (decoder || this.defaultTranscoder).decode(value) : undefined;
+    };
+    /**
+     * Creates or updates the entry identified by the specified key with the given value. The specified encoder is used to convert the given
+     * value into a format that can be stored by the storage service's underlying storage.
+     *
+     * Storing a value into the storage service will ensure that an equivalent of the value can be read back, i.e. the data and structure of
+     * the value will be the same. It, however, does not necessarily return the same reference.
+     *
+     * @param key     Identifier of the entry which is to be created or updated.
+     * @param value   Value which is to be stored.
+     * @param encoder Encoder used to convert the given value into a format that can be used for storage.
+     */
+    /**
+     * Creates or updates the entry identified by the specified key with the given value. The specified encoder is used to convert the given
+     * value into a format that can be stored by the storage service's underlying storage.
+     *
+     * Storing a value into the storage service will ensure that an equivalent of the value can be read back, i.e. the data and structure of
+     * the value will be the same. It, however, does not necessarily return the same reference.
+     *
+     * @param {?} key     Identifier of the entry which is to be created or updated.
+     * @param {?} value   Value which is to be stored.
+     * @param {?=} encoder Encoder used to convert the given value into a format that can be used for storage.
+     * @return {?}
+     */
+    BaseStorageService.prototype.set = /**
+     * Creates or updates the entry identified by the specified key with the given value. The specified encoder is used to convert the given
+     * value into a format that can be stored by the storage service's underlying storage.
+     *
+     * Storing a value into the storage service will ensure that an equivalent of the value can be read back, i.e. the data and structure of
+     * the value will be the same. It, however, does not necessarily return the same reference.
+     *
+     * @param {?} key     Identifier of the entry which is to be created or updated.
+     * @param {?} value   Value which is to be stored.
+     * @param {?=} encoder Encoder used to convert the given value into a format that can be used for storage.
+     * @return {?}
+     */
+    function (key, value, encoder) {
+        this.setItem(key, (encoder || this.defaultTranscoder).encode(value));
+    };
+    /**
+     * Creates a new storage service that uses the specified transcoder by default for read and write operations. The new storage service
+     * uses the storage service on which this function is invoked as underlying storage. Both storage services will thus be able to access
+     * the same data.
+     *
+     * The default transcoder will not be changed for the storage service on which this function is invoked.
+     *
+     * @param   transcoder Transcoder that should be used by default for read and write operations by the new storage service.
+     * @returns            A new storage service that uses the specified transcoder by default.
+     */
+    /**
+     * Creates a new storage service that uses the specified transcoder by default for read and write operations. The new storage service
+     * uses the storage service on which this function is invoked as underlying storage. Both storage services will thus be able to access
+     * the same data.
+     *
+     * The default transcoder will not be changed for the storage service on which this function is invoked.
+     *
+     * @template X
+     * @param {?} transcoder Transcoder that should be used by default for read and write operations by the new storage service.
+     * @return {?} A new storage service that uses the specified transcoder by default.
+     */
+    BaseStorageService.prototype.withDefaultTranscoder = /**
+     * Creates a new storage service that uses the specified transcoder by default for read and write operations. The new storage service
+     * uses the storage service on which this function is invoked as underlying storage. Both storage services will thus be able to access
+     * the same data.
+     *
+     * The default transcoder will not be changed for the storage service on which this function is invoked.
+     *
+     * @template X
+     * @param {?} transcoder Transcoder that should be used by default for read and write operations by the new storage service.
+     * @return {?} A new storage service that uses the specified transcoder by default.
+     */
+    function (transcoder) {
+        return new ProxyStorageService(transcoder, this);
+    };
+    return BaseStorageService;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Transcoder that encodes values as JSON strings.
+ */
+var  /**
+ * Transcoder that encodes values as JSON strings.
+ */
+JsonStorageTranscoder = /** @class */ (function () {
+    function JsonStorageTranscoder() {
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    JsonStorageTranscoder.prototype.encode = /**
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        return JSON.stringify(value);
+    };
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    JsonStorageTranscoder.prototype.decode = /**
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        try {
+            return JSON.parse(value);
+        }
+        catch (error) {
+            return undefined;
+        }
+    };
+    return JsonStorageTranscoder;
+}());
+/**
+ * Transcoder that encodes/decodes strings **as is**, i.e. values are not modified in any way.
+ */
+var  /**
+ * Transcoder that encodes/decodes strings **as is**, i.e. values are not modified in any way.
+ */
+StringStorageTranscoder = /** @class */ (function () {
+    function StringStorageTranscoder() {
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    StringStorageTranscoder.prototype.encode = /**
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        return value;
+    };
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    StringStorageTranscoder.prototype.decode = /**
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        return value;
+    };
+    return StringStorageTranscoder;
+}());
+/**
+ * Transcoder that encodes/decodes `boolean` values.
+ */
+var  /**
+ * Transcoder that encodes/decodes `boolean` values.
+ */
+BooleanStorageTranscoder = /** @class */ (function () {
+    function BooleanStorageTranscoder() {
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    BooleanStorageTranscoder.prototype.encode = /**
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        return value.toString();
+    };
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    BooleanStorageTranscoder.prototype.decode = /**
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        if (value === 'true') {
+            return true;
+        }
+        if (value === 'false') {
+            return false;
+        }
+        return undefined;
+    };
+    return BooleanStorageTranscoder;
+}());
+/**
+ * Transcoder that encodes/decodes `number` values.
+ */
+var  /**
+ * Transcoder that encodes/decodes `number` values.
+ */
+NumberStorageTranscoder = /** @class */ (function () {
+    function NumberStorageTranscoder() {
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    NumberStorageTranscoder.prototype.encode = /**
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        return value.toString();
+    };
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    NumberStorageTranscoder.prototype.decode = /**
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        /** @type {?} */
+        var parsedNumber = Number(value);
+        return Number.isFinite(parsedNumber) ? parsedNumber : undefined;
+    };
+    return NumberStorageTranscoder;
+}());
+/**
+ * A set of storage transcoders.
+ * @type {?}
+ */
+var StorageTranscoders = {
+    /**
+     * Transcoder that encodes values as JSON strings.
+     */
+    JSON: (/** @type {?} */ (new JsonStorageTranscoder())),
+    /**
+     * Transcoder that encodes/decodes strings **as is**, i.e. values are not modified in any way.
+     */
+    STRING: (/** @type {?} */ (new StringStorageTranscoder())),
+    /**
+     * Transcoder that encodes/decodes `boolean` values.
+     */
+    BOOLEAN: (/** @type {?} */ (new BooleanStorageTranscoder())),
+    /**
+     * Transcoder that encodes/decodes `number` values.
+     */
+    NUMBER: (/** @type {?} */ (new NumberStorageTranscoder()))
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * A volatile `StorageService` implementation. This service guarantees that data stored will remain available as long as the application
+ * instance is active. After the application is terminated all data will be lost.
+ */
+var  /**
+ * A volatile `StorageService` implementation. This service guarantees that data stored will remain available as long as the application
+ * instance is active. After the application is terminated all data will be lost.
+ */
+InMemoryStorageService = /** @class */ (function (_super) {
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(InMemoryStorageService, _super);
+    /**
+     * Creates a new `InMemoryStorageService` instance.
+     */
+    function InMemoryStorageService() {
+        var _this = _super.call(this, StorageTranscoders.JSON) || this;
+        /**
+         * A map that serves as the underlying backing storage for this service.
+         */
+        _this.storage = new Map();
+        return _this;
+    }
+    /**
+     * Checks whether an entry with the specified key exists in the storage.
+     *
+     * @param   key Identifier of the entry for which its presence in the storage is to be checked.
+     * @returns     `true` if an entry with the specified key exists in the storage, `false` if not.
+     */
+    /**
+     * Checks whether an entry with the specified key exists in the storage.
+     *
+     * @param {?} key Identifier of the entry for which its presence in the storage is to be checked.
+     * @return {?} `true` if an entry with the specified key exists in the storage, `false` if not.
+     */
+    InMemoryStorageService.prototype.has = /**
+     * Checks whether an entry with the specified key exists in the storage.
+     *
+     * @param {?} key Identifier of the entry for which its presence in the storage is to be checked.
+     * @return {?} `true` if an entry with the specified key exists in the storage, `false` if not.
+     */
+    function (key) {
+        return this.storage.has(key);
+    };
+    /**
+     * Removes the entry that is identified by the specified key. Attempting to remove an entry for an unknown key will have no effect.
+     * Attempting to retrieve an entry via the `get` method after it has been removed will result in `undefined`.
+     *
+     * @param key Identifier of the entry which is to be removed.
+     */
+    /**
+     * Removes the entry that is identified by the specified key. Attempting to remove an entry for an unknown key will have no effect.
+     * Attempting to retrieve an entry via the `get` method after it has been removed will result in `undefined`.
+     *
+     * @param {?} key Identifier of the entry which is to be removed.
+     * @return {?}
+     */
+    InMemoryStorageService.prototype.remove = /**
+     * Removes the entry that is identified by the specified key. Attempting to remove an entry for an unknown key will have no effect.
+     * Attempting to retrieve an entry via the `get` method after it has been removed will result in `undefined`.
+     *
+     * @param {?} key Identifier of the entry which is to be removed.
+     * @return {?}
+     */
+    function (key) {
+        this.storage.delete(key);
+    };
+    /**
+     * Clears the storage by removing all entries. Subsequent `get(x)` calls for a key *x* will return `undefined`, until a new value is set
+     * for key *x*.
+     */
+    /**
+     * Clears the storage by removing all entries. Subsequent `get(x)` calls for a key *x* will return `undefined`, until a new value is set
+     * for key *x*.
+     * @return {?}
+     */
+    InMemoryStorageService.prototype.clear = /**
+     * Clears the storage by removing all entries. Subsequent `get(x)` calls for a key *x* will return `undefined`, until a new value is set
+     * for key *x*.
+     * @return {?}
+     */
+    function () {
+        this.storage.clear();
+    };
+    /**
+     * Performs the actual retrieval of a value from storage.
+     *
+     * @param   key Identifier of the entry whose value is to be retrieved.
+     * @returns     The value that is stored for the specified entry or `undefined` if no entry exists for the specified key.
+     */
+    /**
+     * Performs the actual retrieval of a value from storage.
+     *
+     * @protected
+     * @param {?} key Identifier of the entry whose value is to be retrieved.
+     * @return {?} The value that is stored for the specified entry or `undefined` if no entry exists for the specified key.
+     */
+    InMemoryStorageService.prototype.getItem = /**
+     * Performs the actual retrieval of a value from storage.
+     *
+     * @protected
+     * @param {?} key Identifier of the entry whose value is to be retrieved.
+     * @return {?} The value that is stored for the specified entry or `undefined` if no entry exists for the specified key.
+     */
+    function (key) {
+        if (!this.storage.has(key)) {
+            return undefined;
+        }
+        return (/** @type {?} */ (this.storage.get(key)));
+    };
+    /**
+     * Stores the provided value using specified key in the storage.
+     *
+     * @param key   Identifier of the entry for which the value is to be stored.
+     * @param value The value that is to be stored.
+     */
+    /**
+     * Stores the provided value using specified key in the storage.
+     *
+     * @protected
+     * @param {?} key   Identifier of the entry for which the value is to be stored.
+     * @param {?} value The value that is to be stored.
+     * @return {?}
+     */
+    InMemoryStorageService.prototype.setItem = /**
+     * Stores the provided value using specified key in the storage.
+     *
+     * @protected
+     * @param {?} key   Identifier of the entry for which the value is to be stored.
+     * @param {?} value The value that is to be stored.
+     * @return {?}
+     */
+    function (key, value) {
+        this.storage.set(key, value);
+    };
+    return InMemoryStorageService;
+}(BaseStorageService));
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * An implementation of `StorageService` interface that uses an underlying (web) `Storage` object, such as `localStorage` and
+ * `sessionStorage`, as backing data store. This class basically wraps the `Storage` object so it can be accessed through the
+ * `StorageService` interface.
+ */
+var  /**
+ * An implementation of `StorageService` interface that uses an underlying (web) `Storage` object, such as `localStorage` and
+ * `sessionStorage`, as backing data store. This class basically wraps the `Storage` object so it can be accessed through the
+ * `StorageService` interface.
+ */
+WebStorageService = /** @class */ (function (_super) {
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(WebStorageService, _super);
+    /**
+     * Creates a new `WebStorageService` instance that uses the specified (web) storage object as underlying backing storage.
+     *
+     * @param storage Storage object which is to be wrapped in a class that implements the `StorageService` interface.
+     */
+    function WebStorageService(storage) {
+        var _this = _super.call(this, StorageTranscoders.JSON) || this;
+        _this.storage = storage;
+        return _this;
+    }
+    /**
+     * Checks whether an entry with the specified key exists in the storage.
+     *
+     * @param   key Identifier of the entry for which its presence in the storage is to be checked.
+     * @returns     `true` if an entry with the specified key exists in the storage, `false` if not.
+     */
+    /**
+     * Checks whether an entry with the specified key exists in the storage.
+     *
+     * @param {?} key Identifier of the entry for which its presence in the storage is to be checked.
+     * @return {?} `true` if an entry with the specified key exists in the storage, `false` if not.
+     */
+    WebStorageService.prototype.has = /**
+     * Checks whether an entry with the specified key exists in the storage.
+     *
+     * @param {?} key Identifier of the entry for which its presence in the storage is to be checked.
+     * @return {?} `true` if an entry with the specified key exists in the storage, `false` if not.
+     */
+    function (key) {
+        return this.storage.getItem(key) !== null;
+    };
+    /**
+     * Removes the entry that is identified by the specified key. Attempting to remove an entry for an unknown key will have no effect.
+     * Attempting to retrieve an entry via the `get` method after it has been removed will result in `undefined`.
+     *
+     * @param key Identifier of the entry which is to be removed.
+     */
+    /**
+     * Removes the entry that is identified by the specified key. Attempting to remove an entry for an unknown key will have no effect.
+     * Attempting to retrieve an entry via the `get` method after it has been removed will result in `undefined`.
+     *
+     * @param {?} key Identifier of the entry which is to be removed.
+     * @return {?}
+     */
+    WebStorageService.prototype.remove = /**
+     * Removes the entry that is identified by the specified key. Attempting to remove an entry for an unknown key will have no effect.
+     * Attempting to retrieve an entry via the `get` method after it has been removed will result in `undefined`.
+     *
+     * @param {?} key Identifier of the entry which is to be removed.
+     * @return {?}
+     */
+    function (key) {
+        this.storage.removeItem(key);
+    };
+    /**
+     * Clears the storage by removing all entries. Subsequent `get(x)` calls for a key *x* will return `undefined`, until a new value is set
+     * for key *x*.
+     */
+    /**
+     * Clears the storage by removing all entries. Subsequent `get(x)` calls for a key *x* will return `undefined`, until a new value is set
+     * for key *x*.
+     * @return {?}
+     */
+    WebStorageService.prototype.clear = /**
+     * Clears the storage by removing all entries. Subsequent `get(x)` calls for a key *x* will return `undefined`, until a new value is set
+     * for key *x*.
+     * @return {?}
+     */
+    function () {
+        this.storage.clear();
+    };
+    /**
+     * Performs the actual retrieval of a value from storage.
+     *
+     * @param   key Identifier of the entry whose value is to be retrieved.
+     * @returns     The value that is stored for the specified entry or `undefined` if no entry exists for the specified key.
+     */
+    /**
+     * Performs the actual retrieval of a value from storage.
+     *
+     * @protected
+     * @param {?} key Identifier of the entry whose value is to be retrieved.
+     * @return {?} The value that is stored for the specified entry or `undefined` if no entry exists for the specified key.
+     */
+    WebStorageService.prototype.getItem = /**
+     * Performs the actual retrieval of a value from storage.
+     *
+     * @protected
+     * @param {?} key Identifier of the entry whose value is to be retrieved.
+     * @return {?} The value that is stored for the specified entry or `undefined` if no entry exists for the specified key.
+     */
+    function (key) {
+        /** @type {?} */
+        var value = this.storage.getItem(key);
+        return value !== null ? value : undefined;
+    };
+    /**
+     * Stores the provided value using specified key in the storage.
+     *
+     * @param key   Identifier of the entry for which the value is to be stored.
+     * @param value The value that is to be stored.
+     */
+    /**
+     * Stores the provided value using specified key in the storage.
+     *
+     * @protected
+     * @param {?} key   Identifier of the entry for which the value is to be stored.
+     * @param {?} value The value that is to be stored.
+     * @return {?}
+     */
+    WebStorageService.prototype.setItem = /**
+     * Stores the provided value using specified key in the storage.
+     *
+     * @protected
+     * @param {?} key   Identifier of the entry for which the value is to be stored.
+     * @param {?} value The value that is to be stored.
+     * @return {?}
+     */
+    function (key, value) {
+        return this.storage.setItem(key, value);
+    };
+    return WebStorageService;
+}(BaseStorageService));
+/**
+ * Checks whether the specified (web) storage is available and functional. This might not be the case for older browsers. However even
+ * certain browsers that do support the web storage API can, under some circumstances, have non functional storage objects. For example,
+ * Safari is known to have `localStorage` and `sessionStorage` throw exceptions in private mode.
+ *
+ * @param {?} storage Storage object which is to be tested for availability.
+ * @return {?} `true` if the specified storage can be used, `false` if not.
+ */
+function isStorageAvailable(storage) {
+    // Check if storage is available.
+    if (!storage) {
+        return false;
+    }
+    // Check if the storage can actually be accessed.
+    try {
+        /** @type {?} */
+        var now = Date.now();
+        /** @type {?} */
+        var testItemKey = "storage-test-entry-" + now;
+        /** @type {?} */
+        var testItemValue = "storage-test-value-" + now;
+        storage.setItem(testItemKey, testItemValue);
+        /** @type {?} */
+        var retrievedItemValue = storage.getItem(testItemKey);
+        storage.removeItem(testItemKey);
+        return retrievedItemValue === testItemValue;
+    }
+    catch (error) {
+        return false;
+    }
+}
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @return {?}
+ */
+function sessionStorageFactory() {
+    try {
+        if ((/** @type {?} */ (typeof sessionStorage)) !== 'undefined' && isStorageAvailable(sessionStorage)) {
+            return new WebStorageService(sessionStorage);
+        }
+    }
+    catch (_a) { }
+    return new InMemoryStorageService();
+}
+/**
+ * Injection token for the session storage service.
+ * @type {?}
+ */
+var SESSION_STORAGE = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]('SESSION_STORAGE', { providedIn: 'root', factory: sessionStorageFactory });
+/**
+ * @return {?}
+ */
+function localStorageFactory() {
+    try {
+        if ((/** @type {?} */ (typeof localStorage)) !== 'undefined' && isStorageAvailable(localStorage)) {
+            return new WebStorageService(localStorage);
+        }
+    }
+    catch (_a) { }
+    return new InMemoryStorageService();
+}
+/**
+ * Injection token for the local storage service.
+ * @type {?}
+ */
+var LOCAL_STORAGE = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]('LOCAL_STORAGE', { providedIn: 'root', factory: localStorageFactory });
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @deprecated You no longer need to import the `StorageServiceModule`, since the `SESSION_STORAGE` and `LOCAL_STORAGE` injection tokens are
+ * now 'self providing' in the root injector.
+ */
+var StorageServiceModule = /** @class */ (function () {
+    function StorageServiceModule() {
+    }
+    StorageServiceModule.decorators = [
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"] }
+    ];
+    return StorageServiceModule;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+
+
+//# sourceMappingURL=ngx-webstorage-service.js.map
+
+/***/ }),
+
+/***/ "./src/app/shared/web-storage.service.ts":
+/*!***********************************************!*\
+  !*** ./src/app/shared/web-storage.service.ts ***!
+  \***********************************************/
+/*! exports provided: WebStorageService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WebStorageService", function() { return WebStorageService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-webstorage-service */ "./node_modules/ngx-webstorage-service/fesm5/ngx-webstorage-service.js");
+
+
+
+var WIZARD_FORM_KEY = 'wizard-form-data';
+var WIZARD_STEP_KEY = 'wizard-step-data';
+var WebStorageService = /** @class */ (function () {
+    function WebStorageService(storage) {
+        this.storage = storage;
+    }
+    WebStorageService.prototype.saveQuestionToStorage = function (formId, questionId, questionValue) {
+        var _a;
+        // Get all saved form data from storage or set as an empty object
+        var allForms = this.storage.get(WIZARD_FORM_KEY) || {};
+        // Add form data to object
+        allForms[formId] = Object.assign(allForms[formId] || {}, (_a = {}, _a[questionId] = questionValue, _a));
+        // Save data to storage
+        this.storage.set(WIZARD_FORM_KEY, allForms);
+    };
+    WebStorageService.prototype.saveFormToStorage = function (formId, formValue) {
+        var allForms = this.storage.get(WIZARD_FORM_KEY) || {};
+        allForms[formId] = Object.assign(allForms[formId] || {}, formValue);
+        this.storage.set(WIZARD_FORM_KEY, allForms);
+    };
+    WebStorageService.prototype.getAllForms = function () {
+        var allForms = this.storage.get(WIZARD_FORM_KEY) || {};
+        return allForms;
+    };
+    WebStorageService.prototype.getSingleForm = function (formId) {
+        var allForms = this.storage.get(WIZARD_FORM_KEY) || {};
+        return allForms[formId] || null;
+    };
+    WebStorageService.prototype.getSingleQuestion = function (formId, questionId) {
+        var allForms = this.storage.get(WIZARD_FORM_KEY) || {};
+        var value = (allForms[formId] || {})[questionId];
+        return value || null;
+    };
+    WebStorageService.prototype.saveStepToStorage = function (stepNumber) {
+        this.storage.set(WIZARD_STEP_KEY, stepNumber);
+    };
+    WebStorageService.prototype.getStepNumber = function () {
+        return this.storage.get(WIZARD_STEP_KEY);
+    };
+    WebStorageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_2__["SESSION_STORAGE"])),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object])
+    ], WebStorageService);
+    return WebStorageService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/wizard/address-verification/address-verification.component.html":
 /*!*********************************************************************************!*\
   !*** ./src/app/wizard/address-verification/address-verification.component.html ***!
@@ -5364,6 +6372,218 @@ var AddressVerificationComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_2__["BsModalRef"]])
     ], AddressVerificationComponent);
     return AddressVerificationComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/wizard/configuration/configuration.constants.ts":
+/*!*****************************************************************!*\
+  !*** ./src/app/wizard/configuration/configuration.constants.ts ***!
+  \*****************************************************************/
+/*! exports provided: step1Configuration, step2Configuration, step3Configuration */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "step1Configuration", function() { return step1Configuration; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "step2Configuration", function() { return step2Configuration; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "step3Configuration", function() { return step3Configuration; });
+var step1Configuration = {
+    "id": "BUSINESS_REGISTRATION",
+    "type": "fixedGroup",
+    "heading": "Do you already have a business registration with the city of Chandler?",
+    "subheading": "Select \"yes\" or \"no\" then click continue.",
+    "questions": [
+        {
+            "id": "ALREADY_REGISTERED",
+            "controlType": "radio",
+            "customStyle": "checkbox",
+            "options": [
+                {
+                    "id": "isRegistered",
+                    "value": "Yes",
+                    "label": "Yes, I already have business registration with the City of Chandler"
+                },
+                {
+                    "id": "isNotRegistered",
+                    "value": "No",
+                    "label": "No, I do not have a business registration with the City of Chandler"
+                }
+            ],
+            "validation": {
+                "required": true
+            },
+            "dependencies": [
+                "APPLICANT_BASIC_A",
+                "APPLICANT_BASIC_B",
+                "ENTITY_INFO_A",
+                "ENTITY_INFO_B",
+                "ENTITY_INFO_C",
+                "ENTITY_INFO_D",
+                "ENTITY_INFO_E",
+                "OWNER_INFO_A",
+                "OWNER_INFO_B"
+            ]
+        }
+    ]
+};
+var step2Configuration = {
+    "id": "BUSINESS_ADDRESS",
+    "type": "fixedGroup",
+    "heading": "What is your business address?",
+    "subheading": "Complete the form and then click continue. <em class=\"text-danger\">* Required fields</em>",
+    "questions": [
+        {
+            "id": "BUSINESS_ADDR1",
+            "controlType": "textbox",
+            "type": "text",
+            "placeholder": "Enter your business address",
+            "order": 1,
+            "validation": {
+                "required": true
+            }
+        },
+        {
+            "id": "BUSINESS_ADDR2",
+            "controlType": "textbox",
+            "type": "text",
+            "placeholder": "Suite #",
+            "order": 2
+        },
+        {
+            "id": "BUSINESS_CITY",
+            "controlType": "textbox",
+            "type": "text",
+            "placeholder": "City",
+            "order": 3,
+            "columns": 6,
+            "validation": {
+                "required": true
+            }
+        },
+        {
+            "id": "BUSINESS_STATE",
+            "controlType": "textbox",
+            "type": "text",
+            "placeholder": "State",
+            "columns": 3,
+            "order": 4,
+            "validation": {
+                "required": true
+            }
+        },
+        {
+            "id": "BUSINESS_ZIP",
+            "controlType": "textbox",
+            "type": "text",
+            "placeholder": "Zip",
+            "columns": 3,
+            "order": 5,
+            "validation": {
+                "required": true
+            }
+        }
+    ]
+};
+var step3Configuration = {
+    "id": "NOT_IN_CHANDLER",
+    "type": "fixedGroup",
+    "heading": "It looks like your address is not within the City limits and you may not need a business registration.",
+    "subheading": "Are any of the following true in regard to your business?",
+    "questions": [
+        {
+            "id": "NONPROFIT_SOLICITOR",
+            "controlType": "checkbox",
+            "value": false,
+            "label": "Are you a non-profit solicitor?",
+            "customStyle": "switch",
+            "validation": {
+                "required": true
+            },
+        },
+        {
+            "id": "SPECIAL_EVENT_LIQUOR",
+            "controlType": "checkbox",
+            "value": false,
+            "label": "Are you operating a special event serving liquor?",
+            "customStyle": "switch",
+            "validation": {
+                "required": true
+            },
+        },
+        {
+            "id": "PEDDLER",
+            "controlType": "checkbox",
+            "value": false,
+            "label": "Are you a peddler?",
+            "customStyle": "switch",
+            "validation": {
+                "required": true
+            },
+        },
+        {
+            "id": "REGISTRATION_PRIVILEDGES",
+            "controlType": "checkbox",
+            "value": false,
+            "label": "Do you still want a license to take advantage of registration privileges?",
+            "customStyle": "switch",
+            "validation": {
+                "required": true
+            },
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/app/wizard/configuration/configuration.service.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/wizard/configuration/configuration.service.ts ***!
+  \***************************************************************/
+/*! exports provided: ConfigurationService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfigurationService", function() { return ConfigurationService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
+
+
+
+
+var ConfigurationService = /** @class */ (function () {
+    function ConfigurationService(http) {
+        this.http = http;
+        this.configUrl = './assets/wizard-config.mock-data.json';
+    }
+    ConfigurationService.prototype.get = function () {
+        return this.http.get(this.configUrl)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError('get')));
+    };
+    ConfigurationService.prototype.handleError = function (operation, result) {
+        if (operation === void 0) { operation = 'operation'; }
+        return function (error) {
+            // Log error to console
+            console.error(error);
+            // Let the app keep running by returning an empty result.
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(result);
+        };
+    };
+    ConfigurationService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], ConfigurationService);
+    return ConfigurationService;
 }());
 
 
@@ -5421,7 +6641,7 @@ var GoodbyeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"coc-wizard-progress-bar\">\n  <div class=\"coc-wizard-progress-bar-track\"></div>\n  <div class=\"coc-wizard-progress-bar-indicator\" [ngStyle]=\"{'left': progress + '%'}\">\n    <div class=\"coc-wizard-progress-bar-percent\">{{progress}}</div>\n    <div class=\"coc-wizard-progress-bar-label\">Done</div>\n  </div>\n</div>"
+module.exports = "<div class=\"coc-wizard-progress-bar\">\n  <div class=\"coc-progress-bar-track\"></div>\n  <div class=\"coc-progress-bar-indicator\" [ngStyle]=\"{'left': progress + '%'}\">\n    <div class=\"coc-progress-bar-percent\">{{progress}}</div>\n    <div class=\"coc-progress-bar-label\">Done</div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -5519,9 +6739,7 @@ var CheckboxQuestion = /** @class */ (function (_super) {
         if (options === void 0) { options = {}; }
         var _this = _super.call(this, options) || this;
         _this.controlType = 'checkbox';
-        _this.customStyle = options['customStyle'] === 'switch' ?
-            'custom-switch coc-custom-control-right mt-1' :
-            'custom-checkbox mt-2';
+        _this.customStyle = options['customStyle'] || '';
         return _this;
     }
     return CheckboxQuestion;
@@ -5665,7 +6883,7 @@ var TextboxQuestion = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div [formGroup]=\"form\" [ngSwitch]=\"question.controlType\">\n  <div\n    *ngSwitchCase=\"'textbox'\"\n    class=\"form-group\"\n    [class.coc-required]=\"question.validation.required\">\n    <label\n      *ngIf=\"question.label !== ''\"\n      [attr.for]=\"question.label\">\n      {{question.label}}\n    </label>\n    <input\n      [type]=\"question.type\"\n      [id]=\"question.id\"\n      [formControlName]=\"question.id\"\n      [placeholder]=\"question.placeholder\"\n      class=\"form-control mt-1\">\n  </div>\n\n  <div\n    *ngSwitchCase=\"'textarea'\"\n    class=\"form-group\"\n    [class.coc-required]=\"question.validation.required\">\n    <label\n      *ngIf=\"question.label !== ''\"\n      [attr.for]=\"question.label\">\n      {{question.label}}\n    </label>\n    <textarea\n      [id]=\"question.id\"\n      [formControlName]=\"question.id\"\n      [placeholder]=\"question.placeholder\"\n      [rows]=\"question.rows\"\n      class=\"form-control mt-1\">\n    </textarea>\n  </div>\n\n  <div\n    *ngSwitchCase=\"'checkbox'\"\n    class=\"custom-control\"\n    [ngClass]=\"question.customStyle\"\n    [class.coc-required]=\"question.validation.required\">\n    <input\n      type=\"checkbox\"\n      [id]=\"question.id\"\n      [formControlName]=\"question.id\"\n      class=\"custom-control-input mt-1\">\n    <label\n      class=\"custom-control-label\"\n      [attr.for]=\"question.id\">\n      {{question.label}}\n    </label>\n  </div>\n\n  <div *ngSwitchCase=\"'radio'\" class=\"coc-custom-radio-group\">\n    <label *ngIf=\"question.label !== ''\">{{question.label}}</label>\n    <div\n      *ngFor=\"let option of question.options\"\n      class=\"custom-control\"\n      [ngClass]=\"question.customStyle\"\n      [class.coc-required]=\"question.validation.required\">\n      <input\n        type=\"radio\"\n        [id]=\"option.id\"\n        [value]=\"option.value\"\n        [formControlName]=\"question.id\"\n        class=\"custom-control-input mt-1\">\n      <label\n        class=\"custom-control-label\"\n        [attr.for]=\"option.id\">\n        {{option.label}}\n      </label>\n    </div>\n  </div>\n\n  <div\n    *ngSwitchCase=\"'dropdown'\"\n    class=\"form-group\"\n    [class.coc-required]=\"question.validation.required\">\n    <label\n      *ngIf=\"question.label !== ''\"\n      [attr.for]=\"question.label\">\n      {{question.label}}\n    </label>\n    <select\n      class=\"custom-select\"\n      [id]=\"question.id\"\n      [formControlName]=\"question.id\"\n      [attr.multiple]=\"question.multiple\">\n      <option\n        *ngFor=\"let option of question.options\"\n        [value]=\"option.value\">\n        {{option.displayValue}}\n      </option>\n    </select>\n  </div>\n</div>"
+module.exports = "\n<div [formGroup]=\"form\" [ngSwitch]=\"question.controlType\">\n  <div\n    *ngSwitchCase=\"'textbox'\"\n    class=\"form-group\"\n    [class.coc-required]=\"question.validation.required\">\n    <label\n      *ngIf=\"question.label !== '' && showLabel\"\n      [attr.for]=\"question.label\">\n      {{question.label}}\n    </label>\n    <input\n      [type]=\"question.type\"\n      [id]=\"question.id\"\n      [formControlName]=\"question.id\"\n      [placeholder]=\"question.placeholder\"\n      (blur)=\"saveToWebStorage()\"\n      class=\"form-control mt-1\">\n  </div>\n\n  <div\n    *ngSwitchCase=\"'textarea'\"\n    class=\"form-group\"\n    [class.coc-required]=\"question.validation.required\">\n    <label\n      *ngIf=\"question.label !== '' && showLabel\"\n      [attr.for]=\"question.label\">\n      {{question.label}}\n    </label>\n    <textarea\n      [id]=\"question.id\"\n      [formControlName]=\"question.id\"\n      [placeholder]=\"question.placeholder\"\n      [rows]=\"question.rows\"\n      (blur)=\"saveToWebStorage()\"\n      class=\"form-control mt-1\">\n    </textarea>\n  </div>\n\n  <div\n    *ngSwitchCase=\"'checkbox'\"\n    class=\"custom-control mt-2\"\n    [ngClass]=\"{\n      'custom-switch' : question.customStyle === 'switch',\n      'coc-custom-control-right' : showLabel && question.customStyle === 'switch',\n      'custom-checkbox' : question.customStyle !== 'switch'\n    }\"\n    [class.coc-required]=\"question.validation.required\">\n    <input\n      type=\"checkbox\"\n      [id]=\"question.id\"\n      [formControlName]=\"question.id\"\n      (blur)=\"saveToWebStorage()\"\n      class=\"custom-control-input mt-1\">\n    <label\n      *ngIf=\"question.label !== ''\"\n      class=\"custom-control-label\"\n      [attr.for]=\"question.id\">\n      <span *ngIf=\"showLabel\">{{question.label}}</span>\n    </label>\n  </div>\n\n  <div *ngSwitchCase=\"'radio'\" class=\"coc-custom-radio-group\">\n    <label *ngIf=\"question.label !== '' && showLabel\">{{question.label}}</label>\n    <div\n      *ngFor=\"let option of question.options\"\n      class=\"custom-control\"\n      [ngClass]=\"question.customStyle\"\n      [class.coc-required]=\"question.validation.required\">\n      <input\n        type=\"radio\"\n        [id]=\"option.id\"\n        [value]=\"option.value\"\n        [formControlName]=\"question.id\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"custom-control-input mt-1\">\n      <label\n        *ngIf=\"option.label !== ''\"\n        class=\"custom-control-label\"\n        [attr.for]=\"option.id\">\n        {{option.label}}\n      </label>\n    </div>\n  </div>\n\n  <div\n    *ngSwitchCase=\"'dropdown'\"\n    class=\"form-group\"\n    [class.coc-required]=\"question.validation.required\">\n    <label\n      *ngIf=\"question.label !== '' && showLabel\"\n      [attr.for]=\"question.label\">\n      {{question.label}}\n    </label>\n    <select\n      class=\"custom-select\"\n      [id]=\"question.id\"\n      [formControlName]=\"question.id\"\n      [attr.multiple]=\"question.multiple\"\n      (blur)=\"saveToWebStorage()\">\n      <option\n        *ngFor=\"let option of question.options\"\n        [value]=\"option.value\">\n        {{option.displayValue}}\n      </option>\n    </select>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -5683,13 +6901,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _question__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./question */ "./src/app/wizard/question/question.ts");
+/* harmony import */ var src_app_shared_web_storage_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/shared/web-storage.service */ "./src/app/shared/web-storage.service.ts");
+
 
 
 
 
 var QuestionComponent = /** @class */ (function () {
-    function QuestionComponent() {
+    function QuestionComponent(webStorageService) {
+        this.webStorageService = webStorageService;
+        this.showLabel = true;
     }
+    QuestionComponent.prototype.saveToWebStorage = function () {
+        this.webStorageService.saveFormToStorage(this.formId, this.form.value);
+    };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _question__WEBPACK_IMPORTED_MODULE_3__["Question"])
@@ -5698,12 +6923,20 @@ var QuestionComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"])
     ], QuestionComponent.prototype, "form", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], QuestionComponent.prototype, "formId", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Boolean)
+    ], QuestionComponent.prototype, "showLabel", void 0);
     QuestionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'wizard-question',
             template: __webpack_require__(/*! ./question.component.html */ "./src/app/wizard/question/question.component.html")
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_shared_web_storage_service__WEBPACK_IMPORTED_MODULE_4__["WebStorageService"]])
     ], QuestionComponent);
     return QuestionComponent;
 }());
@@ -5731,6 +6964,7 @@ var Question = /** @class */ (function () {
         this.order = options.order === undefined ? 1 : options.order;
         this.controlType = options.controlType || '';
         this.validation = options.validation || {};
+        this.columns = options.columns || 0;
     }
     return Question;
 }());
@@ -5746,7 +6980,7 @@ var Question = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n  <div class=\"jumbotron-container\">\n    <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n    <wizard-progress-bar [progress]=\"80\"></wizard-progress-bar>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col-12 col-sm-10 mt-4\">\n      <h2 class=\"h3 font-weight-normal\">{{heading}}</h2>\n      <p class=\"coc-font-size-14\">{{subheading}}</p>\n      <form [formGroup]=\"form\" class=\"w-lg-75 mt-3\">\n        <div *ngFor=\"let question of questions\">\n          <wizard-question [question]=\"question\" [form]=\"form\"></wizard-question>\n        </div>\n      </form>\n    </div>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n      <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n        Back\n      </button>\n      <button type=\"button\" class=\"btn btn-next ml-3\" cdkStepperNext>\n        Continue\n      </button>\n    </div>\n  </div>\n</div>"
+module.exports = "\n<div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n  <div class=\"jumbotron-container\">\n    <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n    <wizard-progress-bar [progress]=\"80\"></wizard-progress-bar>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col-12 col-sm-10 mt-4\">\n      <h2 class=\"h3 font-weight-normal\" [innerHTML]=\"heading\"></h2>\n      <p class=\"coc-font-size-14\" [innerHTML]=\"subheading\"></p>\n      <form [formGroup]=\"form\" class=\"w-lg-75 mt-3\">\n        <div class=\"form-row\">\n          <wizard-question\n            *ngFor=\"let question of questions\"\n            class=\"col-12\"\n            [ngClass]=\"question.columns === 0 ? '' : 'col-md-' + question.columns\"\n            [question]=\"question\"\n            [form]=\"form\"\n            [formId]=\"formId\">\n          </wizard-question>\n        </div>\n      </form>\n    </div>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n      <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n        Back\n      </button>\n      <button type=\"button\" class=\"btn btn-next ml-3\" cdkStepperNext>\n        Continue\n      </button>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -5785,6 +7019,10 @@ var StepComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"])
     ], StepComponent.prototype, "form", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], StepComponent.prototype, "formId", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _question__WEBPACK_IMPORTED_MODULE_3__["Question"])
@@ -5854,51 +7092,63 @@ var StepperComponent = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./src/app/wizard/wizard-config.service.ts":
-/*!*************************************************!*\
-  !*** ./src/app/wizard/wizard-config.service.ts ***!
-  \*************************************************/
-/*! exports provided: WizardConfigService */
+/***/ "./src/app/wizard/summary-item/summary-item.component.html":
+/*!*****************************************************************!*\
+  !*** ./src/app/wizard/summary-item/summary-item.component.html ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"coc-wizard-summary-item\">\n  <div class=\"row\">\n    <div class=\"col-12 col-md-4\">\n      <span *ngIf=\"question.label !== ''\">{{question.label}}</span>\n      <span *ngIf=\"question.placeholder !== ''\">{{question.placeholder}}</span>\n    </div>\n    <div *ngIf=\"!isEditMode\" class=\"col\">{{form.value[question.id]}}</div>\n    <div *ngIf=\"isEditMode\" class=\"col\">\n      <wizard-question\n        [showLabel]=\"false\"\n        [question]=\"question\"\n        [form]=\"form\"\n        [formId]=\"formId\">\n      </wizard-question>\n    </div>\n    <div class=\"col-auto\">\n      <button\n        type=\"button\"\n        class=\"coc-summary-item-edit-button btn p-1\"\n        (click)=\"toggleEditMode()\">\n        <i class=\"fal fa-pencil-alt\"></i>\n        Edit\n      </button>\n    </div>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/wizard/summary-item/summary-item.component.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/wizard/summary-item/summary-item.component.ts ***!
+  \***************************************************************/
+/*! exports provided: SummaryItemComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WizardConfigService", function() { return WizardConfigService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SummaryItemComponent", function() { return SummaryItemComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _question__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../question */ "./src/app/wizard/question/index.ts");
 
 
 
 
-
-var WizardConfigService = /** @class */ (function () {
-    function WizardConfigService(http) {
-        this.http = http;
-        this.configUrl = './assets/wizard-config.mock-data.json';
+var SummaryItemComponent = /** @class */ (function () {
+    function SummaryItemComponent() {
+        this.isEditMode = false;
     }
-    WizardConfigService.prototype.get = function () {
-        return this.http.get(this.configUrl)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError('get')));
+    SummaryItemComponent.prototype.toggleEditMode = function () {
+        this.isEditMode = !this.isEditMode;
+        console.log(this.question, this.form, this.formId);
     };
-    WizardConfigService.prototype.handleError = function (operation, result) {
-        if (operation === void 0) { operation = 'operation'; }
-        return function (error) {
-            // Log error to console
-            console.error(error);
-            // Let the app keep running by returning an empty result.
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(result);
-        };
-    };
-    WizardConfigService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _question__WEBPACK_IMPORTED_MODULE_3__["Question"])
+    ], SummaryItemComponent.prototype, "question", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"])
+    ], SummaryItemComponent.prototype, "form", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], SummaryItemComponent.prototype, "formId", void 0);
+    SummaryItemComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'wizard-summary-item',
+            template: __webpack_require__(/*! ./summary-item.component.html */ "./src/app/wizard/summary-item/summary-item.component.html")
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-    ], WizardConfigService);
-    return WizardConfigService;
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], SummaryItemComponent);
+    return SummaryItemComponent;
 }());
 
 
@@ -5927,50 +7177,60 @@ function toFormQuestion(questions) {
             case 'textbox':
                 group.push(new _question__WEBPACK_IMPORTED_MODULE_1__["TextboxQuestion"]({
                     id: question.id,
+                    value: question.value,
                     label: question.label,
                     placeholder: question.placeholder,
                     order: question.order,
                     type: question.type,
-                    validation: question.validation
+                    validation: question.validation,
+                    columns: question.columns
                 }));
                 break;
             case 'textarea':
                 group.push(new _question__WEBPACK_IMPORTED_MODULE_1__["TextareaQuestion"]({
                     id: question.id,
+                    value: question.value,
                     label: question.label,
                     placeholder: question.placeholder,
                     order: question.order,
                     rows: question.rows,
-                    validation: question.validation
+                    validation: question.validation,
+                    columns: question.columns
                 }));
                 break;
             case 'checkbox':
                 group.push(new _question__WEBPACK_IMPORTED_MODULE_1__["CheckboxQuestion"]({
                     id: question.id,
+                    value: question.value,
                     label: question.label,
                     placeholder: question.placeholder,
                     order: question.order,
                     customStyle: question.customStyle,
-                    validation: question.validation
+                    validation: question.validation,
+                    columns: question.columns
                 }));
                 break;
             case 'radio':
                 group.push(new _question__WEBPACK_IMPORTED_MODULE_1__["RadioQuestion"]({
                     id: question.id,
+                    value: question.value,
                     label: question.label,
                     order: question.order,
                     customStyle: question.customStyle,
                     options: question.options,
-                    validation: question.validation
+                    validation: question.validation,
+                    columns: question.columns
                 }));
                 break;
             case 'dropdown':
                 group.push(new _question__WEBPACK_IMPORTED_MODULE_1__["DropdownQuestion"]({
                     id: question.id,
+                    value: question.value,
                     label: question.label,
                     order: question.order,
                     options: question.options,
-                    validation: question.validation
+                    validation: question.validation,
+                    columns: question.columns
                 }));
                 break;
         }
@@ -5980,7 +7240,7 @@ function toFormQuestion(questions) {
 function toFormGroup(questions) {
     var group = {};
     questions.forEach(function (question) {
-        group[question.id] = new _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormControl"](question.value || '');
+        group[question.id] = new _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormControl"](question.value);
     });
     return new _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormGroup"](group);
 }
@@ -6041,7 +7301,7 @@ var WizardRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<wizard-stepper\n  [selectedIndex]=\"stepperIndex\"\n  (selectionChange)=\"handleStepChange($event)\">\n  <cdk-step [stepControl]=\"step1FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid\">\n      <div class=\"jumbotron-container\">\n        <h1>Business Registration & Renewal</h1>\n        <hr class=\"my-2\">\n        <p><strong>Welcome to the Chandler business registration and renewal portal.</strong> This portal will allow you to register or renew your business registration with the City of Chandler. This easy-to-use portal will ask you a series of questions to walk you through.</p>\n        <p class=\"coc-font-size-22\"><em>Simply answer the first question below to get started.</em></p>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-12 mt-1\">\n          <a class=\"coc-link-small coc-link-arrow-left\" href=\"https://www.chandleraz.gov/business/tax-and-license\">Return to Tax & License</a>\n        </div>\n      </div>\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\">Do you already have a business registration<sup class=\"coc-font-size-18\" tooltip=\"Vivamus sagittis lacus vel augue laoreet rutrum faucibus.\"><i class=\"far fa-question-circle\"></i></sup> with the city of Chandler?</h2>\n          <p class=\"coc-font-size-14\">Select \"yes\" or \"no\" then click continue.</p>\n          <form [formGroup]=\"step1FormGroup\" class=\"mt-3\">\n            <div class=\"custom-control custom-checkbox\">\n              <input\n                type=\"radio\"\n                value=\"Yes\"\n                id=\"isRegistered\"\n                class=\"custom-control-input\"\n                formControlName=\"alreadyRegistered\">\n              <label class=\"custom-control-label\" for=\"isRegistered\">Yes, I already have business registration with the City of Chandler</label>\n            </div>\n            <div class=\"custom-control custom-checkbox mt-2\">\n              <input\n                type=\"radio\"\n                value=\"No\"\n                id=\"isNotRegistered\"\n                class=\"custom-control-input\"\n                formControlName=\"alreadyRegistered\">\n              <label class=\"custom-control-label\" for=\"isNotRegistered\">No, I do not have a business registration with the City of Chandler</label>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-next\" cdkStepperNext>\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step [stepControl]=\"step2FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\">What is your busines address?</h3>\n          <p class=\"coc-font-size-14\">Complete the form and then click continue. <em class=\"text-danger\">* Required fields</em></p>\n          <form [formGroup]=\"step2FormGroup\" class=\"w-lg-75 mt-3\">\n            <div class=\"form-group coc-required\">\n              <input\n                type=\"text\"\n                placeholder=\"Enter your business address\"\n                id=\"addressLine1\"\n                class=\"form-control mt-1\"\n                formControlName=\"addressLine1\">\n            </div>\n            <div class=\"form-group\">\n              <input\n                type=\"text\"\n                placeholder=\"Suite #\"\n                id=\"addressLine2\"\n                class=\"form-control\"\n                formControlName=\"addressLine2\">\n            </div>\n            <div class=\"form-row\">\n              <div class=\"col-12 col-md-6\">\n                <div class=\"form-group coc-required\">\n                  <input\n                    type=\"text\"\n                    placeholder=\"City\"\n                    id=\"addressCity\"\n                    class=\"form-control\"\n                    formControlName=\"addressCity\">\n                </div>\n              </div>\n              <div class=\"col-6 col-md-3\">\n                <div class=\"form-group\">\n                  <input\n                    type=\"text\"\n                    placeholder=\"State\"\n                    id=\"addressState\"\n                    class=\"form-control\"\n                    formControlName=\"addressState\">\n                </div>\n              </div>\n              <div class=\"col-6 col-md-3\">\n                <div class=\"form-group coc-required\">\n                  <input\n                    type=\"text\"\n                    placeholder=\"Zip\"\n                    id=\"addressZip\"\n                    class=\"form-control\"\n                    formControlName=\"addressZip\">\n                </div>\n              </div>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" (click)=\"handleStep2ContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n  \n  <cdk-step [stepControl]=\"step2BFormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\">It looks like your address is not within the City limits and you may not need a business registration.</h2>\n          <p>Are any of the following  true in regard to your business?</p>\n          <form [formGroup]=\"step2BFormGroup\" class=\"mt-3\">\n            <div class=\"custom-control custom-switch coc-custom-control-right\">\n              <input\n                type=\"checkbox\"\n                id=\"solicitor\"\n                class=\"custom-control-input\"\n                formControlName=\"solicitor\">\n              <label class=\"custom-control-label\" for=\"solicitor\">Are you a non-profit solicitor?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"specialEvent\"\n                class=\"custom-control-input\"\n                formControlName=\"specialEvent\">\n              <label class=\"custom-control-label\" for=\"specialEvent\">Are you operating a special event serving liquor?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"peddler\"\n                class=\"custom-control-input\"\n                formControlName=\"peddler\">\n              <label class=\"custom-control-label\" for=\"peddler\">Are you a peddler?</label>\n            </div>\n            <div class=\"custom-control custom-switch coc-custom-control-right mt-1\">\n              <input\n                type=\"checkbox\"\n                id=\"registrationPrivileges\"\n                class=\"custom-control-input\"\n                formControlName=\"registrationPrivileges\">\n              <label class=\"custom-control-label\" for=\"registrationPrivileges\">Do you still want a license to take advantage of registration privileges?</label>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" (click)=\"handleStep2BContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <div *ngFor=\"let group of primaryQuestionGroups\">\n    <cdk-step [stepControl]=\"group.formGroup\">\n      <wizard-step\n        [heading]=\"group.heading\"\n        [subheading]=\"group.subheading\"\n        [form]=\"group.formGroup\"\n        [questions]=\"group.formQuestions\">\n      </wizard-step>\n    </cdk-step>\n  </div>\n\n  <div *ngFor=\"let group of secondaryQuestionGroups\">\n    <cdk-step [stepControl]=\"group.formGroup\">\n      <wizard-step\n        [heading]=\"group.heading\"\n        [subheading]=\"group.subheading\"\n        [form]=\"group.formGroup\"\n        [questions]=\"group.formQuestions\">\n      </wizard-step>\n    </cdk-step>\n  </div>\n</wizard-stepper>"
+module.exports = "<wizard-stepper\n  [selectedIndex]=\"stepperIndex\"\n  (selectionChange)=\"handleStepChange($event)\">\n  <cdk-step [stepControl]=\"step1FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid\">\n      <div class=\"jumbotron-container\">\n        <h1>Business Registration & Renewal</h1>\n        <hr class=\"my-2\">\n        <p><strong>Welcome to the Chandler business registration and renewal portal.</strong> This portal will allow you to register or renew your business registration with the City of Chandler. This easy-to-use portal will ask you a series of questions to walk you through.</p>\n        <p class=\"coc-font-size-22\"><em>Simply answer the first question below to get started.</em></p>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-12 mt-1\">\n          <a class=\"coc-link-small coc-link-arrow-left\" href=\"https://www.chandleraz.gov/business/tax-and-license\">Return to Tax & License</a>\n        </div>\n      </div>\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\" [innerHTML]=\"step1Config.heading\"></h2>\n          <p class=\"coc-font-size-14\" [innerHTML]=\"step1Config.subheading\"></p>\n          <form [formGroup]=\"step1FormGroup\" class=\"mt-3\">\n            <wizard-question\n              *ngFor=\"let question of step1Questions\"\n              [question]=\"question\"\n              [form]=\"step1FormGroup\"\n              [formId]=\"step1Config.id\">\n            </wizard-question>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-next\" cdkStepperNext>\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step [stepControl]=\"step2FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\" [innerHTML]=\"step2Config.heading\"></h3>\n          <p class=\"coc-font-size-14\" [innerHTML]=\"step2Config.subheading\"></p>\n          <form [formGroup]=\"step2FormGroup\" class=\"w-lg-75 mt-3\">\n            <div class=\"form-row\">\n              <wizard-question\n                *ngFor=\"let question of step2Questions\"\n                class=\"col-12\"\n                [ngClass]=\"question.columns === 0 ? '' : 'col-md-' + question.columns\"\n                [question]=\"question\"\n                [form]=\"step2FormGroup\"\n                [formId]=\"step2Config.id\">\n              </wizard-question>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" (click)=\"handleStep2ContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n  \n  <cdk-step [stepControl]=\"step2BFormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\" [innerHTML]=\"step3Config.heading\"></h2>\n          <p class=\"coc-font-size-14\" [innerHTML]=\"step3Config.subheading\"></p>\n          <form [formGroup]=\"step3FormGroup\" class=\"mt-3\">\n            <wizard-question\n              *ngFor=\"let question of step3Questions\"\n              [question]=\"question\"\n              [form]=\"step3FormGroup\"\n              [formId]=\"step3Config.id\">\n            </wizard-question>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" (click)=\"handleStep3ContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <div *ngFor=\"let group of primaryQuestionGroups\">\n    <cdk-step [stepControl]=\"group.formGroup\">\n      <wizard-step\n        [heading]=\"group.heading\"\n        [subheading]=\"group.subheading\"\n        [form]=\"group.formGroup\"\n        [formId]=\"group.id\"\n        [questions]=\"group.formQuestions\">\n      </wizard-step>\n    </cdk-step>\n  </div>\n\n  <div *ngFor=\"let group of secondaryQuestionGroups\">\n    <cdk-step *ngIf=\"group.shouldBeDisplayed\" [stepControl]=\"group.formGroup\">\n      <wizard-step\n        [heading]=\"group.heading\"\n        [subheading]=\"group.subheading\"\n        [form]=\"group.formGroup\"\n        [formId]=\"group.id\"\n        [questions]=\"group.formQuestions\">\n      </wizard-step>\n    </cdk-step>\n  </div>\n  \n  <cdk-step [stepControl]=\"summaryFormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"99\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\">Summary</h3>\n          <p class=\"coc-font-size-14\">Review of your answers. If everything is accurate, click submit.</p>\n          <div class=\"striped mt-3\">\n            <ng-container *ngFor=\"let question of step2Questions\">\n              <wizard-summary-item\n                *ngIf=\"step2FormGroup.value[question.id] !== undefined\"\n                class=\"d-block\"\n                [question]=\"question\"\n                [form]=\"step2FormGroup\"\n                [formId]=\"step2Config.id\">\n              </wizard-summary-item>\n            </ng-container>\n            <ng-container *ngFor=\"let question of step3Questions\">\n              <wizard-summary-item\n                *ngIf=\"step3FormGroup.value[question.id] !== undefined\"\n                class=\"d-block\"\n                [question]=\"question\"\n                [form]=\"step3FormGroup\"\n                [formId]=\"step3Config.id\">\n              </wizard-summary-item>\n            </ng-container>\n            <ng-container *ngFor=\"let group of primaryQuestionGroups\">\n              <ng-container *ngFor=\"let question of group.formQuestions\">\n                <wizard-summary-item\n                  *ngIf=\"group.formGroup.value[question.id] !== undefined\"\n                  class=\"d-block\"\n                  [question]=\"question\"\n                  [form]=\"group.formGroup\"\n                  [formId]=\"group.id\">\n                </wizard-summary-item>\n              </ng-container>\n            </ng-container>\n            <ng-container *ngFor=\"let group of secondaryQuestionGroups\">\n              <ng-container *ngIf=\"group.shouldBeDisplayed\">\n                <ng-container *ngFor=\"let question of group.formQuestions\">\n                  <wizard-summary-item\n                    *ngIf=\"group.formGroup.value[question.id] !== undefined\"\n                    class=\"d-block\"\n                    [question]=\"question\"\n                    [form]=\"group.formGroup\"\n                    [formId]=\"group.id\">\n                  </wizard-summary-item>\n                </ng-container>\n              </ng-container>\n            </ng-container>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"submit\" class=\"btn btn-next ml-3\" (click)=\"handleWizardSubmit()\">\n            Submit\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step>\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"100\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\">Thank you for registering</h3>\n          <p class=\"w-lg-75 mb-8\">Tempor dolor nam eget, eget in class tempor, ut imperdiet, pede tristique massa, duis donec. Sed nec tempus ac nisl, ultricies a lorem sem scelerisque justo, orci ipsum a euismod felis, pretium hendrerit, blandit est vehicula tempus volutpat. Molestie magna, a consequat justo in aliquam, ut massa facilisi. In consectetuer, eleifend faucibus est blandit, vel dolor mollis eu nonummy, euismod amet odio maecenas tristique. Nascetur urna taciti sit in aenean accusamus, auctor.</p>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n</wizard-stepper>"
 
 /***/ }),
 
@@ -6062,9 +7322,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-bootstrap/modal */ "./node_modules/ngx-bootstrap/modal/fesm5/ngx-bootstrap-modal.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _wizard_config_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./wizard-config.service */ "./src/app/wizard/wizard-config.service.ts");
+/* harmony import */ var _configuration_configuration_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./configuration/configuration.service */ "./src/app/wizard/configuration/configuration.service.ts");
 /* harmony import */ var _address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./address-verification/address-verification.component */ "./src/app/wizard/address-verification/address-verification.component.ts");
 /* harmony import */ var _wizard_helpers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./wizard-helpers */ "./src/app/wizard/wizard-helpers.ts");
+/* harmony import */ var _shared_web_storage_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../shared/web-storage.service */ "./src/app/shared/web-storage.service.ts");
+/* harmony import */ var _configuration_configuration_constants__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./configuration/configuration.constants */ "./src/app/wizard/configuration/configuration.constants.ts");
+
+
 
 
 
@@ -6076,32 +7340,54 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var WizardComponent = /** @class */ (function () {
-    function WizardComponent(router, fb, modalService, wizardConfigService) {
+    function WizardComponent(router, fb, modalService, ConfigurationService, webStorageService) {
         this.router = router;
         this.fb = fb;
         this.modalService = modalService;
-        this.wizardConfigService = wizardConfigService;
+        this.ConfigurationService = ConfigurationService;
+        this.webStorageService = webStorageService;
         this.ngUnsubscribe = new rxjs__WEBPACK_IMPORTED_MODULE_6__["Subject"]();
+        this.wizardConfig = {};
+        this.step1Config = _configuration_configuration_constants__WEBPACK_IMPORTED_MODULE_11__["step1Configuration"];
+        this.step2Config = _configuration_configuration_constants__WEBPACK_IMPORTED_MODULE_11__["step2Configuration"];
+        this.step3Config = _configuration_configuration_constants__WEBPACK_IMPORTED_MODULE_11__["step3Configuration"];
+        this.summaryFormGroup = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroup"]({});
+        this.savedInWebStorage = {};
         this.stepperIndex = 0;
         this.isInChandler = false;
-        this.step2BContinue = false;
+        this.step3Continue = false;
     }
     WizardComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.wizardConfigService.get()
+        // Get any saved form data from web storage
+        this.savedInWebStorage = this.webStorageService.getAllForms();
+        // Get configuration file
+        this.ConfigurationService.get()
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.ngUnsubscribe))
             .subscribe(function (config) {
             _this.wizardConfig = config;
         }, function (error) {
             console.error(error);
         }, function () {
+            // Load all config data into local variable
             _this.allQuestionGroups = _this.wizardConfig.questionGroups;
             // Convert array of questions in json config to Angular form groups
             _this.allQuestionGroups.forEach(function (group) {
+                // Add saved form values from web storage to config object
+                _this.restoreValuesFromWebStorage(group);
+                // Store converted questions in group object
+                // to pass to each step and question component
                 var convertedQuestions = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormQuestion"])(group.questions);
                 group['formQuestions'] = convertedQuestions;
+                // Store questions as form group inside group object also
                 var convertedFormGroup = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormGroup"])(convertedQuestions);
                 group['formGroup'] = convertedFormGroup;
+                // Set flag on secondary question groups for display status
+                // Init value as false, questions will be added as needed
+                // based on primary question group answers
+                if (group.type === 'secondaryGroup') {
+                    group['shouldBeDisplayed'] = false;
+                }
             });
             // Create new array for primary questions from config
             _this.primaryQuestionGroups = _this.allQuestionGroups.filter(function (group) {
@@ -6113,39 +7399,47 @@ var WizardComponent = /** @class */ (function () {
                 return group.type === 'secondaryGroup';
             });
             _this.secondaryQuestionGroups.sort(function (a, b) { return a.order - b.order; });
-            // TODO: remove log
-            console.log(_this.primaryQuestionGroups, _this.secondaryQuestionGroups);
+            // Set 'should be displayed' based on saved/restored
+            // form values
+            _this.updateStepsToBeDisplayed();
+            // Set flag based on value changes
+            _this.primaryQuestionGroups.forEach(function (group) {
+                group.formGroup.valueChanges
+                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(_this.ngUnsubscribe))
+                    .subscribe(function () {
+                    _this.updateStepsToBeDisplayed();
+                });
+            });
+            console.log(_this.secondaryQuestionGroups);
         });
-        this.step1FormGroup = this.fb.group({
-            alreadyRegistered: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]
-        });
-        this.step2FormGroup = this.fb.group({
-            addressLine1: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            addressLine2: [null],
-            addressCity: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            addressState: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            addressZip: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]
-        });
+        this.restoreValuesFromWebStorage(this.step1Config);
+        this.step1Questions = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormQuestion"])(this.step1Config.questions);
+        this.step1FormGroup = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormGroup"])(this.step1Questions);
+        this.restoreValuesFromWebStorage(this.step2Config);
+        this.step2Questions = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormQuestion"])(this.step2Config.questions);
+        this.step2FormGroup = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormGroup"])(this.step2Questions);
         // Simulating some validation to trigger address verification modal
-        this.step2FormGroup.get('addressCity').valueChanges
+        this.step2FormGroup.get('BUSINESS_CITY').valueChanges
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.ngUnsubscribe))
             .subscribe(function (value) {
             _this.isInChandler = value.toLowerCase() === 'chandler';
         });
-        this.step2BFormGroup = this.fb.group({
-            solicitor: [false],
-            specialEvent: [false],
-            peddler: [false],
-            registrationPrivileges: [false]
-        });
-        // Temporary validation to determine whether user should continue after step 2B
-        this.step2BFormGroup.valueChanges
+        this.restoreValuesFromWebStorage(this.step3Config);
+        this.step3Questions = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormQuestion"])(this.step3Config.questions);
+        this.step3FormGroup = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormGroup"])(this.step3Questions);
+        // Validation to determine whether user should continue after step 3
+        // If any checkbox was checked/true, continue
+        // Set variable based on saved/restored question values
+        this.step3Continue = Object.values(this.step3FormGroup.value).some(Boolean);
+        // Set variable when value changes
+        this.step3FormGroup.valueChanges
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.ngUnsubscribe))
             .subscribe(function (value) {
-            _this.step2BContinue = (value.solicitor === true ||
-                value.solicitor === true ||
-                value.specialEvent === true ||
-                value.registrationPrivileges === true);
+            _this.step3Continue = Object.values(value).some(Boolean);
+        });
+        // Set current step if there is saved data from web storage
+        setTimeout(function () {
+            _this.stepperIndex = _this.webStorageService.getStepNumber() || 0;
         });
     };
     WizardComponent.prototype.ngOnDestroy = function () {
@@ -6153,6 +7447,44 @@ var WizardComponent = /** @class */ (function () {
         // See https://stackoverflow.com/a/41177163
         this.ngUnsubscribe.next();
         this.ngUnsubscribe.complete();
+    };
+    WizardComponent.prototype.updateStepsToBeDisplayed = function () {
+        var primaryQuestionsChecked = [];
+        var secondaryQuestionsToShow = [];
+        // Loop through all primary questions
+        this.primaryQuestionGroups.forEach(function (group) {
+            // Get all primary question values
+            Object.keys(group.formGroup.controls).forEach(function (key) {
+                // Only store values that are checked/yes/true
+                if (group.formGroup.controls[key].value) {
+                    primaryQuestionsChecked.push(key);
+                }
+            });
+            // Get all dependencies of primaryQuestionsChecked
+            // Loop through al questions
+            group.questions.forEach(function (question) {
+                // Check to see if the current question is checked/yes/true
+                if (primaryQuestionsChecked.includes(question.id)) {
+                    question.dependencies.forEach(function (dep) {
+                        // Check to see if it's already included
+                        // If not, add it to the array
+                        if (!secondaryQuestionsToShow.includes(dep)) {
+                            secondaryQuestionsToShow.push(dep);
+                        }
+                    });
+                }
+            });
+        });
+        // Now loop through all secondary questions
+        this.secondaryQuestionGroups.forEach(function (group) {
+            // Set everything to not display first
+            group.shouldBeDisplayed = false;
+            // Now set questions to be displayed
+            // if our new array includes them
+            if (secondaryQuestionsToShow.includes(group.id)) {
+                group.shouldBeDisplayed = true;
+            }
+        });
     };
     WizardComponent.prototype.handleStep2ContinueClick = function () {
         if (this.isInChandler) {
@@ -6184,11 +7516,11 @@ var WizardComponent = /** @class */ (function () {
             .subscribe(function (address) {
             // Update form values from suggested address in modal
             _this.step2FormGroup.patchValue({
-                addressLine1: address.address1,
-                addressLine2: address.address2,
-                addressCity: address.city,
-                addressState: address.state,
-                addressZip: address.zip
+                BUSINESS_ADDR1: address.address1,
+                BUSINESS_ADDR2: address.address2,
+                BUSINESS_CITY: address.city,
+                BUSINESS_STATE: address.state,
+                BUSINESS_ZIP: address.zip
             });
             // Delay step change so modal closes first
             setTimeout(function () {
@@ -6196,8 +7528,8 @@ var WizardComponent = /** @class */ (function () {
             }, 500);
         });
     };
-    WizardComponent.prototype.handleStep2BContinueClick = function () {
-        if (this.step2BContinue) {
+    WizardComponent.prototype.handleStep3ContinueClick = function () {
+        if (this.step3Continue) {
             this.stepperIndex = 3;
         }
         else {
@@ -6207,6 +7539,8 @@ var WizardComponent = /** @class */ (function () {
     WizardComponent.prototype.handleStepChange = function (event) {
         // Synchronize local step index with stepper component index
         this.stepperIndex = event.selectedIndex;
+        // Save step number to web storage
+        this.webStorageService.saveStepToStorage(this.stepperIndex);
         // TODO: replace this scroll method with a global service
         var element = document.querySelector('body');
         setTimeout(function () {
@@ -6217,6 +7551,20 @@ var WizardComponent = /** @class */ (function () {
             });
         }, 50);
     };
+    WizardComponent.prototype.handleWizardSubmit = function () {
+        // TODO: form submit
+        this.stepperIndex++;
+    };
+    WizardComponent.prototype.restoreValuesFromWebStorage = function (group) {
+        var _this = this;
+        if (this.savedInWebStorage.hasOwnProperty(group.id)) {
+            group.questions.forEach(function (question) {
+                if (_this.savedInWebStorage[group.id].hasOwnProperty(question.id)) {
+                    question.value = _this.savedInWebStorage[group.id][question.id];
+                }
+            });
+        }
+    };
     WizardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'coc-wizard',
@@ -6225,7 +7573,8 @@ var WizardComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"],
             ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_4__["BsModalService"],
-            _wizard_config_service__WEBPACK_IMPORTED_MODULE_7__["WizardConfigService"]])
+            _configuration_configuration_service__WEBPACK_IMPORTED_MODULE_7__["ConfigurationService"],
+            _shared_web_storage_service__WEBPACK_IMPORTED_MODULE_10__["WebStorageService"]])
     ], WizardComponent);
     return WizardComponent;
 }());
@@ -6256,6 +7605,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _goodbye_goodbye_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./goodbye/goodbye.component */ "./src/app/wizard/goodbye/goodbye.component.ts");
 /* harmony import */ var _question_question_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./question/question.component */ "./src/app/wizard/question/question.component.ts");
 /* harmony import */ var _step_step_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./step/step.component */ "./src/app/wizard/step/step.component.ts");
+/* harmony import */ var _summary_item_summary_item_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./summary-item/summary-item.component */ "./src/app/wizard/summary-item/summary-item.component.ts");
+
 
 
 
@@ -6280,7 +7631,8 @@ var WizardModule = /** @class */ (function () {
                 _address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_8__["AddressVerificationComponent"],
                 _goodbye_goodbye_component__WEBPACK_IMPORTED_MODULE_9__["GoodbyeComponent"],
                 _question_question_component__WEBPACK_IMPORTED_MODULE_10__["QuestionComponent"],
-                _step_step_component__WEBPACK_IMPORTED_MODULE_11__["StepComponent"]
+                _step_step_component__WEBPACK_IMPORTED_MODULE_11__["StepComponent"],
+                _summary_item_summary_item_component__WEBPACK_IMPORTED_MODULE_12__["SummaryItemComponent"]
             ],
             imports: [
                 _shared_shared_module__WEBPACK_IMPORTED_MODULE_3__["SharedModule"],

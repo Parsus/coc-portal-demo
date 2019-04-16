@@ -13,7 +13,7 @@
           "value": false,
           "label": "Will you sell liquor?",
           "customStyle": "switch",
-          "order": 1,
+          "order": 2,
           "validation": {
             "required": true
           },
@@ -39,7 +39,7 @@
           "validation": {
             "required": true
           },
-          "dependencies": [{}]
+          "dependencies": []
         },
         {
           "id": "PED_Peddler",
@@ -51,7 +51,7 @@
           "validation": {
             "required": true
           },
-          "dependencies": [{}]
+          "dependencies": []
         },
         {
           "id": "MAE_Massage",
@@ -63,7 +63,7 @@
           "validation": {
             "required": true
           },
-          "dependencies": [{}]
+          "dependencies": []
         },
         {
           "id": "SOL_Solicitor",
@@ -75,7 +75,7 @@
           "validation": {
             "required": true
           },
-          "dependencies": [{}]
+          "dependencies": []
         }
       ]
     },
@@ -96,7 +96,7 @@
           "validation": {
             "required": true
           },
-          "dependencies": [{}]
+          "dependencies": []
         },
         {
           "id": "OTW_Wagering",
@@ -108,7 +108,7 @@
           "validation": {
             "required": true
           },
-          "dependencies": [{}]
+          "dependencies": []
         },
         {
           "id": "SOB",
@@ -120,7 +120,7 @@
           "validation": {
             "required": true
           },
-          "dependencies": [{}]
+          "dependencies": []
         },
         {
           "id": "Escort",
@@ -132,7 +132,7 @@
           "validation": {
             "required": true
           },
-          "dependencies": [{}]
+          "dependencies": []
         }
       ]
     },
@@ -149,6 +149,7 @@
           "type": "text",
           "placeholder": "First Name",
           "order": 1,
+          "columns": 6,
           "validation": {
             "required": true
           }
@@ -159,6 +160,7 @@
           "type": "text",
           "placeholder": "Last Name",
           "order": 2,
+          "columns": 6,
           "validation": {
             "required": true
           }
@@ -169,6 +171,7 @@
           "type": "tel",
           "placeholder": "Phone",
           "order": 3,
+          "columns": 6,
           "validation": {
             "required": true
           }
@@ -179,6 +182,7 @@
           "type": "email",
           "placeholder": "Applicant Email",
           "order": 4,
+          "columns": 6,
           "validation": {
             "required": true
           }
@@ -196,7 +200,7 @@
           "id": "ADDR",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Mailing Address 1",
+          "placeholder": "Address 1",
           "order": 1,
           "validation": {
             "required": true
@@ -206,7 +210,7 @@
           "id": "ADDR2",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Mailing Address 2",
+          "placeholder": "Address 2",
           "order": 2,
           "validation": {}
         },
@@ -216,6 +220,7 @@
           "type": "text",
           "placeholder": "City",
           "order": 3,
+          "columns": 6,
           "validation": {
             "required": true
           }
@@ -224,8 +229,9 @@
           "id": "STATE",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Mailing State",
+          "placeholder": "State",
           "order": 4,
+          "columns": 3,
           "validation": {
             "required": true
           }
@@ -234,8 +240,9 @@
           "id": "ZIP",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Mailing Zip",
+          "placeholder": "Zip",
           "order": 5,
+          "columns": 3,
           "validation": {
             "required": true
           }
@@ -253,17 +260,530 @@
       ]
     },
     {
+      "id": "APPLICANT_DETAIL_A",
+      "type": "secondaryGroup",
+      "heading": "Applicant Detail Information",
+      "subheading": "Please fill out all required information and click continue",
+      "order": 3,
+      "questions": [
+        {
+          "id": "HOME_ADDRESS",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Home Address",
+          "order": 1,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "SSN",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "SSN",
+          "order": 2,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "BIRTH_DT",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "DOB",
+          "order": 3,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "PLACE_OF_BIRTH",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Place of Birth",
+          "order": 4,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "HEIGHT",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Height",
+          "order": 5,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "WEIGHT",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Weight",
+          "order": 6,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "GENDER",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Gender",
+          "order": 7,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "HAIR_COLOR",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Hair Color",
+          "order": 8,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "EYE_COLOR",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Eye Color",
+          "order": 9,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "APPLICANT_DETAIL_B",
+      "type": "secondaryGroup",
+      "heading": "Applicant Detail Information",
+      "subheading": "Please fill out all required information and click continue",
+      "order": 4,
+      "questions": [
+        {
+          "id": "STATE_ID_NBR",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "State Issued ID #",
+          "order": 1,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "STATE_ID_ISSUED",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "State Issued",
+          "order": 2,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "STATE_ID_EXP_DT",
+          "controlType": "textbox",
+          "type": "date",
+          "placeholder": "State ID Expiration",
+          "order": 3,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "STATE_ID_TYPE",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "ID Type",
+          "order": 4,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "ALIAS_INFO",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Alias",
+          "order": 5,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "APPLICANT_CONVICTIONS",
+      "type": "secondaryGroup",
+      "heading": "Applicant Conviction Information",
+      "subheading": "Please fill out all required information and click continue",
+      "order": 5,
+      "questions": [
+        {
+          "id": "CONVICTIONS",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Have you ever been convicted of a felony or misdemeanor? (Do not include minor traffic violations, except those which are alcohol related)",
+          "order": 1,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "PENDING",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Are there any arrests, indictments, or summonses pending against you?",
+          "order": 2,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "IMPRISONED",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Have you ever been fined, posted bond, been ordered to deposit bail, imprisoned, had a sentence suspended, or placed on probation for violation of any law or ordinance?",
+          "order": 3,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "PERMIT_REVOKED",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Have you, or any entity in which you have been involved, ever had a business or professional license or permit rejected, denied, revoked, suspended, or fined in this or any other State?",
+          "order": 4,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "APPLICANT_PED_A",
+      "type": "secondaryGroup",
+      "heading": "Applicant PED Information 1",
+      "subheading": "Please provide a non-employer reference that lives in Maricopa County.",
+      "order": 6,
+      "questions": [
+        {
+          "id": "REFERENCE_1_NAME",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Reference Name",
+          "order": 1,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "REFERENCE_1_PHONE",
+          "controlType": "textbox",
+          "type": "tel",
+          "placeholder": "Phone",
+          "order": 2,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "REFERENCE_1_ADDR1",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Address 1",
+          "order": 3,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "REFERENCE_1_ADDR2",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Address 2",
+          "order": 4,
+          "validation": {}
+        },
+        {
+          "id": "REFERENCE_1_CITY",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "City",
+          "order": 5,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "REFERENCE_1_STATE",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "State",
+          "order": 5,
+          "columns": 3,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "REFERENCE_1_ZIP",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Zip",
+          "order": 6,
+          "columns": 3,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "APPLICANT_PED_B",
+      "type": "secondaryGroup",
+      "heading": "Applicant PED Information 2",
+      "subheading": "Please provide a second non-employer reference.",
+      "order": 7,
+      "questions": [
+        {
+          "id": "REFERENCE_2_NAME",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Reference Name",
+          "order": 1,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "REFERENCE_2_PHONE",
+          "controlType": "textbox",
+          "type": "tel",
+          "placeholder": "Phone",
+          "order": 2,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "REFERENCE_2_ADDR1",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Address 1",
+          "order": 3,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "REFERENCE_2_ADDR2",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Address 2",
+          "order": 4,
+          "validation": {}
+        },
+        {
+          "id": "REFERENCE_2_CITY",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "City",
+          "order": 5,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "REFERENCE_2_STATE",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "State",
+          "order": 5,
+          "columns": 3,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "REFERENCE_2_ZIP",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Zip",
+          "order": 6,
+          "columns": 3,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "APPLICANT_PED_C",
+      "type": "secondaryGroup",
+      "heading": "Applicant PED Information 3",
+      "subheading": "Please provide some information about your vehicle. Enter \"NA\" if you do not have a vehicle.",
+      "order": 8,
+      "questions": [
+        {
+          "id": "VEHICLE_MAKE",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Make",
+          "order": 1,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "VEHICLE_MODEL",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Model",
+          "order": 2,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "VEHICLE_YEAR",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Year",
+          "order": 3,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "VEHICLE_COLOR",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Color",
+          "order": 4,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "LICENSE_PLATE",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "License Plate #",
+          "order": 5,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "PLATE_STATE",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "License Plate State",
+          "order": 6,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "REGISTERED_OWNER",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Name of Registered Owner",
+          "order": 7,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "APPLICANT_MAE",
+      "type": "secondaryGroup",
+      "heading": "Applicant MAE Information",
+      "subheading": "Please enter the follow information and click continue",
+      "order": 9,
+      "questions": [
+        {
+          "id": "ENTITY_ISSUING",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Entity Issuing Permit/License",
+          "order": 1,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "PERMIT_TYPE",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Type of Permit/License",
+          "order": 2,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "DATE_ISSUED",
+          "controlType": "textbox",
+          "type": "date",
+          "placeholder": "Date Issued",
+          "order": 3,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "EXPIRATION_DATE",
+          "controlType": "textbox",
+          "type": "date",
+          "placeholder": "Expiration Date",
+          "order": 4,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
       "id": "ENTITY_INFO_A",
       "type": "secondaryGroup",
       "heading": "Entity Information part 1",
-      "subheading": "Please fill out all required information and click continue",
-      "order": 3,
+      "subheading": "Please tell us about your business entity and click continue",
+      "order": 10,
       "questions": [
         {
           "id": "ENTITY_NAME",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Entity Name",
+          "placeholder": "Name",
           "order": 1,
           "validation": {
             "required": true
@@ -273,7 +793,7 @@
           "id": "ENTITY_ADDR1",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Entity Address 1",
+          "placeholder": "Address 1",
           "order": 2,
           "validation": {
             "required": true
@@ -283,7 +803,7 @@
           "id": "ENTITY_ADDR2",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Entity Address 2",
+          "placeholder": "Address 2",
           "order": 3,
           "validation": {}
         },
@@ -291,8 +811,9 @@
           "id": "ENTITY_CITY",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Entity City",
+          "placeholder": "City",
           "order": 4,
+          "columns": 6,
           "validation": {
             "required": true
           }
@@ -301,8 +822,9 @@
           "id": "ENTITY_STATE",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Entity State",
+          "placeholder": "State",
           "order": 5,
+          "columns": 3,
           "validation": {
             "required": true
           }
@@ -311,8 +833,9 @@
           "id": "ENTITY_ZIP",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Entity Zip",
+          "placeholder": "Zip",
           "order": 6,
+          "columns": 3,
           "validation": {
             "required": true
           }
@@ -321,8 +844,8 @@
           "id": "ENTITY_PHONE",
           "controlType": "textbox",
           "type": "tel",
-          "placeholder": "Entity Phone",
-          "order": 7,
+          "placeholder": "Phone",
+          "order": 6,
           "validation": {
             "required": true
           }
@@ -333,8 +856,8 @@
       "id": "ENTITY_INFO_B",
       "type": "secondaryGroup",
       "heading": "Entity Information part 2",
-      "subheading": "Please fill out all required information and click continue",
-      "order": 4,
+      "subheading": "Please enter the mailing address for your business if different than primary address.",
+      "order": 11,
       "questions": [
         {
           "id": "SAME_AS_ENTITY_ADDRESS",
@@ -348,7 +871,7 @@
           "id": "MAILING_ADDR1",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Mailing Address 1",
+          "placeholder": "Address 1",
           "order": 2,
           "validation": {
             "required": true
@@ -358,7 +881,7 @@
           "id": "MAILING_ADDR2",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Mailing Address 2",
+          "placeholder": "Address 2",
           "order": 3,
           "validation": {
             "required": true
@@ -368,8 +891,9 @@
           "id": "MAILING_CITY",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Mailing City",
+          "placeholder": "City",
           "order": 4,
+          "columns": 6,
           "validation": {
             "required": true
           }
@@ -378,8 +902,9 @@
           "id": "MAILING_STATE",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Mailing State",
+          "placeholder": "State",
           "order": 5,
+          "columns": 3,
           "validation": {
             "required": true
           }
@@ -388,8 +913,9 @@
           "id": "MAILING_ZIP",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Mailing Zip",
+          "placeholder": "Zip",
           "order": 6,
+          "columns": 3,
           "validation": {
             "required": true
           }
@@ -401,7 +927,7 @@
       "type": "secondaryGroup",
       "heading": "Entity Information part 3",
       "subheading": "Please fill out all required information and click continue",
-      "order": 5,
+      "order": 12,
       "questions": [
         {
           "id": "STATE_LICENSE_ID",
@@ -437,8 +963,8 @@
       "id": "ENTITY_INFO_D",
       "type": "secondaryGroup",
       "heading": "Entity Information part 4",
-      "subheading": "Please fill out all required information and click continue",
-      "order": 6,
+      "subheading": "Please tell us about your statutory agent and click continue",
+      "order": 13,
       "questions": [
         {
           "id": "STATUTORY_AGENT_NAME",
@@ -452,7 +978,7 @@
           "id": "STATUTORY_AGENT_ADDR1",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Statutory Agent Address 1",
+          "placeholder": "Address 1",
           "order": 2,
           "validation": {
             "required": true
@@ -462,7 +988,7 @@
           "id": "STATUTORY_AGENT_ADDR2",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Statutory Agent Address 1",
+          "placeholder": "Address 2",
           "order": 3,
           "validation": {
             "required": true
@@ -472,8 +998,9 @@
           "id": "STATUTORY_AGENT_CITY",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Statutory Agent City",
+          "placeholder": "City",
           "order": 4,
+          "columns": 6,
           "validation": {
             "required": true
           }
@@ -482,8 +1009,9 @@
           "id": "STATUTORY_AGENT_STATE",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Statutory Agent State",
+          "placeholder": "State",
           "order": 5,
+          "columns": 3,
           "validation": {
             "required": true
           }
@@ -492,8 +1020,9 @@
           "id": "STATUTORY_AGENT_ZIP",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Statutory Agent Zip",
+          "placeholder": "Zip",
           "order": 6,
+          "columns": 3,
           "validation": {
             "required": true
           }
@@ -502,8 +1031,9 @@
           "id": "STATUTORY_AGENT_PHONE",
           "controlType": "textbox",
           "type": "tel",
-          "placeholder": "Statutory Agent Phone",
+          "placeholder": "Phone",
           "order": 7,
+          "columns": 6,
           "validation": {
             "required": true
           }
@@ -514,8 +1044,8 @@
       "id": "ENTITY_INFO_E",
       "type": "secondaryGroup",
       "heading": "Entity Information part 5",
-      "subheading": "Please fill out all required information and click continue",
-      "order": 7,
+      "subheading": "Please tell us the best contact information and click continue",
+      "order": 14,
       "questions": [
         {
           "id": "SAME_AS_STATUTORY_AGENT",
@@ -526,10 +1056,10 @@
           "validation": {}
         },
         {
-          "id": "BEST_CONTACT",
+          "id": "BEST_CONTACT_NAME",
           "controlType": "textbox",
           "type": "text",
-          "placeholder": "Best Contact",
+          "placeholder": "Best Contact Name",
           "order": 2,
           "validation": {
             "required": true
@@ -539,7 +1069,7 @@
           "id": "BEST_CONTACT_EMAIL",
           "controlType": "textbox",
           "type": "email",
-          "placeholder": "Best Contact Email",
+          "placeholder": "Email",
           "order": 3,
           "validation": {
             "required": true
@@ -549,8 +1079,9 @@
           "id": "BEST_CONTACT_PHONE",
           "controlType": "textbox",
           "type": "tel",
-          "placeholder": "Best Contact Phone",
+          "placeholder": "Phone",
           "order": 4,
+          "columns": 6,
           "validation": {
             "required": true
           }
@@ -561,8 +1092,8 @@
       "id": "OWNER_INFO_A",
       "type": "secondaryGroup",
       "heading": "Owner Information part 1",
-      "subheading": "Please fill out all required information and click continue",
-      "order": 8,
+      "subheading": "Please fill out the business owner information and click continue",
+      "order": 15,
       "questions": [
         {
           "id": "OWNER_FIRST_NAME",
@@ -570,6 +1101,7 @@
           "type": "text",
           "placeholder": "First Name",
           "order": 1,
+          "columns": 6,
           "validation": {
             "required": true
           }
@@ -580,6 +1112,7 @@
           "type": "text",
           "placeholder": "Last Name",
           "order": 2,
+          "columns": 6,
           "validation": {
             "required": true
           }
@@ -590,6 +1123,7 @@
           "type": "tel",
           "placeholder": "Phone",
           "order": 3,
+          "columns": 6,
           "validation": {
             "required": true
           }
@@ -600,8 +1134,8 @@
       "id": "OWNER_INFO_B",
       "type": "secondaryGroup",
       "heading": "Owner Information part 2",
-      "subheading": "Please fill out all required information and click continue",
-      "order": 9,
+      "subheading": "Please fill out the business owner information and click continue",
+      "order": 16,
       "questions": [
         {
           "id": "OWNER_ADDR1",
@@ -619,9 +1153,7 @@
           "type": "text",
           "placeholder": "Address 2",
           "order": 2,
-          "validation": {
-            "required": true
-          }
+          "validation": {}
         },
         {
           "id": "OWNER_CITY",
@@ -629,6 +1161,7 @@
           "type": "text",
           "placeholder": "City",
           "order": 3,
+          "columns": 6,
           "validation": {
             "required": true
           }
@@ -639,6 +1172,7 @@
           "type": "text",
           "placeholder": "State",
           "order": 4,
+          "columns": 3,
           "validation": {
             "required": true
           }
@@ -649,9 +1183,396 @@
           "type": "text",
           "placeholder": "Zip",
           "order": 5,
+          "columns": 3,
           "validation": {
             "required": true
           }
+        }
+      ]
+    },
+    {
+      "id": "OWNER_INFO_PEDDLER",
+      "type": "secondaryGroup",
+      "heading": "Owner Information Peddler",
+      "subheading": "Please fill out the business owner information and click continue",
+      "order": 17,
+      "questions": [
+        {
+          "id": "OWNER_SSN",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Social Security Number",
+          "order": 1,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "BOND_CASH_SURETY",
+          "controlType": "radio",
+          "label": "Bond Cash or Surety",
+          "options": [
+            { "id": "BOND_CASH", "value": "Bond Cash", "label": "Bond Cash" },
+            { "id": "SURETY", "value": "Surety", "label": "Surety" }
+          ],
+          "order": 2,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "BOND_ISSUED_BY",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Bond Issued By",
+          "order": 3,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "BOND_NUMBER",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Bond Number",
+          "order": 4,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "BOND_EXPRATION_DATE",
+          "controlType": "textbox",
+          "type": "date",
+          "placeholder": "   Bond Expiration Date",
+          "order": 5,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "LOCATION_INFO_A",
+      "type": "secondaryGroup",
+      "heading": "Location Information part 1",
+      "subheading": "Please fill all required fields and click continue",
+      "order": 18,
+      "questions": [
+        {
+          "id": "BUSINESS_DESCRIPTION",
+          "controlType": "textarea",
+          "placeholder": "Business Description",
+          "order": 1,
+          "rows": 3,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "CITY_LICENSE_ID",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "City License ID",
+          "order": 2,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "DATE_OF_CHANGE",
+          "controlType": "textbox",
+          "type": "date",
+          "placeholder": "Date of Change",
+          "order": 3,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "LOCATION_INFO_B",
+      "type": "secondaryGroup",
+      "heading": "Location Information part 2",
+      "subheading": "Please fill all required fields and click continue",
+      "order": 19,
+      "questions": [
+        {
+          "id": "LOCATION_NAME_DBA",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Location Name/DBA",
+          "order": 1,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "SAME_AS_ENTITY_ADDRESS",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Click here if location address is the same as entity address",
+          "order": 2,
+          "validation": {}
+        },
+        {
+          "id": "LOCATION_ADDR1",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Address 1",
+          "order": 3,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "LOCATION_ADDR2",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Address 2",
+          "order": 4,
+          "validation": {}
+        },
+        {
+          "id": "LOCATION_CITY",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "City",
+          "order": 5,
+          "columns": 6,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "LOCATION_STATE",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "State",
+          "order": 5,
+          "columns": 3,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "LOCATION_ZIP",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Zip",
+          "order": 6,
+          "columns": 3,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "LOCATION_INFO_C",
+      "type": "secondaryGroup",
+      "heading": "Location Information part 3",
+      "subheading": "Please fill all required fields and click continue",
+      "order": 20,
+      "questions": [
+        {
+          "id": "NUMBER_OF_EMPLOYEES",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Location Name/DBA",
+          "order": 1,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "SAME_AS_ENTITY_PHONE",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Click here if location phone number is the same as entity phone number",
+          "order": 2,
+          "validation": {}
+        },
+        {
+          "id": "BUSINESS_PHONE",
+          "controlType": "textbox",
+          "type": "tel",
+          "placeholder": "Business Phone",
+          "order": 3,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "SAME_AS_ENTITY_EMAIL",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Click here if location email is the same as entity email address",
+          "order": 4,
+          "validation": {}
+        },
+        {
+          "id": "EMAIL_ADDRESS",
+          "controlType": "textbox",
+          "type": "email",
+          "placeholder": "Email Address",
+          "order": 5,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "START_DATE_IN_CHANDLER",
+          "controlType": "textbox",
+          "type": "date",
+          "placeholder": "Start Date in Chandler",
+          "order": 6,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "LOCATION_INFO_D",
+      "type": "secondaryGroup",
+      "heading": "Location Information part 4",
+      "subheading": "Please fill all required fields and click continue",
+      "order": 21,
+      "questions": [
+        {
+          "id": "BUSINESS_TYPE_TIER_1",
+          "controlType": "dropdown",
+          "label": "Business Type 1",
+          "order": 1,
+          "options": [
+            { "value": "ARTS_ENT_REC", "displayValue": "Amusement, Arts, Entertainment, Recreation" },
+            { "value": "CONSTRUCTION", "displayValue": "Construction" }
+          ],
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "BUSINESS_TYPE_TIER_2",
+          "controlType": "dropdown",
+          "label": "Business Type 2",
+          "order": 2,
+          "options": [
+            { "value": "PERFORMING_ARTS", "displayValue": "Performing Arts" },
+            { "value": "SPECTATOR_SPORTS", "displayValue": "Spectator Sports" }
+          ],
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "FREEFORM_BUSINESS_DESCRIPTION",
+          "controlType": "textarea",
+          "label": "Business Description",
+          "order": 3,
+          "rows": 3,
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "LOCATION_INFO_E",
+      "type": "secondaryGroup",
+      "heading": "Location Information part 5",
+      "subheading": "Please tell us about the property ownership if applicable",
+      "order": 22,
+      "questions": [
+        {
+          "id": "LOCATION_OWNERSHIP",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Location Ownership",
+          "order": 1,
+          "validation": {}
+        },
+        {
+          "id": "LANDLORD_NAME",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Landlord or Property Manager Name",
+          "order": 2,
+          "validation": {}
+        },
+        {
+          "id": "LANDLORD_ADDR",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Address 1",
+          "order": 3,
+          "validation": {}
+        },
+        {
+          "id": "LANDLORD_ADDR2",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Address 2",
+          "order": 4,
+          "validation": {}
+        },
+        {
+          "id": "LANDLORD_CITY",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "City",
+          "order": 5,
+          "columns": 6,
+          "validation": {}
+        },
+        {
+          "id": "LANDLORD_STATE",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "State",
+          "order": 6,
+          "columns": 3,
+          "validation": {}
+        },
+        {
+          "id": "LANDLORD_ZIP",
+          "controlType": "textbox",
+          "type": "text",
+          "placeholder": "Zip",
+          "order": 7,
+          "columns": 3,
+          "validation": {}
+        }
+      ]
+    },
+    {
+      "id": "LOCATION_INFO_F",
+      "type": "secondaryGroup",
+      "heading": "Location Information part 6",
+      "subheading": "Please fill out the following inforamtion",
+      "order": 23,
+      "questions": [
+        {
+          "id": "RENT_TO_OTHER_BUSINESS",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Do you rent a portion of location to another business?",
+          "order": 1,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "ONLINE_OPTOUT",
+          "controlType": "checkbox",
+          "value": false,
+          "label": "Opt out from our online business listing?",
+          "order": 2,
+          "validation": {}
         }
       ]
     }
