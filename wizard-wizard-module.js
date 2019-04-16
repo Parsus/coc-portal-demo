@@ -7127,7 +7127,6 @@ var SummaryItemComponent = /** @class */ (function () {
     }
     SummaryItemComponent.prototype.toggleEditMode = function () {
         this.isEditMode = !this.isEditMode;
-        console.log(this.question, this.form, this.formId);
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
@@ -7410,7 +7409,6 @@ var WizardComponent = /** @class */ (function () {
                     _this.updateStepsToBeDisplayed();
                 });
             });
-            console.log(_this.secondaryQuestionGroups);
         });
         this.restoreValuesFromWebStorage(this.step1Config);
         this.step1Questions = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormQuestion"])(this.step1Config.questions);
