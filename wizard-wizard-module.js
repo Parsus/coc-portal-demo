@@ -6439,7 +6439,7 @@ var step2Configuration = {
             "id": "BUSINESS_ADDR1",
             "controlType": "textbox",
             "type": "text",
-            "placeholder": "Enter your business address",
+            "placeholder": "Address",
             "order": 1,
             "validation": {
                 "required": true
@@ -6883,7 +6883,7 @@ var TextboxQuestion = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div [formGroup]=\"form\" [ngSwitch]=\"question.controlType\">\n  <div\n    *ngSwitchCase=\"'textbox'\"\n    class=\"form-group\"\n    [class.coc-required]=\"question.validation.required\">\n    <label\n      *ngIf=\"question.label !== '' && showLabel\"\n      [attr.for]=\"question.label\">\n      {{question.label}}\n    </label>\n    <input\n      [type]=\"question.type\"\n      [id]=\"question.id\"\n      [formControlName]=\"question.id\"\n      [placeholder]=\"question.placeholder\"\n      (blur)=\"saveToWebStorage()\"\n      class=\"form-control mt-1\">\n  </div>\n\n  <div\n    *ngSwitchCase=\"'textarea'\"\n    class=\"form-group\"\n    [class.coc-required]=\"question.validation.required\">\n    <label\n      *ngIf=\"question.label !== '' && showLabel\"\n      [attr.for]=\"question.label\">\n      {{question.label}}\n    </label>\n    <textarea\n      [id]=\"question.id\"\n      [formControlName]=\"question.id\"\n      [placeholder]=\"question.placeholder\"\n      [rows]=\"question.rows\"\n      (blur)=\"saveToWebStorage()\"\n      class=\"form-control mt-1\">\n    </textarea>\n  </div>\n\n  <div\n    *ngSwitchCase=\"'checkbox'\"\n    class=\"custom-control mt-2\"\n    [ngClass]=\"{\n      'custom-switch' : question.customStyle === 'switch',\n      'coc-custom-control-right' : showLabel && question.customStyle === 'switch',\n      'custom-checkbox' : question.customStyle !== 'switch'\n    }\"\n    [class.coc-required]=\"question.validation.required\">\n    <input\n      type=\"checkbox\"\n      [id]=\"question.id\"\n      [formControlName]=\"question.id\"\n      (blur)=\"saveToWebStorage()\"\n      class=\"custom-control-input mt-1\">\n    <label\n      *ngIf=\"question.label !== ''\"\n      class=\"custom-control-label\"\n      [attr.for]=\"question.id\">\n      <span *ngIf=\"showLabel\">{{question.label}}</span>\n    </label>\n  </div>\n\n  <div *ngSwitchCase=\"'radio'\" class=\"coc-custom-radio-group\">\n    <label *ngIf=\"question.label !== '' && showLabel\">{{question.label}}</label>\n    <div\n      *ngFor=\"let option of question.options\"\n      class=\"custom-control\"\n      [ngClass]=\"question.customStyle\"\n      [class.coc-required]=\"question.validation.required\">\n      <input\n        type=\"radio\"\n        [id]=\"option.id\"\n        [value]=\"option.value\"\n        [formControlName]=\"question.id\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"custom-control-input mt-1\">\n      <label\n        *ngIf=\"option.label !== ''\"\n        class=\"custom-control-label\"\n        [attr.for]=\"option.id\">\n        {{option.label}}\n      </label>\n    </div>\n  </div>\n\n  <div\n    *ngSwitchCase=\"'dropdown'\"\n    class=\"form-group\"\n    [class.coc-required]=\"question.validation.required\">\n    <label\n      *ngIf=\"question.label !== '' && showLabel\"\n      [attr.for]=\"question.label\">\n      {{question.label}}\n    </label>\n    <select\n      class=\"custom-select\"\n      [id]=\"question.id\"\n      [formControlName]=\"question.id\"\n      [attr.multiple]=\"question.multiple\"\n      (blur)=\"saveToWebStorage()\">\n      <option\n        *ngFor=\"let option of question.options\"\n        [value]=\"option.value\">\n        {{option.displayValue}}\n      </option>\n    </select>\n  </div>\n</div>"
+module.exports = "\n<div [formGroup]=\"form\" [ngSwitch]=\"question.controlType\">\n  <div class=\"form-group\"\n    [class.coc-required]=\"question.validation.required\"\n    [ngClass]=\"{\n      'custom-control mt-2' : question.controlType === 'checkbox',\n      'custom-switch coc-custom-control-right' : question.controlType === 'checkbox' && question.customStyle === 'switch',\n      'custom-checkbox' : question.controlType === 'checkbox' && question.customStyle !== 'switch',\n      'coc-custom-radio-group' : question.controlType === 'radio'\n    }\">\n\n    <ng-container *ngSwitchCase=\"'textbox'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.label\">\n        {{question.label}}\n      </label>\n      <input\n        [type]=\"question.type\"\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        [placeholder]=\"question.placeholder\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"form-control mt-1\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'textarea'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.label\">\n        {{question.label}}\n      </label>\n      <textarea\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        [placeholder]=\"question.placeholder\"\n        [rows]=\"question.rows\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"form-control mt-1\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n      </textarea>\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'checkbox'\">\n      <input\n        type=\"checkbox\"\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"custom-control-input mt-1\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        class=\"custom-control-label\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'radio'\">\n      <label *ngIf=\"question.label !== ''\">{{question.label}}</label>\n      <div\n        *ngFor=\"let option of question.options\"\n        class=\"custom-control\"\n        [ngClass]=\"question.customStyle\"\n        [class.coc-required]=\"question.validation.required\">\n        <input\n          type=\"radio\"\n          [id]=\"option.id\"\n          [value]=\"option.value\"\n          [formControlName]=\"question.id\"\n          (blur)=\"saveToWebStorage()\"\n          class=\"custom-control-input mt-1\"\n          [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n        <label\n          *ngIf=\"option.label !== ''\"\n          class=\"custom-control-label\"\n          [attr.for]=\"option.id\">\n          {{option.label}}\n        </label>\n      </div>\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'dropdown'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.label\">\n        {{question.label}}\n      </label>\n      <select\n        class=\"custom-select\"\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        [attr.multiple]=\"question.multiple\"\n        (blur)=\"saveToWebStorage()\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n        <option\n          *ngFor=\"let option of question.options\"\n          [value]=\"option.value\">\n          {{option.displayValue}}\n        </option>\n      </select>\n    </ng-container>\n\n    <div class=\"invalid-feedback\">\n      <span *ngIf=\"question.validation.required\">This field is required.</span>\n    </div>\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -6910,11 +6910,24 @@ __webpack_require__.r(__webpack_exports__);
 var QuestionComponent = /** @class */ (function () {
     function QuestionComponent(webStorageService) {
         this.webStorageService = webStorageService;
-        this.showLabel = true;
     }
     QuestionComponent.prototype.saveToWebStorage = function () {
         this.webStorageService.saveFormToStorage(this.formId, this.form.value);
     };
+    Object.defineProperty(QuestionComponent.prototype, "isValid", {
+        get: function () {
+            return this.form.controls[this.question.id].valid;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(QuestionComponent.prototype, "control", {
+        get: function () {
+            return this.form.get(this.question.id);
+        },
+        enumerable: true,
+        configurable: true
+    });
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _question__WEBPACK_IMPORTED_MODULE_3__["Question"])
@@ -6927,10 +6940,6 @@ var QuestionComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
     ], QuestionComponent.prototype, "formId", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Boolean)
-    ], QuestionComponent.prototype, "showLabel", void 0);
     QuestionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'wizard-question',
@@ -6980,7 +6989,7 @@ var Question = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n  <div class=\"jumbotron-container\">\n    <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n    <wizard-progress-bar [progress]=\"80\"></wizard-progress-bar>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col-12 col-sm-10 mt-4\">\n      <h2 class=\"h3 font-weight-normal\" [innerHTML]=\"heading\"></h2>\n      <p class=\"coc-font-size-14\" [innerHTML]=\"subheading\"></p>\n      <form [formGroup]=\"form\" class=\"w-lg-75 mt-3\">\n        <div class=\"form-row\">\n          <wizard-question\n            *ngFor=\"let question of questions\"\n            class=\"col-12\"\n            [ngClass]=\"question.columns === 0 ? '' : 'col-md-' + question.columns\"\n            [question]=\"question\"\n            [form]=\"form\"\n            [formId]=\"formId\">\n          </wizard-question>\n        </div>\n      </form>\n    </div>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n      <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n        Back\n      </button>\n      <button type=\"button\" class=\"btn btn-next ml-3\" cdkStepperNext>\n        Continue\n      </button>\n    </div>\n  </div>\n</div>"
+module.exports = "\n<div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n  <div class=\"jumbotron-container\">\n    <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n    <wizard-progress-bar [progress]=\"80\"></wizard-progress-bar>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col-12 col-sm-10 mt-4\">\n      <h2 class=\"h3 font-weight-normal\" [innerHTML]=\"heading\"></h2>\n      <p class=\"coc-font-size-14\" [innerHTML]=\"subheading\"></p>\n      <form [formGroup]=\"form\" class=\"w-lg-75 mt-3\">\n        <div class=\"form-row\">\n          <wizard-question\n            *ngFor=\"let question of questions\"\n            class=\"col-12\"\n            [ngClass]=\"question.columns === 0 ? '' : 'col-md-' + question.columns\"\n            [question]=\"question\"\n            [form]=\"form\"\n            [formId]=\"formId\">\n          </wizard-question>\n        </div>\n      </form>\n    </div>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n      <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n        Back\n      </button>\n      <button type=\"button\" class=\"btn btn-next ml-3\" cdkStepperNext>\n        Continue\n      </button>\n      <button\n        *ngIf=\"showSummaryButton\"\n        type=\"button\"\n        class=\"btn btn-next ml-3\"\n        (click)=\"goToSummary()\">\n        Skip to Summary\n      </button>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -7004,8 +7013,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var StepComponent = /** @class */ (function () {
     function StepComponent() {
+        this.showSummaryButton = false;
+        this.summary = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
     }
-    StepComponent.prototype.ngOnInit = function () {
+    StepComponent.prototype.goToSummary = function () {
+        this.summary.emit();
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
@@ -7027,6 +7039,14 @@ var StepComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _question__WEBPACK_IMPORTED_MODULE_3__["Question"])
     ], StepComponent.prototype, "questions", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Boolean)
+    ], StepComponent.prototype, "showSummaryButton", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], StepComponent.prototype, "summary", void 0);
     StepComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'wizard-step',
@@ -7099,7 +7119,7 @@ var StepperComponent = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"coc-wizard-summary-item\">\n  <div class=\"row\">\n    <div class=\"col-12 col-md-4\">\n      <span *ngIf=\"question.label !== ''\">{{question.label}}</span>\n      <span *ngIf=\"question.placeholder !== ''\">{{question.placeholder}}</span>\n    </div>\n    <div *ngIf=\"!isEditMode\" class=\"col\">{{form.value[question.id]}}</div>\n    <div *ngIf=\"isEditMode\" class=\"col\">\n      <wizard-question\n        [showLabel]=\"false\"\n        [question]=\"question\"\n        [form]=\"form\"\n        [formId]=\"formId\">\n      </wizard-question>\n    </div>\n    <div class=\"col-auto\">\n      <button\n        type=\"button\"\n        class=\"coc-summary-item-edit-button btn p-1\"\n        (click)=\"toggleEditMode()\">\n        <i class=\"fal fa-pencil-alt\"></i>\n        Edit\n      </button>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"coc-wizard-summary-item\">\n  <div class=\"row\">\n    <div class=\"col col-md-4 py-1\">\n      {{config.heading}}\n    </div>\n    <div class=\"col-auto order-md-3\">\n      <button\n        type=\"button\"\n        class=\"coc-summary-item-edit-button btn p-1\"\n        (click)=\"goToStep(config.stepNumber)\">\n        <i class=\"fal fa-pencil-alt\"></i>\n        Edit\n      </button>\n    </div>\n    <div class=\"col-12 col-md\">\n      <div class=\"row\">\n        <ng-container *ngFor=\"let question of config.formQuestions\">\n          <div\n            *ngIf=\"config.formGroup.value[question.id] !== '' && config.formGroup.value[question.id] !== null && config.formGroup.value[question.id] !== undefined\"\n            class=\"col-12 py-1\"\n            [ngClass]=\"question.columns === 0 ? '' : 'col-md-' + question.columns\">\n            <div class=\"coc-font-size-14\">\n              <span *ngIf=\"question.label !== ''\">{{question.label}}</span>\n              <span *ngIf=\"question.placeholder !== ''\">{{question.placeholder}}</span>\n            </div>\n            {{config.formGroup.value[question.id]}}\n          </div>\n        </ng-container>\n      </div>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -7115,31 +7135,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SummaryItemComponent", function() { return SummaryItemComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _question__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../question */ "./src/app/wizard/question/index.ts");
-
+/* harmony import */ var src_app_api_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/api-client */ "./src/app/api-client/index.ts");
 
 
 
 var SummaryItemComponent = /** @class */ (function () {
     function SummaryItemComponent() {
-        this.isEditMode = false;
+        this.stepId = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
     }
-    SummaryItemComponent.prototype.toggleEditMode = function () {
-        this.isEditMode = !this.isEditMode;
+    SummaryItemComponent.prototype.goToStep = function (step) {
+        this.stepId.emit(step);
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _question__WEBPACK_IMPORTED_MODULE_3__["Question"])
-    ], SummaryItemComponent.prototype, "question", void 0);
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", src_app_api_client__WEBPACK_IMPORTED_MODULE_2__["Configuration"])
+    ], SummaryItemComponent.prototype, "config", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"])
-    ], SummaryItemComponent.prototype, "form", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-    ], SummaryItemComponent.prototype, "formId", void 0);
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], SummaryItemComponent.prototype, "stepId", void 0);
     SummaryItemComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'wizard-summary-item',
@@ -7239,7 +7253,22 @@ function toFormQuestion(questions) {
 function toFormGroup(questions) {
     var group = {};
     questions.forEach(function (question) {
-        group[question.id] = new _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormControl"](question.value);
+        var validationObj = question.validation;
+        var validators = [];
+        // Build array of validators to pass in the new form control
+        // Check to see if validation object from config is empty
+        if (Object.keys(validationObj).length !== 0 && validationObj.constructor === Object) {
+            // Loop through validation object for each question
+            // and push angular validator into the array
+            Object.keys(validationObj).forEach(function (key) {
+                switch (key) {
+                    case 'required':
+                        validators.push(_angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required);
+                        break;
+                }
+            });
+        }
+        group[question.id] = new _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormControl"](question.value, validators);
     });
     return new _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormGroup"](group);
 }
@@ -7300,7 +7329,7 @@ var WizardRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<wizard-stepper\n  [selectedIndex]=\"stepperIndex\"\n  (selectionChange)=\"handleStepChange($event)\">\n  <cdk-step [stepControl]=\"step1FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid\">\n      <div class=\"jumbotron-container\">\n        <h1>Business Registration & Renewal</h1>\n        <hr class=\"my-2\">\n        <p><strong>Welcome to the Chandler business registration and renewal portal.</strong> This portal will allow you to register or renew your business registration with the City of Chandler. This easy-to-use portal will ask you a series of questions to walk you through.</p>\n        <p class=\"coc-font-size-22\"><em>Simply answer the first question below to get started.</em></p>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-12 mt-1\">\n          <a class=\"coc-link-small coc-link-arrow-left\" href=\"https://www.chandleraz.gov/business/tax-and-license\">Return to Tax & License</a>\n        </div>\n      </div>\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\" [innerHTML]=\"step1Config.heading\"></h2>\n          <p class=\"coc-font-size-14\" [innerHTML]=\"step1Config.subheading\"></p>\n          <form [formGroup]=\"step1FormGroup\" class=\"mt-3\">\n            <wizard-question\n              *ngFor=\"let question of step1Questions\"\n              [question]=\"question\"\n              [form]=\"step1FormGroup\"\n              [formId]=\"step1Config.id\">\n            </wizard-question>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-next\" cdkStepperNext>\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step [stepControl]=\"step2FormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\" [innerHTML]=\"step2Config.heading\"></h3>\n          <p class=\"coc-font-size-14\" [innerHTML]=\"step2Config.subheading\"></p>\n          <form [formGroup]=\"step2FormGroup\" class=\"w-lg-75 mt-3\">\n            <div class=\"form-row\">\n              <wizard-question\n                *ngFor=\"let question of step2Questions\"\n                class=\"col-12\"\n                [ngClass]=\"question.columns === 0 ? '' : 'col-md-' + question.columns\"\n                [question]=\"question\"\n                [form]=\"step2FormGroup\"\n                [formId]=\"step2Config.id\">\n              </wizard-question>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" (click)=\"handleStep2ContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n  \n  <cdk-step [stepControl]=\"step2BFormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\" [innerHTML]=\"step3Config.heading\"></h2>\n          <p class=\"coc-font-size-14\" [innerHTML]=\"step3Config.subheading\"></p>\n          <form [formGroup]=\"step3FormGroup\" class=\"mt-3\">\n            <wizard-question\n              *ngFor=\"let question of step3Questions\"\n              [question]=\"question\"\n              [form]=\"step3FormGroup\"\n              [formId]=\"step3Config.id\">\n            </wizard-question>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" (click)=\"handleStep3ContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <div *ngFor=\"let group of primaryQuestionGroups\">\n    <cdk-step [stepControl]=\"group.formGroup\">\n      <wizard-step\n        [heading]=\"group.heading\"\n        [subheading]=\"group.subheading\"\n        [form]=\"group.formGroup\"\n        [formId]=\"group.id\"\n        [questions]=\"group.formQuestions\">\n      </wizard-step>\n    </cdk-step>\n  </div>\n\n  <div *ngFor=\"let group of secondaryQuestionGroups\">\n    <cdk-step *ngIf=\"group.shouldBeDisplayed\" [stepControl]=\"group.formGroup\">\n      <wizard-step\n        [heading]=\"group.heading\"\n        [subheading]=\"group.subheading\"\n        [form]=\"group.formGroup\"\n        [formId]=\"group.id\"\n        [questions]=\"group.formQuestions\">\n      </wizard-step>\n    </cdk-step>\n  </div>\n  \n  <cdk-step [stepControl]=\"summaryFormGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"99\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\">Summary</h3>\n          <p class=\"coc-font-size-14\">Review of your answers. If everything is accurate, click submit.</p>\n          <div class=\"striped mt-3\">\n            <ng-container *ngFor=\"let question of step2Questions\">\n              <wizard-summary-item\n                *ngIf=\"step2FormGroup.value[question.id] !== undefined\"\n                class=\"d-block\"\n                [question]=\"question\"\n                [form]=\"step2FormGroup\"\n                [formId]=\"step2Config.id\">\n              </wizard-summary-item>\n            </ng-container>\n            <ng-container *ngFor=\"let question of step3Questions\">\n              <wizard-summary-item\n                *ngIf=\"step3FormGroup.value[question.id] !== undefined\"\n                class=\"d-block\"\n                [question]=\"question\"\n                [form]=\"step3FormGroup\"\n                [formId]=\"step3Config.id\">\n              </wizard-summary-item>\n            </ng-container>\n            <ng-container *ngFor=\"let group of primaryQuestionGroups\">\n              <ng-container *ngFor=\"let question of group.formQuestions\">\n                <wizard-summary-item\n                  *ngIf=\"group.formGroup.value[question.id] !== undefined\"\n                  class=\"d-block\"\n                  [question]=\"question\"\n                  [form]=\"group.formGroup\"\n                  [formId]=\"group.id\">\n                </wizard-summary-item>\n              </ng-container>\n            </ng-container>\n            <ng-container *ngFor=\"let group of secondaryQuestionGroups\">\n              <ng-container *ngIf=\"group.shouldBeDisplayed\">\n                <ng-container *ngFor=\"let question of group.formQuestions\">\n                  <wizard-summary-item\n                    *ngIf=\"group.formGroup.value[question.id] !== undefined\"\n                    class=\"d-block\"\n                    [question]=\"question\"\n                    [form]=\"group.formGroup\"\n                    [formId]=\"group.id\">\n                  </wizard-summary-item>\n                </ng-container>\n              </ng-container>\n            </ng-container>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"submit\" class=\"btn btn-next ml-3\" (click)=\"handleWizardSubmit()\">\n            Submit\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step>\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"100\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\">Thank you for registering</h3>\n          <p class=\"w-lg-75 mb-8\">Tempor dolor nam eget, eget in class tempor, ut imperdiet, pede tristique massa, duis donec. Sed nec tempus ac nisl, ultricies a lorem sem scelerisque justo, orci ipsum a euismod felis, pretium hendrerit, blandit est vehicula tempus volutpat. Molestie magna, a consequat justo in aliquam, ut massa facilisi. In consectetuer, eleifend faucibus est blandit, vel dolor mollis eu nonummy, euismod amet odio maecenas tristique. Nascetur urna taciti sit in aenean accusamus, auctor.</p>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n</wizard-stepper>"
+module.exports = "<wizard-stepper\n  [selectedIndex]=\"stepperIndex\"\n  (selectionChange)=\"handleStepChange($event)\">\n\n  <cdk-step [stepControl]=\"step1Config.formGroup\">\n    <div class=\"jumbotron jumbotron-fluid\">\n      <div class=\"jumbotron-container\">\n        <h1>Business Registration & Renewal</h1>\n        <hr class=\"my-2\">\n        <p><strong>Welcome to the Chandler business registration and renewal portal.</strong> This portal will allow you to register or renew your business registration with the City of Chandler. This easy-to-use portal will ask you a series of questions to walk you through.</p>\n        <p class=\"coc-font-size-22\"><em>Simply answer the first question below to get started.</em></p>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-12 mt-1\">\n          <a class=\"coc-link-small coc-link-arrow-left\" href=\"https://www.chandleraz.gov/business/tax-and-license\">Return to Tax & License</a>\n        </div>\n      </div>\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\" [innerHTML]=\"step1Config.heading\"></h2>\n          <p class=\"coc-font-size-14\" [innerHTML]=\"step1Config.subheading\"></p>\n          <form [formGroup]=\"step1Config.formGroup\" class=\"mt-3\">\n            <wizard-question\n              *ngFor=\"let question of step1Config.formQuestions\"\n              [question]=\"question\"\n              [form]=\"step1Config.formGroup\"\n              [formId]=\"step1Config.id\">\n            </wizard-question>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-next\" cdkStepperNext>\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step [stepControl]=\"step2Config.formGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\" [innerHTML]=\"step2Config.heading\"></h3>\n          <p class=\"coc-font-size-14\" [innerHTML]=\"step2Config.subheading\"></p>\n          <form [formGroup]=\"step2Config.formGroup\" class=\"w-lg-75 mt-3\">\n            <div class=\"form-row\">\n              <wizard-question\n                *ngFor=\"let question of step2Config.formQuestions\"\n                class=\"col-12\"\n                [ngClass]=\"question.columns === 0 ? '' : 'col-md-' + question.columns\"\n                [question]=\"question\"\n                [form]=\"step2Config.formGroup\"\n                [formId]=\"step2Config.id\">\n              </wizard-question>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" (click)=\"handleStep2ContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n  \n  <cdk-step [stepControl]=\"step3Config.formGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\" [innerHTML]=\"step3Config.heading\"></h2>\n          <p class=\"coc-font-size-14\" [innerHTML]=\"step3Config.subheading\"></p>\n          <form [formGroup]=\"step3Config.formGroup\" class=\"mt-3\">\n            <wizard-question\n              *ngFor=\"let question of step3Config.formQuestions\"\n              [question]=\"question\"\n              [form]=\"step3Config.formGroup\"\n              [formId]=\"step3Config.id\">\n            </wizard-question>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" (click)=\"handleStep3ContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <ng-container *ngFor=\"let config of primaryStepsConfig\">\n    <cdk-step [stepControl]=\"config.formGroup\">\n      <wizard-step\n        [heading]=\"config.heading\"\n        [subheading]=\"config.subheading\"\n        [form]=\"config.formGroup\"\n        [formId]=\"config.id\"\n        [questions]=\"config.formQuestions\"\n        (summary)=\"gotToSummary($event)\">\n      </wizard-step>\n    </cdk-step>\n  </ng-container>\n\n  <ng-container *ngFor=\"let config of secondaryStepsConfig\">\n    <cdk-step *ngIf=\"config.shouldBeDisplayed\" [stepControl]=\"config.formGroup\">\n      <wizard-step\n        [heading]=\"config.heading\"\n        [subheading]=\"config.subheading\"\n        [form]=\"config.formGroup\"\n        [formId]=\"config.id\"\n        [questions]=\"config.formQuestions\"\n        [showSummaryButton]=\"showSummaryButton\"\n        (summary)=\"gotToSummary($event)\">\n      </wizard-step>\n    </cdk-step>\n  </ng-container>\n  \n  <cdk-step>\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"99\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\">Summary</h3>\n          <p class=\"coc-font-size-14\">Review of your answers. If everything is accurate, click submit.</p>\n          <div class=\"striped mt-3\">\n            <wizard-summary-item\n              class=\"d-block\"\n              [config]=\"step2Config\"\n              (stepId)=\"goToStep($event)\">\n            </wizard-summary-item>\n            <wizard-summary-item\n              class=\"d-block\"\n              [config]=\"step3Config\"\n              (stepId)=\"goToStep($event)\">\n            </wizard-summary-item>\n            <ng-container *ngFor=\"let config of primaryStepsConfig\">\n              <wizard-summary-item\n                class=\"d-block\"\n                [config]=\"config\"\n                (stepId)=\"goToStep($event)\">\n              </wizard-summary-item>\n            </ng-container>\n            <ng-container *ngFor=\"let config of secondaryStepsConfig\">\n              <wizard-summary-item\n                *ngIf=\"config.shouldBeDisplayed\"\n                class=\"d-block\"\n                [config]=\"config\"\n                (stepId)=\"goToStep($event)\">\n              </wizard-summary-item>\n            </ng-container>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"submit\" class=\"btn btn-next ml-3\" (click)=\"handleWizardSubmit()\">\n            Submit\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step>\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"100\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\">Thank you for registering</h3>\n          <p class=\"w-lg-75 mb-8\">Tempor dolor nam eget, eget in class tempor, ut imperdiet, pede tristique massa, duis donec. Sed nec tempus ac nisl, ultricies a lorem sem scelerisque justo, orci ipsum a euismod felis, pretium hendrerit, blandit est vehicula tempus volutpat. Molestie magna, a consequat justo in aliquam, ut massa facilisi. In consectetuer, eleifend faucibus est blandit, vel dolor mollis eu nonummy, euismod amet odio maecenas tristique. Nascetur urna taciti sit in aenean accusamus, auctor.</p>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n  \n</wizard-stepper>"
 
 /***/ }),
 
@@ -7317,16 +7346,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-bootstrap/modal */ "./node_modules/ngx-bootstrap/modal/fesm5/ngx-bootstrap-modal.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _configuration_configuration_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./configuration/configuration.service */ "./src/app/wizard/configuration/configuration.service.ts");
-/* harmony import */ var _address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./address-verification/address-verification.component */ "./src/app/wizard/address-verification/address-verification.component.ts");
-/* harmony import */ var _wizard_helpers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./wizard-helpers */ "./src/app/wizard/wizard-helpers.ts");
-/* harmony import */ var _shared_web_storage_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../shared/web-storage.service */ "./src/app/shared/web-storage.service.ts");
-/* harmony import */ var _configuration_configuration_constants__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./configuration/configuration.constants */ "./src/app/wizard/configuration/configuration.constants.ts");
-
+/* harmony import */ var ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-bootstrap/modal */ "./node_modules/ngx-bootstrap/modal/fesm5/ngx-bootstrap-modal.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _configuration_configuration_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./configuration/configuration.service */ "./src/app/wizard/configuration/configuration.service.ts");
+/* harmony import */ var _address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./address-verification/address-verification.component */ "./src/app/wizard/address-verification/address-verification.component.ts");
+/* harmony import */ var _wizard_helpers__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./wizard-helpers */ "./src/app/wizard/wizard-helpers.ts");
+/* harmony import */ var _shared_web_storage_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../shared/web-storage.service */ "./src/app/shared/web-storage.service.ts");
+/* harmony import */ var _configuration_configuration_constants__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./configuration/configuration.constants */ "./src/app/wizard/configuration/configuration.constants.ts");
 
 
 
@@ -7339,22 +7366,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var WizardComponent = /** @class */ (function () {
-    function WizardComponent(router, fb, modalService, ConfigurationService, webStorageService) {
+    function WizardComponent(router, modalService, ConfigurationService, webStorageService) {
         this.router = router;
-        this.fb = fb;
         this.modalService = modalService;
         this.ConfigurationService = ConfigurationService;
         this.webStorageService = webStorageService;
-        this.ngUnsubscribe = new rxjs__WEBPACK_IMPORTED_MODULE_6__["Subject"]();
+        this.ngUnsubscribe = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Subject"]();
         this.wizardConfig = {};
-        this.step1Config = _configuration_configuration_constants__WEBPACK_IMPORTED_MODULE_11__["step1Configuration"];
-        this.step2Config = _configuration_configuration_constants__WEBPACK_IMPORTED_MODULE_11__["step2Configuration"];
-        this.step3Config = _configuration_configuration_constants__WEBPACK_IMPORTED_MODULE_11__["step3Configuration"];
-        this.summaryFormGroup = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroup"]({});
+        this.step1Config = _configuration_configuration_constants__WEBPACK_IMPORTED_MODULE_10__["step1Configuration"];
+        this.step2Config = _configuration_configuration_constants__WEBPACK_IMPORTED_MODULE_10__["step2Configuration"];
+        this.step3Config = _configuration_configuration_constants__WEBPACK_IMPORTED_MODULE_10__["step3Configuration"];
+        this.allStepsConfig = [];
+        this.primaryStepsConfig = [];
+        this.secondaryStepsConfig = [];
         this.savedInWebStorage = {};
         this.stepperIndex = 0;
         this.isInChandler = false;
         this.step3Continue = false;
+        // This will be used to keep track of how many
+        // total steps there are since steps can be
+        // added or removed dynamically based on form answers
+        // This value is a zero based index
+        this.stepCount = 0;
+        // Set an offset for the first few steps that are fixed
+        this.stepCountOffset = 3;
     }
     WizardComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -7362,76 +7397,77 @@ var WizardComponent = /** @class */ (function () {
         this.savedInWebStorage = this.webStorageService.getAllForms();
         // Get configuration file
         this.ConfigurationService.get()
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.ngUnsubscribe))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.ngUnsubscribe))
             .subscribe(function (config) {
             _this.wizardConfig = config;
         }, function (error) {
             console.error(error);
         }, function () {
             // Load all config data into local variable
-            _this.allQuestionGroups = _this.wizardConfig.questionGroups;
+            _this.allStepsConfig = _this.wizardConfig.questionGroups;
             // Convert array of questions in json config to Angular form groups
-            _this.allQuestionGroups.forEach(function (group) {
+            _this.allStepsConfig.forEach(function (config) {
                 // Add saved form values from web storage to config object
-                _this.restoreValuesFromWebStorage(group);
+                _this.restoreValuesFromWebStorage(config);
                 // Store converted questions in group object
                 // to pass to each step and question component
-                var convertedQuestions = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormQuestion"])(group.questions);
-                group['formQuestions'] = convertedQuestions;
+                config.formQuestions = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_8__["toFormQuestion"])(config.questions);
                 // Store questions as form group inside group object also
-                var convertedFormGroup = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormGroup"])(convertedQuestions);
-                group['formGroup'] = convertedFormGroup;
+                config.formGroup = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_8__["toFormGroup"])(config.formQuestions);
                 // Set flag on secondary question groups for display status
                 // Init value as false, questions will be added as needed
                 // based on primary question group answers
-                if (group.type === 'secondaryGroup') {
-                    group['shouldBeDisplayed'] = false;
+                if (config.type === 'secondary') {
+                    config.shouldBeDisplayed = false;
                 }
             });
             // Create new array for primary questions from config
-            _this.primaryQuestionGroups = _this.allQuestionGroups.filter(function (group) {
-                return group.type === 'primaryGroup';
+            _this.primaryStepsConfig = _this.allStepsConfig.filter(function (config) {
+                return config.type === 'primary';
             });
-            _this.primaryQuestionGroups.sort(function (a, b) { return a.order - b.order; });
+            _this.primaryStepsConfig.sort(function (a, b) { return a.order - b.order; });
             // Create new array for secondary questions from config
-            _this.secondaryQuestionGroups = _this.allQuestionGroups.filter(function (group) {
-                return group.type === 'secondaryGroup';
+            _this.secondaryStepsConfig = _this.allStepsConfig.filter(function (config) {
+                return config.type === 'secondary';
             });
-            _this.secondaryQuestionGroups.sort(function (a, b) { return a.order - b.order; });
+            _this.secondaryStepsConfig.sort(function (a, b) { return a.order - b.order; });
             // Set 'should be displayed' based on saved/restored
             // form values
             _this.updateStepsToBeDisplayed();
             // Set flag based on value changes
-            _this.primaryQuestionGroups.forEach(function (group) {
-                group.formGroup.valueChanges
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(_this.ngUnsubscribe))
+            _this.primaryStepsConfig.forEach(function (config) {
+                config.formGroup.valueChanges
+                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(_this.ngUnsubscribe))
                     .subscribe(function () {
                     _this.updateStepsToBeDisplayed();
                 });
             });
         });
         this.restoreValuesFromWebStorage(this.step1Config);
-        this.step1Questions = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormQuestion"])(this.step1Config.questions);
-        this.step1FormGroup = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormGroup"])(this.step1Questions);
+        this.step1Config.stepNumber = 0;
+        this.step1Config.formQuestions = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_8__["toFormQuestion"])(this.step1Config.questions);
+        this.step1Config.formGroup = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_8__["toFormGroup"])(this.step1Config.formQuestions);
         this.restoreValuesFromWebStorage(this.step2Config);
-        this.step2Questions = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormQuestion"])(this.step2Config.questions);
-        this.step2FormGroup = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormGroup"])(this.step2Questions);
+        this.step2Config.stepNumber = 1;
+        this.step2Config.formQuestions = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_8__["toFormQuestion"])(this.step2Config.questions);
+        this.step2Config.formGroup = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_8__["toFormGroup"])(this.step2Config.formQuestions);
         // Simulating some validation to trigger address verification modal
-        this.step2FormGroup.get('BUSINESS_CITY').valueChanges
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.ngUnsubscribe))
+        this.step2Config.formGroup.get('BUSINESS_CITY').valueChanges
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.ngUnsubscribe))
             .subscribe(function (value) {
             _this.isInChandler = value.toLowerCase() === 'chandler';
         });
         this.restoreValuesFromWebStorage(this.step3Config);
-        this.step3Questions = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormQuestion"])(this.step3Config.questions);
-        this.step3FormGroup = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_9__["toFormGroup"])(this.step3Questions);
+        this.step3Config.stepNumber = 2;
+        this.step3Config.formQuestions = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_8__["toFormQuestion"])(this.step3Config.questions);
+        this.step3Config.formGroup = Object(_wizard_helpers__WEBPACK_IMPORTED_MODULE_8__["toFormGroup"])(this.step3Config.formQuestions);
         // Validation to determine whether user should continue after step 3
         // If any checkbox was checked/true, continue
         // Set variable based on saved/restored question values
-        this.step3Continue = Object.values(this.step3FormGroup.value).some(Boolean);
+        this.step3Continue = Object.values(this.step3Config.formGroup.value).some(Boolean);
         // Set variable when value changes
-        this.step3FormGroup.valueChanges
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.ngUnsubscribe))
+        this.step3Config.formGroup.valueChanges
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.ngUnsubscribe))
             .subscribe(function (value) {
             _this.step3Continue = Object.values(value).some(Boolean);
         });
@@ -7447,21 +7483,29 @@ var WizardComponent = /** @class */ (function () {
         this.ngUnsubscribe.complete();
     };
     WizardComponent.prototype.updateStepsToBeDisplayed = function () {
+        var _this = this;
         var primaryQuestionsChecked = [];
         var secondaryQuestionsToShow = [];
+        // Whenever steps are updated we need to re-index 
+        // all of the step numbers
+        this.stepCount = this.stepCountOffset;
         // Loop through all primary questions
-        this.primaryQuestionGroups.forEach(function (group) {
+        this.primaryStepsConfig.forEach(function (config) {
+            // Assign a step number to each step config
+            config.stepNumber = _this.stepCount;
+            // Increment the step count
+            _this.stepCount++;
             // Get all primary question values
-            Object.keys(group.formGroup.controls).forEach(function (key) {
+            Object.keys(config.formGroup.controls).forEach(function (key) {
                 // Only store values that are checked/yes/true
-                if (group.formGroup.controls[key].value) {
+                if (config.formGroup.controls[key].value) {
                     primaryQuestionsChecked.push(key);
                 }
             });
             // Get all dependencies of primaryQuestionsChecked
-            // Loop through al questions
-            group.questions.forEach(function (question) {
-                // Check to see if the current question is checked/yes/true
+            // Loop through all questions
+            config.questions.forEach(function (question) {
+                // Check to see if this question is checked/yes/true
                 if (primaryQuestionsChecked.includes(question.id)) {
                     question.dependencies.forEach(function (dep) {
                         // Check to see if it's already included
@@ -7474,13 +7518,20 @@ var WizardComponent = /** @class */ (function () {
             });
         });
         // Now loop through all secondary questions
-        this.secondaryQuestionGroups.forEach(function (group) {
+        this.secondaryStepsConfig.forEach(function (config) {
             // Set everything to not display first
-            group.shouldBeDisplayed = false;
+            config.shouldBeDisplayed = false;
             // Now set questions to be displayed
             // if our new array includes them
-            if (secondaryQuestionsToShow.includes(group.id)) {
-                group.shouldBeDisplayed = true;
+            if (secondaryQuestionsToShow.includes(config.id)) {
+                // Assign a step number to each step config
+                config.stepNumber = _this.stepCount;
+                // Increment the step count
+                _this.stepCount++;
+                config.shouldBeDisplayed = true;
+            }
+            else {
+                config.stepNumber = null;
             }
         });
     };
@@ -7503,17 +7554,17 @@ var WizardComponent = /** @class */ (function () {
                 { 'address1': '123 Really Long Address Street', 'address2': 'Suite 700', 'city': 'Chandler', 'state': 'Arizona', 'zip': '85248' }
             ]
         };
-        this.bsModalRef = this.modalService.show(_address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_8__["AddressVerificationComponent"], {
+        this.bsModalRef = this.modalService.show(_address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_7__["AddressVerificationComponent"], {
             initialState: initialState,
             class: 'modal-dialog-centered modal-lg',
             backdrop: 'static',
             keyboard: false
         });
         this.bsModalRef.content.selectedAddress
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.ngUnsubscribe))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.ngUnsubscribe))
             .subscribe(function (address) {
             // Update form values from suggested address in modal
-            _this.step2FormGroup.patchValue({
+            _this.step2Config.formGroup.patchValue({
                 BUSINESS_ADDR1: address.address1,
                 BUSINESS_ADDR2: address.address2,
                 BUSINESS_CITY: address.city,
@@ -7549,16 +7600,22 @@ var WizardComponent = /** @class */ (function () {
             });
         }, 50);
     };
+    WizardComponent.prototype.goToStep = function (stepNumber) {
+        this.stepperIndex = stepNumber;
+    };
+    WizardComponent.prototype.gotToSummary = function () {
+        this.stepperIndex = this.stepCount;
+    };
     WizardComponent.prototype.handleWizardSubmit = function () {
         // TODO: form submit
         this.stepperIndex++;
     };
-    WizardComponent.prototype.restoreValuesFromWebStorage = function (group) {
+    WizardComponent.prototype.restoreValuesFromWebStorage = function (config) {
         var _this = this;
-        if (this.savedInWebStorage.hasOwnProperty(group.id)) {
-            group.questions.forEach(function (question) {
-                if (_this.savedInWebStorage[group.id].hasOwnProperty(question.id)) {
-                    question.value = _this.savedInWebStorage[group.id][question.id];
+        if (this.savedInWebStorage.hasOwnProperty(config.id)) {
+            config.questions.forEach(function (question) {
+                if (_this.savedInWebStorage[config.id].hasOwnProperty(question.id)) {
+                    question.value = _this.savedInWebStorage[config.id][question.id];
                 }
             });
         }
@@ -7569,10 +7626,9 @@ var WizardComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./wizard.component.html */ "./src/app/wizard/wizard.component.html")
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"],
-            ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_4__["BsModalService"],
-            _configuration_configuration_service__WEBPACK_IMPORTED_MODULE_7__["ConfigurationService"],
-            _shared_web_storage_service__WEBPACK_IMPORTED_MODULE_10__["WebStorageService"]])
+            ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_3__["BsModalService"],
+            _configuration_configuration_service__WEBPACK_IMPORTED_MODULE_6__["ConfigurationService"],
+            _shared_web_storage_service__WEBPACK_IMPORTED_MODULE_9__["WebStorageService"]])
     ], WizardComponent);
     return WizardComponent;
 }());

@@ -2,7 +2,7 @@
   "questionGroups": [
     {
       "id": "SPECIALTY_A",
-      "type": "primaryGroup",
+      "type": "primary",
       "heading": "Answer \"Yes\" or \"No\" to the following questions:",
       "subheading": "Toggle right to answer \"yes\". Answer all questions then click continue.",
       "order": 1,
@@ -81,7 +81,7 @@
     },
     {
       "id": "SPECIALTY_B",
-      "type": "primaryGroup",
+      "type": "primary",
       "heading": "Is your business engaged in any of the following:",
       "subheading": "Click all that apply to your business then click continue.",
       "order": 2,
@@ -138,7 +138,7 @@
     },
     {
       "id": "APPLICANT_BASIC_A",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Applicant Basic Information",
       "subheading": "Please fill out all required information and click continue",
       "order": 1,
@@ -191,7 +191,7 @@
     },
     {
       "id": "APPLICANT_BASIC_B",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Applicant Basic Information",
       "subheading": "Please fill out all required information and click continue",
       "order": 2,
@@ -261,7 +261,7 @@
     },
     {
       "id": "APPLICANT_DETAIL_A",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Applicant Detail Information",
       "subheading": "Please fill out all required information and click continue",
       "order": 3,
@@ -368,7 +368,7 @@
     },
     {
       "id": "APPLICANT_DETAIL_B",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Applicant Detail Information",
       "subheading": "Please fill out all required information and click continue",
       "order": 4,
@@ -429,7 +429,7 @@
     },
     {
       "id": "APPLICANT_CONVICTIONS",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Applicant Conviction Information",
       "subheading": "Please fill out all required information and click continue",
       "order": 5,
@@ -478,7 +478,7 @@
     },
     {
       "id": "APPLICANT_PED_A",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Applicant PED Information 1",
       "subheading": "Please provide a non-employer reference that lives in Maricopa County.",
       "order": 6,
@@ -558,7 +558,7 @@
     },
     {
       "id": "APPLICANT_PED_B",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Applicant PED Information 2",
       "subheading": "Please provide a second non-employer reference.",
       "order": 7,
@@ -638,7 +638,7 @@
     },
     {
       "id": "APPLICANT_PED_C",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Applicant PED Information 3",
       "subheading": "Please provide some information about your vehicle. Enter \"NA\" if you do not have a vehicle.",
       "order": 8,
@@ -723,7 +723,7 @@
     },
     {
       "id": "APPLICANT_MAE",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Applicant MAE Information",
       "subheading": "Please enter the follow information and click continue",
       "order": 9,
@@ -774,7 +774,7 @@
     },
     {
       "id": "ENTITY_INFO_A",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Entity Information part 1",
       "subheading": "Please tell us about your business entity and click continue",
       "order": 10,
@@ -854,7 +854,7 @@
     },
     {
       "id": "ENTITY_INFO_B",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Entity Information part 2",
       "subheading": "Please enter the mailing address for your business if different than primary address.",
       "order": 11,
@@ -924,7 +924,7 @@
     },
     {
       "id": "ENTITY_INFO_C",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Entity Information part 3",
       "subheading": "Please fill out all required information and click continue",
       "order": 12,
@@ -961,7 +961,7 @@
     },
     {
       "id": "ENTITY_INFO_D",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Entity Information part 4",
       "subheading": "Please tell us about your statutory agent and click continue",
       "order": 13,
@@ -1042,7 +1042,7 @@
     },
     {
       "id": "ENTITY_INFO_E",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Entity Information part 5",
       "subheading": "Please tell us the best contact information and click continue",
       "order": 14,
@@ -1090,7 +1090,7 @@
     },
     {
       "id": "OWNER_INFO_A",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Owner Information part 1",
       "subheading": "Please fill out the business owner information and click continue",
       "order": 15,
@@ -1132,7 +1132,7 @@
     },
     {
       "id": "OWNER_INFO_B",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Owner Information part 2",
       "subheading": "Please fill out the business owner information and click continue",
       "order": 16,
@@ -1192,7 +1192,7 @@
     },
     {
       "id": "OWNER_INFO_PEDDLER",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Owner Information Peddler",
       "subheading": "Please fill out the business owner information and click continue",
       "order": 17,
@@ -1254,7 +1254,7 @@
     },
     {
       "id": "LOCATION_INFO_A",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Location Information part 1",
       "subheading": "Please fill all required fields and click continue",
       "order": 18,
@@ -1295,7 +1295,7 @@
     },
     {
       "id": "LOCATION_INFO_B",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Location Information part 2",
       "subheading": "Please fill all required fields and click continue",
       "order": 19,
@@ -1373,7 +1373,7 @@
     },
     {
       "id": "LOCATION_INFO_C",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Location Information part 3",
       "subheading": "Please fill all required fields and click continue",
       "order": 20,
@@ -1438,7 +1438,7 @@
     },
     {
       "id": "LOCATION_INFO_D",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Location Information part 4",
       "subheading": "Please fill all required fields and click continue",
       "order": 21,
@@ -1483,7 +1483,7 @@
     },
     {
       "id": "LOCATION_INFO_E",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Location Information part 5",
       "subheading": "Please tell us about the property ownership if applicable",
       "order": 22,
@@ -1551,7 +1551,7 @@
     },
     {
       "id": "LOCATION_INFO_F",
-      "type": "secondaryGroup",
+      "type": "secondary",
       "heading": "Location Information part 6",
       "subheading": "Please fill out the following inforamtion",
       "order": 23,
