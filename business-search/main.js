@@ -143,10 +143,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mobile_controls_mobile_controls_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./mobile-controls/mobile-controls.component */ "./src/app/mobile-controls/mobile-controls.component.ts");
 /* harmony import */ var _main_list_view_main_list_view_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./main-list-view/main-list-view.component */ "./src/app/main-list-view/main-list-view.component.ts");
 /* harmony import */ var _desktop_controls_desktop_controls_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./desktop-controls/desktop-controls.component */ "./src/app/desktop-controls/desktop-controls.component.ts");
-/* harmony import */ var angular_in_memory_web_api__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! angular-in-memory-web-api */ "./node_modules/angular-in-memory-web-api/index.js");
-/* harmony import */ var _services_in_memory_data_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./services/in-memory-data.service */ "./src/app/services/in-memory-data.service.ts");
-
-
 
 
 
@@ -184,8 +180,7 @@ var AppModule = /** @class */ (function () {
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
                 ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__["BsDropdownModule"].forRoot(),
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
-                angular_in_memory_web_api__WEBPACK_IMPORTED_MODULE_16__["HttpClientInMemoryWebApiModule"].forRoot(_services_in_memory_data_service__WEBPACK_IMPORTED_MODULE_17__["InMemoryDataService"], { dataEncapsulation: false })
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"]
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
@@ -236,6 +231,9 @@ var DesktopControlsComponent = /** @class */ (function () {
     DesktopControlsComponent.prototype.toggleListView = function () {
         //If is map view (default view)
         if (this.isMapView && this.businessResults.length == 0) {
+            this.sharedService.toggleView(!this.isMapView);
+        }
+        else if (this.isMapView && !this.isListView && this.businessResults.length > 0) {
             this.sharedService.toggleView(!this.isMapView);
         }
         else if (this.isMapView && this.businessResults.length > 0) {
@@ -378,7 +376,7 @@ var HeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<aside *ngIf=\"isListView\" [class]=\"isListView ? 'coc-biz-search-list-view d-block' : 'coc-biz-search-list-view d-none'\" [class.active]=\"isActive\">\n  <div class=\"results-summary d-none d-lg-block\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col px-0 d-flex align-items-start\">\n          <div class=\"mr-1\">\n            <p class=\"h1\" id=\"searchResults\">{{this.businessResults.length}}</p>\n          </div>\n          <div>\n            <h4 id=\"bizType\" class=\"font-weight-normal\">Results</h4>\n            <p id=\"addressSearched\">near {{this.searchAddress}}</p>\n          </div>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-12 px-0\">\n          <div class=\"button-group d-flex mt-3\">\n            <button class=\"btn btn-primary mr-1 w-100\" (click)=\"exportResults()\"><i class=\"fal fa-upload\"></i> Export</button>\n            <button class=\"btn btn-green w-100\" (click)=\"toggleListView()\"><i class=\"fal fa-filter\"></i> Filter</button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"business-listings\">\n    <article *ngFor=\"let result of businessResults\" \n              id=\"{{result.id}}\" \n              (click)=\"toggleActiveState(result)\" \n              [class]=\"result.isActive ? 'business-listing pt-2 pb-2 active' : 'business-listing pt-2 pb-2'\"\n    >\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-8\">\n            <h5>{{ result.name }}</h5>\n            <p>{{ result.address }}</p>\n            <a href=\"tel:+{{result.phone}}\">({{result.phone | slice:0:3}})-{{result.phone | slice:4:7}}-{{result.phone | slice:-4}}</a><br/>\n            <a href=\"{{result.website}}\">{{result.website}}</a>\n            <small>Since: {{result.openedOn}}</small>\n          </div>\n          <div class=\"col-4\">\n            <i class=\"text-success {{result.icon}} fa-2x\"></i>\n            <small><i>{{result.parentCategory}}</i></small>\n          </div>\n        </div>\n      </div>\n    </article>\n  </div>\n</aside>\n"
+module.exports = "<aside *ngIf=\"isListView\" [class]=\"isListView ? 'coc-biz-search-list-view d-block' : 'coc-biz-search-list-view d-none'\" [class.active]=\"isActive\">\n  <div class=\"results-summary d-none d-lg-block\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col px-0 d-flex align-items-start\">\n          <div class=\"mr-1\">\n            <p class=\"h1\" id=\"searchResults\">{{this.businessResults.length}}</p>\n          </div>\n          <div>\n            <h4 id=\"bizType\" class=\"font-weight-normal\">Results</h4>\n            <p id=\"addressSearched\">near {{this.searchAddress}}</p>\n          </div>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-12 px-0\">\n          <div class=\"button-group d-flex mt-3\">\n            <button class=\"btn btn-primary mr-1 w-100\" (click)=\"exportResults()\"><i class=\"fal fa-upload\"></i> Export</button>\n            <button class=\"btn btn-green w-100\" (click)=\"toggleListView()\"><i class=\"fal fa-filter\"></i> Filter</button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"business-listings\">\n    <article *ngFor=\"let result of businessResults\" \n              id=\"{{result.id}}\" \n              (click)=\"toggleActiveState(result)\" \n              [class]=\"result.isActive ? 'business-listing pt-2 pb-2 active' : 'business-listing pt-2 pb-2'\"\n    >\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-8\">\n            <h5>{{ result.name }}</h5>\n            <p>{{ result.address }}</p>\n            <a href=\"tel:+{{result.phone}}\">({{result.phone | slice:0:3}})-{{result.phone | slice:4:7}}-{{result.phone | slice:-4}}</a><br/>\n            <a href=\"{{result.website}}\">{{result.website}}</a>\n            <small>Since: {{result.openedOn}}</small>\n          </div>\n          <div class=\"col-4\">\n            <span class=\"fa-layers fa-fw fa-2x\" style=\"background: #003c5c; padding: 0 1rem;\">\n              <i class=\"text-white {{result.icon}}\"></i>\n            </span>\n            <!-- <i class=\"text-primary {{result.icon}} fa-2x\"></i> -->\n            <small><i>{{result.subCategory}}</i></small>\n          </div>\n        </div>\n      </div>\n    </article>\n  </div>\n</aside>\n"
 
 /***/ }),
 
@@ -474,7 +472,7 @@ var ListViewComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"businessResults.length === 0\"  [class]=\"!isMapView ? 'main-list-view' : 'd-none'\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-12\">\n        <h2>No Results</h2>\n        <p>To display a list of businesses please search.</p>\n      </div>\n    </div>\n  </div>\n</div>\n<div *ngIf=\"businessResults.length > 0\" [class]=\"!isMapView ? 'main-list-view' : 'd-none'\">\n  <article *ngFor=\"let result of businessResults\" id=\"{{result.id}}\" class=\"business listing pt-2 pb-2\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-8\">\n          <h5>{{ result.name }}</h5>\n          <p>{{ result.address }}</p>\n          <a href=\"tel:+{{result.phone}}\">({{result.phone | slice:0:3}}) {{result.phone | slice:4:7}}-{{result.phone | slice:-4}}</a><br/>\n          <a href=\"{{result.website}}\">{{result.website}}</a><br/>\n          <small><i>Since: {{result.openedOn}}</i></small>\n        </div>\n        <div class=\"col-4\">\n          <i class=\"text-success {{result.icon}} fa-2x\"></i><br/>\n          <small><i>{{result.parentCategory}}</i></small>\n        </div>\n      </div>\n    </div>\n  </article>\n</div>\n"
+module.exports = "<div *ngIf=\"businessResults.length === 0\"  [class]=\"!isMapView ? 'main-list-view' : 'd-none'\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-12\">\n        <h2>No Results</h2>\n        <p>To display a list of businesses please search.</p>\n        span.fa-layersf\n      </div>\n    </div>\n  </div>\n</div>\n<div *ngIf=\"businessResults.length > 0\" [class]=\"!isMapView ? 'main-list-view' : 'd-none'\">\n  <article *ngFor=\"let result of businessResults\" id=\"{{result.id}}\" class=\"business listing pt-2 pb-2\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-8\">\n          <h5>{{ result.name }}</h5>\n          <p>{{ result.address }}</p>\n          <a href=\"tel:+{{result.phone}}\">({{result.phone | slice:0:3}}) {{result.phone | slice:4:7}}-{{result.phone | slice:-4}}</a><br/>\n          <a href=\"{{result.website}}\">{{result.website}}</a><br/>\n          <small><i>Since: {{result.openedOn}}</i></small>\n        </div>\n        <div class=\"col-4\">\n          <i class=\"text-primary {{result.icon}} fa-2x\"></i><br/>\n          <small><i>{{result.subCategory}}</i></small>\n        </div>\n      </div>\n    </div>\n  </article>\n</div>\n"
 
 /***/ }),
 
@@ -564,6 +562,7 @@ var MapComponent = /** @class */ (function () {
         this.mapService = mapService;
         this.clicked = false;
         this.businessResults = [];
+        this.searchResults = [];
         this.selectedBusiness = {
             name: '',
             address: '',
@@ -573,6 +572,19 @@ var MapComponent = /** @class */ (function () {
             parentCategory: '',
             icon: '',
             isActive: false
+        };
+        this.options = {
+            dojoConfig: {
+                async: true,
+                tlmSiblingOfDojo: false,
+                packages: [{
+                        location: "/assets/fcl/",
+                        name: 'fcl'
+                    }],
+                has: {
+                    "esri-promise-compatibility": 1
+                }
+            }
         };
         this.closeCard = function (result) {
             result.isActive = !result.isActive;
@@ -589,43 +601,73 @@ var MapComponent = /** @class */ (function () {
         this.mapService.currentBusiness$.subscribe(function (selectedBusiness) {
             _this.selectedBusiness = selectedBusiness;
         });
+        this.mapService.getCoordinates$.subscribe(function (searchResults) {
+            _this.searchResults = searchResults;
+        });
         // use esri-loader to load JSAPI modules  
         return Object(esri_loader__WEBPACK_IMPORTED_MODULE_2__["loadModules"])([
             'esri/Map',
+            'esri/Color',
             'esri/views/MapView',
+            'esri/views/SceneView',
+            'esri/views/ui/DefaultUI',
+            'esri/geometry/Extent',
+            'esri/geometry/SpatialReference',
+            'esri/geometry/Point',
+            'esri/layers/GraphicsLayer',
             'esri/Graphic',
-            'esri/layers/GraphicsLayer'
-        ])
+            'esri/symbols/SimpleMarkerSymbol',
+            'esri/symbols/SimpleLineSymbol',
+            'esri/symbols/SimpleFillSymbol',
+            'esri/symbols/TextSymbol',
+            'esri/symbols/TextSymbol3DLayer',
+            'esri/symbols/Font',
+            'esri/renderers/ClassBreaksRenderer',
+            'esri/core/watchUtils',
+            'esri/geometry/support/webMercatorUtils',
+            'fcl/FlareClusterLayer_v4',
+            'dojo',
+            'dojo/ready',
+            'dojo/json',
+            'dojo/dom',
+            'dojo/on',
+            'dojo/dom-attr',
+            'dojo/dom-class'
+        ], this.options)
             .then(function (_a) {
-            var Map = _a[0], MapView = _a[1], Graphic = _a[2], GraphicsLayer = _a[3];
-            var map = new Map({
+            var Map = _a[0], Color = _a[1], MapView = _a[2], SceneView = _a[3], Extent = _a[4], SpatialReference = _a[5], Point = _a[6], PopupTemplate = _a[7], GraphicsLayer = _a[8], Graphic = _a[9], SimpleMarkerSymbol = _a[10], SimpleLineSymbol = _a[11], SimpleFillSymbol = _a[12], TextSymbol = _a[13], TextSymbol3DLayer = _a[14], Font = _a[15], ClassBreaksRenderer = _a[16], watchUtils = _a[17], webMercatorUtils = _a[18], fcl = _a[19], dojo = _a[20], ready = _a[21], JSON = _a[22], dom = _a[23], on = _a[24], domAttr = _a[25], domClass = _a[26];
+            _this.map = new Map({
                 basemap: 'streets'
             });
             _this.mapView = new MapView({
                 container: _this.mapViewEl.nativeElement,
                 center: [-111.8413725, 33.3014505],
                 zoom: 15,
-                map: map
+                map: _this.map,
             });
+            _this.mapView.ui.move('zoom', 'bottom-right');
             var graphicsLayer = new GraphicsLayer({});
-            map.add(graphicsLayer);
+            _this.map.add(graphicsLayer);
             _this.mapView.when(function () {
                 _this.mapStatusSubscription = _this.mapService.mapLoaded.subscribe(function () {
                     /*
                      * Notify search box that map has loaded and enable search button
                     */
                 });
-                var activePin = 'M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0z';
+                var activePin = 'M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z';
                 _this.panRequestSubscrition = _this.mapService.panRequest.subscribe(function () {
-                    panMap(_this.mapView, _this.mapService.businessCoordinates, _this.businessResults);
+                    panMap(_this.mapView, _this.mapService.businessCoordinates);
                 });
                 _this.businessResultsSubscription = _this.mapService.currentResults$.subscribe(function () {
-                    addGraphics(_this.mapView, _this.businessResults);
+                    addGraphics(_this.map, _this.clusterLayer, _this.businessResults);
                 });
                 _this.selectedBusinessSubscription = _this.mapService.currentBusiness$.subscribe(function () {
                     toggleActiveBusiness(_this.mapView, _this.businessResults, _this.selectedBusiness);
                 });
-                function panMap(mapView, coordinates, businessResults) {
+                _this.searchCoordinatesSubscription = _this.mapService.getCoordinates$.subscribe(function () {
+                    recenterMap(_this.mapView, _this.searchResults);
+                });
+                function panMap(mapView, coordinates) {
                     mapView.goTo({
                         target: coordinates,
                     }, { /* duration: 1500 */}).then(function () {
@@ -640,41 +682,47 @@ var MapComponent = /** @class */ (function () {
                             },
                             symbol: {
                                 type: 'simple-marker',
-                                color: 'red',
+                                color: '#003c5c',
                                 path: activePin,
                                 size: '30px'
                             }
                         });
-                        if (graphicsLayer.graphics.length > businessResults.length) {
+                        if (graphicsLayer.graphics.length) {
                             graphicsLayer.graphics.removeAt(graphicsLayer.graphics.length - 1);
                         }
                         graphicsLayer.graphics.add(mapPin);
                     });
                 }
-                function addGraphics(mapView, businessResults) {
-                    graphicsLayer.graphics.removeAll();
-                    businessResults.forEach(function (result) {
-                        var pointGraphic = new Graphic({
-                            geometry: {
-                                type: 'point',
-                                longitude: result.coordinates[0],
-                                latitude: result.coordinates[1]
-                            },
-                            attributes: {
-                                business: result
-                            },
-                            symbol: {
-                                type: 'simple-marker',
-                                path: result.svg,
-                                size: '30px',
-                                color: '#1a8ac0',
-                                outline: {
-                                    color: [26, 138, 192]
-                                }
-                            }
-                        });
-                        graphicsLayer.graphics.add(pointGraphic);
+                function addGraphics(map, clusterLayer, businessResults) {
+                    map.remove(clusterLayer);
+                    var defaultSym = new SimpleMarkerSymbol({
+                        size: '30px',
+                        color: '#003c5c',
+                        path: 'M192 96c-52.935 0-96 43.065-96 96s43.065 96 96 96 96-43.065 96-96-43.065-96-96-96zm0 160c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64zm0-256C85.961 0 0 85.961 0 192c0 77.413 26.97 99.031 172.268 309.67 9.534 13.772 29.929 13.774 39.465 0C357.03 291.031 384 269.413 384 192 384 85.961 298.039 0 192 0zm0 473.931C52.705 272.488 32 256.494 32 192c0-42.738 16.643-82.917 46.863-113.137S149.262 32 192 32s82.917 16.643 113.137 46.863S352 149.262 352 192c0 64.49-20.692 80.47-160 281.931z',
+                        outline: null
                     });
+                    var renderer = new ClassBreaksRenderer({
+                        field: 'clusterCount',
+                        defaultSymbol: defaultSym
+                    });
+                    var smSymbol = new SimpleMarkerSymbol({ size: 22, outline: new SimpleLineSymbol({ color: [221, 159, 34] }), color: [255, 204, 102] });
+                    var mdSymbol = new SimpleMarkerSymbol({ size: 24, outline: new SimpleLineSymbol({ color: [82, 163, 204] }), color: [102, 204, 255] });
+                    var lgSymbol = new SimpleMarkerSymbol({ size: 28, outline: new SimpleLineSymbol({ color: [41, 163, 41] }), color: [51, 204, 51] });
+                    var xlSymbol = new SimpleMarkerSymbol({ size: 32, outline: new SimpleLineSymbol({ color: [200, 52, 59] }), color: [250, 65, 74] });
+                    renderer.addClassBreakInfo(0, 19, smSymbol);
+                    renderer.addClassBreakInfo(20, 150, mdSymbol);
+                    renderer.addClassBreakInfo(151, 1000, lgSymbol);
+                    renderer.addClassBreakInfo(1001, Infinity, xlSymbol);
+                    var options = {
+                        id: "flare-cluster-layer",
+                        clusterRenderer: renderer,
+                        displaySubTypeFlares: false,
+                        maxSingleFlareCount: 8,
+                        clusterRatio: 75,
+                        data: businessResults
+                    };
+                    clusterLayer = new fcl.FlareClusterLayer(options);
+                    map.add(clusterLayer);
                 }
                 function toggleActiveBusiness(mapView, businessResults, selectedBusiness) {
                     if (selectedBusiness.isActive) {
@@ -696,12 +744,12 @@ var MapComponent = /** @class */ (function () {
                             },
                             symbol: {
                                 type: 'simple-marker',
-                                color: 'red',
+                                color: '#003c5c',
                                 path: activePin,
                                 size: '30px'
                             }
                         });
-                        if (graphicsLayer.graphics.length > businessResults.length) {
+                        if (graphicsLayer.graphics.length) {
                             graphicsLayer.graphics.removeAt(graphicsLayer.graphics.length - 1);
                         }
                         graphicsLayer.graphics.add(mapPin);
@@ -713,13 +761,19 @@ var MapComponent = /** @class */ (function () {
                     //Set selected business state to active
                     selectedBusiness.isActive = true;
                 }
+                function recenterMap(mapView, searchResults) {
+                    var coordinates = [searchResults.candidates[0].location.x, searchResults.candidates[0].location.y];
+                    mapView.goTo({
+                        target: coordinates
+                    }, { duration: 1500 }).then(function () {
+                        console.log("Map recentered");
+                    });
+                }
                 _this.mapView.on('click', function (event) {
                     _this.mapView.hitTest(event).then(function (response) {
                         if (response.results.length) {
-                            var graphic = response.results.filter(function (result) {
-                                return result.graphic.layer === graphicsLayer;
-                            })[0].graphic;
-                            _this.mapService.setCurrentBusiness(graphic.attributes.business);
+                            var graphic = response.results[0].graphic;
+                            _this.mapService.setCurrentBusiness(graphic.attributes);
                         }
                     });
                 });
@@ -815,7 +869,7 @@ var MobileControlsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<aside [class]=\"!isListView ? 'coc-search-box d-block' : 'coc-search-box d-none'\">\n  <h3>Search</h3>\n  <h4>Chandler Businesses</h4>\n  <div id=\"searchBoxForm\" class=\"mt-3\">\n    <div class=\"form-group\">\n      <span class=\"d-block text-uppercase\">Type of Business</span>\n      <div class=\"btn-group d-flex\" dropdown [insideClick]=\"true\">\n        <button type=\"button\" class=\"btn btn-split text-left\">Show All</button>\n        <button id=\"button-split\" type=\"button\" dropdownToggle \n                class=\"btn btn-split-right dropdown-toggle dropdown-toggle-split\"\n                aria-controls=\"dropdown-split\">\n          <span class=\"caret\"></span>\n          <span class=\"sr-only\">Split button!</span>\n        </button>\n        <ul id=\"dropdown-split\" *dropdownMenu class=\"dropdown-menu\" \n            role=\"menu\" aria-labelledby=\"button-split\">\n          <li role=\"menuitem\">\n            <details class=\"business-type dropdown-item\">\n              <!-- Parent Category: Finance -->\n              <summary>\n                  <div class=\"input-wrapper d-inline-block ml-1\">\n                      <input type=\"checkbox\" class=\"form-check-input\" id=\"finance\" value=\"finance\" \n                      [checked]=\"isAllCheckedFinance()\" (change)=\"checkAllFinance($event)\">\n                      <label class=\"form-check-label\" for=\"finance\">&nbsp;Finance & Insurance</label>\n                  </div>\n              </summary>\n              <ul class=\"list-unstyled ml-2\">\n                <li>\n                  <div *ngFor=\"let subCategory of finance ; let i = index\" class=\"form-check\">\n                    <input type=\"checkbox\" id=\"financeSubCategory{{i + 1}}\" value={{subCategory.name}} [(ngModel)]=\"subCategory.state\" (change)=\"updateFilterOptions($event)\"/>\n                    <label class=\"form-check-label\" for=\"financeSubCategory{{i + 1}}\">&nbsp;{{subCategory.name}}</label>\n                  </div>\n                </li>\n              </ul>\n            </details>\n          </li>\n          <li role=\"menuitem\">\n            <details class=\"business-type dropdown-item\">\n              <!-- Parent Category: Restaurants -->\n              <summary>\n                  <div class=\"input-wrapper d-inline-block ml-1\">\n                      <input #restaurantCheckBox type=\"checkbox\" class=\"form-check-input\" value=\"restaurant\" \n                      [checked]=\"isAllChecked()\" (change)=\"checkAll($event)\">\n                      <label class=\"form-check-label\" for=\"restaurant\">&nbsp;Restaurants</label>\n                  </div>\n              </summary>\n              <ul class=\"list-unstyled ml-2\">\n                <li>\n                  <div *ngFor=\"let r of restaurant ; let i = index\" class=\"form-check\">\n                    <input type=\"checkbox\" value=\"{{r.name}}\" [(ngModel)]=\"r.state\" (change)=\"updateFilterOptions($event)\" />\n                    <label class=\"form-check-label\" for=\"{{i + 1}}\">&nbsp;{{r.name}}</label>\n                  </div>\n                </li>\n              </ul>\n            </details>\n          </li>\n          <li role=\"menuitem\">\n            <details class=\"business-type dropdown-item\">\n              <!-- Parent Category Retail -->\n              <summary>\n                  <div class=\"input-wrapper d-inline-block ml-1\">\n                      <input #retailCheckBox type=\"checkbox\" class=\"form-check-input pl-1\" value=\"retail\"\n                      [checked]='isAllRetailChecked()' (change)=\"checkAllRetail($event)\">\n                      <label class=\"form-check-label\" for=\"retail\">&nbsp;Retail</label>\n                  </div>\n              </summary>\n              <ul class=\"list-unstyled ml-2\">\n                  <li>\n                    <div *ngFor=\"let x of retail ; let i = index\" class=\"form-check\">\n                      <input type=\"checkbox\" value=\"{{x.name}}\" id=\"{{i + 1}}\" [(ngModel)]=\"x.state\" (change)=\"updateFilterOptions($event)\" />\n                      <label class=\"form-check-label\" for=\"{{i + 1}}\">&nbsp;{{x.name}}</label>\n                    </div>\n                  </li>\n                </ul>\n            </details>\n          </li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"form-group\">\n      <span class=\"d-block text-uppercase\">Type of License</span>\n      <div class=\"btn-group d-flex\" dropdown>\n        <button type=\"button\" class=\"btn btn-split text-left\">{{this.licenseFilterButtonText}}</button>\n        <button id=\"button-split\" type=\"button\" dropdownToggle \n                class=\"btn btn-split-right dropdown-toggle dropdown-toggle-split\" \n                aria-controls=\"dropdown-split\">\n          <span class=\"caret\"></span>\n          <span class=\"sr-only\">Split button!</span>\n        </button>\n        <ul id=\"dropdown-split\" *dropdownMenu class=\"dropdown-menu\" role=\"menu\" aria-labelledby=\"button-split\">\n            <li *ngFor=\"let license of licenseType; let i = index\">\n              <a id=\"{{i + 1}}\" class=\"dropdown-item\" (click)=\"updateLicenseFilter($event)\">{{license.name}}</a>\n            </li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"form-group\">\n      <label for=\"bizSearchAddress\" class=\"text-uppercase\">Near an Address</label>\n      <input type=\"text\" class=\"form-control\" #bizSearchAddress id=\"bizSearchAddress\" placeholder=\"Near City Center\" (input)=\"updateSearchAddress($event.target.value)\">\n    </div>\n    <div class=\"form-group\">\n      <span class=\"d-block text-uppercase\">Length In Business</span>\n      <div class=\"btn-group d-flex\" dropdown>\n        <button type=\"button\" class=\"btn btn-split text-left\">1+ Days</button>\n        <button id=\"button-split\" type=\"button\" dropdownToggle \n                class=\"btn btn-split-right dropdown-toggle dropdown-toggle-split\"\n                aria-controls=\"dropdown-split\">\n          <span class=\"caret\"></span>\n          <span class=\"sr-only\">Split button!</span>\n        </button>\n        <ul id=\"dropdown-split\" *dropdownMenu class=\"dropdown-menu\"\n            role=\"menu\" aria-labelledby=\"button-split\">\n            <li role=\"menuitem\"><a class=\"dropdown-item\" href=\"#\">Option 1</a></li>\n            <li role=\"menuitem\"><a class=\"dropdown-item\" href=\"#\">Option 2</a>\n            </li>\n            <li role=\"menuitem\"><a class=\"dropdown-item\" href=\"#\">Option 3</a></li>\n            <li role=\"menuitem\"><a class=\"dropdown-item\" href=\"#\">Option 4</a>\n            </li>\n        </ul>\n      </div>\n    </div>\n    <button class=\"btn btn-next btn-block mt-2\" (click)=\"search()\">Search</button>\n  </div>\n</aside>\n"
+module.exports = "<aside [class]=\"!isListView ? 'coc-search-box d-block' : 'coc-search-box d-none'\">\n  <h3>Search</h3>\n  <h4>Chandler Businesses</h4>\n  <form id=\"searchBoxForm\" class=\"mt-3\" (ngSubmit)=\"search($event)\">\n    <div class=\"form-group\">\n      <span class=\"d-block\">Type of Business</span>\n      <div class=\"btn-group d-flex\" dropdown [insideClick]=\"true\">\n        <button type=\"button\" class=\"btn btn-split text-left\">Show All</button>\n        <button id=\"button-split\" type=\"button\" dropdownToggle \n                class=\"btn btn-split-right dropdown-toggle dropdown-toggle-split\"\n                aria-controls=\"dropdown-split\">\n          <span class=\"caret\"></span>\n          <span class=\"sr-only\">Split button!</span>\n        </button>\n        <ul id=\"dropdown-split\" *dropdownMenu class=\"dropdown-menu\" \n            role=\"menu\" aria-labelledby=\"button-split\">\n          <li role=\"menuitem\">\n            <details class=\"business-type dropdown-item\">\n              <!-- Parent Category: Finance -->\n              <summary>\n                  <div class=\"input-wrapper d-inline-block ml-1\">\n                      <input type=\"checkbox\" class=\"form-check-input\" id=\"finance\" value=\"finance\" \n                      [checked]=\"isAllCheckedFinance()\" (change)=\"checkAllFinance($event)\">\n                      <label class=\"form-check-label\" for=\"finance\">&nbsp;Finance & Insurance</label>\n                  </div>\n              </summary>\n              <ul class=\"list-unstyled ml-2\">\n                <li>\n                  <div *ngFor=\"let subCategory of finance ; let i = index\" class=\"form-check\">\n                    <input type=\"checkbox\" id=\"financeSubCategory{{i + 1}}\" value={{subCategory.name}} (change)=\"updateFilterOptions($event)\"/>\n                    <label class=\"form-check-label\" for=\"financeSubCategory{{i + 1}}\">&nbsp;{{subCategory.name}}</label>\n                  </div>\n                </li>\n              </ul>\n            </details>\n          </li>\n          <li role=\"menuitem\">\n            <details class=\"business-type dropdown-item\">\n              <!-- Parent Category: Restaurants -->\n              <summary>\n                  <div class=\"input-wrapper d-inline-block ml-1\">\n                      <input #restaurantCheckBox type=\"checkbox\" class=\"form-check-input\" value=\"restaurant\" \n                      [checked]=\"isAllChecked()\" (change)=\"checkAll($event)\">\n                      <label class=\"form-check-label\" for=\"restaurant\">&nbsp;Restaurants</label>\n                  </div>\n              </summary>\n              <ul class=\"list-unstyled ml-2\">\n                <li>\n                  <div *ngFor=\"let r of restaurant ; let i = index\" class=\"form-check\">\n                    <input type=\"checkbox\" value=\"{{r.name}}\" (change)=\"updateFilterOptions($event)\" />\n                    <label class=\"form-check-label\" for=\"{{i + 1}}\">&nbsp;{{r.name}}</label>\n                  </div>\n                </li>\n              </ul>\n            </details>\n          </li>\n          <li role=\"menuitem\">\n            <details class=\"business-type dropdown-item\">\n              <!-- Parent Category Retail -->\n              <summary>\n                  <div class=\"input-wrapper d-inline-block ml-1\">\n                      <input #retailCheckBox type=\"checkbox\" class=\"form-check-input pl-1\" value=\"retail\"\n                      [checked]='isAllRetailChecked()' (change)=\"checkAllRetail($event)\">\n                      <label class=\"form-check-label\" for=\"retail\">&nbsp;Retail</label>\n                  </div>\n              </summary>\n              <ul class=\"list-unstyled ml-2\">\n                  <li>\n                    <div *ngFor=\"let x of retail ; let i = index\" class=\"form-check\">\n                      <input type=\"checkbox\" value=\"{{x.name}}\" id=\"{{i + 1}}\" (change)=\"updateFilterOptions($event)\" />\n                      <label class=\"form-check-label\" for=\"{{i + 1}}\">&nbsp;{{x.name}}</label>\n                    </div>\n                  </li>\n                </ul>\n            </details>\n          </li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"form-group\">\n      <span class=\"d-block\">Type of License</span>\n      <div class=\"btn-group d-flex\" dropdown>\n        <button type=\"button\" class=\"btn btn-split text-left\">{{this.licenseFilterButtonText}}</button>\n        <button id=\"button-split\" type=\"button\" dropdownToggle \n                class=\"btn btn-split-right dropdown-toggle dropdown-toggle-split\" \n                aria-controls=\"dropdown-split\">\n          <span class=\"caret\"></span>\n          <span class=\"sr-only\">Split button!</span>\n        </button>\n        <ul id=\"dropdown-split\" *dropdownMenu class=\"dropdown-menu\" role=\"menu\" aria-labelledby=\"button-split\">\n            <li *ngFor=\"let license of licenseType; let i = index\">\n              <a id=\"{{i + 1}}\" class=\"dropdown-item\" (click)=\"updateLicenseFilter($event)\">{{license.name}}</a>\n            </li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"form-group\">\n      <label for=\"bizSearchAddress\">Near an Address</label>\n      <input type=\"text\" class=\"form-control\" #bizSearchAddress id=\"bizSearchAddress\" placeholder=\"Near City Center\" (input)=\"updateSearchAddress($event.target.value)\" required>\n    </div>\n    <div class=\"form-group\">\n      <span class=\"d-block\">Length In Business</span>\n      <div class=\"btn-group d-flex\" dropdown>\n        <button type=\"button\" class=\"btn btn-split text-left\">1+ Days</button>\n        <button id=\"button-split\" type=\"button\" dropdownToggle \n                class=\"btn btn-split-right dropdown-toggle dropdown-toggle-split\"\n                aria-controls=\"dropdown-split\">\n          <span class=\"caret\"></span>\n          <span class=\"sr-only\">Split button!</span>\n        </button>\n        <ul id=\"dropdown-split\" *dropdownMenu class=\"dropdown-menu\"\n            role=\"menu\" aria-labelledby=\"button-split\">\n            <li role=\"menuitem\"><a class=\"dropdown-item\" href=\"#\">Option 1</a></li>\n            <li role=\"menuitem\"><a class=\"dropdown-item\" href=\"#\">Option 2</a>\n            </li>\n            <li role=\"menuitem\"><a class=\"dropdown-item\" href=\"#\">Option 3</a></li>\n            <li role=\"menuitem\"><a class=\"dropdown-item\" href=\"#\">Option 4</a>\n            </li>\n        </ul>\n      </div>\n    </div>\n    <button type=\"submit\" class=\"btn btn-next btn-block mt-2\">Search</button>\n  </form>\n</aside>\n"
 
 /***/ }),
 
@@ -848,7 +902,6 @@ var SearchBoxComponent = /** @class */ (function () {
         this.licenseType = this.mapService.licenseType;
         this.filterOptions = [];
         this.licenseFilterButtonText = "Show All";
-        this.addressLocatorUrl = 'https://gistest.chandleraz.gov/arcgistest/rest/services/Geocoders/TX_STARCLASS_LOCATOR/GeocodeServer';
     }
     SearchBoxComponent.prototype.updateFilterOptions = function (e) {
         if (e.target.checked) {
@@ -899,33 +952,8 @@ var SearchBoxComponent = /** @class */ (function () {
     SearchBoxComponent.prototype.toggleListView = function () {
         this.sharedService.setView(!this.isListView);
     };
-    SearchBoxComponent.prototype.validateAddress = function (address) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var response, json, err_1;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, fetch('https://gistest.chandleraz.gov/arcgistest/rest/services/Geocoders/TX_STARCLASS_LOCATOR/GeocodeServer/suggest?text=175+S+Arizona&maxSuggestions=25&category=&countryCode=&searchExtent=&location=&distance=&f=pjson')];
-                    case 1:
-                        response = _a.sent();
-                        return [4 /*yield*/, response.json()];
-                    case 2:
-                        json = _a.sent();
-                        console.log(json);
-                        return [3 /*break*/, 4];
-                    case 3:
-                        err_1 = _a.sent();
-                        console.log(err_1);
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    SearchBoxComponent.prototype.search = function () {
+    SearchBoxComponent.prototype.loadData = function () {
         var _this = this;
-        //this.validateAddress(this.searchAddress);
         var unfilteredResults = this.mapService.data;
         if (this.filterOptions.length) {
             var filteredResults = this.businessResults.filter(function (result) {
@@ -944,6 +972,23 @@ var SearchBoxComponent = /** @class */ (function () {
             this.toggleListView();
         }
     };
+    SearchBoxComponent.prototype.search = function (e) {
+        var _this = this;
+        e.preventDefault();
+        if (!this.searchAddress) {
+            alert('Please type in a valid address.');
+            return;
+        }
+        this.mapService.getAddress(this.searchAddress).subscribe(function (response) {
+            if (response.candidates.length) {
+                _this.mapService.setSearchCoordinates(response);
+                _this.loadData();
+            }
+            else {
+                alert('Not a valid address. Please try again.');
+            }
+        });
+    };
     SearchBoxComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.sharedService.getView$.subscribe(function (isListView) {
@@ -955,6 +1000,9 @@ var SearchBoxComponent = /** @class */ (function () {
         this.sharedService.getCurrentView$.subscribe(function (isMapView) {
             _this.isMapView = isMapView;
         });
+        this.mapService.currentAddress$.subscribe(function (searchAddress) {
+            _this.searchAddress = searchAddress;
+        });
     };
     SearchBoxComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -965,170 +1013,6 @@ var SearchBoxComponent = /** @class */ (function () {
             _services_map_service__WEBPACK_IMPORTED_MODULE_3__["MapService"]])
     ], SearchBoxComponent);
     return SearchBoxComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/services/in-memory-data.service.ts":
-/*!****************************************************!*\
-  !*** ./src/app/services/in-memory-data.service.ts ***!
-  \****************************************************/
-/*! exports provided: InMemoryDataService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InMemoryDataService", function() { return InMemoryDataService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-
-
-var InMemoryDataService = /** @class */ (function () {
-    function InMemoryDataService() {
-    }
-    InMemoryDataService.prototype.createDb = function () {
-        var businesses = [
-            {
-                id: 0,
-                name: "San Tan Brewing Company",
-                address: "8 S San Marcos Pl, Chandler, AZ 85225",
-                phone: "4809178700",
-                website: "https://santanbrewing",
-                openedOn: "03/27/2005",
-                longitude: -111.843174,
-                latitude: 33.3031139,
-                parentCategory: "Restaurants",
-                subCategory: "Restaurants & Eating Places",
-                isActive: false
-            },
-            {
-                id: 1,
-                name: "Hangar Café",
-                address: "1725 E Ryan Rd, Chandler, AZ 85286",
-                phone: "4807921939",
-                website: "hangarcafe.com",
-                openedOn: "11/16/1999",
-                longitude: -111.811713,
-                latitude: 33.2726771,
-                parentCategory: "Restaurants",
-                subCategory: "Restaurants & Eating Places",
-                isActive: false
-            },
-            {
-                id: 2,
-                name: "Kohl's South Chandler",
-                address: "1430 S Arizona Ave, Chandler, AZ 85286",
-                phone: "4807825865",
-                website: "kohls.com",
-                openedOn: "09/15/2017",
-                longitude: -111.8435747,
-                latitude: 33.2857077,
-                parentCategory: "Retail",
-                subCategory: "Department Stores",
-                isActive: false
-            },
-            {
-                id: 3,
-                name: "Mattress Firm Clearance",
-                address: "1400 S Arizona Ave, Chandler, AZ 85286",
-                phone: "4808999847",
-                website: "mattressfirm.com",
-                openedOn: "01/06/2017",
-                longitude: -111.8415554,
-                latitude: 33.2840653,
-                parentCategory: "Retail",
-                subCategory: "Furniture & Furnishings",
-                isActive: false
-            },
-            {
-                id: 4,
-                name: "Starbucks",
-                address: "1395 S Arizona Ave #1, Chandler, AZ 85286",
-                phone: "4801234567",
-                website: "starbucks.com",
-                openedOn: "6/16/2009",
-                longitude: -111.8409432,
-                latitude: 33.2844938,
-                parentCategory: "Restaurants",
-                subCategory: "Restaurants & Eating Places",
-                isActive: false
-            },
-            {
-                id: 5,
-                name: "Walmart Supercenter",
-                address: "1175 S Arizona Ave, Chandler, AZ 85286",
-                phone: "4801234567",
-                website: "walmart.com",
-                openedOn: "11/10/2007",
-                longitude: -111.838011,
-                latitude: 33.289278,
-                parentCategory: "Retail",
-                subCategory: "Department Stores",
-                isActive: false
-            },
-            {
-                id: 6,
-                name: "Goodwill",
-                address: "1095 S Arizona Ave, Chandler, AZ 85286",
-                phone: "4801234567",
-                website: "goodwill.com",
-                openedOn: "08/24/1981",
-                longitude: -111.8515923,
-                latitude: 33.280595,
-                parentCategory: "Retail",
-                subCategory: "Used Merchandise",
-                isActive: false
-            },
-            {
-                id: 7,
-                name: "Nando's Mexican Cafe",
-                address: "1890 W Germann Rd, Chandler, AZ 85286",
-                phone: "4801234567",
-                website: "nandos.com",
-                openedOn: "04/13/1980",
-                longitude: -111.8559879,
-                latitude: 33.2764867,
-                parentCategory: "Restaurants",
-                subCategory: "Restaurants & Eating Places",
-                isActive: false
-            },
-            {
-                id: 8,
-                name: "Cold Beers & Cheeseburgers",
-                address: "1980 W Germann Rd, Chandler, AZ 85286",
-                phone: "4801234567",
-                website: "coldbeers.com",
-                openedOn: "03/16/2016",
-                longitude: -111.8578203,
-                latitude: 33.2802384,
-                parentCategory: "Restaurants",
-                subCategory: "Restaurants & Eating Places",
-                isActive: false
-            },
-            {
-                id: 9,
-                name: "Albertsons",
-                address: "3145 S Alma School Rd, Chandler, AZ 85248 ",
-                phone: "4801234567",
-                website: "albertsons.com",
-                openedOn: "07/04/1991",
-                longitude: -111.8591,
-                latitude: 33.2668643,
-                parentCategory: "Retail",
-                subCategory: "Grocery & Convenience Stores",
-                isActive: false
-            }
-        ];
-        return { businesses: businesses };
-    };
-    InMemoryDataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        })
-    ], InMemoryDataService);
-    return InMemoryDataService;
 }());
 
 
@@ -1147,22 +1031,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MapService", function() { return MapService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 
 
 
+
+
+var httpOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'text/plain' })
+};
 var MapService = /** @class */ (function () {
-    function MapService() {
-        this.panRequest = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        this.panComplete = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        this.businessResults = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        this.selectedBusiness = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        this.mapLoaded = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        this.searchAddress = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+    function MapService(http) {
+        this.http = http;
+        this.addressUrl = 'https://gistest.chandleraz.gov/arcgistest/rest/services/Geocoders/TX_STARCLASS_LOCATOR/GeocodeServer/';
+        this.panRequest = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.panComplete = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.businessResults = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.selectedBusiness = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.mapLoaded = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.searchAddress = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.searchCoordinates = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         this.currentResults$ = this.businessResults.asObservable();
         this.currentBusiness$ = this.selectedBusiness.asObservable();
         this.mapStatus$ = this.mapLoaded.asObservable();
         this.currentAddress$ = this.searchAddress.asObservable();
+        this.getCoordinates$ = this.searchCoordinates.asObservable();
         this.utensils = "M344.1 470.3l14.2-164.8c-42.1-33.1-70.4-77-70.4-129.5C288 81.7 376.1 0 440 0c22.1 0 40 17.3 40 38.5v435c0 21.2-17.9 38.5-40 38.5h-56c-22.8 0-41.8-18.7-39.9-41.7zM320 176c0 51 32.2 85.5 71.8 114.5L376 473.1c-.3 3.7 3.4 6.9 8 6.9h56c4.3 0 8-3 8-6.5v-435c0-3.5-3.7-6.5-8-6.5-44.6 0-120 65.8-120 144zM240.7 33.8C237.4 14.3 219.5 0 194.6 0c-11.9 0-24.1 3.4-33.3 11.2C152.9 4.1 141.3 0 128 0s-24.9 4.1-33.3 11.2C85.5 3.4 73.3 0 61.4 0 36.2 0 18.6 14.5 15.3 33.8 13.5 43.2 0 118.4 0 149.9c0 50.9 26.7 91.6 71 110.7L59.6 471.4C58.4 493.4 75.9 512 98 512h60c22 0 39.6-18.5 38.4-40.6L185 260.6c44.2-19.1 71-59.8 71-110.7 0-31.5-13.5-106.7-15.3-116.1zM152.3 240l12.2 233.1c.2 3.7-2.7 6.9-6.5 6.9H98c-3.7 0-6.7-3.1-6.5-6.9L103.7 240C61.3 231.2 32 197 32 149.9c0-29.7 14.8-110.6 14.8-110.6 1.6-9.9 28.3-9.7 29.5.2V162c.9 11.5 28.2 11.7 29.5.2l7.4-122.9c1.6-9.7 27.9-9.7 29.5 0l7.4 122.9c1.3 11.4 28.6 11.2 29.5-.2V39.6c1.2-9.9 27.9-10.1 29.5-.2 0 0 14.8 80.9 14.8 110.6.1 46.8-29 81.2-71.6 90z";
         this.store = "M602 118.6L537.1 15C531.3 5.7 521 0 510 0H106C95 0 84.7 5.7 78.9 15L14 118.6c-29.6 47.2-10 110.6 38 130.8v227.4c0 19.4 14.3 35.2 32 35.2h448c17.7 0 32-15.8 32-35.2V249.4c48-20.2 67.6-83.6 38-130.8zm-70 358.2c0 2-.8 3.1-.2 3.2l-446.6.3c-.3-.2-1.2-1.3-1.2-3.5V352h448zM84 320v-64h2.5c29.6 0 55.8-13 73.8-33.1 18 20.1 44.3 33.1 73.8 33.1 29.6 0 55.8-13 73.8-33.1 18 20.1 44.3 33.1 73.8 33.1 29.6 0 55.8-13 73.8-33.1 18.1 20.1 44.3 33.1 73.9 33.1h2.5v64zm494.2-126.5c-7.8 16.6-22.1 27.5-39.3 29.8-3.1.4-6.2.6-9.4.6-19.3 0-37-8-50-22.5L455.7 175l-23.8 26.6c-13 14.5-30.7 22.5-50 22.5s-37-8-50-22.5L308 175l-23.8 26.6c-13 14.5-30.7 22.5-50 22.5s-37-8-50-22.5L160.3 175l-23.8 26.6c-13 14.5-30.7 22.5-50 22.5-3.2 0-6.3-.2-9.4-.6-17.2-2.3-31.5-13.2-39.3-29.8-8.7-18.6-7.5-40.8 3.3-57.9L106 32h404l64.9 103.6c10.8 17.2 12 39.3 3.3 57.9z";
         this.shoppingCart = "M551.991 64H129.28l-8.329-44.423C118.822 8.226 108.911 0 97.362 0H12C5.373 0 0 5.373 0 12v8c0 6.627 5.373 12 12 12h78.72l69.927 372.946C150.305 416.314 144 431.42 144 448c0 35.346 28.654 64 64 64s64-28.654 64-64a63.681 63.681 0 0 0-8.583-32h145.167a63.681 63.681 0 0 0-8.583 32c0 35.346 28.654 64 64 64 35.346 0 64-28.654 64-64 0-17.993-7.435-34.24-19.388-45.868C506.022 391.891 496.76 384 485.328 384H189.28l-12-64h331.381c11.368 0 21.177-7.976 23.496-19.105l43.331-208C578.592 77.991 567.215 64 551.991 64zM240 448c0 17.645-14.355 32-32 32s-32-14.355-32-32 14.355-32 32-32 32 14.355 32 32zm224 32c-17.645 0-32-14.355-32-32s14.355-32 32-32 32 14.355 32 32-14.355 32-32 32zm38.156-192H171.28l-36-192h406.876l-40 192z";
@@ -1184,11 +1079,13 @@ var MapService = /** @class */ (function () {
                 phone: '4809178700',
                 website: 'santanbrewing.com',
                 openedOn: '03/27/2005',
-                coordinates: [-111.843174, 33.3031139],
+                coordinates: [-111.84222534039891, 33.30323247066584],
+                x: -111.84222534039891,
+                y: 33.30323247066584,
                 parentCategory: 'Restaurants',
                 subCategory: 'Restaurants & Eating Places',
                 icon: 'fal fa-utensils',
-                svg: this.utensils,
+                //svg: this.utensils,
                 isActive: false
             },
             {
@@ -1198,11 +1095,13 @@ var MapService = /** @class */ (function () {
                 phone: '4807921939',
                 website: 'hangarcafe.com',
                 openedOn: '11/16/1999',
-                coordinates: [-111.811713, 33.2726771],
+                coordinates: [-111.81161285615794, 33.272952295680888],
+                x: -111.81161285615794,
+                y: 33.272952295680888,
                 parentCategory: 'Restaurants',
                 subCategory: 'Restaurants & Eating Places',
                 icon: 'fal fa-utensils',
-                svg: this.utensils,
+                //svg: this.utensils,
                 isActive: false
             },
             {
@@ -1212,11 +1111,13 @@ var MapService = /** @class */ (function () {
                 phone: '4807825865',
                 website: 'kohls.com',
                 openedOn: '09/15/2017',
-                coordinates: [-111.8435747, 33.2857077],
+                coordinates: [-111.84365321424222, 33.285488656511909],
+                x: -111.84365321424222,
+                y: 33.285488656511909,
                 parentCategory: 'Retail',
                 subCategory: 'Department Stores',
                 icon: 'fal fa-store',
-                svg: this.store,
+                //svg: this.store,
                 isActive: false
             },
             {
@@ -1226,11 +1127,13 @@ var MapService = /** @class */ (function () {
                 phone: '4808999847',
                 website: 'mattressfirm.com',
                 openedOn: '01/06/2017',
-                coordinates: [-111.8415554, 33.2840653],
+                coordinates: [-111.84220616393715, 33.2840653],
+                x: -111.84220616393715,
+                y: 33.286080778529161,
                 parentCategory: 'Retail',
                 subCategory: 'Furniture & Furnishings',
                 icon: 'fal fa-store',
-                svg: this.store,
+                //svg: this.store,
                 isActive: false
             },
             {
@@ -1240,11 +1143,13 @@ var MapService = /** @class */ (function () {
                 phone: '4801234567',
                 website: 'starbucks.com',
                 openedOn: '6/16/2009',
-                coordinates: [-111.8409432, 33.2844938],
+                coordinates: [-111.84098545309143, 33.285270703478382],
+                x: -111.84098545309143,
+                y: 33.285270703478382,
                 parentCategory: 'Restaurants',
                 subCategory: 'Restaurants & Eating Places',
                 icon: 'fal fa-utensils',
-                svg: this.utensils,
+                //svg: this.utensils,
                 isActive: false
             },
             {
@@ -1254,11 +1159,13 @@ var MapService = /** @class */ (function () {
                 phone: '4801234567',
                 website: 'walmart.com',
                 openedOn: '11/10/2007',
-                coordinates: [-111.838011, 33.289278],
+                coordinates: [-111.8384134269721, 33.28930709015038],
+                x: -111.8384134269721,
+                y: 33.28930709015038,
                 parentCategory: 'Retail',
                 subCategory: 'Department Stores',
                 icon: 'fal fa-store',
-                svg: this.store,
+                //svg: this.store,
                 isActive: false
             },
             {
@@ -1268,11 +1175,13 @@ var MapService = /** @class */ (function () {
                 phone: '4801234567',
                 website: 'goodwill.com',
                 openedOn: '08/24/1981',
-                coordinates: [-111.8515923, 33.280595],
+                coordinates: [-111.83820218672761, 33.290472780747365],
+                x: -111.83820218672761,
+                y: 33.290472780747365,
                 parentCategory: 'Retail',
                 subCategory: 'Used Merchandise',
                 icon: 'fal fa-store',
-                svg: this.store,
+                //svg: this.store,
                 isActive: false
             },
             {
@@ -1282,11 +1191,13 @@ var MapService = /** @class */ (function () {
                 phone: '4801234567',
                 website: 'nandos.com',
                 openedOn: '04/13/1980',
-                coordinates: [-111.8559879, 33.2764867],
+                coordinates: [-111.87411917935181, 33.276817017705632],
+                x: -111.87411917935181,
+                y: 33.276817017705632,
                 parentCategory: 'Restaurants',
                 subCategory: 'Restaurants & Eating Places',
                 icon: 'fal fa-utensils',
-                svg: this.utensils,
+                //svg: this.utensils,
                 isActive: false
             },
             {
@@ -1296,11 +1207,13 @@ var MapService = /** @class */ (function () {
                 phone: '4801234567',
                 website: 'coldbeers.com',
                 openedOn: '03/16/2016',
-                coordinates: [-111.8578203, 33.2802384],
+                coordinates: [-111.87570100974833, 33.277332455917268],
+                x: -111.87570100974833,
+                y: 33.277332455917268,
                 parentCategory: 'Restaurants',
                 subCategory: 'Restaurants & Eating Places',
                 icon: 'fal fa-utensils',
-                svg: this.utensils,
+                //svg: this.utensils,
                 isActive: false
             },
             {
@@ -1310,11 +1223,13 @@ var MapService = /** @class */ (function () {
                 phone: '4801234567',
                 website: 'albertsons.com',
                 openedOn: '07/04/1991',
-                coordinates: [-111.8591, 33.2668643],
+                coordinates: [-111.85688540502962, 33.260824321806716],
+                x: -111.85688540502962,
+                y: 33.260824321806716,
                 parentCategory: 'Retail',
                 subCategory: 'Grocery & Convenience Stores',
                 icon: "fal fa-shopping-cart",
-                svg: this.shoppingCart,
+                //svg: this.shoppingCart,
                 isActive: false
             },
             {
@@ -1324,11 +1239,13 @@ var MapService = /** @class */ (function () {
                 phone: '4807565500',
                 website: 'firstcu.net',
                 openedOn: '11/01/2001',
-                coordinates: [-111.8407409, 33.3030351],
+                coordinates: [-111.84044431897641, 33.302969627771567],
+                x: -111.84044431897641,
+                y: 33.302969627771567,
                 parentCategory: 'Finance & Insurance',
                 subCategory: 'Banks & Credit Unions',
                 icon: 'fal fa-hands-usd',
-                svg: this.handsUsd,
+                //svg: this.handsUsd,
                 isActive: false
             },
             {
@@ -1338,11 +1255,13 @@ var MapService = /** @class */ (function () {
                 phone: '4808120900',
                 website: 'ihg.com',
                 openedOn: '1/1/1991',
-                coordinates: [-111.84215, 33.303586],
+                coordinates: [-111.84468240218729, 33.304165753291095],
+                x: -111.84468240218729,
+                y: 33.304165753291095,
                 parentCategory: 'Hotel Motel',
                 subCategory: 'Hotels & Motels',
                 icon: 'fal fa-hotel',
-                svg: this.hotel,
+                //svg: this.hotel,
                 isActive: false
             },
             {
@@ -1352,11 +1271,13 @@ var MapService = /** @class */ (function () {
                 phone: '4807822680',
                 website: 'chandlercenter.org',
                 openedOn: '1/1/1991',
-                coordinates: [-111.8415053, 33.3066867],
+                coordinates: [-111.84204575190275, 33.307452799990678],
+                x: -111.84204575190275,
+                y: 33.307452799990678,
                 parentCategory: 'Amusement, Arts, Entertainment, Recreation',
                 subCategory: 'Performing Arts',
                 icon: 'fal fa-ticket',
-                svg: this.ticket,
+                //svg: this.ticket,
                 isActive: false
             },
             {
@@ -1366,11 +1287,13 @@ var MapService = /** @class */ (function () {
                 phone: '4808126400',
                 website: 'cusd80.com',
                 openedOn: '1/1/1991',
-                coordinates: [-111.8280702, 33.2988504],
+                coordinates: [-111.83121292937288, 33.297486314156423],
+                x: -111.83121292937288,
+                y: 33.297486314156423,
                 parentCategory: 'Education Services',
                 subCategory: 'Elementary & Secondary Schools',
                 icon: 'fal fa-graduation-cap',
-                svg: this.graduationCap,
+                //svg: this.graduationCap,
                 isActive: false
             },
             {
@@ -1380,11 +1303,13 @@ var MapService = /** @class */ (function () {
                 phone: '4809635509',
                 website: 'michaelsandassociates.com',
                 openedOn: '1/1/1991',
-                coordinates: [-111.846532, 33.306222],
+                coordinates: [-111.84657493450467, 33.306405171882361],
+                x: -111.84657493450467,
+                y: 33.306405171882361,
                 parentCategory: 'Services & Non-Profits',
                 subCategory: 'Legal Services',
                 icon: 'fal fa-handshake-alt',
-                svg: this.handshakeAlt,
+                //svg: this.handshakeAlt,
                 isActive: false,
             },
             {
@@ -1394,11 +1319,13 @@ var MapService = /** @class */ (function () {
                 phone: '4803690387',
                 website: 'websites.joehorrell.com',
                 openedOn: '1/1/1997',
-                coordinates: [-111.8417481, 33.2925427],
+                coordinates: [-111.84305844407305, 33.293446493439781],
+                x: -111.84305844407305,
+                y: 33.293446493439781,
                 parentCategory: 'News/Software/Telecom',
                 subCategory: 'Software Publishers',
                 icon: 'fal fa-satellite-dish',
-                svg: this.satelliteDish,
+                //svg: this.satelliteDish,
                 isActive: false
             },
             {
@@ -1408,11 +1335,13 @@ var MapService = /** @class */ (function () {
                 phone: '4809174903',
                 website: 'theostrichbarandlounge.com',
                 openedOn: '4/19/2015',
-                coordinates: [-111.8432673, 33.3038554],
+                coordinates: [-111.84225194966817, 33.303783394813102],
+                x: -111.84225194966817,
+                y: 33.303783394813102,
                 parentCategory: 'Restaurants',
                 subCategory: 'Drinking Establishments',
                 icon: 'fal fa-glass-martini-alt',
-                svg: this.martiniGlass,
+                //svg: this.martiniGlass,
                 isActive: false
             },
             {
@@ -1422,11 +1351,13 @@ var MapService = /** @class */ (function () {
                 phone: '4808990116',
                 website: 'drchochandler.com',
                 openedOn: '09/21/1981',
-                coordinates: [-111.841325, 33.307863],
+                coordinates: [-111.84114207274565, 33.307792676887679],
+                x: -111.84114207274565,
+                y: 33.307792676887679,
                 parentCategory: 'Health Care, Social Services & Day Care',
                 subCategory: 'Dentists',
                 icon: 'fal fa-briefcase-medical',
-                svg: this.medicalBriefcase,
+                //svg: this.medicalBriefcase,
                 isActive: false,
             },
             {
@@ -1436,25 +1367,29 @@ var MapService = /** @class */ (function () {
                 phone: '4809626111',
                 website: 'theoriginalpetrostop.com',
                 openedOn: '4/11/1978',
-                coordinates: [-111.8374109, 33.3015043],
+                coordinates: [-111.8372876512294, 33.301136412484304],
+                x: -111.8372876512294,
+                y: 33.301136412484304,
                 parentCategory: 'Retail',
                 subCategory: 'Gasoline Stations & Convenience Stores',
                 icon: 'fal fa-gas-pump',
-                svg: this.gasPump,
+                //svg: this.gasPump,
                 isActive: false,
             },
             {
                 id: 19,
-                name: 'Hertz',
-                address: 'San Marcos Place, One, Chandler, AZ 85225',
+                name: 'Dos Gringos Alma',
+                address: '1361 N Alma School Rd, Chandler, AZ 85224',
                 phone: '4809172931',
-                website: 'hertz.com',
+                website: 'dosgringosaz.com',
                 openedOn: '11/11/2011',
-                coordinates: [-111.842055, 33.303382],
-                parentCategory: 'Real Estate & Personal Property Rental',
-                subCategory: 'Automotive Equipment Rental & Leasing',
-                icon: 'fal fa-key',
-                svg: this.key,
+                coordinates: [-111.8582343580329, 33.326589330192782],
+                x: -111.8582343580329,
+                y: 33.326589330192782,
+                parentCategory: 'Restaurants & Eating Establishments',
+                subCategory: 'Drinking Establishment',
+                icon: 'fal fa-glass-martini-alt',
+                //svg: this.key,
                 isActive: false
             }
         ];
@@ -1499,6 +1434,24 @@ var MapService = /** @class */ (function () {
             { name: 'Escort' }
         ];
     }
+    MapService.prototype.getAddress = function (address) {
+        var url = this.addressUrl + "/findAddressCandidates?Street=&ZIP=&Single+Line+Input=" + address + "&category=&outFields=*&maxLocations=&outSR=4326&searchExtent=&location=&distance=&magicKey=&f=pjson";
+        return this.http.get(url)
+            .pipe(
+        //tap(res => console.log(res.candidates)),
+        Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError('getAddress', [])));
+    };
+    MapService.prototype.handleError = function (operation, result) {
+        if (operation === void 0) { operation = 'operation'; }
+        return function (error) {
+            // TODO: send the error to remote logging infrastructure
+            console.error(error); // log to console instead
+            // TODO: better job of transforming error for user consumption
+            console.log(operation + " failed: " + error.message);
+            // Let the app keep running by returning an empty result.
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(result);
+        };
+    };
     MapService.prototype.panToBusiness = function (business_coordinates) {
         this.businessCoordinates = business_coordinates;
         this.panRequest.next();
@@ -1515,12 +1468,15 @@ var MapService = /** @class */ (function () {
     MapService.prototype.setSearchAddress = function (address) {
         this.searchAddress.next(address);
     };
+    MapService.prototype.setSearchCoordinates = function (data) {
+        this.searchCoordinates.next(data);
+    };
     MapService.prototype.mapReady = function (state) {
         this.mapLoaded.next(state);
     };
     MapService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({ providedIn: 'root' }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], MapService);
     return MapService;
 }());
