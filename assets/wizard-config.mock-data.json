@@ -845,7 +845,8 @@
           "controlType": "textbox",
           "type": "tel",
           "placeholder": "Phone",
-          "order": 6,
+          "order": 7,
+          "columns": 6,
           "validation": {
             "required": true
           }
@@ -865,6 +866,16 @@
           "value": false,
           "label": "Click here if mailing address is the same as entity address",
           "order": 1,
+          "sameAs": {
+            "stepName": "ENTITY_INFO_A",
+            "mapping": [
+              { "from": "ENTITY_ADDR1", "to": "MAILING_ADDR1" },
+              { "from": "ENTITY_ADDR2", "to": "MAILING_ADDR2" },
+              { "from": "ENTITY_CITY", "to": "MAILING_CITY" },
+              { "from": "ENTITY_STATE", "to": "MAILING_STATE" },
+              { "from": "ENTITY_ZIP", "to": "MAILING_ZIP" }
+            ]
+          },
           "validation": {}
         },
         {
@@ -883,9 +894,7 @@
           "type": "text",
           "placeholder": "Address 2",
           "order": 3,
-          "validation": {
-            "required": true
-          }
+          "validation": {}
         },
         {
           "id": "MAILING_CITY",

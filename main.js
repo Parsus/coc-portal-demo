@@ -261,6 +261,36 @@ var DefaultService = /** @class */ (function () {
             reportProgress: reportProgress
         });
     };
+    DefaultService.prototype.invoiceCloudPaymentsPost = function (invoiceCloudPostback, observe, reportProgress) {
+        if (observe === void 0) { observe = 'body'; }
+        if (reportProgress === void 0) { reportProgress = false; }
+        if (invoiceCloudPostback === null || invoiceCloudPostback === undefined) {
+            throw new Error('Required parameter invoiceCloudPostback was null or undefined when calling invoiceCloudPaymentsPost.');
+        }
+        var headers = this.defaultHeaders;
+        // to determine the Accept header
+        var httpHeaderAccepts = [
+            'application/json'
+        ];
+        var httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
+        }
+        // to determine the Content-Type header
+        var consumes = [
+            'application/json'
+        ];
+        var httpContentTypeSelected = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set("Content-Type", httpContentTypeSelected);
+        }
+        return this.httpClient.post(this.basePath + "/invoice-cloud-payments", invoiceCloudPostback, {
+            withCredentials: this.configuration.withCredentials,
+            headers: headers,
+            observe: observe,
+            reportProgress: reportProgress
+        });
+    };
     DefaultService.prototype.locationsGet = function (observe, reportProgress) {
         if (observe === void 0) { observe = 'body'; }
         if (reportProgress === void 0) { reportProgress = false; }
@@ -282,6 +312,36 @@ var DefaultService = /** @class */ (function () {
             'application/json'
         ];
         return this.httpClient.get(this.basePath + "/locations", {
+            withCredentials: this.configuration.withCredentials,
+            headers: headers,
+            observe: observe,
+            reportProgress: reportProgress
+        });
+    };
+    DefaultService.prototype.locationsIdGet = function (id, observe, reportProgress) {
+        if (observe === void 0) { observe = 'body'; }
+        if (reportProgress === void 0) { reportProgress = false; }
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling locationsIdGet.');
+        }
+        var headers = this.defaultHeaders;
+        // authentication (bearer) required
+        if (this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+        // to determine the Accept header
+        var httpHeaderAccepts = [
+            'application/json'
+        ];
+        var httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
+        }
+        // to determine the Content-Type header
+        var consumes = [
+            'application/json'
+        ];
+        return this.httpClient.get(this.basePath + "/locations/" + encodeURIComponent(String(id)), {
             withCredentials: this.configuration.withCredentials,
             headers: headers,
             observe: observe,
@@ -332,6 +392,100 @@ var DefaultService = /** @class */ (function () {
             'application/json'
         ];
         return this.httpClient.get(this.basePath + "/transactions", {
+            withCredentials: this.configuration.withCredentials,
+            headers: headers,
+            observe: observe,
+            reportProgress: reportProgress
+        });
+    };
+    DefaultService.prototype.webPaymentsInvoiceNumberGet = function (invoiceNumber, observe, reportProgress) {
+        if (observe === void 0) { observe = 'body'; }
+        if (reportProgress === void 0) { reportProgress = false; }
+        if (invoiceNumber === null || invoiceNumber === undefined) {
+            throw new Error('Required parameter invoiceNumber was null or undefined when calling webPaymentsInvoiceNumberGet.');
+        }
+        var headers = this.defaultHeaders;
+        // authentication (bearer) required
+        if (this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+        // to determine the Accept header
+        var httpHeaderAccepts = [
+            'application/json'
+        ];
+        var httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
+        }
+        // to determine the Content-Type header
+        var consumes = [
+            'application/json'
+        ];
+        return this.httpClient.get(this.basePath + "/web-payments/" + encodeURIComponent(String(invoiceNumber)), {
+            withCredentials: this.configuration.withCredentials,
+            headers: headers,
+            observe: observe,
+            reportProgress: reportProgress
+        });
+    };
+    DefaultService.prototype.webPaymentsInvoiceNumberIsPostedPut = function (invoiceNumber, observe, reportProgress) {
+        if (observe === void 0) { observe = 'body'; }
+        if (reportProgress === void 0) { reportProgress = false; }
+        if (invoiceNumber === null || invoiceNumber === undefined) {
+            throw new Error('Required parameter invoiceNumber was null or undefined when calling webPaymentsInvoiceNumberIsPostedPut.');
+        }
+        var headers = this.defaultHeaders;
+        // authentication (bearer) required
+        if (this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+        // to determine the Accept header
+        var httpHeaderAccepts = [
+            'application/json'
+        ];
+        var httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
+        }
+        // to determine the Content-Type header
+        var consumes = [
+            'application/json'
+        ];
+        return this.httpClient.put(this.basePath + "/web-payments/" + encodeURIComponent(String(invoiceNumber)) + "/is-posted", null, {
+            withCredentials: this.configuration.withCredentials,
+            headers: headers,
+            observe: observe,
+            reportProgress: reportProgress
+        });
+    };
+    DefaultService.prototype.webPaymentsPost = function (createWebPayment, observe, reportProgress) {
+        if (observe === void 0) { observe = 'body'; }
+        if (reportProgress === void 0) { reportProgress = false; }
+        if (createWebPayment === null || createWebPayment === undefined) {
+            throw new Error('Required parameter createWebPayment was null or undefined when calling webPaymentsPost.');
+        }
+        var headers = this.defaultHeaders;
+        // authentication (bearer) required
+        if (this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+        // to determine the Accept header
+        var httpHeaderAccepts = [
+            'application/json'
+        ];
+        var httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
+        }
+        // to determine the Content-Type header
+        var consumes = [
+            'application/json'
+        ];
+        var httpContentTypeSelected = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set("Content-Type", httpContentTypeSelected);
+        }
+        return this.httpClient.post(this.basePath + "/web-payments", createWebPayment, {
             withCredentials: this.configuration.withCredentials,
             headers: headers,
             observe: observe,
@@ -1207,7 +1361,10 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 var environment = {
     API_BASE_PATH: 'http://localhost:3003/api/v1',
-    production: false
+    production: false,
+    INVOICE_CLOUD_PAYMENT_BASE_URL: "https://www.invoicecloud.com/portal/cloudpayment.aspx",
+    INVOICE_CLOUD_BILLER_GUID: '810c080a-6648-44fa-ac8f-19d728b10de9',
+    INVOICE_CLOUD_INVOICE_TYPE_ID: '94'
 };
 /*
  * For easier debugging in development mode, you can import the following file
