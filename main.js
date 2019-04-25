@@ -892,7 +892,7 @@ var authConfig = {
     // URL of the SPA to redirect the user to after login
     redirectUri: window.location.origin + '/',
     // The SPA's id. The SPA is registerd with this id at the auth-server
-    clientId: 'oauth-consumer-example',
+    clientId: _environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].AUTH_CLIENT_ID,
     // set the scope for the permissions the client should request
     // The first three are defined by OIDC. The 4th is a usecase-specific one
     scope: 'openid profile email voucher',
@@ -1366,11 +1366,13 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 var environment = {
-    API_BASE_PATH: 'http://localhost:3003/api/v1',
+    API_BASE_PATH: 'https://businessdev.chandleraz.gov/api/v1',
     production: false,
     INVOICE_CLOUD_PAYMENT_BASE_URL: "https://www.invoicecloud.com/portal/cloudpayment.aspx",
     INVOICE_CLOUD_BILLER_GUID: '810c080a-6648-44fa-ac8f-19d728b10de9',
+    INVOICE_CLOUD_POSTBACK_URL: 'https://businessdev.chandleraz.gov/api/v1/invoice-cloud-payments',
     INVOICE_CLOUD_INVOICE_TYPE_ID: '94',
+    AUTH_CLIENT_ID: 'oauth-consumer-example',
     AUTH_ISSUER: 'https://authdev.chandleraz.gov'
 };
 /*

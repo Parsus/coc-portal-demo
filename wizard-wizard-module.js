@@ -6400,7 +6400,6 @@ var step1Configuration = {
         {
             "id": "ALREADY_REGISTERED",
             "controlType": "radio",
-            "customStyle": "checkbox",
             "options": [
                 {
                     "id": "isRegistered",
@@ -6472,8 +6471,8 @@ var step2Configuration = {
         },
         {
             "id": "BUSINESS_STATE",
-            "controlType": "textbox",
-            "type": "text",
+            "controlType": "dropdown",
+            "type": "state",
             "placeholder": "State",
             "columns": 3,
             "order": 4,
@@ -6802,6 +6801,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DropdownQuestion", function() { return DropdownQuestion; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _question__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./question */ "./src/app/wizard/question/question.ts");
+/* harmony import */ var _question_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./question.constants */ "./src/app/wizard/question/question.constants.ts");
+
 
 
 var DropdownQuestion = /** @class */ (function (_super) {
@@ -6811,8 +6812,15 @@ var DropdownQuestion = /** @class */ (function (_super) {
         var _this = _super.call(this, options) || this;
         _this.controlType = 'dropdown';
         _this.options = [];
-        _this.options = options['options'] || [];
+        _this.type = options['type'] || '';
         _this.placeholder = options['placeholder'] || '';
+        switch (_this.type) {
+            case 'state':
+                _this.options = _question_constants__WEBPACK_IMPORTED_MODULE_2__["usStateList"];
+                break;
+            default:
+                _this.options = options['options'] || [];
+        }
         return _this;
     }
     return DropdownQuestion;
@@ -6923,7 +6931,7 @@ var TextboxQuestion = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div [formGroup]=\"form\" [ngSwitch]=\"question.controlType\">\n  <div class=\"form-group\"\n    [class.coc-required]=\"question.validation.required\"\n    [ngClass]=\"{\n      'custom-control mt-1' : question.controlType === 'checkbox',\n      'custom-switch coc-custom-control-right' : question.controlType === 'checkbox' && question.customStyle === 'switch',\n      'custom-checkbox' : question.controlType === 'checkbox' && question.customStyle !== 'switch',\n      'coc-custom-radio-group' : question.controlType === 'radio'\n    }\">\n\n    <ng-container *ngSwitchCase=\"'textbox'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n      <input\n        [type]=\"question.type\"\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        [placeholder]=\"question.placeholder\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"form-control\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'datepicker'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n      <input\n        bsDatepicker\n        type=\"text\"\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        [placeholder]=\"question.placeholder\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"form-control\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'textarea'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n      <textarea\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        [placeholder]=\"question.placeholder\"\n        [rows]=\"question.rows\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"form-control\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n      </textarea>\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'checkbox'\">\n      <input\n        type=\"checkbox\"\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"custom-control-input\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        class=\"custom-control-label\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'radio'\">\n      <label *ngIf=\"question.label !== ''\">{{question.label}}</label>\n      <div\n        *ngFor=\"let option of question.options\"\n        class=\"custom-control\"\n        [ngClass]=\"{\n          'custom-checkbox' : question.customStyle === 'checkbox',\n          'custom-radio' : question.customStyle !== 'checkbox'\n        }\"\n        [class.coc-required]=\"question.validation.required\">\n        <input\n          type=\"radio\"\n          [id]=\"option.id\"\n          [value]=\"option.value\"\n          [formControlName]=\"question.id\"\n          (blur)=\"saveToWebStorage()\"\n          class=\"custom-control-input\"\n          [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n        <label\n          *ngIf=\"option.label !== ''\"\n          class=\"custom-control-label\"\n          [attr.for]=\"option.id\">\n          {{option.label}}\n        </label>\n      </div>\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'dropdown'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n      <select\n        class=\"custom-select\"\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        [attr.multiple]=\"question.multiple\"\n        (blur)=\"saveToWebStorage()\"\n        [value]=\"question.placeholder\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n        <option\n          *ngIf=\"question.placeholder !== ''\"\n          selected\n          hidden>\n          {{question.placeholder}}\n        </option>\n        <option\n          *ngFor=\"let option of question.options\"\n          [value]=\"option.value\">\n          {{option.label}}\n        </option>\n      </select>\n    </ng-container>\n\n    <div class=\"invalid-feedback\">\n      <span *ngIf=\"question.validation.required\">This field is required.</span>\n    </div>\n\n  </div>\n</div>"
+module.exports = "\n<div [formGroup]=\"form\" [ngSwitch]=\"question.controlType\">\n  <div class=\"form-group\"\n    [class.coc-required]=\"question.validation.required\"\n    [ngClass]=\"{\n      'custom-control mt-1' : question.controlType === 'checkbox',\n      'custom-switch coc-custom-control-right' : question.controlType === 'checkbox' && question.customStyle === 'switch',\n      'custom-checkbox' : question.controlType === 'checkbox' && question.customStyle !== 'switch',\n      'coc-custom-radio-group' : question.controlType === 'radio'\n    }\">\n\n    <ng-container *ngSwitchCase=\"'textbox'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n      <input\n        [type]=\"question.type\"\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        [placeholder]=\"question.placeholder\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"form-control\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'datepicker'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n      <input\n        bsDatepicker\n        type=\"text\"\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        [placeholder]=\"question.placeholder\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"form-control\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'textarea'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n      <textarea\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        [placeholder]=\"question.placeholder\"\n        [rows]=\"question.rows\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"form-control\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n      </textarea>\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'checkbox'\">\n      <input\n        type=\"checkbox\"\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"custom-control-input\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        class=\"custom-control-label\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'radio'\">\n      <label *ngIf=\"question.label !== ''\">{{question.label}}</label>\n      <div\n        *ngFor=\"let option of question.options\"\n        class=\"custom-control\"\n        [ngClass]=\"{\n          'custom-checkbox' : question.customStyle === 'checkbox',\n          'custom-radio' : question.customStyle !== 'checkbox'\n        }\"\n        [class.coc-required]=\"question.validation.required\">\n        <input\n          type=\"radio\"\n          [id]=\"option.id\"\n          [value]=\"option.value\"\n          [formControlName]=\"question.id\"\n          (blur)=\"saveToWebStorage()\"\n          class=\"custom-control-input\"\n          [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n        <label\n          *ngIf=\"option.label !== ''\"\n          class=\"custom-control-label\"\n          [attr.for]=\"option.id\">\n          {{option.label}}\n        </label>\n      </div>\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'dropdown'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n      <select\n        class=\"custom-select\"\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        [attr.multiple]=\"question.multiple\"\n        (blur)=\"saveToWebStorage()\"\n        [value]=\"question.placeholder\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n        <option\n          *ngIf=\"question.placeholder !== ''\"\n          selected\n          hidden>\n          {{question.placeholder}}\n        </option>\n        <option\n          *ngFor=\"let option of question.options\"\n          [value]=\"option.value\">\n          {{option.label}}\n        </option>\n      </select>\n    </ng-container>\n\n    <div class=\"invalid-feedback\">\n      <span *ngIf=\"control.errors?.required\">This field is required.</span>\n      <span *ngIf=\"control.errors?.email\">Please enter a valid email.</span>\n    </div>\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -6990,6 +6998,258 @@ var QuestionComponent = /** @class */ (function () {
     return QuestionComponent;
 }());
 
+
+
+/***/ }),
+
+/***/ "./src/app/wizard/question/question.constants.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/wizard/question/question.constants.ts ***!
+  \*******************************************************/
+/*! exports provided: usStateList */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usStateList", function() { return usStateList; });
+var usStateList = [
+    {
+        "label": "Alabama",
+        "value": "AL"
+    },
+    {
+        "label": "Alaska",
+        "value": "AK"
+    },
+    {
+        "label": "American Samoa",
+        "value": "AS"
+    },
+    {
+        "label": "Arizona",
+        "value": "AZ"
+    },
+    {
+        "label": "Arkansas",
+        "value": "AR"
+    },
+    {
+        "label": "California",
+        "value": "CA"
+    },
+    {
+        "label": "Colorado",
+        "value": "CO"
+    },
+    {
+        "label": "Connecticut",
+        "value": "CT"
+    },
+    {
+        "label": "Delaware",
+        "value": "DE"
+    },
+    {
+        "label": "District Of Columbia",
+        "value": "DC"
+    },
+    {
+        "label": "Federated States Of Micronesia",
+        "value": "FM"
+    },
+    {
+        "label": "Florida",
+        "value": "FL"
+    },
+    {
+        "label": "Georgia",
+        "value": "GA"
+    },
+    {
+        "label": "Guam Gu",
+        "value": "GU"
+    },
+    {
+        "label": "Hawaii",
+        "value": "HI"
+    },
+    {
+        "label": "Idaho",
+        "value": "ID"
+    },
+    {
+        "label": "Illinois",
+        "value": "IL"
+    },
+    {
+        "label": "Indiana",
+        "value": "IN"
+    },
+    {
+        "label": "Iowa",
+        "value": "IA"
+    },
+    {
+        "label": "Kansas",
+        "value": "KS"
+    },
+    {
+        "label": "Kentucky",
+        "value": "KY"
+    },
+    {
+        "label": "Louisiana",
+        "value": "LA"
+    },
+    {
+        "label": "Maine",
+        "value": "ME"
+    },
+    {
+        "label": "Marshall Islands",
+        "value": "MH"
+    },
+    {
+        "label": "Maryland",
+        "value": "MD"
+    },
+    {
+        "label": "Massachusetts",
+        "value": "MA"
+    },
+    {
+        "label": "Michigan",
+        "value": "MI"
+    },
+    {
+        "label": "Minnesota",
+        "value": "MN"
+    },
+    {
+        "label": "Mississippi",
+        "value": "MS"
+    },
+    {
+        "label": "Missouri",
+        "value": "MO"
+    },
+    {
+        "label": "Montana",
+        "value": "MT"
+    },
+    {
+        "label": "Nebraska",
+        "value": "NE"
+    },
+    {
+        "label": "Nevada",
+        "value": "NV"
+    },
+    {
+        "label": "New Hampshire",
+        "value": "NH"
+    },
+    {
+        "label": "New Jersey",
+        "value": "NJ"
+    },
+    {
+        "label": "New Mexico",
+        "value": "NM"
+    },
+    {
+        "label": "New York",
+        "value": "NY"
+    },
+    {
+        "label": "North Carolina",
+        "value": "NC"
+    },
+    {
+        "label": "North Dakota",
+        "value": "ND"
+    },
+    {
+        "label": "Northern Mariana Islands",
+        "value": "MP"
+    },
+    {
+        "label": "Ohio",
+        "value": "OH"
+    },
+    {
+        "label": "Oklahoma",
+        "value": "OK"
+    },
+    {
+        "label": "Oregon",
+        "value": "OR"
+    },
+    {
+        "label": "Palau",
+        "value": "PW"
+    },
+    {
+        "label": "Pennsylvania",
+        "value": "PA"
+    },
+    {
+        "label": "Puerto Rico",
+        "value": "PR"
+    },
+    {
+        "label": "Rhode Island",
+        "value": "RI"
+    },
+    {
+        "label": "South Carolina",
+        "value": "SC"
+    },
+    {
+        "label": "South Dakota",
+        "value": "SD"
+    },
+    {
+        "label": "Tennessee",
+        "value": "TN"
+    },
+    {
+        "label": "Texas",
+        "value": "TX"
+    },
+    {
+        "label": "Utah",
+        "value": "UT"
+    },
+    {
+        "label": "Vermont",
+        "value": "VT"
+    },
+    {
+        "label": "Virgin Islands",
+        "value": "VI"
+    },
+    {
+        "label": "Virginia",
+        "value": "VA"
+    },
+    {
+        "label": "Washington",
+        "value": "WA"
+    },
+    {
+        "label": "West Virginia",
+        "value": "WV"
+    },
+    {
+        "label": "Wisconsin",
+        "value": "WI"
+    },
+    {
+        "label": "Wyoming",
+        "value": "WY"
+    }
+];
 
 
 /***/ }),
@@ -7305,6 +7565,7 @@ function toFormQuestion(questions) {
                     id: question.id,
                     value: question.value,
                     label: question.label,
+                    type: question.type,
                     placeholder: question.placeholder,
                     order: question.order,
                     options: question.options,
@@ -7341,6 +7602,9 @@ function toFormGroup(questions) {
                 switch (key) {
                     case 'required':
                         validators.push(_angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required);
+                        break;
+                    case 'email':
+                        validators.push(_angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].email);
                         break;
                 }
             });
@@ -7406,7 +7670,7 @@ var WizardRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<wizard-stepper\n  [linear]=\"true\"\n  [selectedIndex]=\"stepperIndex\"\n  (selectionChange)=\"handleStepChange($event)\">\n\n  <cdk-step [stepControl]=\"step1Config.formGroup\">\n    <div class=\"jumbotron jumbotron-fluid\">\n      <div class=\"jumbotron-container\">\n        <h1>Business Registration & Renewal</h1>\n        <hr class=\"my-2\">\n        <p><strong>Welcome to the Chandler business registration and renewal portal.</strong> This portal will allow you to register or renew your business registration with the City of Chandler. This easy-to-use portal will ask you a series of questions to walk you through.</p>\n        <p class=\"coc-font-size-22\"><em>Simply answer the first question below to get started.</em></p>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-12 mt-1\">\n          <a class=\"coc-link-small coc-link-arrow-left\" href=\"https://www.chandleraz.gov/business/tax-and-license\">Return to Tax & License</a>\n        </div>\n      </div>\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\" [innerHTML]=\"step1Config.heading\"></h2>\n          <p class=\"coc-font-size-14\" [innerHTML]=\"step1Config.subheading\"></p>\n          <form [formGroup]=\"step1Config.formGroup\" class=\"mt-3\">\n            <div class=\"form-row\">\n              <wizard-question\n                *ngFor=\"let question of step1Config.formQuestions\"\n                class=\"col-12\"\n                [ngClass]=\"question.columns === 0 ? '' : 'col-md-' + question.columns\"\n                [question]=\"question\"\n                [form]=\"step1Config.formGroup\"\n                [formId]=\"step1Config.id\">\n              </wizard-question>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-next\" [disabled]=\"step1Config.formGroup.invalid\" cdkStepperNext>\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step [stepControl]=\"step2Config.formGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\" [innerHTML]=\"step2Config.heading\"></h3>\n          <p class=\"coc-font-size-14\" [innerHTML]=\"step2Config.subheading\"></p>\n          <form [formGroup]=\"step2Config.formGroup\" class=\"w-lg-75 mt-3\">\n            <div class=\"form-row\">\n              <wizard-question\n                *ngFor=\"let question of step2Config.formQuestions\"\n                class=\"col-12\"\n                [ngClass]=\"question.columns === 0 ? '' : 'col-md-' + question.columns\"\n                [question]=\"question\"\n                [form]=\"step2Config.formGroup\"\n                [formId]=\"step2Config.id\">\n              </wizard-question>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" [disabled]=\"step2Config.formGroup.invalid\" (click)=\"handleStep2ContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n  \n  <cdk-step *ngIf=\"!isInChandler\" [stepControl]=\"step3Config.formGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\" [innerHTML]=\"step3Config.heading\"></h2>\n          <p class=\"coc-font-size-14\" [innerHTML]=\"step3Config.subheading\"></p>\n          <form [formGroup]=\"step3Config.formGroup\" class=\"mt-3\">\n            <div class=\"form-row\">\n              <wizard-question\n                *ngFor=\"let question of step3Config.formQuestions\"\n                class=\"col-12\"\n                [ngClass]=\"question.columns === 0 ? '' : 'col-md-' + question.columns\"\n                [question]=\"question\"\n                [form]=\"step3Config.formGroup\"\n                [formId]=\"step3Config.id\">\n              </wizard-question>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" [disabled]=\"step3Config.formGroup.invalid\" (click)=\"handleStep3ContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <ng-container *ngFor=\"let config of primaryStepsConfig\">\n    <cdk-step [stepControl]=\"config.formGroup\">\n      <wizard-step\n        [heading]=\"config.heading\"\n        [subheading]=\"config.subheading\"\n        [form]=\"config.formGroup\"\n        [formId]=\"config.id\"\n        [questions]=\"config.formQuestions\"\n        (summary)=\"gotToSummary($event)\">\n      </wizard-step>\n    </cdk-step>\n  </ng-container>\n\n  <ng-container *ngFor=\"let config of secondaryStepsConfig\">\n    <cdk-step *ngIf=\"config.shouldBeDisplayed\" [stepControl]=\"config.formGroup\">\n      <wizard-step\n        [heading]=\"config.heading\"\n        [subheading]=\"config.subheading\"\n        [form]=\"config.formGroup\"\n        [formId]=\"config.id\"\n        [questions]=\"config.formQuestions\"\n        [skipToSummary]=\"skipToSummary\"\n        (summary)=\"gotToSummary($event)\">\n      </wizard-step>\n    </cdk-step>\n  </ng-container>\n  \n  <cdk-step>\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"99\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\">Summary</h3>\n          <p class=\"coc-font-size-14\">Review of your answers. If everything is accurate, click submit.</p>\n          <div class=\"striped mt-3\">\n            <wizard-summary-item\n              class=\"d-block\"\n              [config]=\"step2Config\"\n              (stepId)=\"goToStep($event)\">\n            </wizard-summary-item>\n            <ng-container *ngIf=\"!isInChandler\">\n              <wizard-summary-item\n                class=\"d-block\"\n                [config]=\"step3Config\"\n                (stepId)=\"goToStep($event)\">\n              </wizard-summary-item>\n            </ng-container>\n            <ng-container *ngFor=\"let config of primaryStepsConfig\">\n              <wizard-summary-item\n                class=\"d-block\"\n                [config]=\"config\"\n                (stepId)=\"goToStep($event)\">\n              </wizard-summary-item>\n            </ng-container>\n            <ng-container *ngFor=\"let config of secondaryStepsConfig\">\n              <wizard-summary-item\n                *ngIf=\"config.shouldBeDisplayed\"\n                class=\"d-block\"\n                [config]=\"config\"\n                (stepId)=\"goToStep($event)\">\n              </wizard-summary-item>\n            </ng-container>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"submit\" class=\"btn btn-next ml-3\" (click)=\"handleWizardSubmit()\">\n            Submit\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step>\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"100\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\">Thank you for registering</h3>\n          <p class=\"w-lg-75 mb-8\">Tempor dolor nam eget, eget in class tempor, ut imperdiet, pede tristique massa, duis donec. Sed nec tempus ac nisl, ultricies a lorem sem scelerisque justo, orci ipsum a euismod felis, pretium hendrerit, blandit est vehicula tempus volutpat. Molestie magna, a consequat justo in aliquam, ut massa facilisi. In consectetuer, eleifend faucibus est blandit, vel dolor mollis eu nonummy, euismod amet odio maecenas tristique. Nascetur urna taciti sit in aenean accusamus, auctor.</p>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n  \n</wizard-stepper>"
+module.exports = "<wizard-stepper\n  [selectedIndex]=\"stepperIndex\"\n  (selectionChange)=\"handleStepChange($event)\">\n\n  <cdk-step [stepControl]=\"step1Config.formGroup\">\n    <div class=\"jumbotron jumbotron-fluid\">\n      <div class=\"jumbotron-container\">\n        <h1>Business Registration & Renewal</h1>\n        <hr class=\"my-2\">\n        <p><strong>Welcome to the Chandler business registration and renewal portal.</strong> This portal will allow you to register or renew your business registration with the City of Chandler. This easy-to-use portal will ask you a series of questions to walk you through.</p>\n        <p class=\"coc-font-size-22\"><em>Simply answer the first question below to get started.</em></p>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-12 mt-1\">\n          <a class=\"coc-link-small coc-link-arrow-left\" href=\"https://www.chandleraz.gov/business/tax-and-license\">Return to Tax & License</a>\n        </div>\n      </div>\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\" [innerHTML]=\"step1Config.heading\"></h2>\n          <p class=\"coc-font-size-14\" [innerHTML]=\"step1Config.subheading\"></p>\n          <form [formGroup]=\"step1Config.formGroup\" class=\"mt-3\">\n            <div class=\"form-row\">\n              <wizard-question\n                *ngFor=\"let question of step1Config.formQuestions\"\n                class=\"col-12\"\n                [ngClass]=\"question.columns === 0 ? '' : 'col-md-' + question.columns\"\n                [question]=\"question\"\n                [form]=\"step1Config.formGroup\"\n                [formId]=\"step1Config.id\">\n              </wizard-question>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-next\" [disabled]=\"step1Config.formGroup.invalid\" cdkStepperNext>\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step [stepControl]=\"step2Config.formGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\" [innerHTML]=\"step2Config.heading\"></h3>\n          <p class=\"coc-font-size-14\" [innerHTML]=\"step2Config.subheading\"></p>\n          <form [formGroup]=\"step2Config.formGroup\" class=\"w-lg-75 mt-3\">\n            <div class=\"form-row\">\n              <wizard-question\n                *ngFor=\"let question of step2Config.formQuestions\"\n                class=\"col-12\"\n                [ngClass]=\"question.columns === 0 ? '' : 'col-md-' + question.columns\"\n                [question]=\"question\"\n                [form]=\"step2Config.formGroup\"\n                [formId]=\"step2Config.id\">\n              </wizard-question>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" [disabled]=\"step2Config.formGroup.invalid\" (click)=\"handleStep2ContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n  \n  <cdk-step *ngIf=\"!isInChandler\" [stepControl]=\"step3Config.formGroup\">\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"10\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h2 class=\"h3 font-weight-normal\" [innerHTML]=\"step3Config.heading\"></h2>\n          <p class=\"coc-font-size-14\" [innerHTML]=\"step3Config.subheading\"></p>\n          <form [formGroup]=\"step3Config.formGroup\" class=\"mt-3\">\n            <div class=\"form-row\">\n              <wizard-question\n                *ngFor=\"let question of step3Config.formQuestions\"\n                class=\"col-12\"\n                [ngClass]=\"question.columns === 0 ? '' : 'col-md-' + question.columns\"\n                [question]=\"question\"\n                [form]=\"step3Config.formGroup\"\n                [formId]=\"step3Config.id\">\n              </wizard-question>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"button\" class=\"btn btn-next ml-3\" [disabled]=\"step3Config.formGroup.invalid\" (click)=\"handleStep3ContinueClick()\">\n            Continue\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <ng-container *ngFor=\"let config of primaryStepsConfig\">\n    <cdk-step [stepControl]=\"config.formGroup\">\n      <wizard-step\n        [heading]=\"config.heading\"\n        [subheading]=\"config.subheading\"\n        [form]=\"config.formGroup\"\n        [formId]=\"config.id\"\n        [questions]=\"config.formQuestions\"\n        (summary)=\"gotToSummary($event)\">\n      </wizard-step>\n    </cdk-step>\n  </ng-container>\n\n  <ng-container *ngFor=\"let config of secondaryStepsConfig\">\n    <cdk-step *ngIf=\"config.shouldBeDisplayed\" [stepControl]=\"config.formGroup\">\n      <wizard-step\n        [heading]=\"config.heading\"\n        [subheading]=\"config.subheading\"\n        [form]=\"config.formGroup\"\n        [formId]=\"config.id\"\n        [questions]=\"config.formQuestions\"\n        [skipToSummary]=\"skipToSummary\"\n        (summary)=\"gotToSummary($event)\">\n      </wizard-step>\n    </cdk-step>\n  </ng-container>\n  \n  <cdk-step>\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"99\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\">Summary</h3>\n          <p class=\"coc-font-size-14\">Review of your answers. If everything is accurate, click submit.</p>\n          <div class=\"striped mt-3\">\n            <wizard-summary-item\n              class=\"d-block\"\n              [config]=\"step2Config\"\n              (stepId)=\"goToStep($event)\">\n            </wizard-summary-item>\n            <ng-container *ngIf=\"!isInChandler\">\n              <wizard-summary-item\n                class=\"d-block\"\n                [config]=\"step3Config\"\n                (stepId)=\"goToStep($event)\">\n              </wizard-summary-item>\n            </ng-container>\n            <ng-container *ngFor=\"let config of primaryStepsConfig\">\n              <wizard-summary-item\n                class=\"d-block\"\n                [config]=\"config\"\n                (stepId)=\"goToStep($event)\">\n              </wizard-summary-item>\n            </ng-container>\n            <ng-container *ngFor=\"let config of secondaryStepsConfig\">\n              <wizard-summary-item\n                *ngIf=\"config.shouldBeDisplayed\"\n                class=\"d-block\"\n                [config]=\"config\"\n                (stepId)=\"goToStep($event)\">\n              </wizard-summary-item>\n            </ng-container>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4 mb-6\">\n          <button type=\"button\" class=\"btn btn-previous\" cdkStepperPrevious>\n            Back\n          </button>\n          <button type=\"submit\" class=\"btn btn-next ml-3\" (click)=\"handleWizardSubmit()\">\n            Submit\n          </button>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n\n  <cdk-step>\n    <div class=\"jumbotron jumbotron-fluid pt-2 pb-3\">\n      <div class=\"jumbotron-container\">\n        <h1 class=\"h3 text-center\">Business Registration & Renewal</h1>\n        <wizard-progress-bar [progress]=\"100\"></wizard-progress-bar>\n      </div>\n    </div>\n      \n    <div class=\"container\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-sm-10 mt-4\">\n          <h3 class=\"h3 font-weight-normal\">Thank you for registering</h3>\n          <p class=\"w-lg-75 mb-8\">Tempor dolor nam eget, eget in class tempor, ut imperdiet, pede tristique massa, duis donec. Sed nec tempus ac nisl, ultricies a lorem sem scelerisque justo, orci ipsum a euismod felis, pretium hendrerit, blandit est vehicula tempus volutpat. Molestie magna, a consequat justo in aliquam, ut massa facilisi. In consectetuer, eleifend faucibus est blandit, vel dolor mollis eu nonummy, euismod amet odio maecenas tristique. Nascetur urna taciti sit in aenean accusamus, auctor.</p>\n        </div>\n      </div>\n    </div>\n  </cdk-step>\n  \n</wizard-stepper>"
 
 /***/ }),
 
@@ -7657,10 +7921,10 @@ var WizardComponent = /** @class */ (function () {
         // TODO: Replace temporary data with data from geocoder API
         var initialState = {
             'results': [
-                { 'address1': '175 S Arizona Av', 'address2': 'Suite 2', 'city': 'Chandler', 'state': 'Arizona', 'zip': '85225' },
-                { 'address1': '175 S Arizona Pl', 'address2': '', 'city': 'Chandler', 'state': 'Arizona', 'zip': '85225' },
-                { 'address1': '175 N Arizona Av', 'address2': '', 'city': 'Chandler', 'state': 'Arizona', 'zip': '85225' },
-                { 'address1': '175 . Arizona Av', 'address2': 'Suite 4', 'city': 'Chandler', 'state': 'Arizona', 'zip': '85225' }
+                { 'address1': '175 S Arizona Av', 'address2': 'Suite 2', 'city': 'Chandler', 'state': 'AZ', 'zip': '85225' },
+                { 'address1': '175 S Arizona Pl', 'address2': '', 'city': 'Chandler', 'state': 'AZ', 'zip': '85225' },
+                { 'address1': '175 N Arizona Av', 'address2': '', 'city': 'Chandler', 'state': 'AZ', 'zip': '85225' },
+                { 'address1': '175 . Arizona Av', 'address2': 'Suite 4', 'city': 'Chandler', 'state': 'AZ', 'zip': '85225' }
             ]
         };
         this.bsModalRef = this.modalService.show(_address_verification_address_verification_component__WEBPACK_IMPORTED_MODULE_7__["AddressVerificationComponent"], {

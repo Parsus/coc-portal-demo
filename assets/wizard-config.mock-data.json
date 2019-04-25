@@ -184,7 +184,8 @@
           "order": 4,
           "columns": 6,
           "validation": {
-            "required": true
+            "required": true,
+            "email": true
           }
         }
       ]
@@ -227,8 +228,8 @@
         },
         {
           "id": "STATE",
-          "controlType": "textbox",
-          "type": "text",
+          "controlType": "dropdown",
+          "type": "state",
           "placeholder": "State",
           "order": 4,
           "columns": 3,
@@ -243,16 +244,6 @@
           "placeholder": "Zip",
           "order": 5,
           "columns": 3,
-          "validation": {
-            "required": true
-          }
-        },
-        {
-          "id": "APPLICANT_IND",
-          "controlType": "textbox",
-          "type": "text",
-          "placeholder": "Applicant Ind",
-          "order": 6,
           "validation": {
             "required": true
           }
@@ -534,8 +525,8 @@
         },
         {
           "id": "REFERENCE_1_STATE",
-          "controlType": "textbox",
-          "type": "text",
+          "controlType": "dropdown",
+          "type": "state",
           "placeholder": "State",
           "order": 5,
           "columns": 3,
@@ -614,8 +605,8 @@
         },
         {
           "id": "REFERENCE_2_STATE",
-          "controlType": "textbox",
-          "type": "text",
+          "controlType": "dropdown",
+          "type": "state",
           "placeholder": "State",
           "order": 5,
           "columns": 3,
@@ -700,8 +691,8 @@
         },
         {
           "id": "PLATE_STATE",
-          "controlType": "textbox",
-          "type": "text",
+          "controlType": "dropdown",
+          "type": "state",
           "placeholder": "License Plate State",
           "order": 6,
           "columns": 6,
@@ -820,8 +811,8 @@
         },
         {
           "id": "ENTITY_STATE",
-          "controlType": "textbox",
-          "type": "text",
+          "controlType": "dropdown",
+          "type": "state",
           "placeholder": "State",
           "order": 5,
           "columns": 3,
@@ -909,8 +900,8 @@
         },
         {
           "id": "MAILING_STATE",
-          "controlType": "textbox",
-          "type": "text",
+          "controlType": "dropdown",
+          "type": "state",
           "placeholder": "State",
           "order": 5,
           "columns": 3,
@@ -999,9 +990,7 @@
           "type": "text",
           "placeholder": "Address 2",
           "order": 3,
-          "validation": {
-            "required": true
-          }
+          "validation": {}
         },
         {
           "id": "STATUTORY_AGENT_CITY",
@@ -1016,8 +1005,8 @@
         },
         {
           "id": "STATUTORY_AGENT_STATE",
-          "controlType": "textbox",
-          "type": "text",
+          "controlType": "dropdown",
+          "type": "state",
           "placeholder": "State",
           "order": 5,
           "columns": 3,
@@ -1089,7 +1078,8 @@
           "placeholder": "Email",
           "order": 3,
           "validation": {
-            "required": true
+            "required": true,
+            "email": true
           }
         },
         {
@@ -1185,8 +1175,8 @@
         },
         {
           "id": "OWNER_STATE",
-          "controlType": "textbox",
-          "type": "text",
+          "controlType": "dropdown",
+          "type": "state",
           "placeholder": "State",
           "order": 4,
           "columns": 3,
@@ -1375,8 +1365,8 @@
         },
         {
           "id": "LOCATION_STATE",
-          "controlType": "textbox",
-          "type": "text",
+          "controlType": "dropdown",
+          "type": "state",
           "placeholder": "State",
           "order": 5,
           "columns": 3,
@@ -1459,7 +1449,8 @@
           "placeholder": "Email Address",
           "order": 5,
           "validation": {
-            "required": true
+            "required": true,
+            "email": true
           }
         },
         {
@@ -1598,8 +1589,8 @@
         },
         {
           "id": "LANDLORD_STATE",
-          "controlType": "textbox",
-          "type": "text",
+          "controlType": "dropdown",
+          "type": "state",
           "placeholder": "State",
           "order": 6,
           "columns": 3,
