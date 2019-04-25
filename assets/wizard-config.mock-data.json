@@ -177,7 +177,7 @@
           }
         },
         {
-          "id": "APPLICANT_EMAIL",
+          "id": "EMAIL",
           "controlType": "textbox",
           "type": "email",
           "placeholder": "Applicant Email",
@@ -1057,11 +1057,19 @@
       "order": 14,
       "questions": [
         {
-          "id": "SAME_AS_STATUTORY_AGENT",
+          "id": "SAME_AS_APPLICANT",
           "controlType": "checkbox",
           "value": false,
-          "label": "Click here if Best Contact is the same as Statutory Agent",
+          "label": "Click here if Best Contact is the same as Applicant",
           "order": 1,
+          "sameAs": {
+            "stepName": "APPLICANT_BASIC_A",
+            "mapping": [
+              { "from": "FIRST_NAME", "to": "BEST_CONTACT_NAME" },
+              { "from": "EMAIL", "to": "BEST_CONTACT_EMAIL" },
+              { "from": "PHONE", "to": "BEST_CONTACT_PHONE" }
+            ]
+          },
           "validation": {}
         },
         {
@@ -1291,8 +1299,7 @@
         },
         {
           "id": "DATE_OF_CHANGE",
-          "controlType": "textbox",
-          "type": "date",
+          "controlType": "datepicker",
           "placeholder": "Date of Change",
           "order": 3,
           "columns": 6,
@@ -1325,6 +1332,16 @@
           "value": false,
           "label": "Click here if location address is the same as entity address",
           "order": 2,
+          "sameAs": {
+            "stepName": "ENTITY_INFO_A",
+            "mapping": [
+              { "from": "ENTITY_ADDR1", "to": "LOCATION_ADDR1" },
+              { "from": "ENTITY_ADDR2", "to": "LOCATION_ADDR2" },
+              { "from": "ENTITY_CITY", "to": "LOCATION_CITY" },
+              { "from": "ENTITY_STATE", "to": "LOCATION_STATE" },
+              { "from": "ENTITY_ZIP", "to": "LOCATION_ZIP" }
+            ]
+          },
           "validation": {}
         },
         {
@@ -1388,25 +1405,31 @@
       "order": 20,
       "questions": [
         {
-          "id": "NUMBER_OF_EMPLOYEES",
+          "id": "NBR_OF_EMPLOYEES",
           "controlType": "textbox",
-          "type": "text",
-          "placeholder": "Location Name/DBA",
+          "type": "number",
+          "placeholder": "Number of Employees",
           "order": 1,
           "validation": {
             "required": true
           }
         },
         {
-          "id": "SAME_AS_ENTITY_PHONE",
+          "id": "SAME_AS_APPLICANT_PHONE",
           "controlType": "checkbox",
           "value": false,
-          "label": "Click here if location phone number is the same as entity phone number",
+          "label": "Click here if location phone number is the same as applicant phone number",
           "order": 2,
+          "sameAs": {
+            "stepName": "APPLICANT_BASIC_A",
+            "mapping": [
+              { "from": "PHONE", "to": "LOC_PHONE" }
+            ]
+          },
           "validation": {}
         },
         {
-          "id": "BUSINESS_PHONE",
+          "id": "LOC_PHONE",
           "controlType": "textbox",
           "type": "tel",
           "placeholder": "Business Phone",
@@ -1416,15 +1439,21 @@
           }
         },
         {
-          "id": "SAME_AS_ENTITY_EMAIL",
+          "id": "SAME_AS_APPLICANT_EMAIL",
           "controlType": "checkbox",
           "value": false,
-          "label": "Click here if location email is the same as entity email address",
+          "label": "Click here if location email is the same as applicant email address",
           "order": 4,
+          "sameAs": {
+            "stepName": "APPLICANT_BASIC_A",
+            "mapping": [
+              { "from": "EMAIL", "to": "BUS_EMAIL_ADDR" }
+            ]
+          },
           "validation": {}
         },
         {
-          "id": "EMAIL_ADDRESS",
+          "id": "BUS_EMAIL_ADDR",
           "controlType": "textbox",
           "type": "email",
           "placeholder": "Email Address",
@@ -1435,10 +1464,10 @@
         },
         {
           "id": "START_DATE_IN_CHANDLER",
-          "controlType": "textbox",
-          "type": "date",
+          "controlType": "datepicker",
           "placeholder": "Start Date in Chandler",
           "order": 6,
+          "columns": 6,
           "validation": {
             "required": true
           }
@@ -1455,11 +1484,25 @@
         {
           "id": "BUSINESS_TYPE_TIER_1",
           "controlType": "dropdown",
-          "label": "Business Type 1",
+          "placeholder": "Business Type 1",
           "order": 1,
           "options": [
-            { "value": "ARTS_ENT_REC", "displayValue": "Amusement, Arts, Entertainment, Recreation" },
-            { "value": "CONSTRUCTION", "displayValue": "Construction" }
+            { "value": "ADMIN", "label": "Administrative Support & Services" },
+            { "value": "ENTERTAINMENT", "label": "Amusement, Arts, Entertainment, Recreation" },
+            { "value": "CONSTRUCTION", "label": "Construction" },
+            { "value": "EDUCATION", "label": "Education Services" },
+            { "value": "FINANCE", "label": "Finance & Insurance" },
+            { "value": "HEALTHCARE", "label": "Health Care, Social Services & Day Care" },
+            { "value": "HOTEL", "label": "Hotel Motel" },
+            { "value": "MANUFACTURER", "label": "Manufacturer" },
+            { "value": "NEWS", "label": "News/Software/Telecom" },
+            { "value": "REALESTATE", "label": "Real Estate & Personal Property Rental" },
+            { "value": "RESTAURANT", "label": "Restaurant" },
+            { "value": "RETAIL", "label": "Retail" },
+            { "value": "SERVICES", "label": "Services" },
+            { "value": "TRANSPORTATION", "label": "Transportation & Warehousing" },
+            { "value": "UTILITIES", "label": "Utilities" },
+            { "value": "WHOLESALER", "label": "Wholesaler" }
           ],
           "validation": {
             "required": true
@@ -1468,11 +1511,26 @@
         {
           "id": "BUSINESS_TYPE_TIER_2",
           "controlType": "dropdown",
-          "label": "Business Type 2",
+          "placeholder": "Business Type 2",
           "order": 2,
           "options": [
-            { "value": "PERFORMING_ARTS", "displayValue": "Performing Arts" },
-            { "value": "SPECTATOR_SPORTS", "displayValue": "Spectator Sports" }
+            { "value": "LEGAL", "label": "Legal Services" },
+            { "value": "ACCOUNTING", "label": "Accounting Tax Prep, Bookkeeping, Payroll" },
+            { "value": "ENGINEERING", "label": "Architectural, Engineering, & Related Services" },
+            { "value": "SPECIALIZED", "label": "Specialized, Interior & Graphic Design" },
+            { "value": "COMPUTER", "label": "Computer Systems Design & Services" },
+            { "value": "CONSULTING", "label": "Consulting Services" },
+            { "value": "RESEARCH", "label": "Research & Development Services" },
+            { "value": "ADVERTISING", "label": "Advertising, Public Relations" },
+            { "value": "PROFESSIONAL", "label": "Other Professional, Scientific & Technical Services (i.e. Vet, Photography, Translation)" },
+            { "value": "AUTOMOTIVE", "label": "Automotive Repair & Maintenance" },
+            { "value": "ELECTRONIC", "label": "Electronic & Precision Equipment Repair" },
+            { "value": "BEAUTY", "label": "Personal Care & Beauty Services" },
+            { "value": "LAUNDRY", "label": "Dry-cleaning and Laundry Services" },
+            { "value": "PERSONAL", "label": "Other Personal Services" },
+            { "value": "RELIGIOUS", "label": "Religious Organizations" },
+            { "value": "CIVIC", "label": "Civic & Social Organizations" },
+            { "value": "BUSINESS", "label": "Business, Professional, Labor, Political, Organizations" }
           ],
           "validation": {
             "required": true
@@ -1481,7 +1539,7 @@
         {
           "id": "FREEFORM_BUSINESS_DESCRIPTION",
           "controlType": "textarea",
-          "label": "Business Description",
+          "placeholder": "Business Description",
           "order": 3,
           "rows": 3,
           "validation": {

@@ -884,9 +884,11 @@ var AddOauth2DummyClientSecretInterceptor = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authConfig", function() { return authConfig; });
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 var authConfig = {
     // Url of the Identity Provider
-    issuer: 'http://localhost:3000',
+    issuer: _environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].AUTH_ISSUER,
     // URL of the SPA to redirect the user to after login
     redirectUri: window.location.origin + '/',
     // The SPA's id. The SPA is registerd with this id at the auth-server
@@ -1236,6 +1238,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_bootstrap_collapse__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-bootstrap/collapse */ "./node_modules/ngx-bootstrap/collapse/fesm5/ngx-bootstrap-collapse.js");
 /* harmony import */ var ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-bootstrap/modal */ "./node_modules/ngx-bootstrap/modal/fesm5/ngx-bootstrap-modal.js");
 /* harmony import */ var ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-bootstrap/tooltip */ "./node_modules/ngx-bootstrap/tooltip/fesm5/ngx-bootstrap-tooltip.js");
+/* harmony import */ var ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-bootstrap/datepicker */ "./node_modules/ngx-bootstrap/datepicker/fesm5/ngx-bootstrap-datepicker.js");
+
 
 
 
@@ -1254,14 +1258,16 @@ var SharedModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
                 ngx_bootstrap_collapse__WEBPACK_IMPORTED_MODULE_4__["CollapseModule"].forRoot(),
                 ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_5__["ModalModule"].forRoot(),
-                ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_6__["TooltipModule"].forRoot()
+                ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_6__["TooltipModule"].forRoot(),
+                ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_7__["BsDatepickerModule"].forRoot()
             ],
             exports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
                 ngx_bootstrap_collapse__WEBPACK_IMPORTED_MODULE_4__["CollapseModule"],
                 ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_5__["ModalModule"],
-                ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_6__["TooltipModule"]
+                ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_6__["TooltipModule"],
+                ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_7__["BsDatepickerModule"]
             ]
         })
     ], SharedModule);
@@ -1364,7 +1370,8 @@ var environment = {
     production: false,
     INVOICE_CLOUD_PAYMENT_BASE_URL: "https://www.invoicecloud.com/portal/cloudpayment.aspx",
     INVOICE_CLOUD_BILLER_GUID: '810c080a-6648-44fa-ac8f-19d728b10de9',
-    INVOICE_CLOUD_INVOICE_TYPE_ID: '94'
+    INVOICE_CLOUD_INVOICE_TYPE_ID: '94',
+    AUTH_ISSUER: 'https://authdev.chandleraz.gov'
 };
 /*
  * For easier debugging in development mode, you can import the following file
