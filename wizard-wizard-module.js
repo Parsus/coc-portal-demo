@@ -6692,7 +6692,7 @@ var ProgressBarComponent = /** @class */ (function () {
 /*!******************************************!*\
   !*** ./src/app/wizard/question/index.ts ***!
   \******************************************/
-/*! exports provided: Question, TextboxQuestion, TextareaQuestion, CheckboxQuestion, RadioQuestion, DropdownQuestion, DatepickerQuestion */
+/*! exports provided: Question, TextboxQuestion, TextareaQuestion, CheckboxQuestion, RadioQuestion, DropdownQuestion */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6714,10 +6714,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _question_dropdown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./question-dropdown */ "./src/app/wizard/question/question-dropdown.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DropdownQuestion", function() { return _question_dropdown__WEBPACK_IMPORTED_MODULE_5__["DropdownQuestion"]; });
-
-/* harmony import */ var _question_datepicker__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./question-datepicker */ "./src/app/wizard/question/question-datepicker.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DatepickerQuestion", function() { return _question_datepicker__WEBPACK_IMPORTED_MODULE_6__["DatepickerQuestion"]; });
-
 
 
 
@@ -6753,36 +6749,6 @@ var CheckboxQuestion = /** @class */ (function (_super) {
         return _this;
     }
     return CheckboxQuestion;
-}(_question__WEBPACK_IMPORTED_MODULE_1__["Question"]));
-
-
-
-/***/ }),
-
-/***/ "./src/app/wizard/question/question-datepicker.ts":
-/*!********************************************************!*\
-  !*** ./src/app/wizard/question/question-datepicker.ts ***!
-  \********************************************************/
-/*! exports provided: DatepickerQuestion */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DatepickerQuestion", function() { return DatepickerQuestion; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _question__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./question */ "./src/app/wizard/question/question.ts");
-
-
-var DatepickerQuestion = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](DatepickerQuestion, _super);
-    function DatepickerQuestion(options) {
-        if (options === void 0) { options = {}; }
-        var _this = _super.call(this, options) || this;
-        _this.controlType = 'datepicker';
-        _this.placeholder = options['placeholder'] || '';
-        return _this;
-    }
-    return DatepickerQuestion;
 }(_question__WEBPACK_IMPORTED_MODULE_1__["Question"]));
 
 
@@ -6931,7 +6897,7 @@ var TextboxQuestion = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div [formGroup]=\"form\" [ngSwitch]=\"question.controlType\">\n  <div class=\"form-group\"\n    [class.coc-required]=\"question.validation.required\"\n    [ngClass]=\"{\n      'custom-control mt-1' : question.controlType === 'checkbox',\n      'custom-switch coc-custom-control-right' : question.controlType === 'checkbox' && question.customStyle === 'switch',\n      'custom-checkbox' : question.controlType === 'checkbox' && question.customStyle !== 'switch',\n      'coc-custom-radio-group' : question.controlType === 'radio'\n    }\">\n\n    <ng-container *ngSwitchCase=\"'textbox'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n      <input\n        [type]=\"question.type\"\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        [placeholder]=\"question.placeholder\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"form-control\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'datepicker'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n      <input\n        bsDatepicker\n        type=\"text\"\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        [placeholder]=\"question.placeholder\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"form-control\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'textarea'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n      <textarea\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        [placeholder]=\"question.placeholder\"\n        [rows]=\"question.rows\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"form-control\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n      </textarea>\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'checkbox'\">\n      <input\n        type=\"checkbox\"\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"custom-control-input\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        class=\"custom-control-label\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'radio'\">\n      <label *ngIf=\"question.label !== ''\">{{question.label}}</label>\n      <div\n        *ngFor=\"let option of question.options\"\n        class=\"custom-control\"\n        [ngClass]=\"{\n          'custom-checkbox' : question.customStyle === 'checkbox',\n          'custom-radio' : question.customStyle !== 'checkbox'\n        }\"\n        [class.coc-required]=\"question.validation.required\">\n        <input\n          type=\"radio\"\n          [id]=\"option.id\"\n          [value]=\"option.value\"\n          [formControlName]=\"question.id\"\n          (blur)=\"saveToWebStorage()\"\n          class=\"custom-control-input\"\n          [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n        <label\n          *ngIf=\"option.label !== ''\"\n          class=\"custom-control-label\"\n          [attr.for]=\"option.id\">\n          {{option.label}}\n        </label>\n      </div>\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'dropdown'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n      <select\n        class=\"custom-select\"\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        [attr.multiple]=\"question.multiple\"\n        (blur)=\"saveToWebStorage()\"\n        [value]=\"question.placeholder\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n        <option\n          *ngIf=\"question.placeholder !== ''\"\n          selected\n          hidden>\n          {{question.placeholder}}\n        </option>\n        <option\n          *ngFor=\"let option of question.options\"\n          [value]=\"option.value\">\n          {{option.label}}\n        </option>\n      </select>\n    </ng-container>\n\n    <div class=\"invalid-feedback\">\n      <span *ngIf=\"control.errors?.required\">This field is required.</span>\n      <span *ngIf=\"control.errors?.email\">Please enter a valid email.</span>\n    </div>\n\n  </div>\n</div>"
+module.exports = "\n<div [formGroup]=\"form\" [ngSwitch]=\"question.controlType\">\n  <div class=\"form-group\"\n    [class.coc-required]=\"question.validation.required\"\n    [ngClass]=\"{\n      'custom-control mt-1' : question.controlType === 'checkbox',\n      'custom-switch coc-custom-control-right' : question.controlType === 'checkbox' && question.customStyle === 'switch',\n      'custom-checkbox' : question.controlType === 'checkbox' && question.customStyle !== 'switch',\n      'coc-custom-radio-group' : question.controlType === 'radio'\n    }\">\n\n    <ng-container *ngSwitchCase=\"'textbox'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n      <ng-container [ngSwitch]=\"question.type\">\n        <ng-container *ngSwitchCase=\"'tel'\">\n          <input\n            cocNumbersOnly\n            type=\"text\"\n            [id]=\"question.id\"\n            [formControlName]=\"question.id\"\n            [placeholder]=\"question.placeholder\"\n            (blur)=\"saveToWebStorage()\"\n            class=\"form-control\"\n            [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n        </ng-container>\n        <ng-container *ngSwitchCase=\"'date'\">\n          <input\n            bsDatepicker\n            type=\"text\"\n            [id]=\"question.id\"\n            [formControlName]=\"question.id\"\n            [placeholder]=\"question.placeholder\"\n            (blur)=\"saveToWebStorage()\"\n            class=\"form-control\"\n            [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n        </ng-container>\n        <ng-container *ngSwitchDefault>\n          <input\n            [type]=\"question.type\"\n            [id]=\"question.id\"\n            [formControlName]=\"question.id\"\n            [placeholder]=\"question.placeholder\"\n            (blur)=\"saveToWebStorage()\"\n            class=\"form-control\"\n            [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n        </ng-container>\n      </ng-container>\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'textarea'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n      <textarea\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        [placeholder]=\"question.placeholder\"\n        [rows]=\"question.rows\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"form-control\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n      </textarea>\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'checkbox'\">\n      <input\n        type=\"checkbox\"\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        (blur)=\"saveToWebStorage()\"\n        class=\"custom-control-input\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        class=\"custom-control-label\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'radio'\">\n      <label *ngIf=\"question.label !== ''\">{{question.label}}</label>\n      <div\n        *ngFor=\"let option of question.options\"\n        class=\"custom-control\"\n        [ngClass]=\"{\n          'custom-checkbox' : question.customStyle === 'checkbox',\n          'custom-radio' : question.customStyle !== 'checkbox'\n        }\"\n        [class.coc-required]=\"question.validation.required\">\n        <input\n          type=\"radio\"\n          [id]=\"option.id\"\n          [value]=\"option.value\"\n          [formControlName]=\"question.id\"\n          (blur)=\"saveToWebStorage()\"\n          class=\"custom-control-input\"\n          [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n        <label\n          *ngIf=\"option.label !== ''\"\n          class=\"custom-control-label\"\n          [attr.for]=\"option.id\">\n          {{option.label}}\n        </label>\n      </div>\n    </ng-container>\n\n    <ng-container *ngSwitchCase=\"'dropdown'\">\n      <label\n        *ngIf=\"question.label !== ''\"\n        [attr.for]=\"question.id\">\n        {{question.label}}\n      </label>\n      <select\n        class=\"custom-select\"\n        [id]=\"question.id\"\n        [formControlName]=\"question.id\"\n        [attr.multiple]=\"question.multiple\"\n        (blur)=\"saveToWebStorage()\"\n        [value]=\"question.placeholder\"\n        [class.is-invalid]=\"control.invalid && (control.dirty || control.touched)\">\n        <option\n          *ngIf=\"question.placeholder !== ''\"\n          selected\n          hidden>\n          {{question.placeholder}}\n        </option>\n        <option\n          *ngFor=\"let option of question.options\"\n          [value]=\"option.value\">\n          {{option.label}}\n        </option>\n      </select>\n    </ng-container>\n\n    <div class=\"invalid-feedback\">\n      <span *ngIf=\"control.errors?.required\">This field is required.</span>\n      <span *ngIf=\"control.errors?.email\">Please enter a valid email.</span>\n      <span *ngIf=\"question.controlType === 'textbox' && question.type === 'tel'\">\n        <span *ngIf=\"control.errors?.maxlength || control.errors?.minlength\">\n          Phone numbers should be 10 digits.\n        </span>\n      </span>\n    </div>\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -7573,17 +7539,6 @@ function toFormQuestion(questions) {
                     columns: question.columns
                 }));
                 break;
-            case 'datepicker':
-                group.push(new _question__WEBPACK_IMPORTED_MODULE_1__["DatepickerQuestion"]({
-                    id: question.id,
-                    value: question.value,
-                    label: question.label,
-                    placeholder: question.placeholder,
-                    order: question.order,
-                    validation: question.validation,
-                    columns: question.columns
-                }));
-                break;
         }
     });
     return group.sort(function (a, b) { return a.order - b.order; });
@@ -7605,6 +7560,12 @@ function toFormGroup(questions) {
                         break;
                     case 'email':
                         validators.push(_angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].email);
+                        break;
+                    case 'maxLength':
+                        validators.push(_angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].maxLength(validationObj[key]));
+                        break;
+                    case 'minLength':
+                        validators.push(_angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].minLength(validationObj[key]));
                         break;
                 }
             });
